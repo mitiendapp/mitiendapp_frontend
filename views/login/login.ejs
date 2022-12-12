@@ -2,53 +2,34 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
-    <link rel="stylesheet" href="/src/style/login.css">
+    <%- include('../common/head'); %>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <header>
-                <img claSS="logo" src="/src/images/logo.png" width="25%" />
-                <nav>
-
-                    <ul class="nav_links">
-                        <li><a href="/">Inicio</a></li>
-                        <li><a href="/">Nosotros</a></li>
-                        <li><a href="/">Servicios</a></li>
-                        <li><a href="#">Políticas</a></li>
-                        <li><a href="#">Contacto</a></li>
-                        <li><a class="nav-link" href="/interfaz-registro">Registro</a></li>
-                    </ul>
-                </nav>
-                <a class="cta" href="/interfaz-login"><button>Iniciar Sesión</button></a>
+                <%- include('../common/header'); %>
             </header>
-
-        </div>
         </div>
     </nav>
-    <h1>LOGIN</h1>
+    
     <div class="contenedor">
-
-
 
         <form action="/login" method="post">
             <div class="input-contenedor">
                 <label for="exampleInputPassword1" class="form-label">Email</label>
                 <input name="correo" type="email" class="form-control" id="exampleInputPassword1">
             </div>
-            
+
             <div class="input-contenedor2">
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                 <input name="contrasenia" type="password" class="form-control" id="exampleInputPassword1">
             </div>
             <button type="submit" class="parte2">Iniciar</button>
             <p>
-                Como no tienes una cuenta <br>te invitamos a registrarte. 
-               </p>¿No tienes una cuenta? <a class="link " href="/interfaz-registro"><br><b>Registrate</b></a></p>
+                Como no tienes una cuenta <br>te invitamos a registrarte.
+            </p>¿No tienes una cuenta? <a class="link " href="/interfaz-registro"><br><b>Registrate</b></a></p>
         </form>
 
 
@@ -56,7 +37,9 @@
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous"></script>
     </div>
-    
+    <footer>
+        <%- include('../common/footer'); %>
+    </footer>
 </body>
 
 </html>

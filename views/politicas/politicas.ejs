@@ -2,27 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politicas</title>
-    <link rel="stylesheet" href="/src/style/politicas.css">
+    <%- include('../common/head'); %>
 </head>
 
 <body>
 
     <header>
-        <img claSS="logo" src="/src/images/logo.png" alt="Logo">
-        <nav>
-            <ul class="nav_links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Políticas</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-        <a class="cta" href="#"><button>Iniciar Sesión</button></a>
+        <header>
+            <%- include('../common/header'); %>
+        </header>
     </header>
     <section>
         <div class="showcase">
@@ -30,10 +18,6 @@
                 CONDICIONES</p>
         </div>
     </section><br><br>
-
-
-
-
     <section class="text">
         <div class="sec1">
             <p>
@@ -157,18 +141,9 @@
 
    
 
-    <section class="footer">
-        <div class="footercont">
-            <footer>
-
-                <h4 class="h4">Medios de pago</h4><br>
-                <img class="pagos" src="/src/images/pagos.jpg" alt="pagos"><br><br>
-
-            </footer>
-
-        </div><br><br><br>
-        <p class="box_pie">Todos los derechos reservados &copy; 2022</p><br>
-    </section>
+    <footer>
+        <%- include('../common/footer'); %>
+      </footer>
 
 
 

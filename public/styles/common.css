@@ -1,0 +1,80 @@
+
+header{
+    position: fixed;
+    position: relative;
+    width: 100%;
+}
+.nav{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    transition: all 0.5s ease;
+}
+.nav.active{
+    background: rgba(7, 7, 7);
+    padding: 5px;
+}
+.nav.active.logo,
+.nav.active.a{
+    color: #fff;
+}
+.nav.active.a:hover{
+    background: #fff;
+    color: #fff;
+}
+.logo{
+    cursor: pointer;
+    width: 120px;
+    margin-left: 110px;
+}
+
+footer {
+    background-color: #01b6e385;
+    height: 100%;
+    box-shadow: 0 0 20px #000000;
+}
+footer .img1{
+    float: left;
+    margin-left: 590px;
+    padding: 20px;
+    width: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+footer .img2{
+    float: left;
+    padding: 20px;
+    width: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+footer .img3{
+    float: left;
+    padding: 20px;
+    width: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.clear3{
+    clear: both;
+}
+footer li{
+    display: inline;
+    list-style: none;
+    margin: 20px;
+}
+footer li a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.box_pie{
+    color: #fff;
+    border-top:  solid 1px rgba(255, 255, 255, 0.21);
+    padding-top: 15px;
+    margin-top: 30px;
+    font-size: 12px
+}

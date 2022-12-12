@@ -2,34 +2,20 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <title>EyeSure</title>
+  <%- include('../common/head'); %>
 </head>
 
 <body>
   <main>
     <header>
-      <nav class="nav">
-        <img claSS="logo" src="images/logo.png" alt="Logo">
-        <ul class="menu">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Políticas</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">Registro</a></li>
-          <li><a href="#"><button>Iniciar Sesión</button></a></li>
-        </ul>
-      </nav>
+        <%- include('../common/header'); %>
     </header>
     <div class="scrol">
     </div>
     <script src="menu.js"></script>
 
     <section class="conte_sub">
-      <img id="cel" src="./images/celular.png" alt="mockup">
+      <img id="cel" src="../../public/images/celular.png" alt="mockup">
       <h2 class="p-sub">
         Software de asistencia para <br>
         registro y control<br>
@@ -46,27 +32,27 @@
 
     <section class="conte_bene2">
       <div>
-        <img class="icono" src="./images/rapido.png" alt="proceso-rapido">
+        <img class="icono" src="../../public//images/rapido.png" alt="proceso-rapido">
         <h4>Un proceso más rápido</h4>
         <p>El sistema permite una verificación<br>
           de identidad a distancia<br>
           rápida, fácil y sin dificultades.</p>
       </div>
       <div>
-        <img class="icono" src="./images/precio-bajo.png" alt="reducir">
+        <img class="icono" src="../../public//images/precio-bajo.png" alt="reducir">
         <h4>Reduce costos</h4>
         <p>Minimiza trabajo redundante,<br>
           automatiza tareas, economiza recursos.</p>
       </div>
       <div>
-        <img class="icono" src="./images/seguridad.png" alt="seguridad">
+        <img class="icono" src="../../public//images/seguridad.png" alt="seguridad">
         <h4>Seguridad</h4>
         <p>Acceso utilizando biometría,<br>
           100% seguro que no haya<br>
           suplantación de identidad.</p>
       </div>
       <div>
-        <img class="icono" src="./images/facil-uso.png" alt="facil">
+        <img class="icono" src="../../public//images/facil-uso.png" alt="facil">
         <h4>Simple y fácil de usar</h4>
         <p>Su interfaz permite una rápida puesta<br>
           en marcha.</p>
@@ -83,20 +69,7 @@
     <div class="clear"></div>
 
     <footer>
-      <div><img class="img1" src="images/facebook.png" alt="red1"></div>
-      <div><img class="img2" src="images/whatsapp.png" alt="red2"></div>
-      <div><img class="img3" src="images/instagram.png" alt="red3"></div>
-      <div><img class="img3" src="images/correo.png" alt="red4"></div>
-      <div class="clear3"></div>
-      <div>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Whatsapp</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Correo</a></li>
-        </ul>
-      </div>
-      <div><p class="box_pie">EyeSure &copy; 2022 Todos los derechos reservados</p><br></div>
+      <%- include('../common/footer'); %>
     </footer>
   </main>
 </body>
