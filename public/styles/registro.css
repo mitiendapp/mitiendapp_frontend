@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Anek+Devanagari&family=Montserrat&display=swap');
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+html{
+ 
+    width: 100%;
+}
+body{
+    min-height: 100%;
 
+}
 li,a, button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -7,6 +19,10 @@ li,a, button {
     color: rgba(0, 0, 0, 0.841);
     text-decoration: none;
     position: relative;
+}
+
+header{
+    width: 100%;
 }
 .logo {
     position: relative;
