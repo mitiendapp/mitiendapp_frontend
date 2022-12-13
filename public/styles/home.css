@@ -128,15 +128,18 @@ header{
     clear: both;
 }
 .conte_bene2{
+    margin: 0;
     padding: 20px 0 20px 0;
     font-size: 20px;
     background-color: rgba(255, 255, 255, 0.823);
     height: 500px;
     box-shadow: 0 0 20px #000000;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content:space-evenly;
 }
  .conte_bene2 div{
-    float: left;
-    margin-left: 65px;
     margin-top: 80px;
     width: 300px;
     height: 300px;
@@ -172,6 +175,10 @@ header{
     padding: 40px 0 40px 0;
     font-size: 30px;
     margin-top: 80px;
+}
+.imgFooter{
+    margin-top: 1rem;
+width: 80px;
 }
 input{
     color: black;
