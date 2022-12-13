@@ -2,13 +2,6 @@
   <img claSS="logo" src="../../public/images/logo.png" alt="Logo">
   <ul class="menu">
     <li><a href="/">Inicio</a></li>
-    <li>
-      <%if (nombres) { %>
-        <a href="">
-          <%= nombres %>
-        </a>
-        <% } %>
-    </li>
     <li><a href="/nosotros">Nosotros</a></li>
     <li><a href="/politicas">Políticas</a></li>
     <li><a href="/contact">Contacto</a></li>
@@ -20,6 +13,13 @@
     <li>
       <%if (!nombres) { %>
         <a href="/login"><button>Iniciar Sesión</button></a>
+        <% } %>
+    </li>
+    <li>
+      <%if (nombres) { %>
+        <a href="">
+          <%= nombres %>
+        </a>
         <% } %>
     </li>
     <li>

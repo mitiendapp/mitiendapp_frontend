@@ -30,13 +30,30 @@ app.get('/', (req,res)=>{
     }
 })
 app.get('/nosotros', (req,res)=>{
-    res.render('home/home')
-})
+    let session = req.session;
+    if(session.correo){       
+        return res.render('nosotros/nosotros', {nombres: session.nombres});
+
+    }else{
+        return res.render("nosotros/nosotros", {nombres: undefined});
+    }})
 app.get('/politicas', (req, res)=>{
-    res.render('politicas/politicas')
+    let session = req.session;
+    if(session.correo){       
+        return res.render('politicas/politicas', {nombres: session.nombres});
+
+    }else{
+        return res.render("politicas/politicas", {nombres: undefined});
+    }
 })
 app.get('/contact', (req, res)=>{
-    res.render('contact/contact')
+    let session = req.session;
+    if(session.correo){       
+        return res.render('contact/contact', {nombres: session.nombres});
+
+    }else{
+        return res.render("contact/contact", {nombres: undefined});
+    }
 })
 app.get('/registro', (req, res)=>{
     let session = req.session;
@@ -53,7 +70,7 @@ app.post('/registro', (req,res)=>{
     let apellidos = req.body.apellidos;
     let contrasena = req.body.contrasena;
 
-    //console.log(correo, nombres, apellidos, contrasena);
+
     const saltRounds = 10;
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(contrasena, salt);
@@ -75,8 +92,10 @@ app.get('/login', (req, res)=>{
 app.post('/login', (req, res)=>{
     let correo = req.body.correo;
     let contrasena = req.body.contrasena;
+    
+    console.log(req.body);
 
-    pool.query("SELECT contrasena, nombres, apellidos FROM user WHERE correo=?", [correo], (error, data)=>{
+    conn.query("SELECT contrasena, nombres, apellidos FROM user WHERE correo=?", [correo], (error, data)=>{
         if (error) throw error;
         if (data.length >0){
             let contrasenaEncriptada = data[0].contrasena;
@@ -87,9 +106,11 @@ app.post('/login', (req, res)=>{
             session.nombres = `${data[0].nombres} ${data[0].apellidos}`
             return res.redirect('/');
         }
-        return res.send('Usuario o contraseña incorrecta');
+        error=true
+        return res.redirect('/login');
     }
-    return res.send('Usuario o contraseña incorrecta');
+    error=true
+    return res.redirect('/login');
     })
 })
 

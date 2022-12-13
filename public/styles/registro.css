@@ -8,10 +8,6 @@ li,a, button {
     text-decoration: none;
     position: relative;
 }
-
-
-
-
 .logo {
     position: relative;
     cursor: pointer;
@@ -21,8 +17,6 @@ li,a, button {
     padding-bottom: 10%;
 }
 
-
-  
 button {
     padding: 9px 25px;
     background-color: rgba(0,136,169,1);
