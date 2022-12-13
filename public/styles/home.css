@@ -176,10 +176,6 @@ header{
     font-size: 30px;
     margin-top: 80px;
 }
-.imgFooter{
-    margin-top: 1rem;
-width: 80px;
-}
 input{
     color: black;
     font-weight: bold;
@@ -205,7 +201,10 @@ input{
     color: white;
     background-color: black;
 }
-
+.imgFooter{
+    margin-top: 2rem;
+    width: 60px;
+}
 footer {
     background-color: #01b6e385;
     height: 100%;
