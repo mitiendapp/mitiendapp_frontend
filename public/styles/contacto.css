@@ -10,22 +10,29 @@
 body{
 
   font-family: 'Roboto', sans-serif;
-  background-color: #e5e5f7;
-   background-image: radial-gradient(#1966ff 0.45px, #e5e5f7 0.45px);
-  background-size: 9px 9px;
-  background-position: 0 0, 10px 10px;
-  display: flex;
+  /* background-color: #757577; */
+   /* background-image: radial-gradient(#81a3e8 0.45px, #555557 0.45px); */
+  /* background-size: 3px 3px; */
+  /* background-position: 0 0, 10px 10px; */
+  /* display: flex; */
+  
   min-height: 100vh; 
   
 }
 
+.father{
+  padding: 120px;
+
+
+}
 
 
 
 .form{
   
   background-color: #fff;
-  margin: 120px auto;
+   margin:  auto; 
+  /* padding: 400px ; */
   width: 90%;
   max-width: 400px;
   padding: 4.5em 3em;
