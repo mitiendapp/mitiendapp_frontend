@@ -1,0 +1,50 @@
+/* contenido */
+
+.nosotros {
+    text-align: justify;
+    width: 700px;
+    margin: auto;
+    font-size: 20px;
+    margin-bottom: 70px;
+    padding-top: 70px;
+
+  }
+  
+  #grupo {
+    text-align: center;
+  }
+  
+  .nombres {
+
+   font-size: 17px;
+   margin: auto;
+   margin-bottom: 60px;
+    
+  }
+  .nombres img {
+    clip-path: circle();
+  }
+  
+  th, td {
+    padding-right: 40px;
+  }
+  
+  td, img {
+    width: 100px;
+    text-align: center;
+  }
+  
+  
+  .nosotros h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    color: rgb(41, 171, 226);
+  }
+  * {
+    margin: 0%;
+    padding: 0%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:white;
+  }  
