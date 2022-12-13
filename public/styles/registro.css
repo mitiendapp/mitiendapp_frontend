@@ -1,32 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Anek+Devanagari&family=Montserrat&display=swap');
-body{
-    background-image: url(/src/images/fondo.webp);
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
-    background-color:rgb(0, 0, 0);
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
-    padding-bottom: 6%;
-}
-body::before{
 
-    position: absolute;
-    content: '';
-    background-color: black;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: .7;
-}
 li,a, button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -36,40 +9,18 @@ li,a, button {
     position: relative;
 }
 
-header {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 10%;
-    background-color: rgba(0, 0, 0, 0.841);
-}
+
+
 
 .logo {
     position: relative;
     cursor: pointer;
 }
 
-.nav_links {
-    list-style: none;
-    
+.registro{
+    padding-bottom: 10%;
 }
 
-/* fixed estatico con la pantalla */
-.nav_links li {
-    display: inline-block;
-    padding: 0px 20px;
-    
-}
-
-.nav_links li a {
-    transition: all 0.3s ease 0s;
-    color: white;
-}
-
-.nav_links li a:hover {
-    color: #0088a9;
-}
 
   
 button {
@@ -104,11 +55,7 @@ img{
     padding: 20px 0 20px 0;
     font-size: 15px;
 }
-/*
-h4{
-    font-size: 25px;
-}
-*/
+
 .conte_suscri{
     padding: 40px 0 40px 0;
     font-size: 20px;
@@ -143,38 +90,45 @@ input{
 
 
 .contenedor{
-    background: #F2F2F2;
+    position:relative;
+    margin-top: 20px;
+    background: #f2f2f29a;
     box-shadow: 0 0 20px #bca1b6;
-    padding: 50px 0px;
-    margin: 0px 500px;
+    padding: 50px 10px;
+    margin-top: 0%;
     border-radius: 20px;
-    position: relative;
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-bottom: 5%;
 }
 
-h1{
-    position: relative;
-    text-align: center;
-    margin-left: 5px;
-    margin-bottom: 3%;
-    color: antiquewhite;
-    
-}
+
 
 p{
     text-align: center;
+    
 }
 
 .input-contenedor{
     position: relative;
     width: 80%;
+    margin-top: 5%;
     margin-bottom: 1%;
+    margin-left: 59px;
     padding: 0px 30px;
+    
+    margin-bottom: 1%;
+    
 }
 
 .input-contenedor2{
     position: relative;
     width: 80%;
-    padding: 0px 9%;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    margin-left: 59px;
+    padding: 0px 30px;
+    
     margin-bottom: 1%;
 }
 .form-control{
@@ -185,9 +139,24 @@ p{
 }
 
 .parte2{
-    position: relative;
-    background-color: rgba(0,136,169,1);
-    
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
     margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 5%;
+    background-color: rgb(41, 171, 226);
+    box-shadow: 2px 2px 5px #000 ;
+    
+}
 
+.parte2:hover{
+    background-color: #000;
+    color: rgb(41, 171, 226);
 }

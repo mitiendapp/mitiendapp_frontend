@@ -1,20 +1,22 @@
 <!doctype html>
 <html lang="en">
+    
 
 <head>
     <%- include('../common/head'); %>
-</head>
-
+    <link rel="stylesheet" href="../../public/styles/login.css">
+    
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <header>
                 <%- include('../common/header'); %>
+                <p class="login"></p>
             </header>
         </div>
     </nav>
     
-    <div class="contenedor">
+    <div class="contenedor1">
 
         <form action="/login" method="post">
             <div class="input-contenedor">
@@ -29,7 +31,7 @@
             <button type="submit" class="parte2">Iniciar</button>
             <p>
                 Como no tienes una cuenta <br>te invitamos a registrarte.
-            </p>¿No tienes una cuenta? <a class="link " href="/interfaz-registro"><br><b>Registrate</b></a></p>
+            </p>¿No tienes una cuenta? <a class="link " href="/registro"><br><b>Registrate</b></a></p>
         </form>
 
 
