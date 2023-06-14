@@ -1,0 +1,40 @@
+*{
+    font-family: sans-serif;
+}
+nav{
+    
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.color{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    background-color: #284b63;
+    height: 10vh;
+    width: 90%;
+    border-radius: 0px 0px 15px 15px;
+}
+nav{
+    max-width: 100%;
+    min-width: 580px    ;
+}
+
+nav ul li {
+    display: inline;
+    margin: 10px 15px 0px 15px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: rgb(139, 139, 139);
+    font-size: 20px;
+}
+nav ul li a:hover{
+    color: white;
+    transform: scale(1.2);
+}
+nav img{
+    border: none;
+ }
