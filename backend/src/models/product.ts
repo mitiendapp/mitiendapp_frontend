@@ -1,7 +1,7 @@
 'use strict';
-const {
+import {
   Model
-} = require('sequelize');
+} from 'sequelize';
 
 interface ProductsAttributes{
   name:string,
