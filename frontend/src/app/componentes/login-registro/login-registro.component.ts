@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
 
@@ -13,9 +15,13 @@ export class LoginRegistroComponent implements OnInit {
   form2: FormGroup
   products: any;
 
-  constructor(private fb: FormBuilder, private client: ClientService){
+  constructor(private fb: FormBuilder, private client: ClientService, private router: Router){
 
   }
+
+  
+ 
+ 
 
   ngOnInit(): void {
     localStorage.setItem("token", "ahsdgjfdagjsdfasgdjsadgsa");
@@ -34,6 +40,7 @@ export class LoginRegistroComponent implements OnInit {
     
     this.dom()
   }
+  
 
 
   onSubmitR(){
@@ -81,15 +88,22 @@ export class LoginRegistroComponent implements OnInit {
         password: this.form2.value.password
       }, undefined, {"Authorization": `Bearer ${localStorage.getItem("token")}`}).subscribe(
         ((response: any) => {
-          console.log(response);   
+          console.log(response); 
+         
+           
         }), 
         ((error: any) => {
           console.log(error);
         })
+
+        
       )
 
     }else{
       console.log("Verifique sus datos");
     }
+    
   }
+ 
+
 }

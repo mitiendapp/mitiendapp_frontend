@@ -1,9 +1,11 @@
 <div class="productos">
 
   <div class="tarjeta" *ngFor="let products of prod">
+    
     <img [src]="products.img">
      <h3>{{products.nombre}}</h3> 
+     <h3>{{products.categoria}}</h3>
      <h4>{{products.precio}}</h4>
-     <button >detalle</button>
+     <button (click)="mostrarDetalle(products.nombre)"> Detalle  </button>
   </div>
 </div>
