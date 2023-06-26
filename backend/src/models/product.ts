@@ -80,11 +80,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     state: {
       type:DataTypes.STRING,
       allowNull:false,
-      validate:{
-        notNull:{
-          msg:"field can't null"
-        }
-      }
+      defaultValue:"nuevo"
     }
   }, {
     sequelize,
