@@ -13,7 +13,7 @@ interface ProductsAttributes{
 }
 
 module.exports = (sequelize:any, DataTypes:any) => {
-  class product extends Model implements ProductsAttributes{
+  class Product extends Model implements ProductsAttributes{
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -30,7 +30,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
       // define association here
     }
   }
-  product.init({
+  Product.init({
     name: {
       type:DataTypes.STRING,
       allowNull:false,
@@ -80,15 +80,11 @@ module.exports = (sequelize:any, DataTypes:any) => {
     state: {
       type:DataTypes.STRING,
       allowNull:false,
-      validate:{
-        notNull:{
-          msg:"field can't null"
-        }
-      }
+      defaultValue:"nuevo"
     }
   }, {
     sequelize,
-    modelName: 'product',
+    modelName: 'Product',
   });
-  return product;
+  return Product;
 };
