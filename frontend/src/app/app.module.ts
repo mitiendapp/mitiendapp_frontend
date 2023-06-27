@@ -30,6 +30,7 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut:3000,
