@@ -1,0 +1,18 @@
+<div class="cont">
+
+    <div class="targ">
+
+  
+  <img [src]="detalle.img">
+
+  <h2>{{detalle.nombre}}</h2>
+  <h3>{{detalle.precio}}</h3>
+  <h3>{{detalle.categoria}}</h3><br>
+  <h4>{{detalle.descripcion}}</h4>
+  <br>
+  <button (click)="generatePDF(detalle.nombre , detalle.precio , detalle.categoria)" >Comprar</button>
+
+</div>
+
+</div>
+

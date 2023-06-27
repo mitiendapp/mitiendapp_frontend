@@ -1,0 +1,23 @@
+img{
+    height: 330px;
+    width: 300px;
+}
+
+button{
+    padding: 5px;
+}
+.cont{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+
+.targ{
+    text-align: center;
+    width: 52%;
+}
