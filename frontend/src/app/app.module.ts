@@ -13,6 +13,8 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
+import { DetallesComponent } from './componentes/detalles/detalles.component';
+import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
     FooterComponent,
     LoginRegistroComponent,
     ProductosComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    DetallesComponent,
+    PerfilUsuarioComponent
   ],
   imports: [
     BrowserModule,
