@@ -1,18 +1,25 @@
-<div class="cont">
+<div class="card container m-auto mt-5 p-5 w-75 row d-flex row justify-content-between">
+    <div class="row">
 
-    <div class="targ">
+        <div class="col">
+            <img [src]="detail.image" alt="">
+        </div>
+        <div class="col ">
 
-  
-  <img [src]="detalle.img">
+            <P class="fs-1"> {{detail.name}}</P>
+            <p class="fs-6">{{detail.categoria}}</p>
+            <div class="descripcion">
 
-  <h2>{{detalle.nombre}}</h2>
-  <h3>{{detalle.precio}}</h3>
-  <h3>{{detalle.categoria}}</h3><br>
-  <h4>{{detalle.descripcion}}</h4>
-  <br>
-  <button (click)="generatePDF(detalle.nombre , detalle.precio , detalle.categoria)" >Comprar</button>
+                <span class="title">Características</span> <br><br>
+                <p>{{detail.description}}</p>
+            </div>
 
+            <div class="precio">
+                <p>{{detail.price}}</p>
+                <button class="btn btn-primary"
+                    (click)="generatePDF(detail.name , detail.price)">Comprar</button>
+            </div>
+
+        </div>
+    </div>
 </div>
-
-</div>
-

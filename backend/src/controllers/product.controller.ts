@@ -24,6 +24,23 @@ export const getProducts = async (
     }
 }
 
+export const getProductById = async(
+    req:Request,
+    res:Response,
+    next:NextFunction
+)=>{
+    const {id} = req.query;
+    const product = await db.Product.findOne({
+        where: {id:id}
+    })
+    if(product){
+        return res.status(200).json({
+            message:"Producto encontrado satisfactoriamente",
+            data:product
+        })
+    }
+}
+
 export const createProduct =async (
     req: Request,
     res: Response,

@@ -24,6 +24,7 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    
   }
 
   getProducts() {
@@ -31,8 +32,8 @@ export class ProductosComponent implements OnInit {
       this.listProducts = data.data;
     })
   }
-  mostrarDetalle(nombre: String) {
-    this.router.navigate(['/detalle', nombre]);
+  mostrarDetalle(id: number) {
+    this.router.navigate(['/detalle', id]);
   }
 
 }

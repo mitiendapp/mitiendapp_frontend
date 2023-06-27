@@ -17,8 +17,10 @@ export class ProductService {
    }
 
   getProducts():Observable<Product[]>{
-
     return this.http.get<Product[]>(`${this.endpoint}${this.apiUrl}`);
+  }
+  getProductById(id:number):Observable<any>{
+    return this.http.get<any>(`${this.endpoint}test/?id=${id}`);
   }
   create(product:Product):Observable<any>{
     return this.http.post(`${this.endpoint}${this.apiUrl}`, product)

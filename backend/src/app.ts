@@ -4,8 +4,15 @@ import router from './routes/routes';
 import { json, urlencoded } from 'body-parser';
 import './auth/passport'; 
 import cors from 'cors';
+import { products } from './seeders/products';
 
 const app = express();
+
+// products.forEach((p)=>{
+//     //console.log(p);
+//     db.Product.create(p);
+// })
+
 
 app.use(json());
 app.use(urlencoded({
