@@ -14,6 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { DetalleComponent } from './componentes/detalle/detalle.component';
     ProductosComponent,
     SpinnerComponent,
     DetalleComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,10 +39,11 @@ import { DetalleComponent } from './componentes/detalle/detalle.component';
     BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:3000,
-      positionClass:'toast-bottom-right',
-      preventDuplicates:true,
-    })
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    NgbModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

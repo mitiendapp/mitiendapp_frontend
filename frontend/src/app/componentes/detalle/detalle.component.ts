@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { productosDisponibles } from 'src/app/models/productos';
 
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/interfaces/product';
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -13,14 +15,14 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
   styleUrls: ['./detalle.component.css'],
 })
 export class DetalleComponent implements OnInit {
-  producto = productosDisponibles;
+  detail:any;
+  idProduct: number = 0;
 
-  nomProducto: string;
-  detalle: any;
+  constructor(private routeActivate: ActivatedRoute,
+    private _productService: ProductService,
+    private route: ActivatedRoute, private router: Router) {}
 
-  constructor(private routeActivate: ActivatedRoute) {}
-
-  generatePDF(nombre: string, precio: number, categoria: string) {
+  generatePDF(nombre: string, precio: number) {
     window.alert('Compra exitosa');
 
     const documentDefinition = {
@@ -30,7 +32,7 @@ export class DetalleComponent implements OnInit {
 
         { text: JSON.stringify(nombre)},
         { text: JSON.stringify(precio) },
-        { text: JSON.stringify(categoria)},
+        // { text: JSON.stringify(categoria)},
       ],
       // styles: {
       //   header: { fontSize: 23, bold: true, margin: [0, 0, 0, 10] },
@@ -57,13 +59,17 @@ export class DetalleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.nomProducto = this.routeActivate.snapshot.params['nombre'];
-
-    // console.log(this.nomProducto)
-
-    this.producto.forEach((producto) => {
-      this.detalle = producto;
-      // console.log(this.detalle);
-    });
+    this.idProduct = this.routeActivate.snapshot.params["id"];
+    this.getProduct(this.idProduct);
+    
+  }
+  getProduct(id:number) {
+    this._productService.getProductById(id).subscribe((data: any) => {
+      this.detail = data.data;
+      console.log("HERE");
+      
+      console.log(data.data);
+      
+    })
   }
 }
