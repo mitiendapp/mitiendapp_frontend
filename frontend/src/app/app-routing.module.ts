@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { LoginRegistroComponent } from './componentes/login-registro/login-registro.component';
 import { ProductosComponent } from './componentes/productos/productos.component';
 import { AuthGuard } from './utils/auth.guard';
 import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-compra.component';
+import { DetalleComponent } from './componentes/detalle/detalle.component';
+import { HomeComponent } from './componentes/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full',
+  }, {
+    path: '', component: HomeComponent
   }, {
     path: 'login',
     component: LoginRegistroComponent,
@@ -19,10 +24,13 @@ const routes: Routes = [
     component:CarritoCompraComponent,
   },
   {
+    path: 'detalle/:id', component: DetalleComponent
+  }, {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: '',
     pathMatch: 'full'
   }
+
 ];
 
 @NgModule({

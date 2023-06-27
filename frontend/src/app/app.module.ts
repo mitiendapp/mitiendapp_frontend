@@ -14,6 +14,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-compra.component';
+import { DetalleComponent } from './componentes/detalle/detalle.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-com
     LoginRegistroComponent,
     ProductosComponent,
     SpinnerComponent,
-    CarritoCompraComponent
+    CarritoCompraComponent,
+    DetalleComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,12 +38,14 @@ import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:3000,
-      positionClass:'toast-bottom-right',
-      preventDuplicates:true,
-    })
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    NgbModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
