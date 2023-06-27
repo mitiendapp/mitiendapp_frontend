@@ -110,6 +110,8 @@ button:active{
     transform: scale(0.90);
 }
 
+
+
 #signIn, #signUp{
     background-color: transparent;
     border: 2px solid #fff;
@@ -174,10 +176,18 @@ button:active{
 .overlay-left{
     transform: translateX(-20%);
 }
+.overlay-left p{
+    font-size: 20px;
+}
+
+
 
 .overlay-right{
     right: 0;
     transform: translateX(0);
+}
+.overlay-right p{
+    font-size: 20px;
 }
 
 .container.ringht-panel-active .overlay-left{
