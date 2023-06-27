@@ -6,7 +6,6 @@ import './auth/passport';
 import cors from 'cors';
 
 const app = express();
-import { json } from 'body-parser';
 
 app.use (json())
 
