@@ -29,6 +29,10 @@ export class LoginRegistroComponent implements OnInit {
   ) {
   }
 
+  
+ 
+ 
+
   ngOnInit(): void {
     //localStorage.setItem("token", "ahsdgjfdagjsdfasgdjsadgsa");
     this.form = this.fb.group({
@@ -46,6 +50,7 @@ export class LoginRegistroComponent implements OnInit {
 
     this.dom()
   }
+  
 
 
   onSubmitR() {

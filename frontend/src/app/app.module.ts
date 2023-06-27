@@ -13,8 +13,8 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
-import { DetallesComponent } from './componentes/detalles/detalles.component';
 import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
+import { DetalleComponent } from './componentes/detalle/detalle.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usua
     LoginRegistroComponent,
     ProductosComponent,
     SpinnerComponent,
-    DetallesComponent,
+    DetalleComponent,
     PerfilUsuarioComponent
   ],
   imports: [
@@ -34,6 +34,7 @@ import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usua
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut:3000,

@@ -144,7 +144,7 @@ button:active{
     position: relative;
     color: #fff;
     background: #ff416c;
-    left: -102%;
+    left: -100%;
     height: 100%;
     width: 200%;
     background: linear-gradient(to right, #83c5be, #284b63);
