@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { productosDisponibles } from 'src/app/models/productos';
 
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/interfaces/product';
+import { PaymentService } from 'src/app/services/payment.service';
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -20,6 +20,7 @@ export class DetalleComponent implements OnInit {
 
   constructor(private routeActivate: ActivatedRoute,
     private _productService: ProductService,
+    private _paymentService: PaymentService,
     private route: ActivatedRoute, private router: Router) {}
 
   generatePDF(nombre: string, precio: number) {
@@ -34,11 +35,7 @@ export class DetalleComponent implements OnInit {
         { text: JSON.stringify(precio) },
         // { text: JSON.stringify(categoria)},
       ],
-      // styles: {
-      //   header: { fontSize: 23, bold: true, margin: [0, 0, 0, 10] },
-      //   subheader: { fontSize: 20, bold: true, margin: [0, 0, 0, 10] },
-      //   body: { fontSize: 18 },
-      // },
+    
     };
 
     pdfMake.createPdf(documentDefinition).download('mi-archivo.pdf');
@@ -70,6 +67,13 @@ export class DetalleComponent implements OnInit {
       
       console.log(data.data);
       
+    })
+  }
+
+  createOrder(){
+    this._paymentService.createOrder().subscribe((data:any)=>{
+      console.log(data);
+      window.location.href = data.init_point
     })
   }
 }

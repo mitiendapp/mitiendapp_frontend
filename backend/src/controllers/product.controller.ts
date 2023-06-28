@@ -9,7 +9,6 @@ export const getProducts = async (
 ) => {
     try {
         const products = await db.Product.findAll();
-        console.log(products);
         
         if (!products) return res.sendStatus(404)
         return res.status(200).json({

@@ -17,6 +17,8 @@ import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usua
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidebarsComponent } from './componentes/sidebars/sidebars.component';
+import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-compra.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginRegistroComponent,
     ProductosComponent,
     SpinnerComponent,
+    CarritoCompraComponent,
     DetalleComponent,
     PerfilUsuarioComponent,
     HomeComponent,
+    SidebarsComponent,
   ],
   imports: [
     BrowserModule,
