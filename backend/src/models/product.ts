@@ -3,7 +3,7 @@ import {
   Model
 } from 'sequelize';
 
-interface ProductsAttributes{
+export interface ProductsAttributes{
   name:string,
   description:string,
   price:string,
