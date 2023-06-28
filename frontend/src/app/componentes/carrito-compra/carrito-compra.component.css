@@ -16,7 +16,7 @@
 }
 
 .number-input button {
-    -webkit-appearance: none;
+    /*-webkit-appearance: none;*/
     background-color: transparent;
     border: none;
     align-items: center;
@@ -119,7 +119,9 @@
     background-color: #4285f4;
 }
 
-.h-100 {
-    
-    
+
+.con{
+    margin-bottom: 200px;
+
 }
+
