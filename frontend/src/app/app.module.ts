@@ -13,6 +13,7 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
+import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-compra.component';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginRegistroComponent,
     ProductosComponent,
     SpinnerComponent,
+    CarritoCompraComponent,
     DetalleComponent,
     HomeComponent,
   ],

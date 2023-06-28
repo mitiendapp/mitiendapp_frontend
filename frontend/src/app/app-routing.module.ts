@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginRegistroComponent } from './componentes/login-registro/login-registro.component';
 import { ProductosComponent } from './componentes/productos/productos.component';
 import { AuthGuard } from './utils/auth.guard';
+import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-compra.component';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 
@@ -17,9 +18,12 @@ const routes: Routes = [
   }, {
     path: 'login',
     component: LoginRegistroComponent,
-  }, {
-    path: 'products', component: ProductosComponent, canActivate: [AuthGuard]
-  }, {
+  }, { path: 'products', component: ProductosComponent, canActivate: [AuthGuard] },
+  {
+    path:'carritoCompra',
+    component:CarritoCompraComponent,
+  },
+  {
     path: 'detalle/:id', component: DetalleComponent
   }, {
     path: '**',
