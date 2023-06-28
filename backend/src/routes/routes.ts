@@ -7,6 +7,7 @@ import ROLES_LIST from "../../config/role.list";
 import { loginTest, loginUser } from "../controllers/auth.controller";
 import { verifyJWT } from "../middlewares/verifyJWT";
 import { createProduct, getProductById, getProducts } from "../controllers/product.controller";
+import { createOrder } from "../controllers/payment.controller";
 
 const router = Router();
 
@@ -27,5 +28,19 @@ router.post('/product', createProduct)
 
 router.get('/test', passport.authenticate("jwt", { session: false }), loginTest);
 router.get('/test2',verifyJWT, verifyRoles(ROLES_LIST.Admin) , loginTest);
+
+
+router.get('/order/create', createOrder)
+
+router.get('/order/success', (req,res)=>{
+    console.log("orden creada");
+    
+})
+
+
+router.get('/order/webhook', (req,res)=>{
+    console.log("webhook");
+    
+})
 
 export default router; 
