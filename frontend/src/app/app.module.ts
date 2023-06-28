@@ -13,10 +13,10 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
+import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductosComponent,
     SpinnerComponent,
     DetalleComponent,
+    PerfilUsuarioComponent,
     HomeComponent,
   ],
   imports: [

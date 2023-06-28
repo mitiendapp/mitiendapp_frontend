@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginRegistroComponent } from './componentes/login-registro/login-registro.component';
 import { ProductosComponent } from './componentes/productos/productos.component';
 import { AuthGuard } from './utils/auth.guard';
+import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 
