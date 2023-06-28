@@ -5,60 +5,56 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 <link real="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" href="/style.css">
+<div class="body">
+<div class="container m-auto" id="main">
 
-<html>
-<body>
-    <div class="container" id="main">
+    <div class="sign-up">
+        <form [formGroup]='form' (ngSubmit)="onSubmitR()">
+            <h1>create account</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            </div>
+            <p> Registrate</p>
+            <input type="email" formControlName="email" placeholder="Correo" required="" email="true">
+            <input type="password" formControlName="password" placeholder="contraseña" required="">
+            <input type="password" formControlName="confirmPassword" placeholder="Confirmar contraseña" required="">
+            <button *ngIf="!loading" type="submit">Registrar</button>
+            <app-spinner *ngIf="loading"></app-spinner>
+        </form>
+    </div>
 
-        <div class="sign-up">
-            <form [formGroup]='form' (ngSubmit)="onSubmitR()">
-                <h1>create account</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                </div>
-                <p> Registrate</p>
-                <input type="email" formControlName="email" placeholder="Correo" required="" email="true">
-                <input type="password" formControlName="password" placeholder="contraseña" required="">
-                <input type="password" formControlName="confirmPassword" placeholder="Confirmar contraseña" required="">
-                <button *ngIf="!loading" type="submit">Registrar</button>
-                <app-spinner *ngIf="loading"></app-spinner>
-            </form>
-        </div>
-        
-        <div *ngIf="!loading" class="sign-in">
-            <form [formGroup]='form2' (ngSubmit)="onSubmitL()">
-                <h1>Sign in</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <p> Login</p>
-                <input type="email" formControlName="email" placeholder="Correo" required="" email="true">
-                <input type="password" formControlName="password" placeholder="contraseña" required="">
-                <a href="#">¿Olvidaste tu contraseña?</a>
-                <button>Login</button>
-            </form>
-        </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-left">
-                    <h1>Wellcome Back!</h1>
-                    <p> to keep connected with us please width your personal info</p>
-                    <button id="signIn">Sign In</button>
-                </div>
-                <div class="overlay-right">
-                    <h1>Hello Friend</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button id="signUp">Sign up</button>
-                </div>
+    <div *ngIf="!loading" class="sign-in">
+        <form [formGroup]='form2' (ngSubmit)="onSubmitL()">
+            <h1>Sign in</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p> Login</p>
+            <input type="email" formControlName="email" placeholder="Correo" required="" email="true">
+            <input type="password" formControlName="password" placeholder="contraseña" required="">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            <button>Login</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-left">
+                <h1>Wellcome Back!</h1>
+                <p> to keep connected with us please width your personal info</p>
+                <button id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-right">
+                <h1>Hello Friend</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button id="signUp">Sign up</button>
             </div>
         </div>
     </div>
-
-</body>
-</html>
+</div>
+</div>
 
 <!-- <app-footer></app-footer> -->

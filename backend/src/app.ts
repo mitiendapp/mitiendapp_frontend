@@ -4,10 +4,20 @@ import router from './routes/routes';
 import { json, urlencoded } from 'body-parser';
 import './auth/passport'; 
 import cors from 'cors';
+import { products } from './seeders/products';
 
 const app = express();
 
+<<<<<<< HEAD
 app.use (json())
+=======
+// products.forEach((p)=>{
+//     //console.log(p);
+//     db.product.create(p);
+// })
+
+
+>>>>>>> 9ceb11fcb5243e55844cb0284e6bccbbcfb26d74
 
 app.use(json());
 app.use(urlencoded({

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
+import { ActivatedRoute, Router } from '@angular/router';
+
+// import { productosDisponibles } from 'src/app/models/productos';
 import { productosDisponibles } from 'src/app/models/productos';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -13,18 +16,29 @@ export class ProductosComponent implements OnInit {
   listProducts: Product[] = []
 
   constructor(
-    private _productService: ProductService
-  ){
+    private _productService: ProductService,
+    private route: ActivatedRoute, private router: Router
+  ) {
 
   }
 
   ngOnInit(): void {
-      this.getProducts();
+    this.getProducts();
+    
   }
 
-  getProducts(){
-    this._productService.getProducts().subscribe((data:any )=>{
+  getProducts() {
+    this._productService.getProducts().subscribe((data: any) => {
       this.listProducts = data.data;
     })
   }
+  mostrarDetalle(id: number) {
+    this.router.navigate(['/detalle', id]);
+  }
+
 }
+
+
+
+
+

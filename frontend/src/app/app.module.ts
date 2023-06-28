@@ -14,6 +14,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
+<<<<<<< HEAD
+=======
+import { DetalleComponent } from './componentes/detalle/detalle.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+>>>>>>> 9ceb11fcb5243e55844cb0284e6bccbbcfb26d74
 
 @NgModule({
   declarations: [
@@ -23,7 +29,13 @@ import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usua
     LoginRegistroComponent,
     ProductosComponent,
     SpinnerComponent,
+<<<<<<< HEAD
     PerfilUsuarioComponent
+=======
+    DetalleComponent,
+    PerfilUsuarioComponent,
+    HomeComponent,
+>>>>>>> 9ceb11fcb5243e55844cb0284e6bccbbcfb26d74
   ],
   imports: [
     BrowserModule,
@@ -32,12 +44,14 @@ import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usua
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:3000,
-      positionClass:'toast-bottom-right',
-      preventDuplicates:true,
-    })
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    NgbModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
