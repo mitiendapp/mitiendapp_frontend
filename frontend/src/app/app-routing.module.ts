@@ -5,6 +5,7 @@ import { LoginRegistroComponent } from './componentes/login-registro/login-regis
 import { ProductosComponent } from './componentes/productos/productos.component';
 import { AuthGuard } from './utils/auth.guard';
 import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-compra.component';
+import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 
