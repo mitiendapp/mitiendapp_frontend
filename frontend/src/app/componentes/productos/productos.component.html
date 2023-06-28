@@ -16,7 +16,7 @@
           
         </ul>
         <div class="card-body d-flex p-2 justify-content-between align-items-center">
-          <button class="btn btn-sm rounded" style="width: 30%; height: 3rem;" href="#" class="btn btn-primary"><i class="bi bi-cart"></i></button>
+          <button class="btn btn-sm rounded" style="width: 30%; height: 3rem;" href="#" class="btn btn-primary" (click)="agregarAlCarrito(product.id)"><i class="bi bi-cart"></i></button>
           <button class="btn btn-sm rounded" style="width: 65%; height: 3rem" (click)="mostrarDetalle(product.id)">Comprar
             ahora</button>
         </div>
