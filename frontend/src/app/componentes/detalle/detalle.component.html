@@ -1,25 +1,25 @@
-<div class="card container m-auto mt-5 p-5 w-75 row d-flex row ">
-    <div class="row">
+<div class="card container m-auto mb-5 mt-5 p-5  w-70 row d-flex row align-item-center " style="gap: 20vh 0;">
 
-        <div class="col ">
-            <img [src]="detail.image" alt="">
+     <div class="d-flex justify-content-around">
+
+        <div class="left mt-5 p-5">
+            <img [src]="detail.image" style="transform: scale(1.5);" alt="">
         </div>
-        <div class="col ">
 
+        
+        <div class="right card rounded w-50" style=" width: 150px 15%; padding: 5%;">
             <P class="fs-1"> {{detail.name}}</P>
             <p class="fs-6">{{detail.categoria}}</p>
-            <div class="descripcion">
-
-                <span class="title">Características</span> <br><br>
+            <div class="descripcion mt-5">
+                <span class="title fs-3">Características</span> <br><br>
                 <p>{{detail.description}}</p>
             </div>
-
-            <div class="precio">
+            <div class="precio mt-5 mb-3">
                 <p>{{detail.price}}</p>
-                <button class="btn btn-primary"
-                    (click)="generatePDF(detail.name , detail.price)">Comprar</button>
             </div>
-
+            <button class="btn btn-primary"
+                    (click)="generatePDF(detail.name , detail.price)">Comprar</button>
         </div>
     </div>
+
 </div>

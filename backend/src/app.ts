@@ -8,16 +8,10 @@ import { products } from './seeders/products';
 
 const app = express();
 
-<<<<<<< HEAD
-app.use (json())
-=======
 // products.forEach((p)=>{
 //     //console.log(p);
-//     db.product.create(p);
+//     db.Product.create(p);
 // })
-
-
->>>>>>> 9ceb11fcb5243e55844cb0284e6bccbbcfb26d74
 
 app.use(json());
 app.use(urlencoded({
