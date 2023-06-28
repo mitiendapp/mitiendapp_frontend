@@ -1,14 +1,21 @@
 <nav>
     <img src="../../../assets/img/logo.png" width="300px" wialt="Logo">
     <div class="color">
+    
+        <div class="col-md-5 col-12">
+            <!-- Email input -->
+           
+            <div class="form-outline form-white mb-4">
+               
+              <input type="email" id="form5Example21" class="form-control " placeholder="Buscar "  />
+            </div>
+          </div>
     <ul>
-        <li><i class="bi bi-cart"></i><a href="carritoCompra">mi carrito</a></li>
-        
-        <li><a href="">Inicio</a></li>
-        <i class="bi bi-person-fill"></i>
-        <li><a href="login">  Iniciar Sesión</a></li>
-        <li><a href="####">Más info</a></li>
-        <li><a *ngIf="isLoged" (click)="logOut()" >Salir</a></li>
+        <li class="text-light"><a href="">Inicio</a></li><i class=" bi bi-person-fill"></i>
+        <li class="text-light"><a href="login">  Iniciar Sesión</a></li>
+        <li class="text-light"><a href="####">Más info</a></li>
+        <li class="text-light"><a *ngIf="isLoged" (click)="logOut()" >Salir</a></li>
+
     </ul>
     </div>
 </nav>

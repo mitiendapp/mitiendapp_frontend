@@ -4,10 +4,10 @@
   <div *ngFor="let product of listProducts">
     
       <div class="card m-5 shadow m-4 p-3 rounded" style="width: 22rem; height: auto;">
-        <img [src]="product.image" class="card-img-top img-fluid max-height:100% " alt="...">
+        <img [src]="product.image" class="card-img-top img-fluid max-height:100% " alt="..." style="height: 320px;">
         <div class="card-body mt-3 text-center">
           <h5 class="card-title ">{{product.name}}</h5>
-          <p class="card-text">{{product.description}}</p>
+          <p class="card-text"></p>
         </div>
         <ul class="flex flex-column justify-content-between m-3">
           <li class="list-group-item">{{product.price}}</li>

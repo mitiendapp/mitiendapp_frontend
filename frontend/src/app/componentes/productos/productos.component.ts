@@ -3,7 +3,6 @@ import { Product } from 'src/app/interfaces/product';
 import { ActivatedRoute, Router } from '@angular/router';
 
 // import { productosDisponibles } from 'src/app/models/productos';
-import { productosDisponibles } from 'src/app/models/productos';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 

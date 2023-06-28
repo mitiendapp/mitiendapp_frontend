@@ -31,7 +31,6 @@ const routes: Routes = [
     redirectTo: '',
     pathMatch: 'full'
   }
-
 ];
 
 @NgModule({
