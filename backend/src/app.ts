@@ -10,8 +10,9 @@ const app = express();
 
 // products.forEach((p)=>{
 //     //console.log(p);
-//     db.Product.create(p);
+//     db.product.create(p);
 // })
+
 
 
 app.use(json());
