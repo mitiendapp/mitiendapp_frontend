@@ -3,16 +3,16 @@ import {
   Model
 } from 'sequelize';
 
-interface ClientAttributes{
+export interface ClientAttributes{
   document:string,
   firstName:string,
   lastName:string,
   email:string,
-  address:string,
+  address:string
 }
 
 module.exports = (sequelize:any, DataTypes:any) => {
-  class client extends Model implements ClientAttributes {
+  class Client extends Model<ClientAttributes> implements ClientAttributes {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -27,7 +27,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
       // define association here
     }
   }
-  client.init({
+  Client.init({
     document: {
       type:DataTypes.STRING,
       allowNull:false,
@@ -63,7 +63,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
       allowNull:false,
       unique:true,
       validate:{
-        isemail:true,
+        isEmail:true,
         notNull:{
           msg:"field can't be null"
         }
@@ -80,7 +80,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     }
   }, {
     sequelize,
-    modelName: 'client',
+    modelName: 'Client',
   });
-  return client;
+  return Client;
 };

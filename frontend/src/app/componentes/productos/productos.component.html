@@ -1,11 +1,25 @@
 <div class="productos">
 
-  <div class="tarjeta" *ngFor="let products of prod">
+
+  <div *ngFor="let product of listProducts">
     
-    <img [src]="products.img">
-     <h3>{{products.nombre}}</h3> 
-     <h3>{{products.categoria}}</h3>
-     <h4>{{products.precio}}</h4>
-     <button (click)="mostrarDetalle(products.nombre)"> Detalle  </button>
+      <div class="card m-5 shadow m-4 p-3 rounded" style="width: 22rem; height: auto;">
+        <img [src]="product.image" class="card-img-top img-fluid max-height:100% " alt="...">
+        <div class="card-body mt-3 text-center">
+          <h5 class="card-title ">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+        </div>
+        <ul class="flex flex-column justify-content-between m-3">
+          <li class="list-group-item">{{product.price}}</li>
+          <li class="list-group-item"></li>
+          <li class="list-group-item">{{product.state}}</li>
+          
+        </ul>
+        <div class="card-body d-flex p-2 justify-content-between align-items-center">
+          <button class="btn btn-sm rounded" style="width: 30%; height: 3rem;" href="#" class="btn btn-primary"><i class="bi bi-cart"></i></button>
+          <button class="btn btn-sm rounded" style="width: 65%; height: 3rem" (click)="mostrarDetalle(product.id)">Comprar
+            ahora</button>
+        </div>
+      </div>
+
   </div>
-</div>
