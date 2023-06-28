@@ -17,6 +17,7 @@ import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-com
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidebarsComponent } from './componentes/sidebars/sidebars.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CarritoCompraComponent,
     DetalleComponent,
     HomeComponent,
+    SidebarsComponent,
   ],
   imports: [
     BrowserModule,

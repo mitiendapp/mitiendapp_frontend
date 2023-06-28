@@ -34,11 +34,7 @@ export class DetalleComponent implements OnInit {
         { text: JSON.stringify(precio) },
         // { text: JSON.stringify(categoria)},
       ],
-      // styles: {
-      //   header: { fontSize: 23, bold: true, margin: [0, 0, 0, 10] },
-      //   subheader: { fontSize: 20, bold: true, margin: [0, 0, 0, 10] },
-      //   body: { fontSize: 18 },
-      // },
+    
     };
 
     pdfMake.createPdf(documentDefinition).download('mi-archivo.pdf');
