@@ -1,6 +1,6 @@
 import e, { NextFunction, Request, Response } from "express";
 import mercadopago from 'mercadopago';
-let url= "https://1741-179-19-67-119.ngrok.io"
+let url= "https://a797-2801-1ca-5-511-9dd6-6fad-51ac-59f.ngrok.io"
 export const createOrder = async(req:Request,res:Response,next:NextFunction)=>{
     try{
     mercadopago.configure({
