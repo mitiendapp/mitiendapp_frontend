@@ -12,10 +12,9 @@
           </div>
     <ul>
         <li class="text-light"><a href="">Inicio</a></li><i class=" bi bi-person-fill"></i>
-        <li class="text-light"><a href="login">  Iniciar Sesión</a></li>
+        <li class="text-light"><a *ngIf="!isLoged" href="login">  Iniciar Sesión</a></li>
         <li class="text-light"><a href="####">Más info</a></li>
         <li class="text-light"><a *ngIf="isLoged" (click)="logOut()" >Salir</a></li>
-
     </ul>
     </div>
 </nav>

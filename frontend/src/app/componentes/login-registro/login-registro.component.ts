@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
 import { Router, RouterOutlet } from '@angular/router';
@@ -29,12 +29,7 @@ export class LoginRegistroComponent implements OnInit {
   ) {
   }
 
-  
- 
- 
-
   ngOnInit(): void {
-    //localStorage.setItem("token", "ahsdgjfdagjsdfasgdjsadgsa");
     this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -45,8 +40,6 @@ export class LoginRegistroComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
-    console.log(this.form.value);
-    console.log(this.form2.value);
 
     this.dom()
   }
@@ -106,14 +99,15 @@ export class LoginRegistroComponent implements OnInit {
 
     const user: User = {
       email: email,
+
       password: password
     }
     this._userService.logIn(user).subscribe({
       next: (data: any) => {
         this.router.navigate(['products']);
         localStorage.setItem('token', data.token)
-        localStorage.setItem('isLoged', "true");
         this._messageService.msgSuccess(data)
+        this._userService.isLoggedIn = true
       },
       error: (e: HttpErrorResponse) => {
         this._messageService.msgError(e);

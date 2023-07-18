@@ -9,18 +9,17 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   private endpoint: string;
-  private apiUrl:string;
-
-
+  private apiUrl: string;
+  public isLoggedIn = false;
   constructor(private http: HttpClient) {
-    this.endpoint = enviroment.endpoint; 
+    this.endpoint = enviroment.endpoint;
     this.apiUrl = 'user';
   }
 
-  signIn(user:User):Observable<any>{
+  signIn(user: User): Observable<any> {
     return this.http.post(`${this.endpoint}${this.apiUrl}/register`, user)
   }
-  logIn(user:User):Observable<String>{
+  logIn(user: User): Observable<String> {
     return this.http.post<string>(`${this.endpoint}${this.apiUrl}/login`, user)
   }
 }
