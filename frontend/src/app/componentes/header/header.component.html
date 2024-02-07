@@ -1,0 +1,12 @@
+<div class="relative w-full">
+    <div *ngIf="headerService.isShowing()| async" class="w-full h-12 flex justify-around items-center">
+        <div class="flex relative items-center">
+            <img [@showArrow] = "show? 'show' : 'hide' " class="size-6 absolute -ml-1" src="../../../assets/icons/left-arrow-svgrepo-com.svg" alt="">
+            <img [@canGoBack] = "itCan? 'can' : 'cant' " class="icon" src="../../../assets/icons/android-chrome-192x192.png" alt="">
+        </div>
+        <div class="inputWrapper relative w-3/4">
+            <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm" type="search" placeholder="Busca productos, tiendas y más...">
+            <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
+        </div> 
+    </div>
+</div> 

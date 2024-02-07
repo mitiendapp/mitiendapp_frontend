@@ -8,6 +8,8 @@ import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-com
 import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 const routes: Routes = [
   {
@@ -18,8 +20,14 @@ const routes: Routes = [
     path: '', component: HomeComponent
   }, {
     path: 'login',
-    component: LoginRegistroComponent,
-  }, { path: 'products', component: ProductosComponent, canActivate: [AuthGuard] },
+    component: InicioComponent,
+  },
+  {
+    path: 'signin',
+    component: RegistroComponent,
+  },
+  { path: 'products',
+   component: ProductosComponent, canActivate: [AuthGuard] },
   {
     path:'carritoCompra',
     component:CarritoCompraComponent,

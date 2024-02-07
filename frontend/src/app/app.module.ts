@@ -17,8 +17,13 @@ import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usua
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SidebarsComponent } from './componentes/sidebars/sidebars.component';
 import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-compra.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
+import { HeaderComponent } from './componentes/header/header.component';
+import { RegistroUsuarioComponent } from './componentes/registro/registro-usuario/registro-usuario.component';
+import { RegistroNegocioComponent } from './componentes/registro/registro-negocio/registro-negocio.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,12 @@ import { CarritoCompraComponent } from './componentes/carrito-compra/carrito-com
     DetalleComponent,
     PerfilUsuarioComponent,
     HomeComponent,
-    SidebarsComponent,
+    InicioComponent,
+    NavBarComponent,
+    RegistroComponent,
+    HeaderComponent,
+    RegistroUsuarioComponent,
+    RegistroNegocioComponent,
   ],
   imports: [
     BrowserModule,
