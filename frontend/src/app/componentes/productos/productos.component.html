@@ -1,24 +1,23 @@
-<div class="productos">
+<div id="container" class="productos w-full h-full  overflow-auto">
+  <div class="w-full mx-3 my-1 flex justify-around gap-4 h-fit
+  md:w-1/4" *ngFor="let product of listProducts">
 
-
-  <div *ngFor="let product of listProducts">
-    
-      <div class="card m-5 shadow m-4 p-3 rounded" style="width: 22rem; height: auto;">
-        <img [src]="product.image" class="card-img-top img-fluid max-height:100% " alt="..." style="height: 320px;">
-        <div class="card-body mt-3 text-center">
-          <h5 class="card-title ">{{product.name}}</h5>
-          <p class="card-text"></p>
+      <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer" (click)="mostrarDetalle(product.id)">
+        <div class="size-40">
+          <img [src]="product.image" class="object-contain size-40" alt="... ">
         </div>
-        <ul class="flex flex-column justify-content-between m-3">
-          <li class="list-group-item">{{product.price}}</li>
-          <li class="list-group-item"></li>
-          <li class="list-group-item">{{product.state}}</li>
-          
-        </ul>
-        <div class="card-body d-flex p-2 justify-content-between align-items-center">
-          <button class="btn btn-sm rounded" style="width: 30%; height: 3rem;" href="#" class="btn btn-primary" (click)="agregarAlCarrito(product.id)"><i class="bi bi-cart"></i></button>
-          <button class="btn btn-sm rounded" style="width: 65%; height: 3rem" (click)="mostrarDetalle(product.id)">Comprar
-            ahora</button>
+        <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
+          <div class="card-body">
+            <h5 class="card-title top-0 text-xl">{{product.name}}</h5>
+            <p class="text-sm text-gray-400">{{product.state}}</p>
+          </div>
+          <div class="text-sm"> $ {{product.price}}</div>
+          <div class="card-body flex justify-between items-end relative">
+            <!-- <button class="btn btn-primary btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button> -->
+            <button class="btn btn-sm rounded w-1/6 absolute right-0" href="#" (click)="agregarAlCarrito(product.id)">
+            <img src="../../../assets/icons/shopping-cart-add-svgrepo-com.svg" alt="">
+            </button>
+          </div>
         </div>
       </div>
 
