@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   }
   ngOnInit(): void {
-      if(true){
+      if(false){
         this.thereOffers.next(true);
       }
   }

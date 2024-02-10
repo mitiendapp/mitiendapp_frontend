@@ -1,5 +1,5 @@
 <div id="body w-full flex flex-col">
-    <form class="w-full flex flex-col items-center p-8" [formGroup]="form" >
+    <form class="w-full flex flex-col items-center p-8" [formGroup]="form" (ngSubmit)="onRegister()">
         <img src="../assets/icons/favicon-32x32.png" alt="">
         <div class="w-full my-20 text-center">
             <h1 class="">Crea tu cuenta personal</h1>
@@ -10,7 +10,7 @@
             <input
              class="w-full h-2/4 border border-sky-500 rounded mb-4" 
              type="email"
-             formControlName="email"
+             formControlName="name"
              >
         </div>
         <div class=" w-full">
@@ -26,7 +26,7 @@
             <input
              class="w-full h-2/4 border border-sky-500 rounded mb-4" 
              type="email"
-             formControlName="email"
+             formControlName="password"
              >
         </div>
         <div class=" w-full mb-4">
@@ -34,7 +34,7 @@
             <input
              class="w-full h-2/4 border border-sky-500 rounded mb-4" 
              type="email"
-             formControlName="email"
+             formControlName="confirmPassword"
              >
         </div>
         <button type="submit" class="bg-button-blue w-full p-1 rounded text-white">Continuar</button>

@@ -19,7 +19,7 @@ export class InicioComponent implements OnInit{
   formAccount: FormGroup;
   formPassword: FormGroup;
   loading: boolean = false;
-  account: string;
+  account: any;
   validAccount= new BehaviorSubject<Boolean>(false);
 
 constructor(
@@ -50,23 +50,27 @@ ngOnInit(): void {
 }
 
 submitAccount(){
-  const account = this.formAccount.value
+  const {email} = this.formAccount.value
+  console.log(email);
+  
   if (!this.formAccount.valid) {
     this.toastr.error("Debe ingresar su correo o telefono", "Error")
     return;
   }
-  this.account = account;
+  this.account = email;
+  
   this.validAccount.next(true);
+  console.log(this.account);
   return;
 }
 
 submitPassword(){
-  const password  = this.formPassword.value;
+  const {password}  = this.formPassword.value;
   if (!this.formPassword.valid) {
     this.toastr.error("Debe ingresar la contraseña", "Error")
     return;
   }
-
+  
   const user: User = {
     email: this.account,
     password: password

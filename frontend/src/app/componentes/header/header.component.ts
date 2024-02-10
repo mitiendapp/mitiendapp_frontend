@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
 
@@ -50,12 +51,15 @@ export class HeaderComponent implements OnInit {
   @Input() show = true;
 
   constructor(
-    public headerService: HeaderService
+    public headerService: HeaderService,
+    private router: Router
   ){
   }
 
   ngOnInit(): void {
-    this.activeCanBack()
+    if(!(this.router.url == '/')){
+      this.activeCanBack()
+    }
   }
   activeButtonBack(){
     this.itCan = !this.itCan;
