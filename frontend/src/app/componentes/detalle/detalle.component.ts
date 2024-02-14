@@ -6,6 +6,7 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/interfaces/product';
 import { PaymentService } from 'src/app/services/payment.service';
+import { BehaviorSubject } from 'rxjs';
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -17,6 +18,7 @@ import { PaymentService } from 'src/app/services/payment.service';
 export class DetalleComponent implements OnInit {
   detail:any;
   idProduct: number = 0;
+  loaded = new BehaviorSubject<Boolean>(false);
 
   constructor(private routeActivate: ActivatedRoute,
     private _productService: ProductService,
@@ -58,15 +60,15 @@ export class DetalleComponent implements OnInit {
   ngOnInit(): void {
     this.idProduct = this.routeActivate.snapshot.params["id"];
     this.getProduct(this.idProduct);
-    
   }
   getProduct(id:number) {
     this._productService.getProductById(id).subscribe((data: any) => {
       this.detail = data.data;
-      console.log("HERE");
+      // console.log("HERE");
       
       console.log(data.data);
       
+      this.loaded.next(true);
     })
   }
 
@@ -75,5 +77,9 @@ export class DetalleComponent implements OnInit {
       console.log(data);
       window.location.href = data.init_point
     })
+  }
+
+  isLoaded(){
+    return this.loaded.asObservable();
   }
 }
