@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { NavComponent } from './componentes/nav/nav.component';
 import { FooterComponent } from './componentes/footer/footer.component';
-import { LoginRegistroComponent } from './componentes/login-registro/login-registro.component';
 import { ProductosComponent } from './componentes/productos/productos.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
@@ -30,7 +29,6 @@ import { RegistroNegocioComponent } from './componentes/registro/registro-negoci
     AppComponent,
     NavComponent,
     FooterComponent,
-    LoginRegistroComponent,
     ProductosComponent,
     SpinnerComponent,
     CarritoCompraComponent,
