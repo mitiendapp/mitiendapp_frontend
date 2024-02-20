@@ -11,10 +11,46 @@ import Swal from 'sweetalert2';
 export class CarritoCompraComponent implements OnInit {
   products:any=[];
   title = 'sweetAlert'
+
+  myCart$ = this._cartService.myCart$;
+
+  viewCart: boolean = false;
   constructor(
     private _cartService: CartService
   ){
 
+  }
+
+  updateUnits(operation: string, id: number) {
+
+    const product = this._cartService.findProductById(id)
+    if (product) {
+      if (operation === 'minus' && product.stock > 0) {
+        product.stock = product.stock - 1;
+      }
+      if (operation === 'add') {
+        product.stock = product.stock + 1;
+
+      }
+      if (product.stock === 0) {
+        this.deleteProduct(id)
+      }
+    }
+
+  }
+
+  
+  totalProduct(price: number, units: number) {
+    return price * units
+  }
+  deleteProduct(id: number) {
+    this._cartService.deleteProduct(id);
+
+  }
+
+  totalCart() {
+    const result = this._cartService.totalCart();
+    return result;
   }
 
   showModal(){
