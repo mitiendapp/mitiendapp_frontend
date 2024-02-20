@@ -1,0 +1,6 @@
+{
+    "/api": {
+    "target": "https://mitiendapp23.netlify.app/",
+    "secure": true
+    }
+    }
