@@ -51,6 +51,13 @@ export class ProductosComponent implements OnInit {
       this.product = data.data;
     });
   }
+
+  addToCart(product: Product) {
+ console.log(product)
+    this._cartService.addProduct(product)
+  }
+
+
   addProduct(product:any){
     this._cartService.create(product).subscribe((data:any)=>{
       console.log(data);

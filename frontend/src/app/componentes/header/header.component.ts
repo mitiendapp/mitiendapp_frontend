@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
-
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -50,9 +50,12 @@ export class HeaderComponent implements OnInit {
   @Input() itCan = true; 
   @Input() show = true;
 
+  viewCart: boolean = false;
+  myCart$ = this.carService.myCart$;
+
   constructor(
     public headerService: HeaderService,
-    private router: Router
+    private router: Router, private carService:CartService
   ){
   }
 
@@ -61,6 +64,12 @@ export class HeaderComponent implements OnInit {
       this.activeCanBack()
     }
   }
+
+  onToggleCart() {
+    this.viewCart = !this.viewCart
+
+  };
+
   activeButtonBack(){
     this.itCan = !this.itCan;
   }
