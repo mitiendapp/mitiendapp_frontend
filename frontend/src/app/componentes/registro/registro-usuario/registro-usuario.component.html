@@ -1,46 +1,33 @@
-<div id="body w-full flex flex-col md:justify-center">
-    <form class="w-full flex flex-col items-center p-8 lg:w-[50%]" [formGroup]="form" (ngSubmit)="onRegister()">
+<section class="sm:max-md:mx-5 lg:flex lg:flex-row w-full justify-evenly py-4">
+
+    <form class="border flex flex-col items-center p-8 shadow-lg sm:max-md:w-full lg:w-[45%] lg:h-[50%]" [formGroup]="form"
+        (ngSubmit)="onRegister()">
         <img src="../assets/icons/favicon-32x32.png" alt="">
         <div class="w-full my-20 text-center">
             <h1 class="">Crea tu cuenta personal</h1>
             <p class="">¡Comienza a comprar ahora!</p>
         </div>
-        <div class=" w-full">
-            <input
-             class="w-full h-2/4 border border-sky-500 rounded mb-4" 
-             type="email"
-             formControlName="name"
-             placeholder="Nombre"
-             >
+
+        <div class="form md:w-[70%]">
+            <input class="w-full border border-sky-500 rounded mb-4 p-2" type="email" formControlName="name"
+                placeholder="Nombre">
+
+            <input class="w-full border border-sky-500 rounded mb-4 p-2" type="email" formControlName="email"
+                placeholder="E-mail">
+            <input class="w-full  border border-sky-500 rounded mb-4 hover:outline-none p-2" type="password"
+                formControlName="password" placeholder="contraseña">
+            <input class="w-full border border-sky-500 rounded mb-4 p-2" type="password"
+                formControlName="confirmPassword" placeholder="Confirmar contraseña">
+
+            <button type="submit" class="bg-button-blue w-full p-1 rounded text-white">Continuar</button>
+            <p class="mt-16 mb-5 text-xs">¿Ya estás registrado?</p>
+            <a class="mb-8" href="login">
+                <Button type="button" class="w-full p-1 rounded border border-sky-500 text-black"
+                    id="createAcountBtn">¡Inicia sesión aqui!</Button>
+            </a>
         </div>
-        <div class=" w-full">
-            <input
-             class="w-full h-2/4 border border-sky-500 rounded mb-4" 
-             type="email"
-             formControlName="email"
-             placeholder="E-mail"
-             >
-        </div>
-        <div class="w-full p-5 ">
-            <input
-             class="w-full h-2/4 border border-sky-500 rounded mb-4 hover:outline-none md:w-[70%]" 
-             type="password"
-             formControlName="password"
-             placeholder="contraseña"
-             >
-        </div>
-        <div class=" w-full mb-4">
-            <input
-             class="w-full h-2/4 border border-sky-500 rounded mb-4" 
-             type="password"
-             formControlName="confirmPassword"
-             placeholder="Confirmar contraseña"
-             >
-        </div>
-        <button type="submit" class="bg-button-blue w-full p-1 rounded text-white">Continuar</button>
-        <p class="mt-16 mb-5 text-xs">¿Ya estás registrado?</p>
-        <a class="mb-8" href="login">
-            <Button  type="button" class="w-full p-1 rounded border border-sky-500 text-black" id="createAcountBtn">¡Inicia sesión aqui!</Button>
-        </a>
     </form>
-</div>
+    <div class="image w-[35%]">
+        <img src="../../../../assets/img/mockLogin.png" alt="" class="max-lg:hidden  rounded-xl">
+    </div>
+</section>
