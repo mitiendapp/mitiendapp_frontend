@@ -8,6 +8,8 @@ import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import {PerfilCompanyComponent} from './componentes/perfil-company/perfil-company.component'
+
 
 const routes: Routes = [
   {
@@ -29,6 +31,14 @@ const routes: Routes = [
   {
     path:'carritoCompra',
     component:CarritoCompraComponent,
+  },
+  {
+    path: 'perfilcompany',
+    component: PerfilCompanyComponent,
+
+  },{
+    path: 'perfilusuario',
+    component: PerfilUsuarioComponent,
   },
   {
     path: 'detalle/:id', component: DetalleComponent

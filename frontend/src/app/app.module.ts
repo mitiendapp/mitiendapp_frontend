@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavComponent } from './componentes/nav/nav.component';
 import { FooterComponent } from './componentes/footer/footer.component';
@@ -23,6 +23,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { RegistroUsuarioComponent } from './componentes/registro/registro-usuario/registro-usuario.component';
 import { RegistroNegocioComponent } from './componentes/registro/registro-negocio/registro-negocio.component';
+import { PerfilCompanyComponent } from './componentes/perfil-company/perfil-company.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,8 @@ import { RegistroNegocioComponent } from './componentes/registro/registro-negoci
     HeaderComponent,
     RegistroUsuarioComponent,
     RegistroNegocioComponent,
+    PerfilCompanyComponent,
+  
   ],
   imports: [
     BrowserModule,
