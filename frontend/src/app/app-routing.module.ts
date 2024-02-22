@@ -8,7 +8,7 @@ import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
-
+import {RegistroNegocioComponent} from './componentes/registro/registro-negocio/registro-negocio.component';
 const routes: Routes = [
   {
     path: '',
@@ -29,6 +29,11 @@ const routes: Routes = [
   {
     path:'carritoCompra',
     component:CarritoCompraComponent,
+  },
+
+  {
+    path:'registronegocio',
+    component:RegistroNegocioComponent,
   },
   {
     path: 'detalle/:id', component: DetalleComponent

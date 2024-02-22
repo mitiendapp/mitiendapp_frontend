@@ -23,6 +23,8 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { RegistroUsuarioComponent } from './componentes/registro/registro-usuario/registro-usuario.component';
 import { RegistroNegocioComponent } from './componentes/registro/registro-negocio/registro-negocio.component';
+//import { AddEditProductComponent } from './componentes/add-edit-product/add-edit-product.component';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { RegistroNegocioComponent } from './componentes/registro/registro-negoci
     HeaderComponent,
     RegistroUsuarioComponent,
     RegistroNegocioComponent,
+    //AddEditProductComponent,
+  
   ],
   imports: [
     BrowserModule,

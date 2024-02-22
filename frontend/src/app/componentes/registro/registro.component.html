@@ -1,18 +1,10 @@
-<section class="flex px-10 bg-white p-10 lg:gap-1 justify-center  ">
-        <div class="mockup md:max-2xl:w-[50%] max-sm:hidden flex justify-center items-center w-[30%]">
-                <img class=" rounded-sm" src="../../../assets/img/mockup.png" alt="">
-        </div>
-
-        <div *ngIf="isMainActive() | async" id="body" class=" md:m-[5%] shadow-lg rounded-sm md:w-[50%] md:h-[70%] 2xl:w-[35%]">
-                <img class="w-2/5 md:w-[100px] lg:w-[80px]" src="../../../assets/icons/android-chrome-192x192.png" alt="">
-                <h1 class="py-8 text-center text-2xl font-bold xl:w-[80%]">Para crear tu cuenta te pediremos algunos datos</h1>
-                <p class="">Solo tomará unos minutos</p>
-                <button (click)="registerUser()" type="submit"
-                        class="bg-button-blue lg:w-[40%] h-12 p-1 rounded text-white my-3 ">Crear cuenta personal</button>
-                <button (click)="registerNegocio()" type="submit"
-                        class="bg-button-purple lg:w-[40%] h-12 p-1 rounded text-white my-3">Inscribir
-                        emprendimiento</button>
-        </div>
-        <app-registro-usuario *ngIf="isUserRegister() | async"></app-registro-usuario>
-        <app-registro-negocio *ngIf="isNegocioRegister() | async"></app-registro-negocio>
-</section>
+<div *ngIf="isMainActive() | async" id="body" class="flex flex-col items-center justify-center h-screen">
+        <img class="w-1/2 md:w-2/5 lg:w-1/4" src="../../../assets/icons/android-chrome-192x192.png" alt="">
+        <h1 class="my-8 text-center text-lg md:text-xl lg:text-2xl">Para crear tu cuenta te pediremos algunos datos</h1>
+        <p class="m-1 text-sm md:text-base lg:text-lg">Solo tomará unos minutos</p>
+        <button (click)="registerUser()" type="submit" class="bg-button-blue w-full md:w-2/5 lg:w-1/4 h-12 p-1 rounded text-white my-3">Crear cuenta personal</button>
+        <button (click)="registerNegocio()" type="submit" class="bg-button-purple w-full md:w-2/5 lg:w-1/4 h-12 p-1 rounded text-white my-3">Inscribir emprendimiento</button>
+      </div>
+      
+      <app-registro-usuario *ngIf="isUserRegister() | async"></app-registro-usuario>
+      <app-registro-negocio *ngIf="isNegocioRegister() | async"></app-registro-negocio>
