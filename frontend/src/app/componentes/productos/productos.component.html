@@ -2,23 +2,24 @@
   <div class="w-full mx-3 my-1 flex justify-around gap-4 h-fit
   md:w-1/4" *ngFor="let product of listProducts">
 
-     <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer"  >
-        <div class="size-40">
-          <img [src]="product.image" class="object-contain size-40" alt="... " (click)="mostrarDetalle(product.id)">
+    <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer">
+      <div class="size-40">
+        <img [src]="product.image" class="object-contain size-40" alt="... " (click)="mostrarDetalle(product.id)">
+      </div>
+      <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
+        <div class="card-body">
+          <h5 class="card-title top-0 text-xl">{{product.name}}</h5>
+          <p class="text-sm text-gray-400">{{product.state}}</p>
         </div>
-        <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
-          <div class="card-body">
-            <h5 class="card-title top-0 text-xl">{{product.name}}</h5>
-            <p class="text-sm text-gray-400">{{product.state}}</p>
-          </div>
-          <div class="text-sm"> $ {{product.price}}</div>
-          <div class="card-body flex justify-between items-end relative">
-            <!-- <button class="btn btn-primary btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button> -->
-            <button class="btn btn-sm rounded w-1/6 absolute right-0"  (click)="addToCart(product)">
+        <div class="text-sm"> $ {{product.price}}</div>
+        <div class="card-body flex justify-between items-end relative">
+          <!-- <button class="btn btn-primary btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button> -->
+          <button class="btn btn-sm rounded w-1/6 absolute right-0" (click)="addToCart(product)">
             <img src="../../../assets/icons/shopping-cart-add-svgrepo-com.svg" alt="">
-            </button>
-          </div>
+          </button>
         </div>
       </div>
+    </div>
 
+  </div>
   </div>

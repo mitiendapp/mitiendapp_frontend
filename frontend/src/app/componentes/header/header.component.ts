@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -55,7 +56,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public headerService: HeaderService,
-    private router: Router, private carService:CartService
+    private router: Router, private carService:CartService,
+    public userService: UserService
   ){
   }
 

@@ -31,11 +31,6 @@ constructor(
   private _messageService:MessageService,
   private headerService:HeaderService
 ){ 
-  if(this.router.url === '/login'){
-    userService.isLoggingIn.next(true);
-  }else{
-    userService.isLoggingIn.next(false);
-  } 
 }
 
 ngOnInit(): void {
@@ -45,8 +40,6 @@ ngOnInit(): void {
     this.formPassword = this.formBuilder.group({
       password: ['', Validators.required]
     })
-
-    this.headerService.hide();
 }
 
 submitAccount(){
@@ -87,6 +80,8 @@ submitPassword(){
       this.loading = false;
     }
   })
+  this.userService.isLoggingIn.next(true);
+  this.userService.user.next(user);  
 }
 
 isValidAccount(): Observable<Boolean>{
