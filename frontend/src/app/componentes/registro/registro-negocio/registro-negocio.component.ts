@@ -55,9 +55,17 @@ onRegister() {
     return;
   }
   const company: Company = {
+    document:document,
     email: email,
-    password: password,
     firstName:firstName,
+    lastName:lastName,
+    nameEmprendimiento:nameEmprendimiento,
+    address:address,
+    phoneNumber:phoneNumber,
+    description:description,
+    password:password, 
+    confirmPassword:confirmPassword
+    
   }
 
   this._companyService.signIn(company).subscribe({
