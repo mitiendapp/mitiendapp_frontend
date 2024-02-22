@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-carrito-compra',
   templateUrl: './carrito-compra.component.html',
-  styleUrls: ['./carrito-compra.component.css']
+  // styleUrls: ['./carrito-compra.component.css']
 })
 export class CarritoCompraComponent implements OnInit {
   products:any=[];
@@ -41,7 +41,8 @@ export class CarritoCompraComponent implements OnInit {
 
   
   totalProduct(price: number, units: number) {
-    return price * units
+    const total = price * units;
+    return total.toLocaleString('es');
   }
   deleteProduct(id: number) {
     this._cartService.deleteProduct(id);
@@ -50,7 +51,7 @@ export class CarritoCompraComponent implements OnInit {
 
   totalCart() {
     const result = this._cartService.totalCart();
-    return result;
+    return result.toLocaleString('es');
   }
 
   showModal(){
