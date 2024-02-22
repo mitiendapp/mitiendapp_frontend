@@ -16,7 +16,7 @@ export class ProductService {
     this.apiUrl= 'product';
    }
 
-  getProducts():Observable<Product[]>{
+  getProducts():Observable<Product[]>{//listar productos
     return this.http.get<Product[]>(`${this.endpoint}${this.apiUrl}`);
   }
   getProductById(id:number):Observable<any>{
@@ -25,4 +25,12 @@ export class ProductService {
   create(product:Product):Observable<any>{
     return this.http.post(`${this.endpoint}${this.apiUrl}`, product)
   }
+
+  deleteProdcuts(product:Product):Observable<void>{
+   return this.http.post<void>(`${this.endpoint}${'product/delete'}`,product)
+  } 
+  saveProduct(product: Product): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}${this.endpoint}`,product)
+  }
+
 }
