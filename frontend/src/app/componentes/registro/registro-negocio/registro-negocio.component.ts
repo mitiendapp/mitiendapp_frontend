@@ -29,7 +29,6 @@ export class RegistroNegocioComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.headerService.hide();
     this.form = this.formBuilder.group({
 
       document: ['', Validators.required],

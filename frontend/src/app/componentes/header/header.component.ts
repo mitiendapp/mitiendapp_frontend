@@ -63,7 +63,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     if((this.router.url == '/')){
-      this.activeCanBack()
+      //this.activeCanBack();
     }
   }
 
