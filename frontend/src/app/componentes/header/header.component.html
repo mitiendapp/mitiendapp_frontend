@@ -16,7 +16,7 @@
     <div *ngIf="!(userService.isLoginComponentActive() | async)" class="hidden sm:block flex justify-around"
       id="signup_signin">
       <a class="mx-4" href="login">Inicio</a>
-      <a class="mx-4" href="">Registro</a>
+      <a class="mx-4" href="signin">Registro</a>
     </div>
     <div *ngIf="(userService.isLoginComponentActive() | async)" class="hidden sm:block flex justify-around"
       id="signup_signin">
