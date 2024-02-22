@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HeaderService{
 
-  private isShow = new BehaviorSubject<Boolean>(false);
+  private isShow = new BehaviorSubject<Boolean>(true);
 
   constructor() { this.isShow.next(true);}
 

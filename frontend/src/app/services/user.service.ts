@@ -14,7 +14,7 @@ export class UserService {
   private apiUrl: string;
   public isLoggedIn = false;
   public isLoggingIn = new BehaviorSubject<Boolean>(false);
-  constructor(
+  constructor(  
     public router: Router,
     private http: HttpClient
     ) {
