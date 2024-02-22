@@ -1,8 +1,15 @@
 <div id="body">
-    <form *ngIf="!(isValidAccount() | async)" class="w-full flex flex-col items-center" [formGroup]="formAccount" (ngSubmit)="submitAccount()">
-        <img src="../assets/icons/favicon-32x32.png" alt="">
-        <h1 class="my-20">Iniciar Sesión</h1>
-        <div class=" w-full">
+    <form *ngIf="!(isValidAccount() | async)" 
+        class="flex flex-col items-center w-full p-5 h-[80% ]
+            md:w-[80%] md:shadow-lg
+                lg:w-[60%] lg:p-10" 
+            [formGroup]="formAccount" (ngSubmit)="submitAccount()">
+
+
+        <img class="w-[100px]"
+            src="../assets/icons/favicon-32x32.png" alt="">
+        <h1 class="my-10">Iniciar Sesión</h1>
+        <div class=" w-full lg:w-[70%]">
             <p class="m-1">E-mail o celular</p>
             <input
              class="w-full h-2/4 border border-sky-500 rounded mb-4" 
@@ -10,7 +17,7 @@
              formControlName="email"
              >
         </div>
-        <button type="submit" class="bg-button-blue w-full p-1 rounded text-white">Continuar</button>
+        <button type="submit" class="bg-button-blue w-full lg:w-[70%] p-1 rounded text-white">Continuar</button>
         <p class="mt-16 mb-5 text-xs">¿Nuevo en Mitiendapp?</p>
         <a href="signin">
             <Button type="button" class="w-full p-1 rounded border border-sky-500 text-black" id="createAcountBtn">Crea tu cuenta de mitiendapp</Button>
@@ -20,9 +27,9 @@
         <img src="../assets/icons/favicon-32x32.png" alt="">
         <h1 class="my-20">Iniciar Sesión</h1>
         <div class=" w-full">
-            <p class="m-1">Contraseña</p>
+            <p class="m-1 hover:border-none ">Contraseña</p>
             <input
-             class="w-full h-2/4 border border-sky-500 rounded mb-4" 
+             class="w-full h-2/4 border border-sky-500 rounded mb-4 lg:w-[70%]" 
              type="email"
              formControlName="password"
              >

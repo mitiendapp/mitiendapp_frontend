@@ -1,0 +1,52 @@
+<section class="flex h-auto pb-5">
+    <div class="form w-full md:w-[33%] flex flex-col  items-center py-3">
+        <h1 class="">Artículo en venta</h1>
+        <input id="file" accept="image/*" type="file" class="hidden">
+
+        <a class="border-3 py-20 px-[38%] cursor-pointer justify-center items-center flex flex-col"
+            onclick="document.getElementById('file').click">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <p class="text-center">Subir imágenes</p>
+        </a>
+
+        <form action="" class="flex flex-col w-full p-4">
+            <label class="text-lg" for="title">Título</label>
+            <input id="title" class="border-3 w-full p-2 outline-none" placeholder="Título" type="text">
+            <label class="text-lg" for="price">Precio</label>
+            <input id="price" class="border-3 w-full p-2 outline-none" placeholder="Precio" type="text">
+            <label class="text-lg" for="category">Categoría</label>
+            <select name="category" id="category" class="border-3 p-2 w-full outline-none">
+                <option value="">Seleccionar</option>
+                <option value="">Tecnología</option>
+                <option value="">Muebles</option>
+            </select>
+            <label class="text-lg" for="producName">Descripción</label>
+            <input id="producName" class="border-3 w-full p-2 outline-none" placeholder="Nombre producto" type="text">
+        </form>
+
+
+    </div>
+    <div class="preview w-[60%] border-l max-sm:hidden p-8 flex flex-row">
+
+        <a href="" class="border-3 py-[5%] px-[25%] cursor-pointer justify-center items-center flex flex-col">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-20 h-20">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+        </a>
+        <div class="desc py-10 px-5">
+            <p class="text-4xl font-bold">Titulo</p>
+            <p class="text-lg">Precio: 32.000</p>
+            <p class=""> <span class="font-bold text-2xl">Detalles</span> <br> La descripción aparecerá acá</p>
+            <button class="border-2 px-4 py-2 shadow-sm">Comprar</button>
+        </div>
+
+
+    </div>
+
+</section>
