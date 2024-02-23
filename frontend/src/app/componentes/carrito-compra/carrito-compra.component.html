@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="">
     
 <div class="productCart-wrapper">
@@ -34,6 +35,45 @@
   </div>
   
 </div>
+=======
+<div class="flex flex-row h-full ">
+    <div class=" productCart-wrapper flex flex-col overflow-scroll w-4/5 m-5 p-2 bg-[#e5e5e5] rounded">
+        <article class="productCart w-full shadow w-full bg-white my-1 p-2 rounded" *ngFor="let product of myCart$ | async">
+            <div class=" flex flex-row ">
+                <div class="size-40">
+                    <img class="object-contain size-40" [src]="product.image" alt="">
+                </div>
+                <div class="size-40 w-4/5 flex flex-row justify-between p-2">
+                    <div class="productCart-body">
+                        <p>{{ product.name }}</p>
+                        <div class="productCart-body-info">
+                            <p>$ {{ product.price.toLocaleString('es') }}</p>
+                            <p>datos de envio</p>
+                        </div>
+                    </div>
+                    <div class="productCart-buttons static flex flex-col justify-between items-end">
+                        
+                        <i class="fa-solid fa-trash" (click)="deleteProduct(product.id)"></i>
+                        <div class="flex flex-row">
+                            <p class="text-slate-400 mr-3 text-sm">${{ totalProduct(product.price, product.stock)}}  </p>
+                            <div class="productCart-buttons-operators">
+                                <i class="fa-solid fa-minus" (click)="updateUnits('minus', product.id)"></i>
+                                <span class="my-1">  {{product.stock}}  </span>
+                                <i class="fa-solid fa-plus" (click)="updateUnits('add',product.id)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="cartTotal w-1/4 m-2 h-full flex flex-col items-center justify-center">
+        <p class="cartTotal-total">Total: </p>
+        <p>$ {{totalCart()}}</p>
+    </div>
+</div>
+
+>>>>>>> 5dbf5548ddadaf1d6e2a7a94da7796117f213dfa
 
 
 

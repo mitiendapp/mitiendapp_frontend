@@ -11,6 +11,10 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
+
+// Asumiendo que tu modelo de datos es algo como esto
+
+
 export class ProductosComponent implements OnInit {
 
   listProducts: Product[] = []
@@ -62,6 +66,13 @@ export class ProductosComponent implements OnInit {
     this._cartService.create(product).subscribe((data:any)=>{
       console.log(data);
       
+    })
+  }
+
+  deleteProducto(product:any){
+    console.log(product)
+    this._productService.deleteProdcuts(product).subscribe(data=>{
+
     })
   }
 }

@@ -26,7 +26,6 @@ export class RegistroUsuarioComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      this.headerService.hide();
       this.form = this.formBuilder.group({
         name: ['', Validators.required],
         email: ['', Validators.required],

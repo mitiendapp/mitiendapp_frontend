@@ -14,6 +14,8 @@ export class UserService {
   private apiUrl: string;
   public isLoggedIn = false;
   public isLoggingIn = new BehaviorSubject<Boolean>(false);
+  public user = new BehaviorSubject<User>(null);
+
   constructor(
     public router: Router,
     private http: HttpClient
@@ -32,4 +34,5 @@ export class UserService {
   logIn(user: User): Observable<String> {
     return this.http.post<string>(`${this.endpoint}${this.apiUrl}/login`, user)
   }
+
 }

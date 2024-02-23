@@ -23,7 +23,11 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { RegistroUsuarioComponent } from './componentes/registro/registro-usuario/registro-usuario.component';
 import { RegistroNegocioComponent } from './componentes/registro/registro-negocio/registro-negocio.component';
+<<<<<<< HEAD
 import { PerfilCompanyComponent } from './componentes/perfil-company/perfil-company.component';
+=======
+import { CreateProductComponent } from './componentes/create-product/create-product.component';
+>>>>>>> 5dbf5548ddadaf1d6e2a7a94da7796117f213dfa
 
 @NgModule({
   declarations: [
@@ -42,8 +46,12 @@ import { PerfilCompanyComponent } from './componentes/perfil-company/perfil-comp
     HeaderComponent,
     RegistroUsuarioComponent,
     RegistroNegocioComponent,
+<<<<<<< HEAD
     PerfilCompanyComponent,
   
+=======
+    CreateProductComponent,
+>>>>>>> 5dbf5548ddadaf1d6e2a7a94da7796117f213dfa
   ],
   imports: [
     BrowserModule,
