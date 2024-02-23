@@ -1,37 +1,4 @@
 <div class="relative w-full">
-<<<<<<< HEAD
-    <div *ngIf="headerService.isShowing()| async" class="w-full h-12 flex justify-around items-center">
-        <div class="flex relative items-center">
-            <img [@showArrow] = "show? 'show' : 'hide' " class="size-6 absolute -ml-1" src="../../../assets/icons/left-arrow-svgrepo-com.svg" alt="">
-            <a href="/">    
-                <img [@canGoBack] = "itCan? 'can' : 'cant' " class="icon" src="../../../assets/icons/android-chrome-192x192.png" alt="">
-            </a>
-        </div>
-        <div class="inputWrapper relative w-3/4">
-            <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm" type="search" placeholder="Busca productos, tiendas y más...">
-           <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
-           
-        
-          
-        </div> 
-        
-<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-  Iniciar Sesion
-</button>
-        <nav class="navbar">
-  
-    
-            <div class="navbar-cart" (click)="onToggleCart()">
-              <div class="navbar-cart-items" *ngIf="(myCart$ | async)?.length">
-                <p>{{ (myCart$ | async)?.length }}</p>
-              </div>
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-          </nav>
-          <div class="cart" [ngClass]="{ show1: viewCart }">
-            <app-carrito-compra></app-carrito-compra>
-          </div>
-=======
   <div *ngIf="headerService.isShowing()| async" class="w-full h-12 flex justify-around items-center">
     <div class="flex relative items-center">
       <img (click)="headerService.goBack()" [@showArrow]="show? 'show' : 'hide' " class="size-6 absolute -ml-1"
@@ -40,7 +7,6 @@
         <img [@canGoBack]="itCan? 'can' : 'cant' " class="icon" src="../../../assets/icons/android-chrome-192x192.png"
           alt="">
       </a>
->>>>>>> 5dbf5548ddadaf1d6e2a7a94da7796117f213dfa
     </div>
     <div class="inputWrapper relative w-3/5">
       <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" type="search"

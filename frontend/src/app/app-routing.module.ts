@@ -8,13 +8,7 @@ import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
-<<<<<<< HEAD
-import {PerfilCompanyComponent} from './componentes/perfil-company/perfil-company.component'
-
-
-=======
 import {RegistroNegocioComponent} from './componentes/registro/registro-negocio/registro-negocio.component';
->>>>>>> 5dbf5548ddadaf1d6e2a7a94da7796117f213dfa
 const routes: Routes = [
   {
     path: '',
@@ -42,10 +36,6 @@ const routes: Routes = [
     component:RegistroNegocioComponent,
   },
   {
-    path: 'perfilcompany',
-    component: PerfilCompanyComponent,
-
-  },{
     path: 'perfilusuario',
     component: PerfilUsuarioComponent,
   },

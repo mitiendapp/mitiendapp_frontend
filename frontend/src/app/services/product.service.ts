@@ -25,9 +25,6 @@ export class ProductService {
   create(product:Product):Observable<any>{
     return this.http.post(`${this.endpoint}${this.apiUrl}`, product)
   }
-<<<<<<< HEAD
-  
-=======
 
   deleteProdcuts(product:Product):Observable<void>{
    return this.http.post<void>(`${this.endpoint}${'product/delete'}`,product)
@@ -36,5 +33,4 @@ export class ProductService {
     return this.http.post<void>(`${this.apiUrl}${this.endpoint}`,product)
   }
 
->>>>>>> 5dbf5548ddadaf1d6e2a7a94da7796117f213dfa
 }
