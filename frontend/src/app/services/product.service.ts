@@ -25,4 +25,5 @@ export class ProductService {
   create(product:Product):Observable<any>{
     return this.http.post(`${this.endpoint}${this.apiUrl}`, product)
   }
+  
 }

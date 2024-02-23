@@ -18,6 +18,7 @@ export class PerfilCompanyService {
     this.endpoint=enviroment.endpoint 
     this.apiUrl= '/getAllCompany';
     
+    
   }
   getCompany():Observable<Company[]>{
     return this.http.get<Company[]>(`${this.endpoint}${this.apiUrl}`);
