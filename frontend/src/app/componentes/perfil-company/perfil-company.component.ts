@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { PerfilCompanyService } from '../../services/perfil-company.service'
 import { Company } from '../../interfaces/company'
+import {Product} from '../../interfaces/product'
 import { Route } from '@angular/router';
 import {ProductService} from '../../services/product.service'
 @Component({
@@ -12,6 +13,8 @@ export class PerfilCompanyComponent implements OnInit{
   
 
   company: Company[] = []
+  product:Product[]=[]
+
   constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService) {
 
   }
@@ -27,7 +30,7 @@ export class PerfilCompanyComponent implements OnInit{
   }
   getProducts(){
     this.productservice.getProducts().subscribe((data:any)=>{
-      this.getProducts=data.data;
+      this.product=data.data;
     })
   }
   ngOnInit(): void {

@@ -9,6 +9,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import {RegistroNegocioComponent} from './componentes/registro/registro-negocio/registro-negocio.component';
+import {PerfilCompanyComponent} from './componentes/perfil-company/perfil-company.component'
 const routes: Routes = [
   {
     path: '',
@@ -45,6 +46,9 @@ const routes: Routes = [
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
+  },{
+    path: 'perfilCompany',
+    component: PerfilCompanyComponent
   }
 ];
 

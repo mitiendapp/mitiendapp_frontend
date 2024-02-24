@@ -1,41 +1,3 @@
-<<<<<<< HEAD
-<div class="">
-    
-<div class="productCart-wrapper">
-    <article class="productCart" *ngFor="let product of myCart$ | async">
-      <div class="productCart-body">
-        <p>{{ product.name }}</p>
-        <div class="productCart-body-info">
-          <p>$ {{ product.price }}</p>
-          <p>{{ product.stock }} uds</p>
-        </div>
-      </div>
-      <div class="productCart-total">
-        <p>$1 {{ totalProduct(product.price, product.stock)}}</p>
-      </div>
-      <div class="productCart-buttons">
-        <div class="productCart-buttons-operators">
-          <i
-            class="fa-solid fa-minus"
-            (click)="updateUnits('minus', product.id)"
-          ></i>
-          <span>{{ product.stock }}</span>
-          <i
-            class="fa-solid fa-plus"
-            (click)="updateUnits('add',product.id)"
-          ></i>
-        </div>
-        <i class="fa-solid fa-trash" (click)="deleteProduct(product.id)"></i>
-      </div>
-    </article>
-    <div class="cartTotal">
-      <p class="cartTotal-total">Tot1al: ${{totalCart()}}</p>
-    </div>
-    <button class="cart-btn">Ir a mi cesta</button>
-  </div>
-  
-</div>
-=======
 <div class="flex flex-row h-full ">
     <div class=" productCart-wrapper flex flex-col overflow-scroll w-4/5 m-5 p-2 bg-[#e5e5e5] rounded">
         <article class="productCart w-full shadow w-full bg-white my-1 p-2 rounded" *ngFor="let product of myCart$ | async">
@@ -73,7 +35,6 @@
     </div>
 </div>
 
->>>>>>> 5dbf5548ddadaf1d6e2a7a94da7796117f213dfa
 
 
 
