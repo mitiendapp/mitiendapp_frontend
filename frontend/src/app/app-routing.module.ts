@@ -10,6 +10,8 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import {RegistroNegocioComponent} from './componentes/registro/registro-negocio/registro-negocio.component';
 import {PerfilCompanyComponent} from './componentes/perfil-company/perfil-company.component'
+import {CreateProductComponent} from './componentes/create-product/create-product.component'
+
 const routes: Routes = [
   {
     path: '',
@@ -40,6 +42,13 @@ const routes: Routes = [
     path: 'perfilusuario',
     component: PerfilUsuarioComponent,
   },
+
+  {
+    path: 'crearproducto',
+    component: CreateProductComponent,
+  },
+  
+  
   {
     path: 'detalle/:id', component: DetalleComponent
   }, {
