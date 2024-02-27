@@ -77,7 +77,7 @@ export class CreateProductComponent implements OnInit {
     const archivoCapturado = event.target.files[0];
     this.extraerBase64(archivoCapturado).then((imagen:any) =>{
     this.previsualizacion =imagen.base;
-    console.log(imagen);
+    console.log(imagen.base);
     })
     console.log(event.target.files);
     this.archivos.push(archivoCapturado);

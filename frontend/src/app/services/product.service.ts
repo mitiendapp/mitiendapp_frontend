@@ -10,10 +10,12 @@ import { Product } from '../interfaces/product';
 export class ProductService {
   private endpoint:string;
   private apiUrl:string;
+  private create1:string;
 
   constructor(private http:HttpClient) {
     this.endpoint= enviroment.endpoint;
     this.apiUrl= 'product';
+    this.create1='/create'
    }
 
   getProducts():Observable<Product[]>{//listar productos
@@ -23,7 +25,7 @@ export class ProductService {
     return this.http.get<any>(`${this.endpoint}product/id?id=${id}`);
   }
   create(product:Product):Observable<any>{
-    return this.http.post(`${this.endpoint}${this.apiUrl}`, product)
+    return this.http.post(`${this.endpoint}${this.apiUrl}${this.create1}`, product)
   }
 
   deleteProdcuts(product:Product):Observable<void>{
