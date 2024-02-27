@@ -1,0 +1,64 @@
+<section class="m-0 p-0" *ngFor="let compa of company">
+    <div class="imgTop pb-6 sds w-full h-50 md:h-70 bg-cover bg-center d-flex justify-center lg:h-90 " 
+        style="background-image: url(https://www.piamaria.cl/wp-content/uploads/2018/12/BANNER-TIENDA-ONLINE-pc-piamaria-cl.jpg);">
+
+        <img class="rounded-full mb-[-15%] mt-[8%] sm:mt-[5%] md:mb-[-8%] md:mt-[10%] lg:mt-[8%] size-40 cover"
+            src="../../../assets/img/img5.jpg" alt="">
+            
+    </div>
+
+
+    <!--about user -->
+    <div class="infoUser max-sm:mt-[10%] mt-[7%] d-flex justify-center flex-col items-center">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" >
+            Editar
+        </button>
+        
+        <h1 class="font-bold">{{compa.firstName}}
+            {{compa.lastName}}</h1>
+        <h5>{{compa.email}}</h5>
+        <h5>{{compa.phoneNumber}}</h5>
+        <h5>{{compa.address}}</h5>
+        <div class="socialmedia d-flex w-full items-center justify-center">
+            <!-- Instagram -->
+            <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-instagram text-2xl"></i></a>
+            <!-- Twitter -->
+            <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-twitter text-2xl"></i></a>
+            <!-- WhatsApp -->
+            <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-whatsapp text-2xl"></i></a>
+        </div>
+
+        <!-- name and venture description -->
+        <div class="description d-flex justify-center text-center flex-col items-center">
+            <h3 class="my-10 max-md:my-10 font-bold">{{compa.nameEmprendimiento}}</h3>
+            <p class="w-[80%]">{{compa.description}}</p>
+        </div>
+    </div>
+    <div class= 
+"product shadow-lg hover:shadow-2xl max-sm:p-3 max-sm:justify-center max-sm:w-[95%] max-sm:h-[30%] d-flex flex-row items-center
+     md:max-lg:w-[45%] md:max-lg:h-[25%] md:max-lg:flex-row
+        lg:max-2xl:w-[25%] lg:max-2xl:h-[15%]" *ngFor="let compa of company">
+ <!-- image -->
+ <img class="w-[50%] h-[90%] md:max-lg:w-[50%] md:max-lg:h-[40%]" 
+     src="https://trueshop.co/cdn/shop/files/Buzo-The_Green_Edit_Verde_Pistacho_1_41f52f1d-0ff5-40c8-a9b2-a6a4595c7231_720x720.jpg?v=1694712682"
+         alt="">
+ <div class="productDesc p-3">
+     <!-- name product -->
+     <p class="font-bold">Buso Boxyfit negro</p>
+     <!-- price -->
+     <p></p>
+     <div class="buttons d-flex justify-evenly">
+         <button class="border text-center bg-[#255BAD] font-[white] rounded py-1 px-3 text-white border-none hover:shadow-xl">comprar</button>
+         <a href=""><i class="bi bi-cart text-2xl hover:shadow-xl"></i></a>
+     </div>
+ </div>
+</div>
+</section>
+
+
+
+
+
+ 
+
+    

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MessageService } from 'src/app/services/message.service';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { CompanyService } from 'src/app/services/company.service';
@@ -23,9 +23,7 @@ export class RegistroNegocioComponent implements OnInit {
     private toastr: ToastrService,
     private _companyService:CompanyService,
     private _messageService:MessageService,
-    
-    
-
+  
     ) { }
 
   ngOnInit(): void {
@@ -70,8 +68,8 @@ onRegister() {
   this._companyService.signIn(company).subscribe({
     next: (v) => {
       this.toastr.success("El emprendimiento fue registrado con éxito", "Registro exitoso");
-      const main = document.getElementById('main');
-      main.classList.remove("right-panel-active");
+      // const main = document.getElementById('main');
+      // main.classList.remove("right-panel-active");
     },
     error: (e: HttpErrorResponse) => {
       if (e) {
