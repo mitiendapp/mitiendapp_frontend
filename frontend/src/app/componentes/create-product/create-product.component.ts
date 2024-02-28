@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
+import { IaImageServicesService } from 'src/app/services/ia-image.services.service';
+
 import { HeaderService } from 'src/app/services/header.service';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -10,6 +12,7 @@ import { log } from 'console';
 import { DomSanitizer } from '@angular/platform-browser';
 import { resolve } from 'path';
 import { rejects } from 'assert';
+import { image } from 'pdfkit';
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
@@ -27,7 +30,8 @@ export class CreateProductComponent implements OnInit {
     private toastr: ToastrService,
     private _messageService: MessageService,
     private _productService: ProductService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private _iaimage:IaImageServicesService
   ) {}
 
   ngOnInit(): void {
@@ -73,37 +77,168 @@ export class CreateProductComponent implements OnInit {
     });
   }
 
-  capturarFile(event) {
-    const archivoCapturado = event.target.files[0];
-    this.extraerBase64(archivoCapturado).then((imagen:any) =>{
-    this.previsualizacion =imagen.base;
-    console.log(imagen);
-    })
-    console.log(event.target.files);
-    this.archivos.push(archivoCapturado);
+
+  // capturarImagen(image){
+   
+   
+    
+  // }
+
+  analizarImagen(imageObject){
+    
+     
+    this._iaimage.postIaImage(imageObject).subscribe({
+      
+      error: (e: HttpErrorResponse) => {
+        if (e && e.error) { // Verifica si hay un error definido y si hay un error en el cuerpo de la respuesta
+          this._messageService.msgError(e.error); // Muestra el mensaje de error del cuerpo de la respuesta
+        } else {
+          console.error('Error desconocido al intentar procesar la imagen');
+        }
+      },
+    });
+
   }
 
-  extraerBase64 = async ($event: any) =>
-    new Promise((resolve, reject) => {
-      try {
-        const unsafeImg = window.URL.createObjectURL($event);
-        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-        const reader = new FileReader();
-        reader.readAsDataURL($event);
-        reader.onload = () => {
-          resolve({
-            base: reader.result,
-          });
-          reader.onerror = (error) => {
-            resolve({
-              // blob:$event,
-              // image,
-              base: null,
-            });
-          };
-        };
-      } catch (error) {
-        return null;
-      }
+  // capturarFile(event) {
+  //   const archivoCapturado = event.target.files[0];
+  //   this.extraerBase64(archivoCapturado).then((imagen: any) => {
+  //     this.previsualizacion = imagen.base;
+  //     const url_pura = imagen.base.split(',')[1];
+  //     console.log(imagen.base.split(',')[1]);
+  
+  //     const imageObject = {
+  //       imagePath: url_pura // Aquí asignamos el contenido base64 como imagePath
+  //     };
+  
+  //     this._iaimage.postIaImage(imageObject).subscribe({
+  //       next: (v) => {
+  //         this.toastr.success('Imagen Permitida no es oxena');
+  //       },
+  //       error: (e: HttpErrorResponse) => {
+  //         if (e) {
+  //           this._messageService.msgError(e);
+  //         } else {
+  //           console.error('error',e);
+  //         }
+  //       },
+  //     });
+  //   });
+  // }
+
+  capturarFile(event) {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      const url_pura = imagen.base.split(',')[1];
+      console.log(imagen.base.split(',')[1]);
+  
+      const imageObject = {
+        imagePath:url_pura // Aquí asignamos el contenido base64 como imagePath
+      };
+      this.analizarImagen(imageObject)
+
+
+ 
+    }).catch((error) => {
+      console.error('Error al extraer la base64 de la imagen:', error);
     });
+  }
+  
+  
+  // capturarFile(event) {
+  //   const archivoCapturado = event.target.files[0];
+  //  const estraer= this.extraerBase64(archivoCapturado).then((imagen:any) =>{
+  //   this.previsualizacion =imagen.base;
+  //    const url_pura= imagen.base.split(',')[1]
+  //   console.log(imagen.base.split(',')[1]);
+
+  //   this._iaimage.postIaImage(url_pura).subscribe({
+  //     next:(v) => {
+  //       this.toastr.success('Imagen Permitida no es oxena');
+
+  //     },
+  //     error: (e: HttpErrorResponse) => {
+  //       if (e) {
+  //         this._messageService.msgError(e);
+  //       } else {
+  //         console.error('no permite ese tipo de imagenes');
+  //       }
+  //     },      
+
+  //   });
+  //   })
+
+   
+  //   // console.log(event.target.files);
+  //   // this.archivos.push(archivoCapturado);
+  // }
+
+  // extraerBase64 = async ($event: any) =>
+  //   new Promise((resolve, reject) => {
+  //     try {
+  //       const unsafeImg = window.URL.createObjectURL($event);
+  //       const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+  //       const reader = new FileReader();
+  //       reader.readAsDataURL($event);
+  //       reader.onload = () => {
+  //         resolve({
+  //           base: reader.result,
+  //         });
+  //         reader.onerror = (error) => {
+  //           resolve({
+  //             // blob:$event,
+  //             // image,
+  //             base: null,
+  //           });
+  //         };
+  //       };
+  //     } catch (error) {
+  //       return null;
+  //     }
+  //   });
+
+  // extraerBase64 = async ($event: any) => {
+  //   return new Promise((resolve, reject) => {
+  //     try {
+  //       const reader = new FileReader();
+  //       reader.readAsDataURL($event);
+  //       reader.onload = () => {
+  //         const base64 = reader.result?.toString() || '';
+  //         const cleanBase64 = base64.replace(/^data:image\/[a-zA-Z]+;base64,/, '');
+  //         resolve({
+  //           base: cleanBase64,
+  //         });
+  //       };
+  //       reader.onerror = (error) => {
+  //         resolve({
+  //           base: null,
+  //         });
+  //       };
+  //     } catch (error) {
+  //       reject(error);
+  //     }
+  //   });
+  // };
+  extraerBase64 = async ($event: any) =>
+  new Promise((resolve, reject) => {
+    try {
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result,
+        });
+      };
+      reader.onerror = (error) => {
+        resolve({
+          base: null,
+        });
+      };
+    } catch (error) {
+      reject(error);
+    }
+  });
+
+  
 }
