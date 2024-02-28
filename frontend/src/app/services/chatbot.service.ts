@@ -7,9 +7,6 @@ import { enviroment } from '../enviroments/enviroment';
   providedIn: 'root'
 })
 export class ChatbotService {
-
-  private endpoint = enviroment.chat_endpoint;
-
   constructor(
     private http:HttpClient
   ) { }
@@ -17,6 +14,6 @@ export class ChatbotService {
 
   chat(userInput:any):Observable<any>{
     const payload = {"userInput":userInput}
-    return this.http.post('http://localhost:3000/api/chat/', payload);
+    return this.http.post('https://mitiendapp-chat-1.onrender.com/api/chat', payload);
   }
 }
