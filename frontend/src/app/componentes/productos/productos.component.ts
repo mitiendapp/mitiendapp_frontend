@@ -72,7 +72,7 @@ export class ProductosComponent implements OnInit {
   deleteProducto(product:any){
     console.log(product)
     this._productService.deleteProdcuts(product).subscribe(data=>{
-
+      
     })
   }
 }

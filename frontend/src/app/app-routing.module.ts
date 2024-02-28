@@ -11,6 +11,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import {RegistroNegocioComponent} from './componentes/registro/registro-negocio/registro-negocio.component';
 import {PerfilCompanyComponent} from './componentes/perfil-company/perfil-company.component'
 import {CreateProductComponent} from './componentes/create-product/create-product.component'
+import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 
 const routes: Routes = [
   {
@@ -47,8 +48,10 @@ const routes: Routes = [
     path: 'crearproducto',
     component: CreateProductComponent,
   },
-  
-  
+  {
+    path: 'chatbot',
+    component: ChatbotComponent,
+  },
   {
     path: 'detalle/:id', component: DetalleComponent
   }, {

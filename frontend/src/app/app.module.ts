@@ -24,6 +24,7 @@ import { HeaderComponent } from './componentes/header/header.component';
 import { RegistroUsuarioComponent } from './componentes/registro/registro-usuario/registro-usuario.component';
 import { RegistroNegocioComponent } from './componentes/registro/registro-negocio/registro-negocio.component';
 import { CreateProductComponent } from './componentes/create-product/create-product.component';
+import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CreateProductComponent } from './componentes/create-product/create-prod
     RegistroUsuarioComponent,
     RegistroNegocioComponent,
     CreateProductComponent,
+    ChatbotComponent,
   ],
   imports: [
     BrowserModule,

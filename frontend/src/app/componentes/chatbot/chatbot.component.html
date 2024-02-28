@@ -1,0 +1,9 @@
+<form action="" [formGroup]="form" (ngSubmit)="askChat()">
+    <input class="w-4/5 bg-[rgb(0,0,0,0.5)] rounded mx-3 my-4" type="text" value="" formControlName="pregunta">
+    <button type="submit">Preguntar</button>
+    <div *ngIf="chat">
+        <div *ngFor="let messages of chat">
+            <div class="my-2">{{messages}}</div>
+        </div>
+    </div>
+</form>

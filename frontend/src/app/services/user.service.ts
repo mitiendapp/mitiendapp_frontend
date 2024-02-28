@@ -18,7 +18,7 @@ export class UserService {
 
   constructor(
     public router: Router,
-    private http: HttpClient
+    private http: HttpClient 
     ) {
     this.endpoint = enviroment.endpoint;
     this.apiUrl = 'user';
