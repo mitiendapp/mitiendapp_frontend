@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 import { IaImageServicesService } from 'src/app/services/ia-image.services.service';
+import { enviroment } from '../../enviroments/enviroment';
 
 import { HeaderService } from 'src/app/services/header.service';
 import { Toast, ToastrService } from 'ngx-toastr';
@@ -22,6 +23,7 @@ export class CreateProductComponent implements OnInit {
   form: FormGroup;
     public  previsualizacion :string;
   public archivos: any = [];
+  private url_image_ia:string;
 
 
   constructor(
@@ -32,7 +34,10 @@ export class CreateProductComponent implements OnInit {
     private _productService: ProductService,
     private sanitizer: DomSanitizer,
     private _iaimage:IaImageServicesService
-  ) {}
+  ) {
+
+    this.url_image_ia= enviroment.url_image_ia;
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -60,7 +65,7 @@ export class CreateProductComponent implements OnInit {
       stock: stock,
       state: state,
     };
-
+     
     this._productService.create(product).subscribe({
       next: (v) => {
         this.toastr.success('Producto cargadoExitosamente');
@@ -84,21 +89,28 @@ export class CreateProductComponent implements OnInit {
     
   // }
 
-  analizarImagen(imageObject){
-    
-     
+ analizarImagen(imageObject) {
     this._iaimage.postIaImage(imageObject).subscribe({
-      
+      next: (v) => {
+        if (v.result === " No") { // Verifica si la respuesta indica que la imagen no es oxena
+          this.toastr.success('Imagen Permitida, no es oxena');
+          console.log(v.result);
+          
+        } else  {
+          this.toastr.error('Imagen no permitida, es oxena'); // Muestra un mensaje de error si la imagen es oxena
+          console.log(v.result);
+        }
+      },
       error: (e: HttpErrorResponse) => {
-        if (e && e.error) { // Verifica si hay un error definido y si hay un error en el cuerpo de la respuesta
-          this._messageService.msgError(e.error); // Muestra el mensaje de error del cuerpo de la respuesta
+        if (e && e.error) { 
+          this._messageService.msgError(e.error); 
         } else {
           console.error('Error desconocido al intentar procesar la imagen');
         }
       },
     });
-
   }
+  
 
   // capturarFile(event) {
   //   const archivoCapturado = event.target.files[0];
