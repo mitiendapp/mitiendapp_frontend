@@ -1,94 +1,33 @@
-<div id="body w-full flex justify-center ">
-    <form class="lg:w-[100%] flex flex-col  items-center p-8" [formGroup]="form" (ngSubmit)="onRegister()">
-        <img src="../assets/icons/favicon-32x32.png" alt="">
-        <div class="w-full my-20 text-center">
-            <h1 class="">Inscribe tu emprendimiento</h1>
-            <p class="">¡Comienza a vender ahora!</p>
-        </div>
-        <div class=" lg:w-[30%] ">
-            <p class="m-1">Documento</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="text"
-             formControlName="document"
-             >
-        </div>
-        <div class=" lg:w-[30%]">
-            <p class="m-1">Nombre</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="text"
-             formControlName="firstName"
-             >
-        </div>
-        <div class=" lg:w-[30%]">
-            <p class="m-1">Apellido</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="text"
-             formControlName="lastName"
-             >
-        </div>
-        <div class=" lg:w-[30%]">
-            <p class="m-1">Nombre emprendimiento</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="text"
-             formControlName="nameEmprendimiento"
-             >
-        </div>
-        <div class=" lg:w-[30%]">
-            <p class="m-1">E-mail</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="email"
-             formControlName="email"
-             >
-        </div>
-        <div class=" lg:w-[30%]">
-            <p class="m-1">Direccion</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="text"
-             formControlName="address"
-             >
-        </div>
-        <div class=" lg:w-[30%]">
-            <p class="m-1">Telefono</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="text"
-             formControlName="phoneNumber"
-             >
-        </div>
-        <div class=" lg:w-[30%] mb-4">
-            <p class="m-1">Descripcion</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="text"
-             formControlName="description"
-             >
-        </div>
-        <div class=" lg:w-[30%]">
-            <p class="m-1">Contraseña</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="password"
-             formControlName="password"
-             >
-        </div>
-        <div class=" lg:w-[30%] mb-4">
-            <p class="m-1">Confirmar contraseña</p>
-            <input
-             class="lg:w-[50%] h-2/4 border border-sky-500 rounded mb-4" 
-             type="password"
-             formControlName="confirmPassword"
-             >
-        </div>
-        <button type="submit" class="bg-button-blue lg:w-[25%] p-1 rounded text-white">Continuar</button>
-        <p class="mt-16 mb-5 text-xs">¿Ya estás registrado?</p>
-        <a class="mb-8" href="login">
-            <Button  type="button" class="w-full p-1 rounded border border-sky-500 text-black" id="createAcountBtn">¡Inicia sesión aqui!</Button>
+<section class="lg:flex items-center py-7 justify-evenly">
+    <div class="welcome flex flex-col items-center">
+        <p class="text-center w-[80%]"><span class="text-2xl"> Registra tu emprendimiento</span><br>¡Comienza a vender ahora!</p> 
+        <img class="max-lg:hidden max-md:absolute max-md:relative" src="../../../../assets/img/MockEmprendimiento.png" alt="">  
+    </div>
+    <form action="get" class="flex flex-col gap-3 p-4 m-3 shadow-lg lg:w-[50%] ">
+        <a class="border-3 py-20 px-[38%] cursor-pointer justify-center items-center flex flex-col"
+            onclick="document.getElementById('file').click">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <p class="text-center">Subir imágenes</p>
         </a>
+        <input class="outline-none border-1 p-2 px-3" type="text" name="" id="name"
+            placeholder="Nombre de emprendimiento">
+        <input class="outline-none border-1 p-2 px-3" type="text" name="" id="description" placeholder="Descripción">
+        <input class="outline-none border-1 p-2 px-3" type="text" name="" id="Direction" placeholder="Dirección">
+        <input class="outline-none border-1 p-2 px-3" type="text" name="" id="nameE" placeholder="Nombre emprendedor">
+        <input class="outline-none border-1 p-2 px-3" type="text" name="" id="document" placeholder="documento">
+        <input class="outline-none border-1 p-2 px-3" type="text" name="" id="email" placeholder="E-mail">
+        <div class="pass w-full flex gap-3">
+            <input class="outline-none border-1 p-2 px-3 w-full" type="password" name="" id="password"
+                placeholder="Contraseña">
+            <input class="outline-none border-1 p-2 px-3 w-full" type="password" name="" id="confirmPass"
+                placeholder="Confirmar Contraseña">
+        </div>
+        <div class="confirm w-full flex flex-col items-center">
+            <button class="bg-button-blue px-4 py-2 rounded-lg text-white text-xl w-[40%]">Crear</button>
+        </div>
     </form>
-</div>
+</section>
