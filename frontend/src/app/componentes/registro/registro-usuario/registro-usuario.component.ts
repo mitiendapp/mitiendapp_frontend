@@ -1,6 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/interfaces/user';
 import { HeaderService } from 'src/app/services/header.service';
@@ -12,27 +12,44 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './registro-usuario.component.html',
   styleUrls: ['./registro-usuario.component.css']
 })
-export class RegistroUsuarioComponent implements OnInit{
+export class RegistroUsuarioComponent implements OnInit {
   form: FormGroup;
+  title = 'envioCorreo';
 
   constructor(
+    private httpclien:HttpClient,
     private formBuilder: FormBuilder,
-    private headerService:HeaderService,
+    private headerService: HeaderService,
     private toastr: ToastrService,
-    private _userService:UserService,
-    private _messageService:MessageService
-  ){
-
+    private _userService: UserService,
+    private _messageService: MessageService
+  ) {
+    this.form = new FormGroup({
+      email: new FormControl('',[Validators.required,Validators.email])
+    })
+    
   }
+enviocorreo(){
+  let params ={
+    email:this.form.value.email,
+  }
+  console.log(params);
+  
+  this.httpclien.post('https://pruebabackend1.onrender.com/api/envio',params).subscribe(resp=>{
+    console.log(resp);
+    
+  })
+
+}
 
   ngOnInit(): void {
-      this.form = this.formBuilder.group({
-        name: ['', Validators.required],
-        email: ['', Validators.required],
-        password: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
-      })
-  
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    })
+
   }
 
   onRegister() {
@@ -50,7 +67,7 @@ export class RegistroUsuarioComponent implements OnInit{
       password: password,
     }
     console.log(user);
-    
+
     // this.loading = true;p
     this._userService.signIn(user).subscribe({
       next: (v) => {
