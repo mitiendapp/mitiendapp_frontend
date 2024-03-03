@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/interfaces/user';
 import { HeaderService } from 'src/app/services/header.service';
@@ -20,9 +21,17 @@ export class RegistroUsuarioComponent implements OnInit{
     private headerService:HeaderService,
     private toastr: ToastrService,
     private _userService:UserService,
-    private _messageService:MessageService
+    private _messageService:MessageService,
+    private spinner : NgxSpinnerService
   ){
 
+  }
+
+  openSpinner(){
+    this.spinner.show();
+    setTimeout(()=>{
+      this.spinner.hide();
+    },3000)
   }
 
   ngOnInit(): void {

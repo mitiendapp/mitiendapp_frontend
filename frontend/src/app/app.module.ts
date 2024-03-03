@@ -25,6 +25,8 @@ import { RegistroUsuarioComponent } from './componentes/registro/registro-usuari
 import { RegistroNegocioComponent } from './componentes/registro/registro-negocio/registro-negocio.component';
 import { CreateProductComponent } from './componentes/create-product/create-product.component';
 import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
+import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
@@ -45,8 +47,10 @@ import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
     RegistroNegocioComponent,
     CreateProductComponent,
     ChatbotComponent,
+    
   ],
   imports: [
+    NgxSpinnerModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
