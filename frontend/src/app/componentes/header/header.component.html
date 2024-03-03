@@ -13,12 +13,12 @@
         placeholder="Busca productos, tiendas y más...">
       <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
     </div>
-    <div *ngIf="!(userService.isLoginComponentActive() | async)" class="hidden sm:block flex justify-around"
+    <div *ngIf="!(userService.isUserActive() | async)" class="hidden sm:block flex justify-around"
       id="signup_signin">
       <a class="mx-4" href="login">Inicio</a>
       <a class="mx-4" href="signin">Registro</a>
     </div>
-    <div *ngIf="(userService.isLoginComponentActive() | async)" class="hidden sm:block flex justify-around"
+    <div *ngIf="(userService.isUserActive() | async)" class="hidden sm:block flex justify-around"
       id="signup_signin">
       {{userService.user.value.email}}
     </div>

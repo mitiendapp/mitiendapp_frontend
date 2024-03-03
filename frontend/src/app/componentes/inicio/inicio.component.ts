@@ -70,7 +70,7 @@ submitPassword(){
   }
   this._userService.logIn(user).subscribe({
     next: (data: any) => {
-      this.router.navigate(['products']);
+      this.router.navigate(['']);
       localStorage.setItem('token', data.token)
       this._messageService.msgSuccess(data)
       this._userService.isLoggedIn = true

@@ -1,4 +1,4 @@
-<div *ngIf="(thereAreOffers() | async)" id="container">
+<div class="h-fu" *ngIf="(thereAreOffers() | async)" id="container">
     <div id="homeCarousel" class="carousel carousel-dark slide d-flex justify-content-center" data-ride="carousel">
         <div class="carousel-inner  w-full shadow">
             <div class="carousel-item active">
@@ -129,4 +129,6 @@
     </div>
     
 </div>
+<button (click)="openModal()">abrir modal</button>
+<app-chatbot class="w-full h-full" #chatbot></app-chatbot>
 <app-productos></app-productos>

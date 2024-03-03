@@ -1,9 +1,20 @@
-<form action="" [formGroup]="form" (ngSubmit)="askChat()">
-    <input class="w-4/5 bg-[rgb(0,0,0,0.5)] rounded mx-3 my-4" type="text" value="" formControlName="pregunta">
-    <button type="submit">Preguntar</button>
-    <div *ngIf="chat">
-        <div *ngFor="let messages of chat">
-            <div class="my-2">{{messages}}</div>
+<ng-template #chatbot>
+    <form #chatbot class="h-full p-4" action="" [formGroup]="form" (ngSubmit)="askChat()">
+        <div *ngIf="!(userService.isUserActive() | async)">  
+            <div class="h-5/6 bg-slate-300" *ngIf="chat">
+                <div class="p-4" *ngFor="let messages of chat">
+                    <div class="flex justify-end" *ngIf="(messages.from == userService.user.value.email)">
+                        <app-message-box [message]="messages.text" [color]="'#005c4b'"></app-message-box>
+                    </div>
+                    <div class="flex justify-start " *ngIf="!(messages.from == userService.user.value.email)">
+                        <app-message-box [message]="messages.text" [color]="'#202c33'"></app-message-box>
+                    </div>
+                </div>
         </div>
     </div>
+    <div class="flex flex-row justify-between items-center p-2 gap-2">
+        <input class="w-full bg-[rgb(0,0,0,0.2)] rounded px-3 py-1" type="text" value="" formControlName="pregunta" placeholder="Escribe un mensaje">
+        <button class="size-6" type="submit"><img src="../../../assets/icons/send.svg" alt="" ></button>
+    </div>
 </form>
+</ng-template>
