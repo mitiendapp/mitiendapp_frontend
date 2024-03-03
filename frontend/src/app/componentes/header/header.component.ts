@@ -62,8 +62,8 @@ throw new Error('Method not implemented.');
     public headerService: HeaderService,
     private router: Router, private carService: CartService,
     public userService: UserService,
-    private filterProductService: FiltroProductosService
-
+    private filterProductService: FiltroProductosService,
+    public cartService:CartService
   ) {
 
   }

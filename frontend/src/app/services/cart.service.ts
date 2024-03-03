@@ -13,6 +13,8 @@ import { map } from 'rxjs/operators';
 export class CartService {
   private endpoint:string;
   private apiUrl:string;
+  private itemAdd = new BehaviorSubject<Boolean>(false);
+
     //lista carrito
     private myList: Product[] = [];
 
@@ -59,6 +61,7 @@ export class CartService {
       }
 
     }
+    this.itemAdd.next(true);
   }
     
 
@@ -80,5 +83,9 @@ export class CartService {
   totalCart() {
     const total = this.myList.reduce(function (acc, product) { return acc + (product.stock * product.price); }, 0)
     return total
+  }
+
+  public itemAdded(){
+    return this.itemAdd.asObservable();
   }
 }
