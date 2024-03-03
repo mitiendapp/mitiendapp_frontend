@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { Product } from '../interfaces/product';
 import { Company } from '../interfaces/company';
 @Injectable({
-  ///getAllCompany
   providedIn: 'root'
   
 })
@@ -16,7 +15,7 @@ export class PerfilCompanyService {
   constructor(private http:HttpClient) {
     
     this.endpoint=enviroment.endpoint 
-    this.apiUrl= '/getAllCompany';
+    this.apiUrl= '/companies';
     
     
   }
