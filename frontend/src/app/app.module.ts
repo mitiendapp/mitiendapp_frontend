@@ -26,6 +26,7 @@ import { CreateProductComponent } from './componentes/create-product/create-prod
 import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 import { MessageBoxComponent } from './componentes/chatbot/message-box/message-box.component';
 import { MatDialog } from '@angular/material/dialog';
+import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MatDialog } from '@angular/material/dialog';
     MessageBoxComponent,
   ],
   imports: [
+    NgxSpinnerModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

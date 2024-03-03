@@ -51,9 +51,7 @@ submitAccount(){
     return;
   }
   this.account = email;
-  
   this.validAccount.next(true);
-  console.log(this.account);
   return;
 }
 
@@ -68,12 +66,14 @@ submitPassword(){
     email: this.account,
     password: password
   }
+  
   this._userService.logIn(user).subscribe({
     next: (data: any) => {
+      console.log("llega");
       this.router.navigate(['']);
-      localStorage.setItem('token', data.token)
-      this._messageService.msgSuccess(data)
-      this._userService.isLoggedIn = true
+      localStorage.setItem('token', data.token);
+      this._messageService.msgSuccess(data);
+      this._userService.isLoggedIn = true;
     },
     error: (e: HttpErrorResponse) => {
       this._messageService.msgError(e);
@@ -81,7 +81,7 @@ submitPassword(){
     }
   })
   this.userService.isLoggingIn.next(true);
-  this.userService.user.next(user);  
+  this.userService.openSession(user);
 }
 
 isValidAccount(): Observable<Boolean>{

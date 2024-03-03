@@ -6,6 +6,7 @@ import { CompanyService } from 'src/app/services/company.service';
 import { Company } from 'src/app/interfaces/company';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HeaderService } from 'src/app/services/header.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -23,9 +24,16 @@ export class RegistroNegocioComponent implements OnInit {
     private toastr: ToastrService,
     private _companyService:CompanyService,
     private _messageService:MessageService,
+    private spinner : NgxSpinnerService
   
     ) { }
-
+    
+    openSpinner(){
+      this.spinner.show();
+      setTimeout(()=>{
+        this.spinner.hide();
+      },3000)
+    }
   ngOnInit(): void {
     this.form = this.formBuilder.group({
 

@@ -9,8 +9,12 @@
       </a>
     </div>
     <div class="inputWrapper relative w-3/5">
-      <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" type="search"
-        placeholder="Busca productos, tiendas y más...">
+      <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" 
+       id="inputHeader" 
+       type="search"
+       placeholder="Busca productos, tiendas y más..."
+       (input)="actualizarFiltro($event)">
+
       <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
     </div>
     <div *ngIf="!(userService.isUserActive() | async)" class="hidden sm:block flex justify-around"
@@ -21,6 +25,7 @@
     <div *ngIf="(userService.isUserActive() | async)" class="hidden sm:block flex justify-around"
       id="signup_signin">
       {{userService.user.value.email}}
+      <button (click)="userService.closeSession()" >Salir</button>
     </div>
     <nav class="navbar">
       <div class="navbar-cart static" (click)="onToggleCart()">
@@ -28,6 +33,7 @@
           <p>{{ (myCart$ | async)?.length }}</p>
         </div>
         <i class="fa-solid fa-cart-shopping"></i>
+        <img class="size-4" src="../../../assets/icons/shopping_cart_counting.svg" alt="">
       </div>
     </nav>
   </div>

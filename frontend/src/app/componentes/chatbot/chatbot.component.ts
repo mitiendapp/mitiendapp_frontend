@@ -1,11 +1,12 @@
 import { Mensaje } from 'src/app/interfaces/mensaje';
-import { Component, Inject, Input, OnInit, TemplateRef, Type, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnChanges, OnInit, QueryList, SimpleChanges, TemplateRef, Type, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { ChatbotService } from 'src/app/services/chatbot.service';
 import { UserService } from 'src/app/services/user.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfig } from 'src/app/interfaces/modal';
+import { log } from 'console';
 
 @Component({
   selector: 'app-chatbot',
@@ -13,23 +14,28 @@ import { ModalConfig } from 'src/app/interfaces/modal';
   styleUrls: ['./chatbot.component.css']
 })
 
-export class ChatbotComponent implements OnInit {
+export class ChatbotComponent implements OnInit{
   @Input() public modalConfig: ModalConfig;
   @ViewChild('chatbot') private modalContent: TemplateRef<ChatbotComponent>
   private modalRef: NgbModalRef
-  public form: FormGroup;
+  public form: FormGroup
   public chat: Array<Mensaje> = new Array();
-
+  public scrollDiv;
   constructor(
     public chatbotService: ChatbotService,
     private formBuilder: FormBuilder,
     public userService: UserService,
-    public modalService: NgbModal
+    public modalService: NgbModal,
   ) {
-
   }
-
   ngOnInit(): void {
+    
+    if (this.userService.currentUser == null || this.userService.currentUser == undefined) {
+      this.userService.currentUser = {
+        email: "invitado",
+        password: null
+      }
+    }
     this.form = this.formBuilder.group({
       pregunta: ['', Validators.required]
     })
@@ -42,15 +48,22 @@ export class ChatbotComponent implements OnInit {
       from: this.userService.currentUser.email
     }
     this.chat.push(mensaje);
-    this.chatbotService.chat(pregunta).subscribe(data => {
-      console.log(data.text);
-      this.chat.push(data.text);
+    this.chatbotService.chat(pregunta).subscribe({
+      next: (data) => {
+        this.chat.push(data);
+      }
     });
+
   }
 
   open(): Promise<boolean> {
     return new Promise<boolean>(resolve => {
-      this.modalRef = this.modalService.open(this.modalContent)
+
+      this.modalRef = this.modalService.open(this.modalContent, {
+        centered: true,
+        size: "xl",
+        modalDialogClass: "modal-content"
+      })
       this.modalRef.result.then(resolve, resolve)
     })
   }

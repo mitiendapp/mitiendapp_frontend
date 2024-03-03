@@ -15,7 +15,7 @@ export class UserService {
   public isLoggedIn = false;
   public isLoggingIn = new BehaviorSubject<Boolean>(false);
   public user = new BehaviorSubject<User>(null);
-  public currentUser!:any;
+  public currentUser?:User = null;
 
   constructor(
     public router: Router,
@@ -25,6 +25,13 @@ export class UserService {
     this.apiUrl = 'user';
   }
 
+  openSession(user: any){
+    this.user.next(user);
+  }
+  closeSession(){
+    localStorage.removeItem('token');
+    this.user.next(null);
+  }
   isUserActive(): Observable<Boolean>{
     return this.isLoggingIn.asObservable();
   }
