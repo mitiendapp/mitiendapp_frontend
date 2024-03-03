@@ -28,8 +28,9 @@
           <p>{{ (myCart$ | async)?.length }}</p>
         </div>
         <div>
-          <div *ngIf="(cartService.itemAdded() | async)" class="absolute -right-2 top-0 bg-[#128aaf] rounded-full size-3">.</div>
-          <i class="fa-solid fa-cart-shopping fa-lg cursor-pointer"></i>
+          <div *ngIf="(cartService.itemAdded() | async)"
+            class="absolute -right-2 top-0 bg-[#128aaf] rounded-full size-3">.</div>
+          <i (click)="cartService.itemAdd.next(false)" class="fa-solid fa-cart-shopping fa-lg cursor-pointer"></i>
         </div>
       </div>
     </nav>

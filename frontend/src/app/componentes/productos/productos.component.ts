@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { FiltroProductosService } from 'src/app/services/FiltroProductos.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-productos',
@@ -11,7 +12,7 @@ import { FiltroProductosService } from 'src/app/services/FiltroProductos.service
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-
+  cartIcon:any = "../../../assets/icons/shopping-cart-add-svgrepo-com.svg";
   listProducts: Product[] = [];
   filteredProducts: Product[] = []; // Arreglo para almacenar los productos filtrados
   product: any;
@@ -19,9 +20,10 @@ export class ProductosComponent implements OnInit {
   constructor(
     private _productService: ProductService,
     private _filtroProductosService: FiltroProductosService,
-    private _cartService: CartService,
+    public _cartService: CartService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -69,7 +71,12 @@ export class ProductosComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this._cartService.addProduct(product);
+      this._cartService.addProduct(this._cartService.productToProductDTO(product));
+      this.messageService.msgSuccess({message: "El producto fue agregado al carrito correctamente"});
+  }
+  removeCart(product: Product) {
+    this._cartService.deleteProduct(this._cartService.productToProductDTO(product));
+    this.messageService.msgSuccess({message: "El producto fue eliminado al carrito correctamente"})
   }
 
   addProduct(product: any) {

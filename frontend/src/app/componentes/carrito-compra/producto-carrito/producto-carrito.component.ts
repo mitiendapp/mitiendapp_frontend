@@ -25,6 +25,7 @@ export class ProductoCarritoComponent {
   }
   deleteProduct(id: number) {
     this._cartService.deleteProduct(id);
+    this.messageService.msgSuccess("El producto se eliminó");
   }
 
   add(product:ProductDTO){
@@ -42,6 +43,7 @@ export class ProductoCarritoComponent {
     }
     product.quantity--;
     product.stock++;
+
   }
 
 }

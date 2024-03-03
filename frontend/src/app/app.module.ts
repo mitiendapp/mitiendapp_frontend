@@ -27,6 +27,7 @@ import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 import { MessageBoxComponent } from './componentes/chatbot/message-box/message-box.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
+import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-carrito/producto-carrito.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
     CreateProductComponent,
     ChatbotComponent,
     MessageBoxComponent,
+    ProductoCarritoComponent,
   ],
   imports: [
     NgxSpinnerModule,
