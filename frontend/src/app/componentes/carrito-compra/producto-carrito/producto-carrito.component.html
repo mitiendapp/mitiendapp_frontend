@@ -1,0 +1,26 @@
+<div class=" flex flex-row ">
+    <div class="size-40">
+        <img class="object-contain size-40" [src]="product.image" alt="">
+    </div>
+    <div class="size-40 w-4/5 flex flex-row justify-between p-2">
+        <div class="productCart-body">
+            <p>{{ product.name }}</p>
+            <div class="productCart-body-info">
+                <p>$ {{ product.price.toLocaleString('es') }}</p>
+                <p>datos de envio</p>
+                <p>stock disponible: {{product.stock}}</p>
+            </div>
+        </div>
+        <div class="productCart-buttons static flex flex-col justify-between items-end">
+            <i class="fa-solid fa-trash" (click)="deleteProduct(product.id)"></i>
+            <div class="flex flex-row">
+                <p class="text-slate-400 mr-3 text-sm">${{ totalProduct(product.price, product.quantity)}} </p>
+                <div class="productCart-buttons-operators">
+                    <i class="fa-solid fa-minus" (click)="minus(product)"></i>
+                    <span class="my-1"> {{product.quantity}} </span>
+                    <i class="fa-solid fa-plus" (click)="add(product)"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
