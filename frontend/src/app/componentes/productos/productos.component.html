@@ -1,13 +1,15 @@
 <!-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" (click)="addProduct(product)">
   Agregar
 </button> -->
+
+<!-- hola -->
 <div id="container" class="productos w-full h-full  overflow-auto">
   <div class="w-full mx-3 my-1 flex justify-around gap-4 h-fit md:w-1/4" 
     *ngFor="let product of listProducts">
 
     <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer">
       <div class="size-40">
-        <!-- <img [src]="product.image" class="object-contain size-40" alt="... " (click)="mostrarDetalle(product.id)"> -->
+        <img [src]="product.image" class="object-contain size-40" alt="... " (click)="mostrarDetalle(product.id)">
       </div>
       <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
         <div class="card-body">
