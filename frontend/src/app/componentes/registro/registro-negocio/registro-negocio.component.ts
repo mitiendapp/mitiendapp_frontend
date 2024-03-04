@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MessageService } from 'src/app/services/message.service';
 import { Toast, ToastrService } from 'ngx-toastr';
@@ -16,9 +17,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class RegistroNegocioComponent implements OnInit {
   form: FormGroup;
+  title = 'envioCorreo';
   
 
   constructor(
+    private httpclien:HttpClient,
     private formBuilder: FormBuilder,
     private headerService:HeaderService,
     private toastr: ToastrService,
@@ -27,6 +30,18 @@ export class RegistroNegocioComponent implements OnInit {
     private spinner : NgxSpinnerService
   
     ) { }
+    enviocorreo(){
+      let params ={
+        email:this.form.value.email,
+      }
+      console.log(params);
+      
+      this.httpclien.post('https://pruebabackend1.onrender.com/api/envioCompany',params).subscribe(resp=>{
+        console.log(resp);
+        
+      })
+    
+    }
     
     openSpinner(){
       this.spinner.show();

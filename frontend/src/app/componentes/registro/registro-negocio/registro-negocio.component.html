@@ -85,7 +85,7 @@
              formControlName="confirmPassword"
              >
         </div>
-        <button type="submit" class="bg-button-blue lg:w-[25%] p-1 rounded text-white">Continuar</button>
+        <button type="submit" (click)="openSpinner()"class="bg-button-blue lg:w-[25%] p-1 rounded text-white"(click)="enviocorreo()">Continuar</button>
         <p class="mt-16 mb-5 text-xs">¿Ya estás registrado?</p>
         <a class="mb-8" href="login">
             <Button  type="button" class="w-full p-1 rounded border border-sky-500 text-black" id="createAcountBtn">¡Inicia sesión aqui!</Button>

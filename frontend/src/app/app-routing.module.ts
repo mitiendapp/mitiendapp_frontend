@@ -58,7 +58,7 @@ const routes: Routes = [
     path: 'detalle/:id',
     component: DetalleComponent
   }, {
-    path: 'perfilCompany',
+    path: 'perfilCompany/:document',
     component: PerfilCompanyComponent
   }, {
     path: '**',

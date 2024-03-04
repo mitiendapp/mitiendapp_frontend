@@ -29,6 +29,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
 import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-carrito/producto-carrito.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { PerfilCompanyComponent } from './componentes/perfil-company/perfil-company.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -55,6 +56,7 @@ export function tokenGetter(){
     ChatbotComponent,
     MessageBoxComponent,
     ProductoCarritoComponent,
+    PerfilCompanyComponent
   ],
   imports: [
     NgxSpinnerModule,
