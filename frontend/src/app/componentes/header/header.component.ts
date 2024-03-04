@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
+import { FiltroProductosService } from 'src/app/services/FiltroProductos.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
       state('can', style({
         transform: 'translate(0% )scale(1)'
       })),
-      state('cant', style({ 
+      state('cant', style({
         transform: 'translate(70% )scale(1)',
       })),
       transition('can => cant', [
@@ -28,9 +29,9 @@ import { UserService } from 'src/app/services/user.service';
       state('show', style({
         transform: 'translate(0% )scale(0)',
         opacity: '0',
-        height:'0'
+        height: '0'
       })),
-      state('hide', style({ 
+      state('hide', style({
         transform: 'translate(0% )scale(1)',
         opacity: '100'
       })),
@@ -41,14 +42,17 @@ import { UserService } from 'src/app/services/user.service';
         animate('0.5s')
       ])
     ])
-    
+
   ]
 })
 
 
 export class HeaderComponent implements OnInit {
+filtrarProductos(arg0: any) {
+throw new Error('Method not implemented.');
+}
 
-  @Input() itCan = true; 
+  @Input() itCan = true;
   @Input() show = true;
 
   viewCart: boolean = false;
@@ -56,13 +60,26 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public headerService: HeaderService,
-    private router: Router, private carService:CartService,
-    public userService: UserService
-  ){
+    private router: Router, private carService: CartService,
+    public userService: UserService,
+    private filterProductService: FiltroProductosService,
+    public cartService:CartService
+  ) {
+
   }
 
+  actualizarFiltro(event: any) {
+    const filtro = event.target.value;
+    if (filtro.trim() === '') {
+      this.filterProductService.actualizarFiltro(''); // Restaurar filtro
+    } else {
+      this.filterProductService.actualizarFiltro(filtro);
+    }
+  }
+  
+
   ngOnInit(): void {
-    if((this.router.url == '/')){
+    if ((this.router.url == '/')) {
       //this.activeCanBack();
     }
   }
@@ -72,20 +89,20 @@ export class HeaderComponent implements OnInit {
 
   };
 
-  activeButtonBack(){
+  activeButtonBack() {
     this.itCan = !this.itCan;
   }
-  showArrow(){
+  showArrow() {
     this.show = !this.show;
   }
-  activeCanBack(){
+  activeCanBack() {
     setTimeout(() => {
       this.activeButtonBack();
-      
+
     }, 1);
     setTimeout(() => {
       this.showArrow();
-      
+
     }, 2);
   }
 }

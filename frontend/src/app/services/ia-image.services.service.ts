@@ -3,6 +3,7 @@ import { enviroment } from '../enviroments/enviroment';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IaImage } from '../interfaces/iaImage';
+
 @Injectable({
   providedIn: 'root'
 })

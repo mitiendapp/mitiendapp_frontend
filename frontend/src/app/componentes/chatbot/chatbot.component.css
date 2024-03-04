@@ -1,0 +1,8 @@
+.modal-dialog{
+   background-color: red;
+}
+
+.modal-content{
+    height: 100%;
+    display: flex;
+}

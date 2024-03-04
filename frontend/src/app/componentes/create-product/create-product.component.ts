@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 import { IaImageServicesService } from 'src/app/services/ia-image.services.service';
+import { enviroment } from '../../enviroments/enviroment';
 
 import { HeaderService } from 'src/app/services/header.service';
 import { Toast, ToastrService } from 'ngx-toastr';
@@ -22,9 +23,14 @@ export class CreateProductComponent implements OnInit {
   form: FormGroup;
     public  previsualizacion :string;
   public archivos: any = [];
+<<<<<<< HEAD
   imageFile: any;
   imagePreview: any;
   isValidImage: boolean = true;
+=======
+  private url_image_ia:string;
+
+>>>>>>> 78ae6c55287685d6e09388cafb4fc06c4e5aa960
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +40,10 @@ export class CreateProductComponent implements OnInit {
     private _productService: ProductService,
     private sanitizer: DomSanitizer,
     private _iaimage:IaImageServicesService
-  ) {}
+  ) {
+
+    this.url_image_ia= enviroment.url_image_ia;
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -68,6 +77,7 @@ export class CreateProductComponent implements OnInit {
       stock: stock,
       state: state,
     };
+<<<<<<< HEAD
   
     const formData = new FormData();
      formData.append('image', this.imageFile);
@@ -80,6 +90,10 @@ export class CreateProductComponent implements OnInit {
     formData.append('state', this.form.value.state);
   
     this._productService.create(formData).subscribe({
+=======
+     
+    this._productService.create(product).subscribe({
+>>>>>>> 78ae6c55287685d6e09388cafb4fc06c4e5aa960
       next: (v) => {
         this.toastr.success('Producto cargado exitosamente');
       },
@@ -100,17 +114,23 @@ export class CreateProductComponent implements OnInit {
     
   // }
 
-  analizarImagen(imageObject){
-    
-     
+ analizarImagen(imageObject) {
     this._iaimage.postIaImage(imageObject).subscribe({
       next: (v) => {
         if (v.result === " No") { // Verifica si la respuesta indica que la imagen no es oxena
+<<<<<<< HEAD
           this.toastr.success('Imagen permitida');
           console.log(v.result);
           
         } else  {
           this.toastr.error('Imagen no permitida'); // Muestra un mensaje de error si la imagen es oxena
+=======
+          this.toastr.success('Imagen Permitida, no es oxena');
+          console.log(v.result);
+          
+        } else  {
+          this.toastr.error('Imagen no permitida, es oxena'); // Muestra un mensaje de error si la imagen es oxena
+>>>>>>> 78ae6c55287685d6e09388cafb4fc06c4e5aa960
           console.log(v.result);
         }
       },
@@ -122,8 +142,8 @@ export class CreateProductComponent implements OnInit {
         }
       },
     });
-
   }
+  
 
   // capturarFile(event) {
   //   const archivoCapturado = event.target.files[0];

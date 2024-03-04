@@ -5,7 +5,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { NavComponent } from './componentes/nav/nav.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ProductosComponent } from './componentes/productos/productos.component';
@@ -24,6 +23,11 @@ import { HeaderComponent } from './componentes/header/header.component';
 import { RegistroUsuarioComponent } from './componentes/registro/registro-usuario/registro-usuario.component';
 import { RegistroNegocioComponent } from './componentes/registro/registro-negocio/registro-negocio.component';
 import { CreateProductComponent } from './componentes/create-product/create-product.component';
+import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
+import { MessageBoxComponent } from './componentes/chatbot/message-box/message-box.component';
+import { MatDialog } from '@angular/material/dialog';
+import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
+import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-carrito/producto-carrito.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +47,12 @@ import { CreateProductComponent } from './componentes/create-product/create-prod
     RegistroUsuarioComponent,
     RegistroNegocioComponent,
     CreateProductComponent,
+    ChatbotComponent,
+    MessageBoxComponent,
+    ProductoCarritoComponent,
   ],
   imports: [
+    NgxSpinnerModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
