@@ -21,7 +21,7 @@ export class UserService {
     public router: Router,
     private http: HttpClient 
     ) {
-    this.endpoint = enviroment.endpoint;
+    this.endpoint = enviroment.chat_endpoint;
     this.apiUrl = 'user';
   }
 

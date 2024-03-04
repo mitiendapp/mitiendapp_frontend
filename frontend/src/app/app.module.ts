@@ -28,6 +28,11 @@ import { MessageBoxComponent } from './componentes/chatbot/message-box/message-b
 import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
 import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-carrito/producto-carrito.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter(){
+  return localStorage.getItem('token')
+}
 
 @NgModule({
   declarations: [
@@ -66,7 +71,12 @@ import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
-    NgbModule
+    NgbModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+      }
+    })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -75,4 +85,7 @@ import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-
   }],
   bootstrap: [AppComponent]
 })
+
+
+
 export class AppModule { }

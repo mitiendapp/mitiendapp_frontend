@@ -15,78 +15,99 @@ import { HeaderService } from 'src/app/services/header.service';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
-export class InicioComponent implements OnInit{
+export class InicioComponent implements OnInit {
   formAccount: FormGroup;
   formPassword: FormGroup;
   loading: boolean = false;
   account: any;
-  validAccount= new BehaviorSubject<Boolean>(false);
+  validAccount = new BehaviorSubject<Boolean>(false);
 
-constructor(
-  private formBuilder: FormBuilder,
-  public router: Router,
-  public userService:UserService,
-  private toastr: ToastrService,
-  private _userService: UserService,
-  private _messageService:MessageService,
-  private headerService:HeaderService
-){ 
-}
+  constructor(
+    private formBuilder: FormBuilder,
+    public router: Router,
+    public userService: UserService,
+    private toastr: ToastrService,
+    private _userService: UserService,
+    private _messageService: MessageService,
+    private headerService: HeaderService
+  ) {
+  }
 
-ngOnInit(): void {
+  ngOnInit(): void {
     this.formAccount = this.formBuilder.group({
       email: ['', Validators.required]
     })
     this.formPassword = this.formBuilder.group({
       password: ['', Validators.required]
     })
-}
+  }
 
-submitAccount(){
-  const {email} = this.formAccount.value
-  console.log(email);
-  
-  if (!this.formAccount.valid) {
-    this.toastr.error("Debe ingresar su correo o telefono", "Error")
-    return;
-  }
-  this.account = email;
-  this.validAccount.next(true);
-  return;
-}
+  submitAccount() {
+    const { email } = this.formAccount.value
+    console.log(email);
 
-submitPassword(){
-  const {password}  = this.formPassword.value;
-  if (!this.formPassword.valid) {
-    this.toastr.error("Debe ingresar la contraseña", "Error")
-    return;
-  }
-  
-  const user: User = {
-    email: this.account,
-    password: password
-  }
-  
-  this._userService.logIn(user).subscribe({
-    next: (data: any) => {
-      console.log("llega");
-      this.router.navigate(['']);
-      localStorage.setItem('token', data.token);
-      this._messageService.msgSuccess(data);
-      this._userService.isLoggedIn = true;
-    },
-    error: (e: HttpErrorResponse) => {
-      this._messageService.msgError(e);
-      this.loading = false;
+    if (!this.formAccount.valid) {
+      this.toastr.error("Debe ingresar su correo o telefono", "Error")
+      return;
     }
-  })
-  this.userService.isLoggingIn.next(true);
-  this.userService.openSession(user);
-}
+    this.account = email;
+    this.validAccount.next(true);
+    return;
+  }
 
-isValidAccount(): Observable<Boolean>{
-  return this.validAccount.asObservable();  
-}
+  submitPassword() {
+    const { password } = this.formPassword.value;
+    if (!this.formPassword.valid) {
+      this.toastr.error("Debe ingresar la contraseña", "Error")
+      return;
+    }
+
+    const user: User = {
+      email: this.account,
+      password: password
+    }
+
+    this._userService.logIn(user).subscribe({
+      next: (data: any) => {
+        const {UserInfo} = this.decodeJWT(data.token);
+        let caracteres = UserInfo.roles;
+        let texto = "";
+        for (let i = 0; i < caracteres.length; i++) {
+          // Si el caracter es una letra, agrégalo a la cadena 'texto'
+          if (caracteres[i].match(/[a-zA-Z]/)) {
+              texto += caracteres[i];
+          }
+      }
+        if(texto == "Company"){
+          this.router.navigate(['perfilCompany']);
+        }else{
+          this.router.navigate(['']);
+        }
+        localStorage.setItem('token', data.token);
+        this._messageService.msgSuccess(data);
+        this._userService.isLoggedIn = true;
+      },
+      error: (e: HttpErrorResponse) => {
+        this._messageService.msgError(e);
+        this.loading = false;
+      }
+    })
+    this.userService.isLoggingIn.next(true);
+    this.userService.openSession(user);
+  }
+
+  isValidAccount(): Observable<Boolean> {
+    return this.validAccount.asObservable();
+  }
+
+  decodeJWT(token:string) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  }
 
 }
 
