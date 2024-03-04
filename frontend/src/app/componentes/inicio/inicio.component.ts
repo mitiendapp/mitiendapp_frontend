@@ -41,6 +41,10 @@ export class InicioComponent implements OnInit {
       password: ['', Validators.required]
     })
   }
+  
+  mostrarDetalle(email: string) {
+    this.router.navigate(['/perfilCompany',email]);
+  }
 
   submitAccount() {
     const { email } = this.formAccount.value
