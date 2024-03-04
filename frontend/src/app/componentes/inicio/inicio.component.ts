@@ -43,7 +43,7 @@ export class InicioComponent implements OnInit {
   }
   
   mostrarDetalle(email: string) {
-    this.router.navigate(['/perfilCompany',email]);
+    this.router.navigate(['/crearproducto']);
   }
 
   submitAccount() {

@@ -15,8 +15,13 @@ export class AppComponent {
     public http: HttpClient,
     public userService:UserService
   ){   
+    if(localStorage.getItem('token')){
+      this.userService.isLoggingIn.next(true);
+    }else{
+      this.userService.isLoggingIn.next(false);
+    }
   }
   title = 'loginRegistroProyecto';
-  login = false;  
+  login = false;
 }
 
