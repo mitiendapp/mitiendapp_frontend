@@ -1,11 +1,16 @@
-<div id="container" class="productos w-full h-full overflow-auto">
+<!-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" (click)="addProduct(product)">
+  Agregar
+</button> -->
+
+<!-- hola -->
+<div id="container" class="productos w-full h-full  overflow-auto">
   <div class="w-full mx-3 my-1 flex justify-around gap-4 h-fit md:w-1/4" 
     *ngFor="let product of filteredProducts">
     <!-- Utiliza filteredProducts en lugar de listProducts -->
 
     <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer">
       <div class="size-40">
-        <!-- <img [src]="product.image" class="object-contain size-40" alt="... " (click)="mostrarDetalle(product.id)"> -->
+        <img [src]="product.image" class="object-contain size-40" alt="... " (click)="mostrarDetalle(product.id)">
       </div>
       <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
         <div class="card-body">
@@ -14,9 +19,9 @@
         </div>
         <div class="text-sm"> $ {{product.price | currency}}</div>
         <div class="card-body flex justify-between items-end relative">
-          <!-- <button class="btn btn-primary btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button> -->
-          <button class="btn btn-sm rounded w-1/6 absolute right-0" (click)="addToCart(product)">
-            <img src="../../../assets/icons/shopping-cart-add-svgrepo-com.svg" alt="">
+          <button  class="btn btn-primary btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button>
+          <button class="btn btn-sm rounded w-1/6 absolute right-0 cursor-pointer" (click)="addToCart(product)">
+            <img [src]="cartIcon" alt="">
           </button>
         </div>
       </div>

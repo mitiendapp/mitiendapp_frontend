@@ -8,9 +8,9 @@ import { DetalleComponent } from './componentes/detalle/detalle.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
-import {RegistroNegocioComponent} from './componentes/registro/registro-negocio/registro-negocio.component';
-import {PerfilCompanyComponent} from './componentes/perfil-company/perfil-company.component'
-import {CreateProductComponent} from './componentes/create-product/create-product.component'
+import { RegistroNegocioComponent } from './componentes/registro/registro-negocio/registro-negocio.component';
+import { PerfilCompanyComponent } from './componentes/perfil-company/perfil-company.component'
+import { CreateProductComponent } from './componentes/create-product/create-product.component'
 import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 
 const routes: Routes = [
@@ -28,16 +28,18 @@ const routes: Routes = [
     path: 'signin',
     component: RegistroComponent,
   },
-  { path: 'products',
-   component: ProductosComponent, canActivate: [AuthGuard] },
   {
-    path:'carritoCompra',
-    component:CarritoCompraComponent,
+    path: 'products',
+    component: ProductosComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'carritoCompra',
+    component: CarritoCompraComponent,
   },
 
   {
-    path:'registronegocio',
-    component:RegistroNegocioComponent,
+    path: 'registronegocio',
+    component: RegistroNegocioComponent,
   },
   {
     path: 'perfilusuario',
@@ -53,7 +55,11 @@ const routes: Routes = [
     component: ChatbotComponent,
   },
   {
-    path: 'detalle/:id', component: DetalleComponent
+    path: 'detalle/:id',
+    component: DetalleComponent
+  // }, {
+  //   path: 'perfilCompany',
+  //   component: PerfilCompanyComponent
   }, {
     path: 'perfilCompany',
     component: PerfilCompanyComponent
@@ -61,7 +67,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
-  },
+  }
 ];
 
 @NgModule({

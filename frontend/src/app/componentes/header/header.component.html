@@ -9,31 +9,29 @@
       </a>
     </div>
     <div class="inputWrapper relative w-3/5">
-      <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" 
-       id="inputHeader" 
-       type="search"
-       placeholder="Busca productos, tiendas y más..."
-       (input)="actualizarFiltro($event)">
+      <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" id="inputHeader"
+        type="search" placeholder="Busca productos, tiendas y más..." (input)="actualizarFiltro($event)">
 
       <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
     </div>
-    <div *ngIf="!(userService.isUserActive() | async)" class="hidden sm:block flex justify-around"
-      id="signup_signin">
+    <div *ngIf="!(userService.isUserActive() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       <a class="mx-4" href="login">Inicio</a>
       <a class="mx-4" href="signin">Registro</a>
     </div>
-    <div *ngIf="(userService.isUserActive() | async)" class="hidden sm:block flex justify-around"
-      id="signup_signin">
+    <div *ngIf="(userService.isUserActive() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       {{userService.user.value.email}}
-      <button (click)="userService.closeSession()" >Salir</button>
+        <button class="mx-2 rounded-md hover:text-lg" (click)="userService.closeSession()">Salir</button>
     </div>
     <nav class="navbar">
       <div class="navbar-cart static" (click)="onToggleCart()">
         <div class="items bg[#0d6efd] text-xs absolute -top-1 -right-3" *ngIf="(myCart$ | async)?.length">
           <p>{{ (myCart$ | async)?.length }}</p>
         </div>
-        <i class="fa-solid fa-cart-shopping"></i>
-        <img class="size-4" src="../../../assets/icons/shopping_cart_counting.svg" alt="">
+        <div>
+          <div *ngIf="(cartService.itemAdded() | async)"
+            class="absolute -right-2 top-0 bg-[#128aaf] rounded-full size-3">.</div>
+          <i (click)="cartService.itemAdd.next(false)" class="fa-solid fa-cart-shopping fa-lg cursor-pointer"></i>
+        </div>
       </div>
     </nav>
   </div>
