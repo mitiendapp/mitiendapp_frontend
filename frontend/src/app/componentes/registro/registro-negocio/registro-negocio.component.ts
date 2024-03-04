@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MessageService } from 'src/app/services/message.service';
 import { Toast, ToastrService } from 'ngx-toastr';
@@ -6,6 +7,7 @@ import { CompanyService } from 'src/app/services/company.service';
 import { Company } from 'src/app/interfaces/company';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HeaderService } from 'src/app/services/header.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -15,17 +17,38 @@ import { HeaderService } from 'src/app/services/header.service';
 })
 export class RegistroNegocioComponent implements OnInit {
   form: FormGroup;
+  title = 'envioCorreo';
   
 
   constructor(
+    private httpclien:HttpClient,
     private formBuilder: FormBuilder,
     private headerService:HeaderService,
     private toastr: ToastrService,
     private _companyService:CompanyService,
     private _messageService:MessageService,
+    private spinner : NgxSpinnerService
   
     ) { }
-
+    enviocorreo(){
+      let params ={
+        email:this.form.value.email,
+      }
+      console.log(params);
+      
+      this.httpclien.post('https://pruebabackend1.onrender.com/api/envioCompany',params).subscribe(resp=>{
+        console.log(resp);
+        
+      })
+    
+    }
+    
+    openSpinner(){
+      this.spinner.show();
+      setTimeout(()=>{
+        this.spinner.hide();
+      },3000)
+    }
   ngOnInit(): void {
     this.form = this.formBuilder.group({
 

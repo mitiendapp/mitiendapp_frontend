@@ -15,21 +15,29 @@ export class UserService {
   public isLoggedIn = false;
   public isLoggingIn = new BehaviorSubject<Boolean>(false);
   public user = new BehaviorSubject<User>(null);
+  public currentUser?:User = null;
 
   constructor(
     public router: Router,
-    private http: HttpClient
+    private http: HttpClient 
     ) {
     this.endpoint = enviroment.endpoint;
     this.apiUrl = 'user';
   }
 
-  isLoginComponentActive(): Observable<Boolean>{
+  openSession(user: any){
+    this.user.next(user);
+  }
+  closeSession(){
+    localStorage.removeItem('token');
+    this.user.next(null);
+  }
+  isUserActive(): Observable<Boolean>{
     return this.isLoggingIn.asObservable();
   }
 
   signIn(user: User): Observable<any> {
-    return this.http.post(`${this.endpoint}${this.apiUrl}/register`, user)
+    return this.http.post(`${this.endpoint}${this.apiUrl}/create`, user)
   }
   logIn(user: User): Observable<String> {
     return this.http.post<string>(`${this.endpoint}${this.apiUrl}/login`, user)

@@ -19,7 +19,7 @@ export class CompanyService {
     public router: Router,
     private http: HttpClient) { 
       this.endpoint = enviroment.endpoint;
-      this.apiUrl = 'companyRegister';}
+      this.apiUrl = 'company/create';}
 
   signIn(company: Company): Observable<any> {
     return this.http.post(`${this.endpoint}${this.apiUrl}`, company);

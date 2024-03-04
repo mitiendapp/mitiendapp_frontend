@@ -11,6 +11,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import {RegistroNegocioComponent} from './componentes/registro/registro-negocio/registro-negocio.component';
 import {PerfilCompanyComponent} from './componentes/perfil-company/perfil-company.component'
 import {CreateProductComponent} from './componentes/create-product/create-product.component'
+import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 
 const routes: Routes = [
   {
@@ -40,25 +41,27 @@ const routes: Routes = [
   },
   {
     path: 'perfilusuario',
-    component: PerfilUsuarioComponent,
+    component: PerfilUsuarioComponent,canActivate: [AuthGuard]
   },
 
   {
     path: 'crearproducto',
-    component: CreateProductComponent,
+    component: CreateProductComponent, canActivate: [AuthGuard]
   },
-  
-  
+  {
+    path: 'chatbot',
+    component: ChatbotComponent,
+  },
   {
     path: 'detalle/:id', component: DetalleComponent
   }, {
+    path: 'perfilCompany',
+    component: PerfilCompanyComponent
+  },{
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
-  },{
-    path: 'perfilCompany',
-    component: PerfilCompanyComponent
-  }
+  },
 ];
 
 @NgModule({
