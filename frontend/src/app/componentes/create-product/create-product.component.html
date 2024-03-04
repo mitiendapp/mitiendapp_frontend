@@ -2,7 +2,7 @@
    
     <div class="form w-full md:w-[33%] flex flex-col  items-center py-3">
         <h1 class="">Artículo en venta</h1>
-        <form action="" class="flex flex-col w-full p-4" [formGroup]="form" (ngSubmit)="onCreateProduct()">
+        <form  action = 'http://localhost:3000/api/product/create' class="flex flex-col w-full p-4" [formGroup]="form" (ngSubmit)="onCreateProduct()" enctype="multipart/form-data">
 
       <a class="border-3 py-20 px-[38%] cursor-pointer justify-center items-center flex flex-col"
       
@@ -14,7 +14,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
-            <input id="file"  (change)="capturarFile($event)" formControlName="image" type="file" >
+            <input  type="file" id="file"    (change)="onFileSelected($event)" formControlName="image">
             <!-- <p class="text-center">Subir imágenes</p> -->
         </a> 
 

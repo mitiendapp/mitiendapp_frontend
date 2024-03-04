@@ -23,8 +23,14 @@ export class CreateProductComponent implements OnInit {
   form: FormGroup;
     public  previsualizacion :string;
   public archivos: any = [];
+<<<<<<< HEAD
+  imageFile: any;
+  imagePreview: any;
+  isValidImage: boolean = true;
+=======
   private url_image_ia:string;
 
+>>>>>>> 78ae6c55287685d6e09388cafb4fc06c4e5aa960
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,38 +56,57 @@ export class CreateProductComponent implements OnInit {
     });
   }
 
-  onCreateProduct() {
-    const { name, description, price, image, stock, state } = this.form.value;
-    if (!this.form.valid) {
-      this.toastr.error('Todos los campos son obligatorios', 'Error');
-      return;
-    }
 
+
+  onCreateProduct() {
+    const { name, description, price, stock, state } = this.form.value;
+    // const imageFile = this.form.get('image').value;
+  
+  
+    // if (!this.form.valid || !imageFile) {
+    //   this.toastr.error('Todos los campos son obligatorios', 'Error');
+    //   return;
+    // }
+
+  
     const product: Product = {
       name: name,
       description: description,
       price: price,
-      image: image,
+      image: '', // Dejar este campo vacío porque el archivo de imagen se enviará por FormData
       stock: stock,
       state: state,
     };
+<<<<<<< HEAD
+  
+    const formData = new FormData();
+     formData.append('image', this.imageFile);
+  
+    // Aquí puedes agregar otros campos del producto si es necesario
+    formData.append('name', this.form.value.name);
+    formData.append('description',this.form.value.description);
+    formData.append('price', this.form.value.price);
+    formData.append('stock', this.form.value.stock);
+    formData.append('state', this.form.value.state);
+  
+    this._productService.create(formData).subscribe({
+=======
      
     this._productService.create(product).subscribe({
+>>>>>>> 78ae6c55287685d6e09388cafb4fc06c4e5aa960
       next: (v) => {
-        this.toastr.success('Producto cargadoExitosamente');
-        // const main = document.getElementById('main');
-        // main.classList.remove("right-panel-active");
+        this.toastr.success('Producto cargado exitosamente');
       },
       error: (e: HttpErrorResponse) => {
         if (e) {
           this._messageService.msgError(e);
         } else {
-          console.error('Error desconocido al intentar Cargar el producto');
+          console.error('Error desconocido al intentar cargar el producto');
         }
       },
     });
   }
-
+  
 
   // capturarImagen(image){
    
@@ -93,11 +118,19 @@ export class CreateProductComponent implements OnInit {
     this._iaimage.postIaImage(imageObject).subscribe({
       next: (v) => {
         if (v.result === " No") { // Verifica si la respuesta indica que la imagen no es oxena
+<<<<<<< HEAD
+          this.toastr.success('Imagen permitida');
+          console.log(v.result);
+          
+        } else  {
+          this.toastr.error('Imagen no permitida'); // Muestra un mensaje de error si la imagen es oxena
+=======
           this.toastr.success('Imagen Permitida, no es oxena');
           console.log(v.result);
           
         } else  {
           this.toastr.error('Imagen no permitida, es oxena'); // Muestra un mensaje de error si la imagen es oxena
+>>>>>>> 78ae6c55287685d6e09388cafb4fc06c4e5aa960
           console.log(v.result);
         }
       },
@@ -138,24 +171,53 @@ export class CreateProductComponent implements OnInit {
   //   });
   // }
 
-  capturarFile(event) {
-    const archivoCapturado = event.target.files[0];
-    this.extraerBase64(archivoCapturado).then((imagen: any) => {
-      this.previsualizacion = imagen.base;
-      const url_pura = imagen.base.split(',')[1];
-      console.log(imagen.base.split(',')[1]);
-  
-      const imageObject = {
-        imagePath:url_pura // Aquí asignamos el contenido base64 como imagePath
+  onFileSelected(event: any) {
+    this.imageFile = event.target.files[0];
+    if (this.imageFile.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imagePreview = e.target.result;
       };
-      this.analizarImagen(imageObject)
+      reader.readAsDataURL(this.imageFile);
+      this.isValidImage = true;
+    } else {
+      this.isValidImage = false;
+    }
+//  console.log()
+this.extraerBase64( this.imageFile).then((imagen: any) => {
+  this.previsualizacion = imagen.base;
+  const url_pura = imagen.base.split(',')[1];
+  console.log(imagen.base.split(',')[1]);
+
+  const imageObject = {
+    imagePath:url_pura // Aquí asignamos el contenido base64 como imagePath
+  };
+  this.analizarImagen(imageObject)
+
+
+
+}).catch((error) => {
+  console.error('Error al extraer la base64 de la imagen:', error);
+});
+  }
+  // capturarFile(event) {
+  //   const archivoCapturado = event.target.files[0];
+  //   this.extraerBase64(archivoCapturado).then((imagen: any) => {
+  //     this.previsualizacion = imagen.base;
+  //     const url_pura = imagen.base.split(',')[1];
+  //     console.log(imagen.base.split(',')[1]);
+  
+  //     const imageObject = {
+  //       imagePath:url_pura // Aquí asignamos el contenido base64 como imagePath
+  //     };
+  //     this.analizarImagen(imageObject)
 
 
  
-    }).catch((error) => {
-      console.error('Error al extraer la base64 de la imagen:', error);
-    });
-  }
+  //   }).catch((error) => {
+  //     console.error('Error al extraer la base64 de la imagen:', error);
+  //   });
+  // }
   
   
   // capturarFile(event) {
@@ -231,7 +293,7 @@ export class CreateProductComponent implements OnInit {
   //       reject(error);
   //     }
   //   });
-  // };
+
   extraerBase64 = async ($event: any) =>
   new Promise((resolve, reject) => {
     try {
@@ -252,5 +314,7 @@ export class CreateProductComponent implements OnInit {
     }
   });
 
-  
-}
+
+  };
+
+

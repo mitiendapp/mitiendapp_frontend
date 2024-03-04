@@ -24,8 +24,8 @@ export class ProductService {
   getProductById(id:number):Observable<any>{//listar productos por id
     return this.http.get<any>(`${this.endpoint}product/id?id=${id}`);
   }
-  create(product:Product):Observable<any>{//crear productos
-    return this.http.post<any>(`${this.endpoint}${this.apiUrl}${this.create1}`, product)
+  create(productData: FormData):Observable<any>{//crear productos
+    return this.http.post<any>(`${this.endpoint}${this.apiUrl}${this.create1}`, productData)
   }
 
   deleteProdcuts(product:Product):Observable<void>{
