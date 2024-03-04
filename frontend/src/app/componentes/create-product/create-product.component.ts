@@ -23,14 +23,11 @@ export class CreateProductComponent implements OnInit {
   form: FormGroup;
     public  previsualizacion :string;
   public archivos: any = [];
-<<<<<<< HEAD
   imageFile: any;
   imagePreview: any;
   isValidImage: boolean = true;
-=======
   private url_image_ia:string;
 
->>>>>>> 78ae6c55287685d6e09388cafb4fc06c4e5aa960
 
   constructor(
     private formBuilder: FormBuilder,
@@ -77,7 +74,6 @@ export class CreateProductComponent implements OnInit {
       stock: stock,
       state: state,
     };
-<<<<<<< HEAD
   
     const formData = new FormData();
      formData.append('image', this.imageFile);
@@ -90,10 +86,6 @@ export class CreateProductComponent implements OnInit {
     formData.append('state', this.form.value.state);
   
     this._productService.create(formData).subscribe({
-=======
-     
-    this._productService.create(product).subscribe({
->>>>>>> 78ae6c55287685d6e09388cafb4fc06c4e5aa960
       next: (v) => {
         this.toastr.success('Producto cargado exitosamente');
       },
@@ -118,19 +110,11 @@ export class CreateProductComponent implements OnInit {
     this._iaimage.postIaImage(imageObject).subscribe({
       next: (v) => {
         if (v.result === " No") { // Verifica si la respuesta indica que la imagen no es oxena
-<<<<<<< HEAD
           this.toastr.success('Imagen permitida');
           console.log(v.result);
           
         } else  {
           this.toastr.error('Imagen no permitida'); // Muestra un mensaje de error si la imagen es oxena
-=======
-          this.toastr.success('Imagen Permitida, no es oxena');
-          console.log(v.result);
-          
-        } else  {
-          this.toastr.error('Imagen no permitida, es oxena'); // Muestra un mensaje de error si la imagen es oxena
->>>>>>> 78ae6c55287685d6e09388cafb4fc06c4e5aa960
           console.log(v.result);
         }
       },

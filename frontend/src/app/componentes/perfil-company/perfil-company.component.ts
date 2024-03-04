@@ -22,19 +22,22 @@ export class PerfilCompanyComponent implements OnInit{
 
   getCompanys () {
     this.perfilCompanyServices.getCompany().subscribe((data: any) => {
-      this.company = data.data;
-      console.log(data)
+      this.company = data.companies[0];
+      console.log(this.company)
       
     })
 
   }
   getProducts(){
     this.productservice.getProducts().subscribe((data:any)=>{
-      this.product=data.data;
+      this.product=data.data[0];
+            console.log(this.product)
+
     })
   }
   ngOnInit(): void {
     this.getCompanys();
+    this.getProducts();
   }
 
   
