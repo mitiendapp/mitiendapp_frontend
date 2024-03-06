@@ -43,12 +43,12 @@ const routes: Routes = [
   },
   {
     path: 'perfilusuario',
-    component: PerfilUsuarioComponent,
+    component: PerfilUsuarioComponent,canActivate: [AuthGuard]
   },
 
   {
     path: 'crearproducto',
-    component: CreateProductComponent,
+    component: CreateProductComponent, canActivate: [AuthGuard]
   },
   {
     path: 'chatbot',
@@ -57,10 +57,13 @@ const routes: Routes = [
   {
     path: 'detalle/:id',
     component: DetalleComponent
+  // }, {
+  //   path: 'perfilCompany',
+  //   component: PerfilCompanyComponent
   }, {
     path: 'perfilCompany/:document',
     component: PerfilCompanyComponent
-  }, {
+  },{
     path: '**',
     redirectTo: '',
     pathMatch: 'full'

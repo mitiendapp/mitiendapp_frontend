@@ -11,6 +11,7 @@ export class ProductService {
   private endpoint:string;
   private apiUrl:string;
   private create1:string;
+  //private create1:string;
 
   constructor(private http:HttpClient) {
     this.endpoint= enviroment.endpoint;

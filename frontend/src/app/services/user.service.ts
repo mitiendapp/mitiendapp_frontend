@@ -30,8 +30,10 @@ export class UserService {
   }
   closeSession(){
     localStorage.removeItem('token');
+    this.isLoggingIn.next(false);
     this.user.next(null);
-  }
+    this.router.navigate([''])
+  } 
   isUserActive(): Observable<Boolean>{
     return this.isLoggingIn.asObservable();
   }

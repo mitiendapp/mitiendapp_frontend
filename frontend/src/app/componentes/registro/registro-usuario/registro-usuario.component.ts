@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -13,12 +13,14 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './registro-usuario.component.html',
   styleUrls: ['./registro-usuario.component.css']
 })
-export class RegistroUsuarioComponent implements OnInit{
+export class RegistroUsuarioComponent implements OnInit {
   form: FormGroup;
+  title = 'envioCorreo';
 
   constructor(
+    private httpclien:HttpClient,
     private formBuilder: FormBuilder,
-    private headerService:HeaderService,
+    private headerService: HeaderService,
     private toastr: ToastrService,
     private _userService:UserService,
     private _messageService:MessageService,
@@ -26,6 +28,18 @@ export class RegistroUsuarioComponent implements OnInit{
   ){
      
   }
+enviocorreo(){
+  let params ={
+    email:this.form.value.email,
+  }
+  console.log(params);
+  
+  this.httpclien.post('https://pruebabackend1.onrender.com/api/envio',params).subscribe(resp=>{
+    console.log(resp);
+    
+  })
+
+}
 
   openSpinner(){
     this.spinner.show();
@@ -35,6 +49,7 @@ export class RegistroUsuarioComponent implements OnInit{
   }
 
   ngOnInit(): void {
+<<<<<<< HEAD
       this.form = this.formBuilder.group({
         firstName: ['', Validators.required],
         email: ['', Validators.required],
@@ -42,6 +57,15 @@ export class RegistroUsuarioComponent implements OnInit{
         confirmPassword: ['', Validators.required],
       })
   
+=======
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    })
+
+>>>>>>> 193824c5eb96131bf1ca8fcee11bb0af60d2e6d9
   }
 
   onRegister() {
@@ -60,7 +84,7 @@ export class RegistroUsuarioComponent implements OnInit{
       firstName:firstName,
     }
     console.log(user);
-    
+
     // this.loading = true;p
     this._userService.signIn(user).subscribe({
       next: (v) => {

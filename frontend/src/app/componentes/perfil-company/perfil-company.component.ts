@@ -19,7 +19,6 @@ export class PerfilCompanyComponent implements OnInit{
   token:string;
   email:string;
   constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService,private routeActivate: ActivatedRoute) {
-
   }
   
 

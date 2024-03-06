@@ -18,9 +18,15 @@
       <a class="mx-4" href="login">Inicio</a>
       <a class="mx-4" href="signin">Registro</a>
     </div>
+<<<<<<< HEAD
     <div *ngIf="(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       {{ auth.getUserFirstName()}}
       <button (click)="userService.closeSession()">Salir</button>
+=======
+    <div *ngIf="(userService.isUserActive() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
+      {{userService.user.value.email}}
+        <button class="mx-2 rounded-md hover:text-lg" (click)="userService.closeSession()">Salir</button>
+>>>>>>> 193824c5eb96131bf1ca8fcee11bb0af60d2e6d9
     </div>
     <nav class="navbar">
       <div class="navbar-cart static" (click)="onToggleCart()">

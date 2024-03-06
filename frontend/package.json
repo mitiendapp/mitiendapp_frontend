@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "^14.2.0",
     "@popperjs/core": "^2.11.6",
+    "angular-jwt": "^0.1.11",
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
     "canvas": "^2.11.2",
