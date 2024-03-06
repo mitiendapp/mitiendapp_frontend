@@ -1,7 +1,14 @@
 <!-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" (click)="addProduct(product)">
   Agregar
 </button> -->
-
+<div>
+         
+  <h2 *ngIf="auth.isCompany()| async">Hi Company</h2>
+  <h2 *ngIf="auth.isClient()| async">Hi Client</h2>
+  <h2 *ngIf="auth.isAdmin()| async">Hi Jefe</h2>
+  <h2 *ngIf="!(auth.isLoggedIn()| async)">HOla humano</h2>
+  <button *ngIf="auth.isLoggedIn()|async"  (click)="auth.logout()">salir</button>
+  </div>
 <!-- hola -->
 <div id="container" class="productos w-full h-full  overflow-auto">
   <div class="w-full mx-3 my-1 flex justify-around gap-4 h-fit md:w-1/4" 

@@ -6,6 +6,7 @@ import { HeaderService } from 'src/app/services/header.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { FiltroProductosService } from 'src/app/services/FiltroProductos.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -57,13 +58,14 @@ throw new Error('Method not implemented.');
 
   viewCart: boolean = false;
   myCart$ = this.carService.myCart$;
-
+  userEmail: string = '';
   constructor(
     public headerService: HeaderService,
     private router: Router, private carService: CartService,
     public userService: UserService,
     private filterProductService: FiltroProductosService,
-    public cartService:CartService
+    public cartService:CartService,
+    public auth: AuthService
   ) {
 
   }
@@ -81,7 +83,12 @@ throw new Error('Method not implemented.');
   ngOnInit(): void {
     if ((this.router.url == '/')) {
       //this.activeCanBack();
+
+      
     }
+  
+
+    
   }
 
   onToggleCart() {

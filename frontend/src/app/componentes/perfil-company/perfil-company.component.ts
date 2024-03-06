@@ -23,20 +23,20 @@ export class PerfilCompanyComponent implements OnInit{
   }
   
 
-  getCompanys(email:string) {
-    this.token = localStorage.getItem('token')
-    const {UserInfo} = this.decodeJWT(this.token);
-     this.email = UserInfo.email;
-    console.log(this.email);
+  // getCompanys(email:string) {
+  //   this.token = localStorage.getItem('token')
+  //   const {UserInfo} = this.decodeJWT(this.token);
+  //    this.email = UserInfo.email;
+  //   console.log(this.email);
    
 
-    this.perfilCompanyServices.getCompany(this.email).subscribe((data: any) => {
-      this.company.push(data.company)
-      console.log(this.company)
-    })
+  //   this.perfilCompanyServices.getCompany(this.email).subscribe((data: any) => {
+  //     this.company.push(data.company)
+  //     console.log(this.company)
+  //   })
  
 
-  }
+  // }
 
   
   getProducts(){
@@ -46,7 +46,7 @@ export class PerfilCompanyComponent implements OnInit{
   }
   ngOnInit(): void {
     this.idCompany = this.routeActivate.snapshot.params["email"];
-    this.getCompanys(this.idCompany);
+    // this.getCompanys(this.idCompany);
   }
 
   decodeJWT(token:string) {

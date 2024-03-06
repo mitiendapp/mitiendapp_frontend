@@ -24,7 +24,7 @@ export class RegistroUsuarioComponent implements OnInit{
     private _messageService:MessageService,
     private spinner : NgxSpinnerService
   ){
-
+     
   }
 
   openSpinner(){
@@ -36,7 +36,7 @@ export class RegistroUsuarioComponent implements OnInit{
 
   ngOnInit(): void {
       this.form = this.formBuilder.group({
-        name: ['', Validators.required],
+        firstName: ['', Validators.required],
         email: ['', Validators.required],
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
@@ -45,7 +45,7 @@ export class RegistroUsuarioComponent implements OnInit{
   }
 
   onRegister() {
-    const { name, email, password, confirmPassword } = this.form.value;
+    const { firstName, email, password, confirmPassword } = this.form.value;
     if (!this.form.valid) {
       this.toastr.error("Todos los campos son obligatorios", "Error");
       return;
@@ -57,6 +57,7 @@ export class RegistroUsuarioComponent implements OnInit{
     const user: User = {
       email: email,
       password: password,
+      firstName:firstName,
     }
     console.log(user);
     

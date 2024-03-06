@@ -8,6 +8,7 @@ import { MessageService } from 'src/app/services/message.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class InicioComponent implements OnInit {
     private toastr: ToastrService,
     private _userService: UserService,
     private _messageService: MessageService,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private auth: AuthService
   ) {
   }
 
@@ -42,9 +44,9 @@ export class InicioComponent implements OnInit {
     })
   }
   
-  mostrarDetalle(email: string) {
-    this.router.navigate(['/perfilCompany',email]);
-  }
+  // mostrarDetalle(email: string) {
+  //   this.router.navigate(['/perfilCompany',email]);
+  // }
 
   submitAccount() {
     const { email } = this.formAccount.value
@@ -73,19 +75,15 @@ export class InicioComponent implements OnInit {
 
     this._userService.logIn(user).subscribe({
       next: (data: any) => {
-        const {UserInfo} = this.decodeJWT(data.token);
-        let caracteres = UserInfo.roles;
-        let texto = "";
-        for (let i = 0; i < caracteres.length; i++) {
-          // Si el caracter es una letra, agrégalo a la cadena 'texto'
-          if (caracteres[i].match(/[a-zA-Z]/)) {
-              texto += caracteres[i];
-          }
-      }
-        if(texto == "Company"){
-          this.router.navigate(['perfilCompany']);
-        }else{
+      this.auth.login(data.token)
+          console.log(data)
+         console.log(this.auth.getRole() == "client");
+         
+        if(this.auth.getRole() == "client"){
+         
           this.router.navigate(['']);
+        }else{
+          this.router.navigate(['perfilCompany']);
         }
         localStorage.setItem('token', data.token);
         this._messageService.msgSuccess(data);
@@ -96,6 +94,18 @@ export class InicioComponent implements OnInit {
         this.loading = false;
       }
     })
+
+    //  this._userService.logIn(user).subscribe({
+    //   next: (data: any) => {
+      
+    //     console.log(data,"se envio  los data")
+      
+    //   },
+    //   error: (e: HttpErrorResponse) => {
+    //     this._messageService.msgError(e);
+    //     this.loading = false;
+    //   }
+    // })
     this.userService.isLoggingIn.next(true);
     this.userService.openSession(user);
   }

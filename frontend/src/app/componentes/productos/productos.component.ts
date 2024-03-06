@@ -5,6 +5,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { FiltroProductosService } from 'src/app/services/FiltroProductos.service';
 import { MessageService } from 'src/app/services/message.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-productos',
@@ -23,10 +25,16 @@ export class ProductosComponent implements OnInit {
     public _cartService: CartService,
     private route: ActivatedRoute,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public auth:AuthService
   ) {}
 
   ngOnInit(): void {
+    this.auth.isCompany().subscribe(value =>{
+
+         console.log(value);
+               
+    } )
     this.getProducts();
 
     // Suscribirse al servicio de filtro de productos para reaccionar a los cambios en el filtro
