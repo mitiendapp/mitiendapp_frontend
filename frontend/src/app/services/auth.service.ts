@@ -25,6 +25,10 @@ export class AuthService {
     this.checkAuth();
   }
 
+  perfilclient(){
+    this.client.next(true);
+    // this.mainActive.next(false)
+  }
   public getToken() {
     return localStorage.getItem('token')
   }
@@ -34,7 +38,7 @@ export class AuthService {
   }
 
   private loginRole() {
-    if (this.data.roles === 'company') {
+    if (this.data.roles === 'Company') {
       this.company.next(true);
     } else if (this.data.roles === 'client') {
       this.client.next(true);
@@ -44,7 +48,7 @@ export class AuthService {
   }
 
   private logoutRole() {
-    if (this.data.roles === 'company') {
+    if (this.data.roles === 'Company') {
       this.company.next(false);
     } else if (this.data.roles === 'client') {
       this.client.next(false);
@@ -102,7 +106,10 @@ export class AuthService {
     this.loginRole();
     console.log(token)
   }
+  registerUser(){
+    this.client.next(true);
 
+  }
   public isLoggedIn() {
     return this.isLoggin.asObservable();
   }

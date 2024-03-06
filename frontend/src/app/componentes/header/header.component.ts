@@ -79,7 +79,11 @@ throw new Error('Method not implemented.');
     }
   }
   
+  perfilusuarioheader(){
 
+    this.auth.perfilclient()
+  }
+ 
   ngOnInit(): void {
     if ((this.router.url == '/')) {
       //this.activeCanBack();

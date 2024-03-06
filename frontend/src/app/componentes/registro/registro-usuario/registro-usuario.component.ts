@@ -49,7 +49,6 @@ enviocorreo(){
   }
 
   ngOnInit(): void {
-<<<<<<< HEAD
       this.form = this.formBuilder.group({
         firstName: ['', Validators.required],
         email: ['', Validators.required],
@@ -57,15 +56,6 @@ enviocorreo(){
         confirmPassword: ['', Validators.required],
       })
   
-=======
-    this.form = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-    })
-
->>>>>>> 193824c5eb96131bf1ca8fcee11bb0af60d2e6d9
   }
 
   onRegister() {

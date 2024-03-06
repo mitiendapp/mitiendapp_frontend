@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-inicio',
@@ -31,10 +31,18 @@ export class InicioComponent implements OnInit {
     private _userService: UserService,
     private _messageService: MessageService,
     private headerService: HeaderService,
-    private auth: AuthService
+    private auth: AuthService,
+    private spinner : NgxSpinnerService
   ) {
   }
 
+  openSpinner(){
+    this.spinner.show();
+    setTimeout(()=>{
+      this.spinner.hide();
+    },3000)
+  }
+  
   ngOnInit(): void {
     this.formAccount = this.formBuilder.group({
       email: ['', Validators.required]
@@ -44,15 +52,9 @@ export class InicioComponent implements OnInit {
     })
   }
   
-<<<<<<< HEAD
   // mostrarDetalle(email: string) {
   //   this.router.navigate(['/perfilCompany',email]);
   // }
-=======
-  mostrarDetalle(email: string) {
-    this.router.navigate(['/crearproducto']);
-  }
->>>>>>> 193824c5eb96131bf1ca8fcee11bb0af60d2e6d9
 
   submitAccount() {
     const { email } = this.formAccount.value
@@ -81,29 +83,12 @@ export class InicioComponent implements OnInit {
 
     this._userService.logIn(user).subscribe({
       next: (data: any) => {
-<<<<<<< HEAD
       this.auth.login(data.token)
           console.log(data)
          console.log(this.auth.getRole() == "client");
          
         if(this.auth.getRole() == "client"){
          
-=======
-        const {UserInfo} = this.decodeJWT(data.token);
-        let caracteres = UserInfo.roles;
-        let texto = "";
-        for (let i = 0; i < caracteres.length; i++) {
-          // Si el caracter es una letra, agrégalo a la cadena 'texto'
-          if (caracteres[i].match(/[a-zA-Z]/)) {
-              texto += caracteres[i];
-          }
-      }
-      console.log(texto);
-        if(texto == "Company"){
-          this.router.navigate(['perfilCompany']);
-          console.log('hola llego')
-        }else{
->>>>>>> 193824c5eb96131bf1ca8fcee11bb0af60d2e6d9
           this.router.navigate(['']);
         }else{
           this.router.navigate(['perfilCompany']);

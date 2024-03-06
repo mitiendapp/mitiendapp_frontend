@@ -36,27 +36,6 @@
                 <p class="text-sm text-gray-600">{{detail.categoria}}Detalle del producto</p> <!--Product Details -->
                 <div class="text-lg font-semibold mt-2">Precio: $ {{detail.price}}</div> <!-- Price of the product -->
                 
-                <div class="flex items-center mt-4">
-                    <span class="text-lg mr-4">Talla:</span>
-                    <!-- Size options within a dropdown menu -->
-                    <select id="talla" name="talla" class="border border-gray-300 py-1 px-2">
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                    </select>
-                </div>
-
-                <div class="color-selector mt-4">
-                    <span for="color" class="mr-2">Color:</span> <!-- color label -->
-                    <!-- Color selection via drop-down menu -->
-                    <select id="color" name="color" class="border border-gray-300 py-1 px-2">
-                        <option value="red" data-color="red">Red</option>
-                        <option value="green" data-color="green">Green</option>
-                        <option value="blue" data-color="blue">Blue</option>
-                    </select>
-                </div>
-
                 <!-- "Buy" and "Add to favorites" buttons -->
                 <div class="flex mt-6">
                     <button class="add-to-cart-button bg-[#255BAD] text-white py-2 px-4 rounded-md mr-4" (click)="createOrder()" >Comprar</button>
