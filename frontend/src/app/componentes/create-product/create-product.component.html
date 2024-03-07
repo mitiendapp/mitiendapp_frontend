@@ -1,86 +1,106 @@
 <section class="flex h-auto pb-5">
-   
+
     <div class="form w-full md:w-[33%] flex flex-col  items-center py-3">
         <h1 class="">Artículo en venta</h1>
-        <form  action = 'http://localhost:3000/api/product/create' class="flex flex-col w-full p-4" [formGroup]="form" (ngSubmit)="onCreateProduct()" enctype="multipart/form-data">
+        <form action='http://localhost:3000/api/product/create' class="flex flex-col w-full p-4" [formGroup]="form"
+            (ngSubmit)="onCreateProduct()" enctype="multipart/form-data">
 
-      <a class="border-3 py-20 px-[38%] cursor-pointer justify-center items-center flex flex-col"
-      
-            onclick="document.getElementById('file').click">
-          
+            <a class="border-3 py-20 px-[38%] cursor-pointer justify-center items-center flex flex-col"
+                onclick="document.getElementById('file').click">
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                stroke="currentColor" class="w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
-            <input  type="file" id="file"    (change)="onFileSelected($event)" formControlName="image">
-            <!-- <p class="text-center">Subir imágenes</p> -->
-        </a> 
 
-    
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <input type="file" id="file" (change)="onFileSelected($event)" formControlName="image">
+                <!-- <p class="text-center">Subir imágenes</p> -->
+            </a>
+
+
             <label class="text-lg" for="title">Título</label>
-            <input id="title" formControlName="name" class="border-3 w-full p-2 outline-none" placeholder="Título" type="text">
+            <input id="title" formControlName="name" class="border-3 w-full p-2 outline-none" placeholder="Título"
+                type="text">
+
             <label class="text-lg" for="price">Precio</label>
-            <input id="price"  formControlName="price"class="border-3 w-full p-2 outline-none" placeholder="Precio" type="number">
+            <input id="price" formControlName="price" class="border-3 w-full p-2 outline-none" placeholder="Precio"
+                type="number">
             <label class="text-lg" for="price">Cantidad disponible</label>
-            <input id="price"  formControlName="stock"class="border-3 w-full p-2 outline-none" placeholder="Cantidad disponible" type="text">
-            <label class="text-lg" for="price">Estado</label>
-            <select id="price"  formControlName="state"class="border-3 w-full p-2 outline-none" placeholder="Estado...">
+            <input id="price" formControlName="stock" class="border-3 w-full p-2 outline-none"
+                placeholder="Cantidad disponible" type="text">
+
+
+
+
+            <label class="text-lg" for="title">Categoría</label>
+            <select id="title" formControlName="category" class="border-3 w-full p-2 outline-none"
+                placeholder="Estado...">
                 <option value="">Seleccionar</option>
-                <option value="Nuevo">Nuevo</option>
-                <option value="Casi nuevo">Casi Nuevo</option>
-                <option value="En buen estado">En buen estado</option>
-            </select> 
-            <!-- <input id="price"  formControlName="state"class="border-3 w-full p-2 outline-none" placeholder="Estado..." type="text"> -->
-            <!-- <label class="text-lg" for="category">Categoría</label>
-            <select name="category" id="category" class="border-3 p-2 w-full outline-none">
-                <option value="">Seleccionar</option>
-                <option value="">Tecnología</option>
-                <option value="">Muebles</option>
-            </select> -->
+                <option value="tecnologia">Tecnologia</option>
+                <option value="muebles">Mueble</option>
+                <option value="mascotas">Mascotas</option>
+                <option value="Salud y Belleza">Salud y Belleza</option>
+                <option value="comida">Comida</option>
+                <option value="arte">Arte</option>
+                <option value="deporte">Deporte</option>
+            </select>
+
             <label class="text-lg" for="price">Descripción</label>
-            <input id="price"  formControlName="description"class="border-3 w-full p-2 outline-none" placeholder="Describe el producto..." type="text"><br><br>           
-            <button type="submit" class="border-2 px-4 py-2 shadow-sm">Crear</button>
+            <input id="price" formControlName="description" class="border-3 w-full p-2 outline-none"
+                placeholder="Describe el producto..." type="text"><br><br>
+            <button type="submit" (click)="openSpinner()" class="border-2 px-4 py-2 shadow-sm">Crear</button>
         </form>
 
+        <!-- ---- Config Spinner ---- -->
+        <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="default" color="#fff" type="square-jelly-box">
 
+            <p style="font-size: 20px; color: white">Loading...</p>
+        </ngx-spinner>
     </div>
     <div class="preview w-[60%] border-l max-sm:hidden p-8 flex flex-row">
-          
+
         <div class="border-3 py-[5%] px-[25%] cursor-pointer justify-center items-center flex flex-col">
-            <div class="div" style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;"  *ngIf="previsualizacion">
+            <div class="div"
+                style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;"
+                *ngIf="previsualizacion">
                 <img [src]="previsualizacion" alt="" style=" max-width: 200%">
             </div>
-         
+
         </div>
         <div class="desc py-10 px-5">
-            <p class="text-4xl font-bold" *ngIf="form.get('name').value; else placeholder">{{ form.get('name').value }}</p>
+            <p class="text-4xl font-bold" *ngIf="form.get('name').value; else placeholder">{{ form.get('name').value }}
+            </p>
             <ng-template #placeholder>
                 <p class="text-4xl font-bold" style="color: #000000;">Título</p>
             </ng-template>
 
-            <p class="text-lg"  *ngIf="form.get('price').value; else placeholder2">{{ form.get('price').value }}</p>
+            <p class="text-lg" *ngIf="form.get('price').value; else placeholder2">{{ form.get('price').value }}</p>
             <ng-template #placeholder2>
                 <p class="text-lg" style="color: #000000;">Precio</p>
             </ng-template>
 
-            <p class="text-4xl font-bold" *ngIf="form.get('stock').value; else placeholder4">{{ form.get('stock').value }}<!--<span class="font-bold text-2xl">Detalles</span> <br>--></p> 
+            <p class="text-4xl font-bold" *ngIf="form.get('stock').value; else placeholder4">{{ form.get('stock').value
+                }}<!--<span class="font-bold text-2xl">Detalles</span> <br>--></p>
             <ng-template #placeholder4>
-             <p class="text-4xl font-bold" style="color: #000000;">Cantidad Disponible</p>
-         </ng-template>
-    
-         <p class="text-4xl font-bold" *ngIf="form.get('state').value; else placeholder5">{{ form.get('state').value }}<!--<span class="font-bold text-2xl">Detalles</span> <br>--></p> 
-         <ng-template #placeholder5>
-          <p class="text-4xl font-bold" style="color: #000000;">Estado del producto</p>
-      </ng-template>
-           <p class="text-4xl font-bold" *ngIf="form.get('description').value; else placeholder3">{{ form.get('description').value }}<!--<span class="font-bold text-2xl">Detalles</span> <br>--></p> 
-           <ng-template #placeholder3>
-            <p class="text-4xl font-bold" style="color: #000000;">Descripción</p>
-        </ng-template>
+                <p class="text-4xl font-bold" style="color: #000000;">Cantidad Disponible</p>
+            </ng-template>
 
-      
-           <button class="border-2 px-4 py-2 shadow-sm">Comprar</button>
+            <p class="text-4xl font-bold" *ngIf="form.get('category').value; else placeholder4">{{
+                form.get('category').value }}<!--<span class="font-bold text-2xl">Detalles</span> <br>--></p>
+            <ng-template #placeholder4>
+                <p class="text-4xl font-bold" style="color: #000000;">Categoria</p>
+            </ng-template>
+
+
+            <p class="text-4xl font-bold" *ngIf="form.get('description').value; else placeholder3">{{
+                form.get('description').value }}<!--<span class="font-bold text-2xl">Detalles</span> <br>--></p>
+            <ng-template #placeholder3>
+                <p class="text-4xl font-bold" style="color: #000000;">Descripción</p>
+            </ng-template>
+
+
+
         </div>
 
 

@@ -5,5 +5,5 @@ export interface Product{
     price:number,
     image?:string,
     stock:number,
-    state:string,
+    category:string,
   }

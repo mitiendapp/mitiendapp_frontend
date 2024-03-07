@@ -14,6 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { resolve } from 'path';
 import { rejects } from 'assert';
 import { image } from 'pdfkit';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
@@ -36,10 +37,18 @@ export class CreateProductComponent implements OnInit {
     private _messageService: MessageService,
     private _productService: ProductService,
     private sanitizer: DomSanitizer,
-    private _iaimage:IaImageServicesService
+    private _iaimage:IaImageServicesService,
+    private spinner : NgxSpinnerService
   ) {
 
     this.url_image_ia= enviroment.url_image_ia;
+  }
+
+  openSpinner(){
+    this.spinner.show();
+    setTimeout(()=>{
+      this.spinner.hide();
+    },3000)
   }
 
   ngOnInit(): void {
@@ -49,14 +58,15 @@ export class CreateProductComponent implements OnInit {
       price: ['', Validators.required],
       image: ['', Validators.required],
       stock: ['', Validators.required],
-      state: ['', Validators.required],
+      category: ['', Validators.required],
+
     });
   }
 
 
 
   onCreateProduct() {
-    const { name, description, price, stock, state } = this.form.value;
+    const { name, description, price, stock, category } = this.form.value;
     // const imageFile = this.form.get('image').value;
   
   
@@ -72,7 +82,7 @@ export class CreateProductComponent implements OnInit {
       price: price,
       image: '', // Dejar este campo vacío porque el archivo de imagen se enviará por FormData
       stock: stock,
-      state: state,
+      category: category,
     };
   
     const formData = new FormData();
@@ -83,7 +93,8 @@ export class CreateProductComponent implements OnInit {
     formData.append('description',this.form.value.description);
     formData.append('price', this.form.value.price);
     formData.append('stock', this.form.value.stock);
-    formData.append('state', this.form.value.state);
+    formData.append('category', this.form.value.state);
+    
   
     this._productService.create(formData).subscribe({
       next: (v) => {
