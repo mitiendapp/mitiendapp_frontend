@@ -18,7 +18,6 @@ import { BehaviorSubject } from 'rxjs';
 export class DetalleComponent implements OnInit {
   detail:any;
   idProduct: number = 0;
-  loaded = new BehaviorSubject<Boolean>(false);
 
   constructor(private routeActivate: ActivatedRoute,
     private _productService: ProductService,
@@ -64,22 +63,17 @@ export class DetalleComponent implements OnInit {
   getProduct(id:number) {
     this._productService.getProductById(id).subscribe((data: any) => {
       this.detail = data.data;
-      // console.log("HERE");
-      
-      console.log(data.data);
-      
-      this.loaded.next(true);
     })
   }
 
+  // createOrder(){
+  //   this._paymentService.createOrder(this.detail).subscribe((data:any)=>{
+  //     console.log(data);
+  //     window.location.href = data.init_point
+  //   })
+  // }
   createOrder(){
-    this._paymentService.createOrder().subscribe((data:any)=>{
-      console.log(data);
-      window.location.href = data.init_point
-    })
+    this._paymentService.createOrder(); 
   }
 
-  isLoaded(){
-    return this.loaded.asObservable();
-  }
 }

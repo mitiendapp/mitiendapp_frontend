@@ -23,13 +23,15 @@ export class CarritoCompraComponent implements OnInit {
   ) {
 
   }
-  createOrder() {
-    this._paymentService.createOrder().subscribe((data: any) => {
-      console.log(data);
-      window.location.href = data.init_point
-    })
+  // createOrder() {
+  //   this._paymentService.createOrder("").subscribe((data: any) => {
+  //     console.log(data);
+  //     window.location.href = data.init_point
+  //   })
+  // }
+  createOrder(){
+    this._paymentService.createOrder();
   }
-
 
   totalCart() {
     const result = this._cartService.totalCart();

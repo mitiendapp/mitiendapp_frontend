@@ -5,7 +5,7 @@ import {Product} from '../../interfaces/product'
 import { Route } from '@angular/router';
 import {ProductService} from '../../services/product.service'
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { decodeJWT } from 'src/app/utils/decodeJWT';
 @Component({
   selector: 'app-perfil-company',
   templateUrl: './perfil-company.component.html',
@@ -17,7 +17,7 @@ export class PerfilCompanyComponent implements OnInit{
   company: Company[] = []
   product:Product[]=[]
   token:string;
-  email:string;
+  userInfo:any;
   constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService,private routeActivate: ActivatedRoute) {
   }
   
@@ -47,6 +47,9 @@ export class PerfilCompanyComponent implements OnInit{
   ngOnInit(): void {
     // this.idCompany = this.routeActivate.snapshot.params["email"];
     // this.getCompanys(this.idCompany);
+    this.userInfo = decodeJWT(localStorage.getItem('token'));
+    console.log(this.userInfo);
+    
   }
 
   // getCompanyEmail(email:Company){
@@ -57,20 +60,11 @@ export class PerfilCompanyComponent implements OnInit{
   // }
  emails: string[] = ['josel.alvarezh@uqvirtual.edu.co'];
  companies: any[] = [];
-  getCompanyEmail(email: string) {
-    this.perfilCompanyServices.getCompany(email).subscribe((data: any) => {
+  getCompanyEmail() {
+    this.perfilCompanyServices.getCompany(this.userInfo.email).subscribe((data: any) => {
       this.company = data.data;
       console.log(data);
     });
-  }
-
-  decodeJWT(token:string) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    return JSON.parse(jsonPayload);
   }
 
 }

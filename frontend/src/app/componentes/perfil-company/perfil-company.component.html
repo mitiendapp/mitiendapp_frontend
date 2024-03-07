@@ -2,7 +2,7 @@
 
 
 <div *ngFor="let email of emails" class="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center">
-  <div (click)="getCompanyEmail(email)" style="cursor: pointer;">
+  <div (click)="getCompanyEmail()" style="cursor: pointer;">
     <!-- ... Otro contenido ... -->
     <p>Correo Electrónico: {{ email }}</p>
     <p> nombre: getCompanyName(email)</p>
