@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-inicio',
@@ -31,10 +31,18 @@ export class InicioComponent implements OnInit {
     private _userService: UserService,
     private _messageService: MessageService,
     private headerService: HeaderService,
-    private auth: AuthService
+    private auth: AuthService,
+    private spinner : NgxSpinnerService
   ) {
   }
 
+  openSpinner(){
+    this.spinner.show();
+    setTimeout(()=>{
+      this.spinner.hide();
+    },3000)
+  }
+  
   ngOnInit(): void {
     this.formAccount = this.formBuilder.group({
       email: ['', Validators.required]

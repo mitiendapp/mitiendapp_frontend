@@ -12,6 +12,8 @@ import { RegistroNegocioComponent } from './componentes/registro/registro-negoci
 import { PerfilCompanyComponent } from './componentes/perfil-company/perfil-company.component'
 import { CreateProductComponent } from './componentes/create-product/create-product.component'
 import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
+import { authGuardExample } from './utils/guard_example';
+import { createProductsguard } from './utils/guard_CreateProduc';
 
 const routes: Routes = [
   {
@@ -48,11 +50,11 @@ const routes: Routes = [
 
   {
     path: 'crearproducto',
-    component: CreateProductComponent, canActivate: [AuthGuard]
+    component: CreateProductComponent, canActivate: [authGuardExample]
   },
   {
     path: 'chatbot',
-    component: ChatbotComponent,
+    component: ChatbotComponent, canActivate: [authGuardExample]
   },
   {
     path: 'detalle/:id',
