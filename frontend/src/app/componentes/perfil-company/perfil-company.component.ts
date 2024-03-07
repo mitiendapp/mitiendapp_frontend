@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PerfilCompanyComponent implements OnInit{
   
-  idCompany: string = '';
+  // idCompany: string = '';
   company: Company[] = []
   product:Product[]=[]
   token:string;
@@ -41,11 +41,27 @@ export class PerfilCompanyComponent implements OnInit{
   getProducts(){
     this.productservice.getProducts().subscribe((data:any)=>{
       this.product=data.data;
+
     })
   }
   ngOnInit(): void {
-    this.idCompany = this.routeActivate.snapshot.params["email"];
+    // this.idCompany = this.routeActivate.snapshot.params["email"];
     // this.getCompanys(this.idCompany);
+  }
+
+  // getCompanyEmail(email:Company){
+  //   this.perfilCompanyServices.getCompany(this.email).subscribe((data:any)=>{
+  //     this.company=data.data;
+  //     console.log(data);
+  //   })
+  // }
+ emails: string[] = ['josel.alvarezh@uqvirtual.edu.co'];
+ companies: any[] = [];
+  getCompanyEmail(email: string) {
+    this.perfilCompanyServices.getCompany(email).subscribe((data: any) => {
+      this.company = data.data;
+      console.log(data);
+    });
   }
 
   decodeJWT(token:string) {

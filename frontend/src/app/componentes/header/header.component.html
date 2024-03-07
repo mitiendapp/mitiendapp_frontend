@@ -18,16 +18,23 @@
 
       <a class="mx-4" href="login">Inicio</a>
       <a class="mx-4" href="signin">Registro</a>
-      <button (click)=" perfilusuarioheader()" type="submit" class="bg-button-purple w-full md:w-2/5 lg:w-1/4 h-12 p-1 rounded text-white my-3">perfil</button>
+      
     </div>
-
+    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isClient() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
+      <button (click)="navigateToUserProfile()">Perfil</button>
+    </div>
+    
+    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
+      <button (click)="navigateToCompanyProfile()">Perfil</button>
+    </div>
+    
     <div *ngIf="(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       <button *ngIf="auth.isLoggedIn()|async"  (click)="auth.logout()">salir</button>
 
     
     </div>
 
-    <app-perfil-usuario *ngIf="auth.isClient() | async"></app-perfil-usuario>
+ 
 
     <nav class="navbar">
       <div class="navbar-cart static" (click)="onToggleCart()">

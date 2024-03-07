@@ -70,6 +70,15 @@ throw new Error('Method not implemented.');
 
   }
 
+  navigateToUserProfile() {
+    this.router.navigate(['perfilusuario']);
+  }
+
+  
+
+  navigateToCompanyProfile() {
+    this.router.navigate(['perfilCompany']);
+  }
   actualizarFiltro(event: any) {
     const filtro = event.target.value;
     if (filtro.trim() === '') {
@@ -79,10 +88,7 @@ throw new Error('Method not implemented.');
     }
   }
   
-  perfilusuarioheader(){
 
-    this.auth.perfilclient()
-  }
  
   ngOnInit(): void {
     if ((this.router.url == '/')) {

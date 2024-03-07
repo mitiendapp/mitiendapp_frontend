@@ -19,8 +19,8 @@ export class PerfilCompanyService {
 
 
   }
-  // getCompany(email:string):Observable<Company[]>{
-  //   return this.http.get<Company[]>(`${this.endpoint}${this.apiUrl}/${email}`);
+  getCompany(email:string):Observable<Company[]>{
+    return this.http.get<Company[]>(`${this.endpoint}${this.apiUrl}/${email}`);
 
-  // }
+  }
 }
