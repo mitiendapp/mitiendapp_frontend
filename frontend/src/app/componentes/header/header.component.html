@@ -18,7 +18,7 @@
 
       <a class="mx-4" href="login">Inicio</a>
       <a class="mx-4" href="signin">Registro</a>
-      <button (click)=" perfilusuarioheader()" type="submit" class="bg-button-purple w-full md:w-2/5 lg:w-1/4 h-12 p-1 rounded text-white my-3">perfil</button>
+      <button (click)=" perfilusuarioheader()" type="submit" class="bg-button-purple h-12 p-1 rounded text-white my-3">perfil</button>
     </div>
 
     <div *ngIf="(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
@@ -27,7 +27,7 @@
     
     </div>
 
-    <app-perfil-usuario *ngIf="auth.isClient() | async"></app-perfil-usuario>
+   
 
     <nav class="navbar">
       <div class="navbar-cart static" (click)="onToggleCart()">

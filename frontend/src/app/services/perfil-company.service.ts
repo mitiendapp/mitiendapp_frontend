@@ -9,6 +9,9 @@ import { Company } from '../interfaces/company';
 
 })
 export class PerfilCompanyService {
+  getCompany(email: string) {
+    throw new Error('Method not implemented.');
+  }
   private endpoint:string;
   private apiUrl:string;
 
