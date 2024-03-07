@@ -18,18 +18,18 @@ export class PaymentService {
   constructor(
     private http: HttpClient,
     private perfilService: PerfilUsuarioService,
-    private companyService: PerfilCompanyService,
     private userService: UserService
   ) {
     this.endpoint = enviroment.endpoint;
     this.apiUrl = 'order';
   }
-
+  
   async createOrder() {
     // console.log(this.perfilCompanyService.getCompany());
-    const payer = decodeJWT(localStorage.getItem('token')).UserInfo;
-    let prefP
-    this.companyService.getCompany(payer.email).subscribe((a)=>{
+    const payer = await decodeJWT(localStorage.getItem('token')).UserInfo;
+    console.log(payer);
+    
+    this.perfilService.getClient(payer.email).subscribe((a)=>{
       console.log(a);
       
     })
