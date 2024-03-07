@@ -1,17 +1,28 @@
-<section class="h-full flex items-center justify-center max-sm:px-3">
-  <div *ngIf="isMainActive() | async" id="body" 
-      class="flex flex-col items-center justify-center 
-          md:w-[70%] md:h-[70%] md:shadow-lg md:rounded
-            2xl:w-[50%]">
+<section class="flex h-full items-center justify-center p-0 ">
+  <div *ngIf="isMainActive() | async" id="body" class="
+        flex flex-col max-sm:pt-3 items-center justify-center lg:pr-10
+          md:w-[70%] md:h-[85%] md:shadow-lg 
+           2xl:w-[60%]
+              lg:flex-row">
+  <div class="images flex items-center flex-col lg:w-[60%]">
+    <img class="object-contain size-80 h-auto" src="../../../assets/img/logoAzul.png" alt="" >
+    <img class="w-full rounded-t-3xl size-96 object-contain" src="../../../assets/img/buyGirl.png" alt="">
+  </div>
 
-          <img class="w-1/4 md:w-1/5 lg:w-[12%]" src="../../../assets/icons/android-chrome-192x192.png" alt="">
-          <h1 class="my-8 text-center text-lg md:text-xl lg:text-2xl">Para crear tu cuenta te pediremos algunos datos</h1>
-          <p class="m-1 text-sm md:text-base lg:text-lg">Solo tomará unos minutos</p>
-          <button (click)="registerUser()" type="submit" class="bg-button-blue w-[80%] md:w-2/5 lg:w-1/4 h-12 p-1 rounded text-white my-3 hover:shadow-xl">Crear cuenta personal</button>
-          <button (click)="registerNegocio()" type="submit" class="bg-button-purple w-[80%] md:w-2/5 lg:w-1/4 h-12 py-2 px-3 rounded text-white my-3 hover:shadow-xl">Inscribir emprendimiento</button>
-        </div>  
-        <app-registro-usuario *ngIf="isUserRegister() | async"></app-registro-usuario>
-        <app-registro-negocio class="w-full" 
-        *ngIf="isNegocioRegister() | async"></app-registro-negocio>
+  <div class="right flex flex-col items-center justify-center w-full lg:w-[40%] lg:h-full">
+    <p class="text-3xl max-lg:hidden text-center">Registrate e inicia a comprar</p>
+    <p class="mb-3 text-sm md:text-base lg:text-lg">Solo tomará unos minutos</p>
+    <button (click)="registerUser()" type="submit"
+      class="bg-[#427DD7] w-[80%] md:w-2/5 lg:w-4/5 h-12 p-1 rounded my-1 hover:shadow-xl text-white">Crear cuenta
+      personal</button>
+    <button (click)="registerNegocio()" type="submit"
+      class="bg-button-purple w-[80%] md:w-2/5 lg:w-4/5 h-12 py-2 px-3 rounded text-white my-3 hover:shadow-xl">Inscribir
+      emprendimiento</button>
+      <a href="singin" class="text-center">¿Ya tienes una cuenta? <br> Da click aquí</a>
+  </div>
+  </div>
+
+
+  <app-registro-usuario class="w-full h-full" *ngIf="isUserRegister() | async"></app-registro-usuario>
+  <app-registro-negocio class="w-full h-auto" *ngIf="isNegocioRegister() | async"></app-registro-negocio>
 </section>
-      

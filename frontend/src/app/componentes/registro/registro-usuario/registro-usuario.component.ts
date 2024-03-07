@@ -28,6 +28,7 @@ export class RegistroUsuarioComponent implements OnInit{
   ngOnInit(): void {
       this.form = this.formBuilder.group({
         name: ['', Validators.required],
+        document:['',Validators.required],
         email: ['', Validators.required],
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
@@ -36,7 +37,7 @@ export class RegistroUsuarioComponent implements OnInit{
   }
 
   onRegister() {
-    const { name, email, password, confirmPassword } = this.form.value;
+    const { name, document, email, password, confirmPassword } = this.form.value;
     if (!this.form.valid) {
       this.toastr.error("Todos los campos son obligatorios", "Error");
       return;

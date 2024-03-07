@@ -20,7 +20,7 @@ body {
 }
 
 .footer {
-  position: sticky;
+  position:relative;
   width: 100%;
   background: #3586ff;
   min-height: 90px;
@@ -129,7 +129,7 @@ body {
 
 @keyframes animate {
   0% {
-    background-position-x: -1000px;
+    background-position-x: -900px;
   }
   100% {
     background-positon-x: 0px;

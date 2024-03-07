@@ -1,4 +1,4 @@
-<div class="relative w-full">
+<div class="relative w-full"> 
   <div *ngIf="headerService.isShowing()| async" class="w-full h-12 flex justify-around items-center">
     <div class="flex relative items-center">
       <img (click)="headerService.goBack()" [@showArrow]="show? 'show' : 'hide' " class="size-6 absolute -ml-1"
@@ -13,12 +13,12 @@
         placeholder="Busca productos, tiendas y más...">
       <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
     </div>
-    <div *ngIf="!(userService.isLoginComponentActive() | async)" class="hidden sm:block flex justify-around"
+    <div *ngIf="!(userService.isLoginComponentActive() | async)" class="hidden sm:block justify-around"
       id="signup_signin">
       <a class="mx-4" href="login">Inicio</a>
       <a class="mx-4" href="signin">Registro</a>
     </div>
-    <div *ngIf="(userService.isLoginComponentActive() | async)" class="hidden sm:block flex justify-around"
+    <div *ngIf="(userService.isLoginComponentActive() | async)" class="hidden sm:block  justify-around"
       id="signup_signin">
       {{userService.user.value.email}}
     </div>
