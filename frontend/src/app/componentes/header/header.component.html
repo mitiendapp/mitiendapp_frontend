@@ -23,6 +23,8 @@
 
     <div *ngIf="(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       <button *ngIf="auth.isLoggedIn()|async"  (click)="auth.logout()">salir</button>
+
+    
     </div>
 
     <app-perfil-usuario *ngIf="auth.isClient() | async"></app-perfil-usuario>
