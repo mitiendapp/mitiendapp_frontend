@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { enviroment } from '../enviroments/enviroment';
-import { or } from 'sequelize';
 import { CompanyService } from './company.service';
 import { PerfilCompanyService } from './perfil-company.service';
 import { UserService } from './user.service';
