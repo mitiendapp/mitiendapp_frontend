@@ -44,15 +44,9 @@ export class InicioComponent implements OnInit {
     })
   }
   
-<<<<<<< HEAD
   // mostrarDetalle(email: string) {
   //   this.router.navigate(['/perfilCompany',email]);
   // }
-=======
-  mostrarDetalle(email: string) {
-    this.router.navigate(['/crearproducto']);
-  }
->>>>>>> 193824c5eb96131bf1ca8fcee11bb0af60d2e6d9
 
   submitAccount() {
     const { email } = this.formAccount.value
@@ -81,29 +75,12 @@ export class InicioComponent implements OnInit {
 
     this._userService.logIn(user).subscribe({
       next: (data: any) => {
-<<<<<<< HEAD
       this.auth.login(data.token)
           console.log(data)
          console.log(this.auth.getRole() == "client");
          
         if(this.auth.getRole() == "client"){
          
-=======
-        const {UserInfo} = this.decodeJWT(data.token);
-        let caracteres = UserInfo.roles;
-        let texto = "";
-        for (let i = 0; i < caracteres.length; i++) {
-          // Si el caracter es una letra, agrégalo a la cadena 'texto'
-          if (caracteres[i].match(/[a-zA-Z]/)) {
-              texto += caracteres[i];
-          }
-      }
-      console.log(texto);
-        if(texto == "Company"){
-          this.router.navigate(['perfilCompany']);
-          console.log('hola llego')
-        }else{
->>>>>>> 193824c5eb96131bf1ca8fcee11bb0af60d2e6d9
           this.router.navigate(['']);
         }else{
           this.router.navigate(['perfilCompany']);
