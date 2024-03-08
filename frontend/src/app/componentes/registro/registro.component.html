@@ -1,29 +1,27 @@
-<section class="flex h-full items-center justify-center">
+<section class="flex h-[90%] items-center justify-center">
   <div *ngIf="isMainActive() | async" id="body" 
-  class="flex max-sm:flex-col max-sm:pt-3 items-center justify-center lg:pr-10
-            md:w-4/6 md:h-5/6 md:shadow-lg 
-              2xl:w-[60%]
-                flex-row">
+  class=" flex flex-col items-center justify-evenly w-full 
+      md:py-10 lg:flex-row lg:w-5/6 lg:p-3 lg:h-5/6 lg:shadow-xl">
 
-    <div class="images flex items-center flex-col lg:w-[50%] border">
-      <img class="object-contain size-80 h-auto" src="../../../assets/img/logoAzul.png" alt="">
-      <img class="w-full rounded-t-3xl size-96 lg:size-4/6 object-contain" src="../../../assets/img/buyGirl.png" alt="">
+    <div class="images flex flex-col items-center justify-center lg:w-2/4">
+      <img class="object-contain size-72 h-auto" src="../../../assets/img/logoAzul.png" alt="">
+      <img class="w-full rounded-t-3xl size-80 lg:size-5/6 object-contain" src="../../../assets/img/buyGirl.png" alt="">
     </div>
 
-    <div class="right flex flex-col items-center justify-center w-full lg:w-[40%]">
+    <div class="flex flex-col items-center justify-center w-full lg:w-2/5 lg:h-3/5">
       <p class="text-3xl max-lg:hidden text-center">Registrate e inicia a comprar</p>
       <p class="mb-3 text-sm md:text-base lg:text-lg">Solo tomará unos minutos</p>
       <button (click)="registerUser()" type="submit"
-        class="bg-[#427DD7] w-[80%] md:w-2/5 lg:w-4/5 h-12 p-1 rounded my-1 hover:shadow-xl text-white">Crear cuenta
+        class="bg-[#427DD7] w-[70%] md:w-2/5 lg:w-4/5 h-12 p-1 rounded my-1 hover:shadow-xl text-white">Crear cuenta
         personal</button>
       <button (click)="registerNegocio()" type="submit"
-        class="bg-button-purple w-[80%] md:w-2/5 lg:w-4/5 h-12 py-2 px-3 rounded text-white my-3 hover:shadow-xl">Inscribir
+        class="bg-button-purple w-[70%] md:w-2/5 lg:w-4/5 h-12 py-2 px-3 rounded text-white my-3 hover:shadow-xl">Inscribir
         emprendimiento</button>
       <a href="singin" class="text-center">¿Ya tienes una cuenta? <br> Da click aquí</a>
     </div>
   </div>
 
 
-  <app-registro-usuario class="w-full h-full" *ngIf="isUserRegister() | async"></app-registro-usuario>
+  <app-registro-usuario class="w-full h-auto" *ngIf="isUserRegister() | async"></app-registro-usuario>
   <app-registro-negocio class="w-full h-auto" *ngIf="isNegocioRegister() | async"></app-registro-negocio>
 </section>
