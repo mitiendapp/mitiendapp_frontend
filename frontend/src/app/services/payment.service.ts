@@ -70,6 +70,6 @@ export class PaymentService {
   }
   createOrder(data):Observable<any>{
     
-    return this.http.post(`http://localhost:3000/api/order/create`, data);
+    return this.http.post(`${this.endpoint}${this.apiUrl}/create`, data);
   }
 }
