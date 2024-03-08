@@ -1,39 +1,42 @@
-<section class="sm:max-md:mx-5 md:flex lg:flex-row w-full h-full justify-evenly lg:items-center py-2 ">
+<section class="sm:max-md:mx-5 md:flex lg:flex-row w-full h-5/6 justify-evenly lg:items-center py-2 ">
 
-    <form class="flex flex-col items-center p-4 lg:shadow-lg sm:max-md:w-full lg:w-3/6 lg:h-5/6 justify-center" [formGroup]="form" (ngSubmit)="onRegister()">
+    <form class="flex flex-col items-center p-4 lg:shadow-lg sm:max-md:w-full lg:w-2/5 lg:h-2/6 justify-center"
+        [formGroup]="form" (ngSubmit)="onRegister()">
 
         <img class="w-2/4" src="../../../../assets/img/logoAzul.png" alt="">
-            <div class="w-full text-center mt-3">
-                <h1 class="text-2xl">Crea tu cuenta personal</h1>
-                <p class="text-xs">¡Comienza a comprar ahora!</p>
-            </div>
+        <div class="w-full text-center mt-3">
+            <h1 class="text-2xl">Crea tu cuenta personal</h1>
+            <p class="text-xs">¡Comienza a comprar ahora!</p>
+        </div>
 
-            <div class="inputs w-4/6 rounded mb-4 p-2 flex flex-col gap-2">
-                <input class="border px-3 py-2 outline-none rounded" type="text" formControlName="name" placeholder="Nombre">
-                <input class="border px-3 py-2 outline-none rounded" type="text" formControlName="idNumber" placeholder="Número de identificación">
-                <input class="border px-3 py-2 outline-none rounded" type="email" formControlName="email" placeholder="E-mail">
-                <input class="border px-3 py-2 outline-none rounded" type="password" formControlName="password" placeholder="contraseña">
-                <input class="border px-3 py-2 outline-none rounded" type="password" formControlName="confirmPassword"  placeholder="Confirmar contraseña">
-                <button type="submit" class="bg-button-blue w-full p-1 rounded mt-3 text-white">Continuar</button>
-                
-                <p class="text-xs text-center">¿Ya estás registrado?</p>
-                <a class="mb-8" href="/login">
-                    <Button type="button" class="w-full p-1 rounded border  text-black" id="createAcountBtn">¡Inicia sesión aqui!</Button>
-                    <!-- ---- Config Spinner ---- -->
-            <ngx-spinner 
-            bdColor="rgba(51,51,51,0.8)" 
-            size="default" 
-            color="#fff"
-            type="square-jelly-box">
+        <div class="inputs w-4/6 rounded mb-4 p-2 flex flex-col gap-2">
+            <input class="border px-3 py-2 outline-none rounded" type="text" formControlName="firstName"
+                placeholder="Nombre">
+            <input class="border px-3 py-2 outline-none rounded" type="text" formControlName="document"
+                placeholder="Número de identificación">
+            <input class="border px-3 py-2 outline-none rounded" type="email" formControlName="email"
+                placeholder="E-mail">
+            <input class="border px-3 py-2 outline-none rounded" type="password" formControlName="password"
+                placeholder="contraseña">
+            <input class="border px-3 py-2 outline-none rounded" type="password" formControlName="confirmPassword"
+                placeholder="Confirmar contraseña">
+            <button type="submit" class="bg-button-blue w-full p-1 rounded mt-3 text-white">Continuar</button>
 
-   <p style="font-size: 20px; color: white">Loading...</p>
-</ngx-spinner>
-                </a>
-            </div>
+            <p class="text-xs text-center">¿Ya estás registrado?</p>
+            <a class="mb-8" href="/login">
+                <Button type="button" class="w-full p-1 rounded border  text-black" id="createAcountBtn">¡Inicia sesión aqui!</Button>
+
+                <!-- ---- Config Spinner ---- -->
+                <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="default" color="#fff" type="square-jelly-box">
+
+                    <p style="font-size: 20px; color: white">Cargando...</p>
+                </ngx-spinner>
+            </a>
+        </div>
 
 
     </form>
 
-    <img src="../../../../assets/img/mockup.png" alt="" class="max-lg:hidden  rounded-xl w-[18%]">
+    <img src="../../../../assets/img/createAccount.png" alt="" class="max-lg:hidden size-2/6 object-contain">
 
-</section>  
+</section>

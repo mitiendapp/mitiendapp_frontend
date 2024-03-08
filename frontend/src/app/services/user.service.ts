@@ -46,7 +46,7 @@ export class UserService {
     return this.http.post<string>(`${this.endpoint}${this.apiUrl}/login`, user)
   }
 
-  signInClient(client: Client): Observable<any> {
-    return this.http.post(`${this.endpoint}client/create`, client);
-  }
+  signInClient(user: Client): Observable<any> {
+      return this.http.post(`http://localhost:3000/api/client/create`, user);
+    }
 }

@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { Client } from 'src/app/interfaces/client';
@@ -25,7 +26,8 @@ export class RegistroUsuarioComponent implements OnInit {
     private toastr: ToastrService,
     private _userService:UserService,
     private _messageService:MessageService,
-    private spinner : NgxSpinnerService
+    private spinner : NgxSpinnerService,
+    private router: Router 
   ){
      
   }
@@ -35,7 +37,6 @@ enviocorreo(){
   }
   this.httpclien.post('https://pruebabackend1.onrender.com/api/envio',params).subscribe(resp=>{ 
   })
-
 }
 
   openSpinner(){
@@ -48,7 +49,8 @@ enviocorreo(){
   ngOnInit(): void {
       this.form = this.formBuilder.group({
         firstName: ['', Validators.required],
-        email: ['', Validators.required],
+        document: ['', Validators.required],
+        email: ['', Validators.email],
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
       })
@@ -56,7 +58,7 @@ enviocorreo(){
   }
 
   onRegister() {
-    const { firstName, email, password, confirmPassword } = this.form.value;
+    const { firstName, document, email, password, confirmPassword } = this.form.value;
     if (!this.form.valid) {
       this.toastr.error("Todos los campos son obligatorios", "Error");
       return;
@@ -66,25 +68,25 @@ enviocorreo(){
       return;
     }
     const user: Client = {
-      document: null,
+      email: email,
+      document: document,
       firstName:firstName,
       lastName: null, 
-      email: email,
       address: null,
       password: password,
     }
-
+    console.log(user);
+    
     // this.loading = true;p
     this._userService.signInClient(user).subscribe({
       next: (v) => {
-        // this.loading = false;
         this.toastr.success("El usuario fue registrado con exito", "Registro exitoso");
-        const main = document.getElementById('main');
-        main.classList.remove("right-panel-active");
+        // const main = document.getElementById('main');
+        // main.classList.remove("right-panel-active");
+        this.router.navigate(['login']);
       },
       error: (e: HttpErrorResponse) => {
         this._messageService.msgError(e);
-        // this.loading = false;
       }
     })
   }
