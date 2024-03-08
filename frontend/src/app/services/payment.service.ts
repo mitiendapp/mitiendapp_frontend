@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { enviroment } from '../enviroments/enviroment';
 // import { or } from 'sequelize';
@@ -7,6 +7,9 @@ import { PerfilCompanyService } from './perfil-company.service';
 import { UserService } from './user.service';
 import { PerfilUsuarioService } from './perfil-usuario.service';
 import { decodeJWT } from '../utils/decodeJWT';
+import { BehaviorSubject, Observable, firstValueFrom, lastValueFrom } from 'rxjs';
+import { Client } from '../interfaces/client';
+import { Product } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +17,25 @@ import { decodeJWT } from '../utils/decodeJWT';
 export class PaymentService {
   private endpoint: string;
   private apiUrl: string;
+  private product = {
+    product:{
+      id: 1,
+      name: "pollo",
+      description: "pollito",
+      price: 100,
+      image: "https://res.cloudinary.com/dn4gw0ghk/image/upload/v1709877858/replit/s3yesomibs8xa1jnt9wp.jpg",
+      stock: 200,
+      category: "undefined",
+      createdAt: "2024-03-08T06:04:38.000Z",
+      updatedAt: "2024-03-08T06:04:38.000Z",
+      companyId: 1,
+      quantity:1
+  },
+  payer: {}
+}
+  private  headers = new HttpHeaders({
+  'Content-Type': 'application/json',
+  'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJpZCI6ImYxM2Y5MWQ1LTZjOWItNDU0Ny05Y2M4LTFjM2U0ZTIxODFhYSIsImVtYWlsIjoic2FudGlhZ29vc29yaW8zMTBAZ21haWwuY29tIiwicm9sZXMiOlsieyIsIlwiIiwiQyIsIm8iLCJtIiwicCIsImEiLCJuIiwieSIsIlwiIiwiOiIsIjQiLCIwIiwiNiIsIjgiLCJ9Il19LCJpYXQiOjE3MDk1MTA3ODAsImV4cCI6MTcxMjEwMjc4MH0.xiIBlTuIlEkmnpsCY7-xEvsz2FzfItefBNXkn3W9BU4"});
 
   constructor(
     private http: HttpClient,
@@ -23,20 +45,31 @@ export class PaymentService {
     this.endpoint = enviroment.endpoint;
     this.apiUrl = 'order';
   }
-  
-  async createOrder() {
+
+  async prepareOrder(data: Product) {
     // console.log(this.perfilCompanyService.getCompany());
-    const payer = await decodeJWT(localStorage.getItem('token')).UserInfo;
-    console.log(payer);
+    const client = await decodeJWT(localStorage.getItem('token')).UserInfo;
     
-    this.perfilService.getClient(payer.email).subscribe((a)=>{
-      console.log(a);
-      
-    })
-    
-    // return this.http.post(`${this.endpoint}${this.apiUrl}/create`, payload);
+    const payer = await firstValueFrom(this.perfilService.getClient(client.email));
+    const product = {
+      category:data.category,
+      description:data.description,
+      image:data.image,
+      name:data.name,
+      price:data.price,
+      stock:data.stock,
+      id:data.id,
+      companyId:data.companyId,
+      quantity:1
+    } 
+    const payload = {
+      product,
+      payer
+    }
+    return payload
   }
-
-
-
+  createOrder(data):Observable<any>{
+    
+    return this.http.post(`http://localhost:3000/api/order/create`, data);
+  }
 }

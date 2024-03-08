@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { enviroment } from '../enviroments/enviroment';
 import { Observable } from 'rxjs';
-import { Company } from '../interfaces/company';
+import { Client } from '../interfaces/client';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,9 @@ export class PerfilUsuarioService {
 
 
   }
-  getClient(email:string):Observable<Company[]>{
+  getClient(email:string):Observable<Client>{
 
-    return this.http.get<Company[]>(`${this.endpoint}${this.apiUrl}/${email}`);
+    return this.http.get<Client>(`${this.endpoint}${this.apiUrl}/${email}`);
 
   }
 }

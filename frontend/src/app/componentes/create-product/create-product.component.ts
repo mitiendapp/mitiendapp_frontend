@@ -82,7 +82,7 @@ export class CreateProductComponent implements OnInit {
       price: price,
       image: '', // Dejar este campo vacío porque el archivo de imagen se enviará por FormData
       stock: stock,
-      category: category,
+      category: category
     };
   
     const formData = new FormData();

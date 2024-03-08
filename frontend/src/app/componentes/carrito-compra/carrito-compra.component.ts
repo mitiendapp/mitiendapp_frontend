@@ -30,7 +30,7 @@ export class CarritoCompraComponent implements OnInit {
   //   })
   // }
   createOrder(){
-    this._paymentService.createOrder();
+    //this._paymentService.createOrder();
   }
 
   totalCart() {
