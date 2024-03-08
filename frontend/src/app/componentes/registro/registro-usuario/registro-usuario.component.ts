@@ -38,7 +38,6 @@ enviocorreo(){
     console.log(resp);
     
   })
-
 }
 
   openSpinner(){
@@ -51,6 +50,7 @@ enviocorreo(){
   ngOnInit(): void {
       this.form = this.formBuilder.group({
         firstName: ['', Validators.required],
+        document: ['', Validators.required],
         email: ['', Validators.required],
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
@@ -59,7 +59,7 @@ enviocorreo(){
   }
 
   onRegister() {
-    const { firstName, email, password, confirmPassword } = this.form.value;
+    const { firstName, document, email, password, confirmPassword } = this.form.value;
     if (!this.form.valid) {
       this.toastr.error("Todos los campos son obligatorios", "Error");
       return;
@@ -70,6 +70,7 @@ enviocorreo(){
     }
     const user: User = {
       email: email,
+      document: document,
       password: password,
       firstName:firstName,
     }
