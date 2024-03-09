@@ -7,6 +7,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { FiltroProductosService } from 'src/app/services/FiltroProductos.service';
 import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -65,7 +66,8 @@ throw new Error('Method not implemented.');
     public userService: UserService,
     private filterProductService: FiltroProductosService,
     public cartService:CartService,
-    public auth: AuthService
+    public auth: AuthService,
+    
   ) {
 
   }
@@ -74,7 +76,6 @@ throw new Error('Method not implemented.');
     this.router.navigate(['perfilusuario']);
   }
 
-  
 
   navigateToCompanyProfile() {
     this.router.navigate(['perfilCompany']);

@@ -8,11 +8,12 @@
           alt="">
       </a>
     </div>
-    <div class="inputWrapper relative w-3/5">
+    <div class="inputWrapper relative w-3/5 flex items-center ">
+
       <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" id="inputHeader"
         type="search" placeholder="Busca productos, tiendas y más..." (input)="actualizarFiltro($event)">
 
-      <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
+      <!-- <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt=""> -->
     </div>
     <div *ngIf="!(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
 
