@@ -9,6 +9,7 @@ import { Company } from '../interfaces/company';
 
 })
 export class PerfilCompanyService {
+
   private endpoint:string;
   private apiUrl:string;
   private apiUrlAll:string;

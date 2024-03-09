@@ -1,9 +1,9 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PerfilCompanyService } from '../../services/perfil-company.service'
 import { Company } from '../../interfaces/company'
-import {Product} from '../../interfaces/product'
+import { Product } from '../../interfaces/product'
 import { Route } from '@angular/router';
-import {ProductService} from '../../services/product.service'
+import { ProductService } from '../../services/product.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { decodeJWT } from 'src/app/utils/decodeJWT';
 
@@ -21,7 +21,6 @@ export class PerfilCompanyComponent implements OnInit{
   userInfo:any;
   constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService,private routeActivate: ActivatedRoute) {
   }
-  
 
   // getCompanys(email:string) {
   //   this.token = localStorage.getItem('token')

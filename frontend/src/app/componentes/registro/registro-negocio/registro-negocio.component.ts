@@ -10,6 +10,7 @@ import { HeaderService } from 'src/app/services/header.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 
+
 @Component({
   selector: 'app-registro-negocio',
   templateUrl: './registro-negocio.component.html',
@@ -27,7 +28,8 @@ export class RegistroNegocioComponent implements OnInit {
     private toastr: ToastrService,
     private _companyService:CompanyService,
     private _messageService:MessageService,
-    private spinner : NgxSpinnerService
+    private spinner : NgxSpinnerService,
+  
   
     ) { }
     enviocorreo(){
@@ -102,37 +104,7 @@ onRegister() {
       }
     }
   });
+  
 }
 
-  // onRegister() {
-  //   const { document, firstName,lastName, nameEmprendimiento, address, phoneNumber, description, email, password, confirmPassword } = this.form.value;
-  //   if (!this.form.valid) {
-  //     this.toastr.error("Todos los campos son obligatorios", "Error");
-  //     return;
-  //   }
-  //   if (password != confirmPassword) {
-  //     this.toastr.error("las contraseñas no coinciden", "Error");
-  //     return;
-  //   }
-  //   const company: Company = {
-  //   email: email,
-  //   password: password,
-  //   firstName:firstName,
-  // }
-  //   console.log(company);
-    
-  //   // this.loading = true;p
-  //   this._companyService.signIn(company).subscribe({
-  //     next: (v) => {
-  //       // this.loading = false;
-  //       this.toastr.success("El emprendimiento fue registrado con exito", "Registro exitoso");
-  //       const main = document.getElementById('main');
-  //       main.classList.remove("right-panel-active");
-  //     },
-  //     error: (e: HttpErrorResponse) => {
-  //       this._messageService.msgError(e);
-  //       // this.loading = false;
-  //     }
-  //   })
-  // }
 }
