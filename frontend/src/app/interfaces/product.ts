@@ -3,7 +3,8 @@ export interface Product{
     name:string,
     description:string,
     price:number,
-    image?:string,
+    image:string,
     stock:number,
     category:string,
+    companyId?:string
   }

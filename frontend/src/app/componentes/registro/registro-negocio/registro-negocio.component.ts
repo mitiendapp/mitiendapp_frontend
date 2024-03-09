@@ -8,6 +8,7 @@ import { Company } from 'src/app/interfaces/company';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HeaderService } from 'src/app/services/header.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,8 +28,8 @@ export class RegistroNegocioComponent implements OnInit {
     private toastr: ToastrService,
     private _companyService:CompanyService,
     private _messageService:MessageService,
-    private spinner : NgxSpinnerService
-  
+    private spinner : NgxSpinnerService,
+    private router: Router
     ) { }
     enviocorreo(){
       let params ={
@@ -93,6 +94,7 @@ onRegister() {
       this.toastr.success("El emprendimiento fue registrado con éxito", "Registro exitoso");
       // const main = document.getElementById('main');
       // main.classList.remove("right-panel-active");
+      this.router.navigate(['login']);
     },
     error: (e: HttpErrorResponse) => {
       if (e) {

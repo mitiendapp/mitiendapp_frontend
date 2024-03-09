@@ -6,7 +6,9 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/interfaces/product';
 import { PaymentService } from 'src/app/services/payment.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { kMaxLength } from 'buffer';
+import { enviroment } from 'src/app/enviroments/enviroment';
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -73,7 +75,13 @@ export class DetalleComponent implements OnInit {
   //   })
   // }
   createOrder(){
-    this._paymentService.createOrder(); 
+    this._paymentService.prepareOrder(this.detail).then(async (data)=>{
+      console.log(data);
+      let order = await firstValueFrom(this._paymentService.createOrder(data));
+      console.log(order);
+      window.location.href = order.init_point
+    })
+    
   }
 
 }

@@ -1,6 +1,6 @@
 
 <!--Main container that centers the content and sets a maximum width -->
-<div class="container mx-auto p-5 px-5 lg:w-2/3 lg:my-36 md:my-28 min-[320px]:my-24 md:shadow-xl md:rounded-2xl lg:shadow-xl lg:rounded-2xl">
+<div *ngIf="detail" class="container mx-auto p-5 px-5 lg:w-2/3 lg:my-36 md:my-28 min-[320px]:my-24 md:shadow-xl md:rounded-2xl lg:shadow-xl lg:rounded-2xl">
 
     <!-- Flexible container that changes the arrangement of elements on large screens -->
     <div class="flex flex-col lg:flex-row lg:gap-10 md:gap-20 sm:gap-12">
@@ -9,14 +9,14 @@
         <div class="w-full lg:w-1/2">
             <div class="product-image w-48 h-48 mx-auto mt-10 mb-10 object-cover rounded-md lg:mt-0 md:mb-10">
                 <!-- Product image with size and margin adjustments on large screens -->
-                <img class="lg:mt-10"  src="{{detail.image}}" style="transform: scale(1.5); ">
+                <img class="lg:mt-10"  [src]="detail.image" style="transform: scale(1.5); ">
             </div>
         </div>
         
         <!-- Second block with product information -->
         <div class="w-full lg:w-1/2 mt-10 lg:mt-0">
             <h2 class="text-2xl font-semibold">{{detail.name}}</h2> <!-- Product name -->
-            <h3 class="text-lg text-gray-600 mb-2">{{detail.categoria}}</h3> <!-- Product category -->
+            <h3 class="text-lg text-gray-600 mb-2">{{detail.category}}</h3> <!-- Product category -->
             <form>
                 <div class="flex items-center mb-4">
                     <p class="clasificacion">
@@ -33,7 +33,7 @@
                         <label for="radio5">★</label>
                     </p>
                 </div>
-                <p class="text-sm text-gray-600">{{detail.categoria}}Detalle del producto</p> <!--Product Details -->
+                <p class="text-sm text-gray-600">Detalles del producto: {{detail.detail}}</p> <!--Product Details -->
                 <div class="text-lg font-semibold mt-2">Precio: $ {{detail.price}}</div> <!-- Price of the product -->
                 
                 <!-- "Buy" and "Add to favorites" buttons -->

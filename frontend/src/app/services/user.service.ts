@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/user';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Client } from '../interfaces/client';
 
 @Injectable({
   providedIn: 'root'
@@ -45,4 +46,7 @@ export class UserService {
     return this.http.post<string>(`${this.endpoint}${this.apiUrl}/login`, user)
   }
 
+  signInClient(user: Client): Observable<any> {
+      return this.http.post(`http://localhost:3000/api/client/create`, user);
+    }
 }

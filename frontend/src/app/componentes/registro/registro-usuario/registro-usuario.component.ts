@@ -1,8 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Toast, ToastrService } from 'ngx-toastr';
+import { Client } from 'src/app/interfaces/client';
 import { User } from 'src/app/interfaces/user';
 import { HeaderService } from 'src/app/services/header.service';
 import { MessageService } from 'src/app/services/message.service';
@@ -24,7 +26,8 @@ export class RegistroUsuarioComponent implements OnInit {
     private toastr: ToastrService,
     private _userService:UserService,
     private _messageService:MessageService,
-    private spinner : NgxSpinnerService
+    private spinner : NgxSpinnerService,
+    private router: Router 
   ){
      
   }
@@ -32,11 +35,7 @@ enviocorreo(){
   let params ={
     email:this.form.value.email,
   }
-  console.log(params);
-  
-  this.httpclien.post('https://pruebabackend1.onrender.com/api/envio',params).subscribe(resp=>{
-    console.log(resp);
-    
+  this.httpclien.post('https://pruebabackend1.onrender.com/api/envio',params).subscribe(resp=>{ 
   })
 }
 
@@ -51,7 +50,7 @@ enviocorreo(){
       this.form = this.formBuilder.group({
         firstName: ['', Validators.required],
         document: ['', Validators.required],
-        email: ['', Validators.required],
+        email: ['', Validators.email],
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
       })
@@ -68,25 +67,26 @@ enviocorreo(){
       this.toastr.error("las contraseñas no coinciden", "Error");
       return;
     }
-    const user: User = {
+    const user: Client = {
       email: email,
       document: document,
-      password: password,
       firstName:firstName,
+      lastName: null, 
+      address: null,
+      password: password,
     }
     console.log(user);
-
+    
     // this.loading = true;p
-    this._userService.signIn(user).subscribe({
+    this._userService.signInClient(user).subscribe({
       next: (v) => {
-        // this.loading = false;
         this.toastr.success("El usuario fue registrado con exito", "Registro exitoso");
-        const main = document.getElementById('main');
-        main.classList.remove("right-panel-active");
+        // const main = document.getElementById('main');
+        // main.classList.remove("right-panel-active");
+        this.router.navigate(['login']);
       },
       error: (e: HttpErrorResponse) => {
         this._messageService.msgError(e);
-        // this.loading = false;
       }
     })
   }

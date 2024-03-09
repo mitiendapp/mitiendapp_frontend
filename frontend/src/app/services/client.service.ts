@@ -1,34 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
+import { Router } from 'express';
+import { enviroment } from '../enviroments/enviroment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
+  private endpoint: string;
+  private apiUrl: string;
+  
+  constructor(
+    public router: Router,
+    private http: HttpClient) { 
+      this.endpoint = enviroment.endpoint;
+      this.apiUrl = 'client/create';}
 
-  constructor(private http: HttpClient) { }
-
-  postRequest(route: string, data?: any, queries?: Object, headers?: Object) {
-    let reqHeaders = new HttpHeaders();
-    let reqParams = new HttpParams();
-
-    if (headers) {
-      Object.getOwnPropertyNames(headers).forEach((key) => {
-        reqHeaders = reqHeaders.set(key, headers[key]);
-      });
-    }
-
-    if (queries) {
-      Object.getOwnPropertyNames(queries).forEach((key) => {
-        reqParams = reqParams.set(key, queries[key]);
-      });
-    }
-
-    return this.http.post(route, data, {
-      headers: reqHeaders,
-      params: reqParams,
-      responseType: "json",
-      withCredentials: true,
-    });
+  signIn(client: any): Observable<any> {
+    return this.http.post(`${this.endpoint}${this.apiUrl}`, client);
   }
 }
