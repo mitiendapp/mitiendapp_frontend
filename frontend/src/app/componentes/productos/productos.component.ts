@@ -35,6 +35,7 @@ export class ProductosComponent implements OnInit {
          console.log(value);
                
     } )
+    
     this.getProducts();
 
     // Suscribirse al servicio de filtro de productos para reaccionar a los cambios en el filtro

@@ -63,7 +63,7 @@ const routes: Routes = [
   //   path: 'perfilCompany',
   //   component: PerfilCompanyComponent
   }, {
-    path: 'perfilCompany',
+    path: 'perfilCompany/:email',
     component: PerfilCompanyComponent
   },{
     path: '**',

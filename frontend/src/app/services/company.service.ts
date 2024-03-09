@@ -24,5 +24,8 @@ export class CompanyService {
   signIn(company: Company): Observable<any> {
     return this.http.post(`${this.endpoint}${this.apiUrl}`, company);
   }
+  
+
+
 }
 

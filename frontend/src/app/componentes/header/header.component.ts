@@ -7,6 +7,8 @@ import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { FiltroProductosService } from 'src/app/services/FiltroProductos.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { decodeJWT } from 'src/app/utils/decodeJWT';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -59,6 +61,8 @@ throw new Error('Method not implemented.');
   viewCart: boolean = false;
   myCart$ = this.carService.myCart$;
   userEmail: string = '';
+  userInfo:any;
+  tokenEmail:string='';
   constructor(
     public headerService: HeaderService,
     private router: Router, private carService: CartService,
@@ -74,11 +78,27 @@ throw new Error('Method not implemented.');
     this.router.navigate(['perfilusuario']);
   }
 
+  isPerfilCompanyComponent(): boolean {
+    return this.router.url.includes('perfilCompany/');
+  }
   
+  navigateToCompanyHome() {
+  
+   
+    this.router.navigate(['']);
+  
+  }
 
   navigateToCompanyProfile() {
-    this.router.navigate(['perfilCompany']);
+    this.userInfo = decodeJWT(localStorage.getItem('token'));
+    // console.log(this.userInfo.UserInfo.email,' este es');
+    this.tokenEmail = this.userInfo.UserInfo.email
+    console.log(this.tokenEmail, 'este es el token cuando se preciona el perfil' )
+   
+    this.router.navigate(['perfilCompany',this.tokenEmail]);
+  
   }
+
   actualizarFiltro(event: any) {
     const filtro = event.target.value;
     if (filtro.trim() === '') {
