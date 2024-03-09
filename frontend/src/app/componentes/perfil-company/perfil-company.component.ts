@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PerfilCompanyService } from '../../services/perfil-company.service'
 import { Company } from '../../interfaces/company'
 import { Product } from '../../interfaces/product'
-import { Route } from '@angular/router';
 import { ProductService } from '../../services/product.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { decodeJWT } from 'src/app/utils/decodeJWT';
+import { EditarCompanyComponent } from '../editar-company/editar-company.component';
+
 
 @Component({
   selector: 'app-perfil-company',
@@ -19,7 +20,8 @@ export class PerfilCompanyComponent implements OnInit{
   product:Product[]=[]
   token:string;
   userInfo:any;
-  constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService,private routeActivate: ActivatedRoute) {
+  constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService,
+    private routeActivate: ActivatedRoute, private router :Router) {
   }
 
   // getCompanys(email:string) {
@@ -37,7 +39,10 @@ export class PerfilCompanyComponent implements OnInit{
 
   // }
 
-  
+  interfaceEditarCompany() {
+    this.router.navigate(['/editarCompany']);
+  }
+
   getProducts(){
     this.productservice.getProducts().subscribe((data:any)=>{
       this.product=data.data;
@@ -79,6 +84,7 @@ getCompanyEmail(email: string) {
     console.log(this.company);
   });
 }
+
 
 
 

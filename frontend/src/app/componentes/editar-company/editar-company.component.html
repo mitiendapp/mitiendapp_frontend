@@ -1,0 +1,28 @@
+<section class="flex justify-evenly w-full md:py-10 flex-col
+    lg:flex-row max-sm:h-auto">
+
+
+    <div class="welcome flex flex-col items-center justify-center max-md:h-[20%]">
+        <img class="size-60  object-contain h-1/6 max-sm:hidden" src="../../../../assets/img/logoAzul.png" alt="">
+        <img class="size-72 lg:size-96 2xl:w-[20%]" src="../../../../assets/img/stylzd_hand_3-removebg-preview.png" alt="">  
+    </div>
+
+    <form action="get" class="flex items-center flex-col gap-3 px-3 md:p-4 md:shadow-lg lg:w-2/5
+            max-md:h-[50%]">
+        <p class="text-center w-[80%]"><span class="text-xl"> Edita tus datos, emprendedor.</span><br>¡Mantente actualizado!</p> 
+
+        <input class="outline-none border-1 p-2 px-3 w-full" type="text" name="" id="name" placeholder="Nombre de emprendimiento">
+        <input class="outline-none border-1 p-2 px-3 w-full" type="text" name="" id="description" placeholder="Descripción">
+        <input class="outline-none border-1 p-2 px-3 w-full" type="text" name="" id="Direction" placeholder="Dirección">
+        <input class="outline-none border-1 p-2 px-3 w-full" type="text" name="" id="nameE" placeholder="Nombre emprendedor">
+        <input class="outline-none border-1 p-2 px-3 w-full" type="text" name="" id="document" placeholder="documento">
+        <input class="outline-none border-1 p-2 px-3 w-full" type="text" name="" id="email" placeholder="E-mail">
+        <div class="pass w-full flex gap-3">
+            <input class="outline-none border-1 p-2 px-3 w-full" type="password" name="" id="password" placeholder="Contraseña">
+            <input class="outline-none border-1 p-2 px-3 w-full" type="password" name="" id="confirmPass" placeholder="Confirmar Contraseña">
+        </div>
+        <div class="confirm w-full flex flex-col items-center">
+            <button class="bg-button-blue px-4 py-2 rounded-lg text-white text-lg w-[40%]" (click)="isdevolverPerfil()">Actualizar</button>
+        </div>
+    </form>
+</section>
