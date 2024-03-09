@@ -10,6 +10,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { decodeJWT } from 'src/app/utils/decodeJWT';
+
 
 @Component({
   selector: 'app-inicio',
@@ -21,6 +23,8 @@ export class InicioComponent implements OnInit {
   formPassword: FormGroup;
   loading: boolean = false;
   account: any;
+  userInfo:any;
+  tokenEmail:string='';
   validAccount = new BehaviorSubject<Boolean>(false);
 
   constructor(
@@ -91,7 +95,12 @@ export class InicioComponent implements OnInit {
          
           this.router.navigate(['']);
         }else{
-          this.router.navigate(['perfilCompany']);
+          this.userInfo = decodeJWT(localStorage.getItem('token'));
+          console.log(this.userInfo.UserInfo.email,' este es');
+          this.tokenEmail = this.userInfo.UserInfo.email
+          console.log(this.tokenEmail,'ste es cuando se carga el loguedo')
+         
+          this.router.navigate(['perfilCompany',this.tokenEmail]);
         }
         localStorage.setItem('token', data.token);
         this._messageService.msgSuccess(data);
