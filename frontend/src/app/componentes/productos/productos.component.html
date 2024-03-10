@@ -1,15 +1,23 @@
-<!-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" (click)="addProduct(product)">
-  Agregar
-</button> -->
-<div>
-         
-  <h2 *ngIf="auth.isCompany()| async">Hi Company</h2>
-  <h2 *ngIf="auth.isClient()| async">Hi Client</h2>
-  <h2 *ngIf="auth.isAdmin()| async">Hi Jefe</h2>
-  <h2 *ngIf="!(auth.isLoggedIn()| async)">HOla humano</h2>
- 
-  </div>
+
 <!-- hola -->
+<div class="p-4 flex items-center w-[30%] justify-center ">
+  <!-- Menú desplegable -->
+  <div class="relative">
+      <select class="mr-4 cursor-pointer block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" [(ngModel)]="selectedCategory" (change)="filtrarPorCategoria()" > 
+          <option value="">Categorias</option>
+          <option value="tecnologia" >Tecnología</option>
+          <option value="mueble">Mueble</option>
+          <option value="mascotas">Mascotas</option>
+          <option value="Salud y Belleza">Salud y Belleza</option>
+          <option value="comida">Comida</option>
+          <option value="arte">Arte</option>
+          <option value="deporte">Deporte</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 12l-6-6 1.5-1.5L10 9l4.5-4.5L16 6l-6 6z" clip-rule="evenodd"/></svg>
+      </div>
+  </div>
+</div>
 <div id="container" class="productos w-full h-full  overflow-auto">
   <div class="w-full mx-3 my-1 flex justify-around gap-4 h-fit md:w-1/4" 
     *ngFor="let product of filteredProducts">
