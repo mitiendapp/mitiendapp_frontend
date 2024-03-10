@@ -78,8 +78,7 @@ export class DetalleComponent implements OnInit {
     this._paymentService.prepareOrder(this.detail).then(async (data)=>{
       console.log(data);
       let order = await firstValueFrom(this._paymentService.createOrder(data));
-      console.log(order);
-      window.location.href = order.init_point
+      window.location.href = `https://checkout.wompi.co/l/${order.payment}`
     })
     
   }

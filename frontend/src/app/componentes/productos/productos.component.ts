@@ -26,16 +26,19 @@ export class ProductosComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private messageService: MessageService,
-    public auth:AuthService
+    public auth:AuthService,
+    private productService: ProductService,
+   
+
   ) {}
 
   ngOnInit(): void {
     this.auth.isCompany().subscribe(value =>{
 
          console.log(value);
-               
     } )
     this.getProducts();
+
 
     // Suscribirse al servicio de filtro de productos para reaccionar a los cambios en el filtro
     this._filtroProductosService.filtroProductos$.subscribe(filtro => {
@@ -60,6 +63,19 @@ export class ProductosComponent implements OnInit {
       this.filteredProducts = [...this.listProducts]; // Restaurar la lista completa de productos si el filtro está vacío
     }
   }
+
+  selectedCategory: string = ''; // Propiedad para almacenar la categoría seleccionada
+
+filtrarPorCategoria(): void {
+    if (this.selectedCategory.trim() !== '') {
+        this.filteredProducts = this.listProducts.filter(producto =>
+            producto.category === this.selectedCategory
+        );
+    } else {
+        this.filteredProducts = [...this.listProducts]; // Restaurar la lista completa de productos si no se ha seleccionado ninguna categoría
+    }
+}
+
 
   mostrarDetalle(id: number) {
     this.router.navigate(['/detalle', id]);
