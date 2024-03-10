@@ -1,18 +1,18 @@
-
 <!--Main container that centers the content and sets a maximum width -->
-<div *ngIf="detail" class="container mx-auto p-5 px-5 lg:w-2/3 lg:my-36 md:my-28 min-[320px]:my-24 md:shadow-xl md:rounded-2xl lg:shadow-xl lg:rounded-2xl">
+<div *ngIf="detail"
+    class="container mx-auto p-5 px-5 lg:w-2/3 lg:my-36 md:my-28 min-[320px]:my-24 md:shadow-xl md:rounded-2xl lg:shadow-xl lg:rounded-2xl">
 
     <!-- Flexible container that changes the arrangement of elements on large screens -->
     <div class="flex flex-col lg:flex-row lg:gap-10 md:gap-20 sm:gap-12">
-        
+
         <!-- First block with the product image -->
         <div class="w-full lg:w-1/2">
             <div class="product-image w-48 h-48 mx-auto mt-10 mb-10 object-cover rounded-md lg:mt-0 md:mb-10">
                 <!-- Product image with size and margin adjustments on large screens -->
-                <img class="lg:mt-10"  [src]="detail.image" style="transform: scale(1.5); ">
+                <img class="lg:mt-10" [src]="detail.image" style="transform: scale(1.5); ">
             </div>
         </div>
-        
+
         <!-- Second block with product information -->
         <div class="w-full lg:w-1/2 mt-10 lg:mt-0">
             <h2 class="text-2xl font-semibold">{{detail.name}}</h2> <!-- Product name -->
@@ -35,14 +35,28 @@
                 </div>
                 <p class="text-sm text-gray-600">Detalles del producto: {{detail.detail}}</p> <!--Product Details -->
                 <div class="text-lg font-semibold mt-2">Precio: $ {{detail.price}}</div> <!-- Price of the product -->
-                
+
                 <!-- "Buy" and "Add to favorites" buttons -->
                 <div class="flex mt-6">
-                    <button class="add-to-cart-button bg-[#255BAD] text-white py-2 px-4 rounded-md mr-4" (click)="createOrder()" >Comprar</button>
+                    <button *ngIf="!(isLoading()|async)" class="add-to-cart-button bg-[#255BAD] text-white py-2 px-4 rounded-md mr-4"
+                    (click)="createOrder()">Comprar</button>
+                    <div *ngIf="(isLoading()|async)" class="spinner center mx-12">
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                        <div class="spinner-blade"></div>
+                    </div>
                     <button class="add-favorite bi bi-heart bg-[#255BAD] text-white py-2 px-3 rounded-md"></button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-

@@ -18,13 +18,14 @@ import { enviroment } from 'src/app/enviroments/enviroment';
   styleUrls: ['./detalle.component.css'],
 })
 export class DetalleComponent implements OnInit {
-  detail:any;
+  detail: any;
   idProduct: number = 0;
+  loading = new BehaviorSubject<boolean>(false);
 
   constructor(private routeActivate: ActivatedRoute,
     private _productService: ProductService,
     private _paymentService: PaymentService,
-    private route: ActivatedRoute, private router: Router) {}
+    private route: ActivatedRoute, private router: Router) { }
 
   generatePDF(nombre: string, precio: number) {
     window.alert('Compra exitosa');
@@ -34,11 +35,11 @@ export class DetalleComponent implements OnInit {
         { text: 'mitiendapp', style: 'header' },
         { text: 'Gracias por su compra', style: 'subheader' },
 
-        { text: JSON.stringify(nombre)},
+        { text: JSON.stringify(nombre) },
         { text: JSON.stringify(precio) },
         // { text: JSON.stringify(categoria)},
       ],
-    
+
     };
 
     pdfMake.createPdf(documentDefinition).download('mi-archivo.pdf');
@@ -62,7 +63,7 @@ export class DetalleComponent implements OnInit {
     this.idProduct = this.routeActivate.snapshot.params["id"];
     this.getProduct(this.idProduct);
   }
-  getProduct(id:number) {
+  getProduct(id: number) {
     this._productService.getProductById(id).subscribe((data: any) => {
       this.detail = data.data;
     })
@@ -74,13 +75,17 @@ export class DetalleComponent implements OnInit {
   //     window.location.href = data.init_point
   //   })
   // }
-  createOrder(){
-    this._paymentService.prepareOrder(this.detail).then(async (data)=>{
+  createOrder() {
+    this.loading.next(true);
+    this._paymentService.prepareOrder(this.detail).then(async (data) => {
       console.log(data);
       let order = await firstValueFrom(this._paymentService.createOrder(data));
+      this.loading.next(false);
       window.location.href = `https://checkout.wompi.co/l/${order.payment}`
     })
-    
-  }
 
+  }
+  isLoading() {
+    return this.loading.asObservable();
+  }
 }
