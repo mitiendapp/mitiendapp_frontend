@@ -20,6 +20,8 @@ export class PerfilCompanyComponent implements OnInit{
   product:Product[]=[]
   token:string;
   userInfo:any;
+
+  tokenEmail:any;
   constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService,
     private routeActivate: ActivatedRoute, private router :Router) {
   }
@@ -40,8 +42,17 @@ export class PerfilCompanyComponent implements OnInit{
   // }
 
   interfaceEditarCompany() {
-    this.router.navigate(['/editarCompany']);
+
+    this.userInfo = decodeJWT(localStorage.getItem('token'));
+    // console.log(this.userInfo.UserInfo.email,' este es');
+    this.tokenEmail = this.userInfo.UserInfo.id
+    console.log(this.tokenEmail, 'este es el token cuando se preciona el perfil' )
+   
+    this.router.navigate(['editarCompany',this.tokenEmail]);
+
   }
+
+
 
   getProducts(){
     this.productservice.getProducts().subscribe((data:any)=>{
@@ -58,7 +69,8 @@ export class PerfilCompanyComponent implements OnInit{
     // this.routeActivate.params.subscribe(params => {
     //   const email = params['email'];
    
-    let email = this.routeActivate.snapshot.params['email'];
+    let email = this.routeActivate.snapshot.params['companyId'];
+    
     console.log(email, 'aqui estoy capturando el params osea el correo')
       this.getCompanyEmail(email);
     // });
@@ -73,7 +85,7 @@ export class PerfilCompanyComponent implements OnInit{
 //  emails: string[] = ['josel.alvarezh@uqvirtual.edu.co'];
 //  companies: any[] = [];
 
-getCompanyEmail(email: string) {
+getCompanyEmail(email: number) {
   this.perfilCompanyServices.getCompany(email).subscribe((data: any) => {
     const companyData = data.company; // Obtener los datos de la compañía
     if (Array.isArray(companyData)) {

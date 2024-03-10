@@ -63,11 +63,11 @@ const routes: Routes = [
   //   path: 'perfilCompany',
   //   component: PerfilCompanyComponent
   }, {
-    path: 'perfilCompany/:email',
+    path: 'perfilCompany/:companyId',
     component: PerfilCompanyComponent
   },
   {
-    path: 'editarCompany',
+    path: 'editarCompany/:companyId',
     component: EditarCompanyComponent,
   },
   

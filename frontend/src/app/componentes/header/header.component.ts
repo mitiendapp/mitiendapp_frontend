@@ -8,6 +8,8 @@ import { UserService } from 'src/app/services/user.service';
 import { FiltroProductosService } from 'src/app/services/FiltroProductos.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { decodeJWT } from 'src/app/utils/decodeJWT';
+import { ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -62,14 +64,15 @@ throw new Error('Method not implemented.');
   myCart$ = this.carService.myCart$;
   userEmail: string = '';
   userInfo:any;
-  tokenEmail:string='';
+  tokenEmail:any;
   constructor(
     public headerService: HeaderService,
     private router: Router, private carService: CartService,
     public userService: UserService,
     private filterProductService: FiltroProductosService,
     public cartService:CartService,
-    public auth: AuthService
+    public auth: AuthService,
+    private routeActivate: ActivatedRoute
   ) {
 
   }
@@ -92,8 +95,13 @@ throw new Error('Method not implemented.');
   navigateToCompanyProfile() {
     this.userInfo = decodeJWT(localStorage.getItem('token'));
     // console.log(this.userInfo.UserInfo.email,' este es');
-    this.tokenEmail = this.userInfo.UserInfo.email
-    console.log(this.tokenEmail, 'este es el token cuando se preciona el perfil' )
+    // console.log(this.userInfo.UserInfo.id,"aqui esta solo sin variables");
+    // let email = this.routeActivate.snapshot.params['companyId'];
+    // console.log(email, 'aqui estoy capturando el params osea el correo en el header')
+    this.tokenEmail = this.userInfo.UserInfo.id
+    console.log(this.userInfo.UserInfo.id,"aqui esta solo sin variables");
+    
+    console.log(this.tokenEmail,'este es el token cuando se preciona el perfil' )
    
     this.router.navigate(['perfilCompany',this.tokenEmail]);
   

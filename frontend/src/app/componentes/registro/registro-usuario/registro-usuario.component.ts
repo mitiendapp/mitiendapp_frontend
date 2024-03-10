@@ -50,6 +50,7 @@ enviocorreo(){
 
   ngOnInit(): void {
       this.form = this.formBuilder.group({
+        document: ['', Validators.required],
         firstName: ['', Validators.required],
         email: ['', Validators.required],
         password: ['', Validators.required],
@@ -59,7 +60,7 @@ enviocorreo(){
   }
 
   onRegister() {
-    const { firstName, email, password, confirmPassword } = this.form.value;
+    const { document, firstName, email, password, confirmPassword } = this.form.value;
     if (!this.form.valid) {
       this.toastr.error("Todos los campos son obligatorios", "Error");
       return;
@@ -72,6 +73,7 @@ enviocorreo(){
       email: email,
       password: password,
       firstName:firstName,
+      document:document
     }
     console.log(user);
 

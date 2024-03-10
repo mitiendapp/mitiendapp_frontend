@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { decodeJWT } from 'src/app/utils/decodeJWT';
+import { PerfilCompanyService } from '../../services/perfil-company.service'
+import { Company } from '../../interfaces/company'
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-editar-company',
@@ -8,18 +11,38 @@ import { decodeJWT } from 'src/app/utils/decodeJWT';
   styleUrls: ['./editar-company.component.css']
 })
 export class EditarCompanyComponent  implements OnInit{
-
+  form: FormGroup;
+  company: Company[] = []
   userInfo:any;
-  tokenEmail:string='';
+  tokenEmail:any;
 
-  constructor( private router :Router){}
+  constructor( private formBuilder: FormBuilder, private router :Router, private routeActivate: ActivatedRoute,private perfilCompanyServices: PerfilCompanyService){}
   
   ngOnInit(): void {
-    
+    let email = this.routeActivate.snapshot.params['companyId'];
+    console.log(email, 'aqui estoy capturando el params osea el correo')
+      this.getCompanyEmail(email);
+    // });
   }
   
   interfaceEditarCompany() {
     this.router.navigate(['/editarCompany']);
+  }
+
+  getCompanyEmail(email: any) {
+    this.perfilCompanyServices.getCompany(email).subscribe((data: any) => {
+      const companyData = data.company; // Obtener los datos de la compañía
+      if (Array.isArray(companyData)) {
+        this.company = companyData; // Si es un arreglo, asignar directamente
+      } else {
+        this.company = [companyData]; // Si es un objeto, envolverlo en un arreglo
+      }
+      console.log(this.company);
+    });
+  }
+
+  OnUpdatePerfil(){
+    const { document, firstName, lastName, nameEmprendimiento, address, phoneNumber, description, email, password, confirmPassword } = this.form.value;
   }
 
   // devolverPerfil() {
@@ -31,7 +54,7 @@ export class EditarCompanyComponent  implements OnInit{
     
     this.userInfo = decodeJWT(localStorage.getItem('token'));
     // console.log(this.userInfo.UserInfo.email,' este es');
-    this.tokenEmail = this.userInfo.UserInfo.email
+    this.tokenEmail = this.userInfo.UserInfo.id
     console.log(this.tokenEmail, 'este es el token cuando se preciona el perfil' )
    
     this.router.navigate(['perfilCompany',this.tokenEmail]);

@@ -1,4 +1,5 @@
 export interface User {
+    document?:string,
     firstName?:string,
     // lastName:string
     email:string,
