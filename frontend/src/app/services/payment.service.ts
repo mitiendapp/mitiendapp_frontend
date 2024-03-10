@@ -56,7 +56,7 @@ export class PaymentService {
       description:data.description,
       image:data.image,
       name:data.name,
-      price:data.price,
+      price:data.price * 100,
       stock:data.stock,
       id:data.id,
       companyId:data.companyId,
@@ -70,6 +70,6 @@ export class PaymentService {
   }
   createOrder(data):Observable<any>{
     
-    return this.http.post(`${this.endpoint}${this.apiUrl}/create`, data);
+    return this.http.post(`${this.endpoint}wompi/payment/create`, data);
   }
 }
