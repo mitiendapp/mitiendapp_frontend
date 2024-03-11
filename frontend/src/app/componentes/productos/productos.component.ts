@@ -25,8 +25,8 @@ export class ProductosComponent implements OnInit {
     public _cartService: CartService,
     private route: ActivatedRoute,
     private router: Router,
-    private messageService: MessageService,
     public auth:AuthService,
+    private messageService: MessageService,
     private productService: ProductService,
    
 
