@@ -1,10 +1,13 @@
 export interface Company {
-    nameVenture:string;
+    document: string;
+    firstName: string;
+    lastName: string;
+    nameEmprendimiento: string;
+    email: string;    
+    address: string;
+    phoneNumber: string;
     description: string;
-    ventureAddress:string;
-    docEntrepreneur: string;
-    nameEntrepreneur: string;
-    email: string;
+    img:string | null;
     password:string;
     confirmPassword:string;
   }

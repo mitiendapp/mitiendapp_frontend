@@ -1,3 +1,6 @@
+<section class="nav">
+
+
 <div class="relative w-full">
   <div *ngIf="headerService.isShowing()| async" class="w-full h-12 flex justify-around items-center">
     <div class="flex relative items-center">
@@ -15,10 +18,10 @@
 
       <!-- <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt=""> -->
     </div>
-    <div *ngIf="!(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
+    <div *ngIf="!(auth.isLoggedIn() | async)" class="hidden text-white sm:block flex justify-around" id="signup_signin">
 
-      <a class="mx-4" href="login">Inicio</a>
-      <a class="mx-4" href="signin">Registro</a>
+      <a class="mx-4 text-white" href="login">Inicio</a>
+      <a class="mx-4 text-white" href="signin">Registro</a>
       
     </div>
     <div *ngIf="(auth.isLoggedIn() | async) && (auth.isClient() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
@@ -61,3 +64,4 @@
     <h2 *ngIf="!(auth.isLoggedIn()| async)">HOla humano </h2>
     </div>
 </div>
+</section>

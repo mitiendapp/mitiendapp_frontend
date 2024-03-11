@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { HeaderService } from 'src/app/services/header.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
+import { last } from 'rxjs';
 
 
 @Component({
@@ -53,18 +54,20 @@ export class RegistroNegocioComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
 
-      nameVenture: ['', Validators.required],
-      description: ['', Validators.required],
-      ventureAddress: ['', Validators.required],
-      nameEntrepreneur: ['', Validators.required],
-      docEntrepreneur: ['', Validators.required,],
+      document: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      nameEmprendimiento: ['', Validators.required],
       email: ['', Validators.required],
+      address: ['', Validators.required,],
+      phoneNumber:['', Validators.required,],
+      description:['', Validators.required,],
       password: ['', Validators.required,],
       confirmPassword: ['', Validators.required],
   })
 }
 onRegister() {
-  const { nameVenture, description, ventureAddress, nameEntrepreneur, docEntrepreneur,email, password, confirmPassword } = this.form.value;
+  const {document, firstName, lastName, nameEmprendimiento, email, address, phoneNumber, description, password, confirmPassword } = this.form.value;
   if (!this.form.valid) {
     this.toastr.error("Todos los campos son obligatorios", "Error");
     return;
@@ -74,17 +77,20 @@ onRegister() {
     return;
   }
   const company: Company = {
-    nameVenture:nameVenture,
-    description:description,
-    ventureAddress:ventureAddress,
-    nameEntrepreneur:nameEntrepreneur,
-    docEntrepreneur:docEntrepreneur,
+    document:document,
+    firstName:firstName,
+    lastName:lastName,
+    nameEmprendimiento:nameEmprendimiento,
+    address:address,
+    phoneNumber:phoneNumber,
     email: email,
+    description:description,
+    img:null,
     password:password, 
     confirmPassword:confirmPassword
     
   }
-
+ console.log(company)
   this._companyService.signIn(company).subscribe({
     next: (v) => {
       this.toastr.success("El emprendimiento fue registrado con éxito", "Registro exitoso");
@@ -97,6 +103,7 @@ onRegister() {
         this._messageService.msgError(e);
       } else {
         console.error("Error desconocido al intentar registrar el emprendimiento");
+        this.router.navigate(['login']);
       }
     }
   });
