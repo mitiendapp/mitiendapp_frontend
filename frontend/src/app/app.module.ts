@@ -34,6 +34,8 @@ import { ImageDirectiveDirective } from './image-directive.directive';
 import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
 import { CommonModule } from '@angular/common';
 
+import { SuccesfullPurchaseComponent } from './componentes/succesfull-purchase/succesfull-purchase.component';
+import { TrimHomeComponent } from './componentes/home/trim-home/trim-home.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -63,8 +65,10 @@ export function tokenGetter(){
     ProductoCarritoComponent,
     PerfilCompanyComponent,
     ImageDirectiveDirective,
-    EditarCompanyComponent
+    EditarCompanyComponent,
  
+    SuccesfullPurchaseComponent,
+    TrimHomeComponent
   ],
   imports: [
     NgxSpinnerModule,
