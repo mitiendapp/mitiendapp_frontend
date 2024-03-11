@@ -35,6 +35,8 @@ export class ProductoCarritoComponent {
     }
     product.quantity++;
     product.stock--;
+    this._cartService.myCart$.forEach((e)=>{console.log(e);
+    })
   }
 
   minus(product:ProductDTO){
