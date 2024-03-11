@@ -68,6 +68,26 @@ export class PaymentService {
     }
     return payload
   }
+  async prepareCartOrder(cart:any){
+    const client = await decodeJWT(localStorage.getItem('token')).UserInfo;
+    const payer = await firstValueFrom(this.perfilService.getClient(client.email));
+    const product = {
+      category:null,
+      description:cart.description,
+      image:cart.image,
+      name:`Carrito de ${payer.firstName}`,
+      price:cart.price * 100,
+      stock:null,
+      id:null,
+      companyId:null,
+      quantity:1
+    } 
+    const payload = {
+      product,
+      payer
+    }
+    return payload
+  }
   createOrder(data):Observable<any>{
     
     return this.http.post(`${this.endpoint}wompi/payment/create`, data);
