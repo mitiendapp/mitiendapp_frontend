@@ -85,7 +85,6 @@ onRegister() {
     phoneNumber:phoneNumber,
     email: email,
     description:description,
-    img:null,
     password:password, 
     confirmPassword:confirmPassword
     

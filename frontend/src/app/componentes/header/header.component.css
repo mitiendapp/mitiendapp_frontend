@@ -2,11 +2,9 @@
     width: 32px;
     height: 32px;
 }
-/* .nav{
-    color: white;
-    background: #3586ff;
-    background: linear-gradient(265deg, #3586ff 65%, rgba(0,104,255,0) 62%);
-} */
+ .nav{
+    color: black;
+} 
 .items{
     border-radius: 50%;
     width: 20px;
