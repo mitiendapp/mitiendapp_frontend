@@ -53,20 +53,18 @@ export class RegistroNegocioComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
 
-      document: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      nameEmprendimiento: ['', Validators.required],
-      email: ['', Validators.required,],
-      address: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+      nameVenture: ['', Validators.required],
       description: ['', Validators.required],
+      ventureAddress: ['', Validators.required],
+      nameEntrepreneur: ['', Validators.required],
+      docEntrepreneur: ['', Validators.required,],
+      email: ['', Validators.required],
       password: ['', Validators.required,],
       confirmPassword: ['', Validators.required],
   })
 }
 onRegister() {
-  const { document, firstName, lastName, nameEmprendimiento, address, phoneNumber, description, email, password, confirmPassword } = this.form.value;
+  const { nameVenture, description, ventureAddress, nameEntrepreneur, docEntrepreneur,email, password, confirmPassword } = this.form.value;
   if (!this.form.valid) {
     this.toastr.error("Todos los campos son obligatorios", "Error");
     return;
@@ -76,14 +74,12 @@ onRegister() {
     return;
   }
   const company: Company = {
-    document:document,
-    email: email,
-    firstName:firstName,
-    lastName:lastName,
-    nameEmprendimiento:nameEmprendimiento,
-    address:address,
-    phoneNumber:phoneNumber,
+    nameVenture:nameVenture,
     description:description,
+    ventureAddress:ventureAddress,
+    nameEntrepreneur:nameEntrepreneur,
+    docEntrepreneur:docEntrepreneur,
+    email: email,
     password:password, 
     confirmPassword:confirmPassword
     
@@ -106,35 +102,4 @@ onRegister() {
   });
 }
 
-  // onRegister() {
-  //   const { document, firstName,lastName, nameEmprendimiento, address, phoneNumber, description, email, password, confirmPassword } = this.form.value;
-  //   if (!this.form.valid) {
-  //     this.toastr.error("Todos los campos son obligatorios", "Error");
-  //     return;
-  //   }
-  //   if (password != confirmPassword) {
-  //     this.toastr.error("las contraseñas no coinciden", "Error");
-  //     return;
-  //   }
-  //   const company: Company = {
-  //   email: email,
-  //   password: password,
-  //   firstName:firstName,
-  // }
-  //   console.log(company);
-    
-  //   // this.loading = true;p
-  //   this._companyService.signIn(company).subscribe({
-  //     next: (v) => {
-  //       // this.loading = false;
-  //       this.toastr.success("El emprendimiento fue registrado con exito", "Registro exitoso");
-  //       const main = document.getElementById('main');
-  //       main.classList.remove("right-panel-active");
-  //     },
-  //     error: (e: HttpErrorResponse) => {
-  //       this._messageService.msgError(e);
-  //       // this.loading = false;
-  //     }
-  //   })
-  // }
 }

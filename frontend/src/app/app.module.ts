@@ -31,6 +31,7 @@ import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
 import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-carrito/producto-carrito.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { SuccesfullPurchaseComponent } from './componentes/succesfull-purchase/succesfull-purchase.component';
+import { TrimHomeComponent } from './componentes/home/trim-home/trim-home.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -59,7 +60,8 @@ export function tokenGetter(){
     MessageBoxComponent,
     ProductoCarritoComponent,
     PerfilCompanyComponent,
-    SuccesfullPurchaseComponent
+    SuccesfullPurchaseComponent,
+    TrimHomeComponent
   ],
   imports: [
     NgxSpinnerModule,

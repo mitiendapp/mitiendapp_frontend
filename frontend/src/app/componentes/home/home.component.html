@@ -1,4 +1,5 @@
-<div class="h-fu" *ngIf="(thereAreOffers() | async)" id="container">
+<app-trim-home></app-trim-home>
+<div class="h-4/6 w-3/5 " *ngIf="(thereAreOffers() | async)" id="container">
     <div id="homeCarousel" class="carousel carousel-dark slide d-flex justify-content-center" data-ride="carousel">
         <div class="carousel-inner  w-full shadow">
             <div class="carousel-item active">
@@ -8,7 +9,7 @@
                             <img class="img-fluid mx-auto d-block w-75" src="https://cdn.shopify.com/s/files/1/0604/8373/1606/products/IMG-105270_823x.jpg?v=1658326023"
                                 alt="..." style="transform: scale(1.4);">
                         </div>
-                        <!-- <div class="col-sm-4 ">
+                        <div class="col-sm-4 ">
                             <div class="row  p-3">
                                 <div class="w-50">
                                     <img class="col img-thumbnail w-100"
@@ -36,7 +37,7 @@
                                 <p class="card-text">Pantalla FHD 120hz.</p>
                                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
