@@ -59,7 +59,6 @@ export class RegistroNegocioComponent implements OnInit {
       nameEmprendimiento: ['', Validators.required],
       email: ['', Validators.required,],
       address: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
       description: ['', Validators.required],
       password: ['', Validators.required,],
       confirmPassword: ['', Validators.required],

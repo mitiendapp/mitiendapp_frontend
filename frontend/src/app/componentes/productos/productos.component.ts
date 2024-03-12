@@ -6,6 +6,8 @@ import { CartService } from 'src/app/services/cart.service';
 import { FiltroProductosService } from 'src/app/services/FiltroProductos.service';
 import { MessageService } from 'src/app/services/message.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { CompanyService } from 'src/app/services/company.service';
+import { firstValueFrom } from 'rxjs';
 
 
 @Component({
@@ -28,11 +30,25 @@ export class ProductosComponent implements OnInit {
     private messageService: MessageService,
     public auth:AuthService,
     private productService: ProductService,
-   
+   private companyService:CompanyService
 
   ) {}
 
   ngOnInit(): void {
+
+    // this.companyService.find("a@a.com").subscribe({
+    //   next(value) {
+    //       console.log(value);
+          
+    //   },complete() {
+    //       console.log("complete");
+          
+    //   },error(err) {
+    //       console.log(err);
+          
+    //   },
+    // })
+
     this.auth.isCompany().subscribe(value =>{
 
          console.log(value);
