@@ -10,9 +10,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HeaderService } from 'src/app/services/header.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { decodeJWT } from 'src/app/utils/decodeJWT';
-import { ActivatedRoute } from '@angular/router';
-import { log } from 'console';
 
 @Component({
   selector: 'app-inicio',
@@ -24,8 +21,6 @@ export class InicioComponent implements OnInit {
   formPassword: FormGroup;
   loading: boolean = false;
   account: any;
-  userInfo:any;
-  tokenEmail:any;
   validAccount = new BehaviorSubject<Boolean>(false);
 
   constructor(
@@ -37,8 +32,7 @@ export class InicioComponent implements OnInit {
     private _messageService: MessageService,
     private headerService: HeaderService,
     private auth: AuthService,
-    private spinner : NgxSpinnerService,
-    private routeActivate: ActivatedRoute
+    private spinner : NgxSpinnerService
   ) {
   }
 
@@ -97,15 +91,7 @@ export class InicioComponent implements OnInit {
          
           this.router.navigate(['']);
         }else{
-
-          this.userInfo = decodeJWT(localStorage.getItem('token'));
-          console.log(this.userInfo.UserInfo.id,' este es');
-          this.tokenEmail = this.userInfo.UserInfo.id
-          console.log(this.tokenEmail,'ste es cuando se carga el loguedo')
-      
-          
-         
-          this.router.navigate(['perfilCompany',this.tokenEmail]);
+          this.router.navigate(['perfilCompany']);
         }
         localStorage.setItem('token', data.token);
         this._messageService.msgSuccess(data);
@@ -116,7 +102,6 @@ export class InicioComponent implements OnInit {
         this.loading = false;
       }
     })
-
 
     //  this._userService.logIn(user).subscribe({
     //   next: (data: any) => {

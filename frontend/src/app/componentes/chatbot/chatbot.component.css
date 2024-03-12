@@ -1,51 +1,8 @@
 .modal-dialog{
-    background-color: red;
- }
- 
- .modal-content{
-     height: 100%;
-     display: flex;
- }
- .imagen{
-     width: 400px;
-     height: 100px;
- }
- .loader {
-     /* background-color: blue; */
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-   }
-   
-   .loader-text {
-     font-size: 24px;
-     color: #5DADE2;
-     margin-bottom: 20px;
-     align-self: center;
-   }
-   
-   .loader-bar {
-     width: 30%;
-     height: 10px;
-     border-radius: 5px;
-     background-color: #5DADE2;
-     animation: loader-bar-animation 2s ease-in-out infinite;
-   }
-   
-   @keyframes loader-bar-animation {
-     0% {
-       /* transform: translateX(-100%) rotate(270deg); */
-       transform: translateX(-100%);
-     }
-   
-     50% {
-       /* transform: translateX(100%) rotate(-90deg); */
-       transform: translateX(100%);
-     }
-   
-     100% {
-       /* transform: translateX(-100%) rotate(270deg); */
-       transform: translateX(-100%);
-     }
-   }
+   background-color: red;
+}
+
+.modal-content{
+    height: 100%;
+    display: flex;
+}

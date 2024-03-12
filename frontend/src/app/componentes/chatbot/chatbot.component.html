@@ -1,44 +1,25 @@
-<ng-template #chatbot class="modal-dialog h-[40rem] w-[80%] justify-between">
-    <form #chatbot [formGroup]="form" (ngSubmit)="askChat2()">
+<ng-template #chatbot class="modal-dialog h-full justify-between">
+    <form #chatbot [formGroup]="form" (ngSubmit)="askChat()">
 
-        <div class="h-[30rem] px-2 pt-2 relative w-full" action="">
-            <div class="content h-full">
-
+        <div  class="h-[38rem] px-4 pt-4 relative w-full" action="" >
+            <div class="content h-full ">
                 <div id="scroll-down" class="h-full bg-slate-300 overflow-scroll scroll" *ngIf="chat">
-                    <div class="p-2" *ngFor="let messages of chat">
+                    <div class="p-4 " *ngFor="let messages of chat">
                         <div class="flex justify-end" *ngIf="(messages.from == userService.currentUser.email)">
                             <app-message-box [message]="messages.text" [color]="'#005c4b'"></app-message-box>
                         </div>
-                        <div class="flex justify-start" *ngIf="!(messages.from == userService.currentUser.email)">
-                            <app-message-box [message]="messages.text" [color]="'#202c33'">
-
-
-                            </app-message-box>
+                        <div class="flex justify-start " *ngIf="!(messages.from == userService.currentUser.email)">
+                            <app-message-box [message]="messages.text" [color]="'#202c33'"></app-message-box>
                         </div>
-                    </div>
-                    <div>
-                        <span *ngIf="loading" class="ml-2 loader">
-                            <div class="loader">
-                                <div class="loader-text"></div>
-                                <img class= "imagen"src="../../../assets/img/logo.png" >
-                                <div class="loader-bar"></div>
-                              </div>
-                        </span>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="b-0 flex flex-row justify-between items-center w-full p-2">
-
+        <div class="b-0 flex flex-row justify-between items-center w-full p-4">
             <div class="w-full flex flex-row justify-evenly w-full">
-                <input class="w-[70%] bg-[rgb(0,0,0,0.2)] rounded px-2 py-1" type="text" value=""
+                <input class="w-full bg-[rgb(0,0,0,0.2)] rounded px-3 py-1" type="text" value=""
                     formControlName="pregunta" placeholder="Escribe un mensaje">
-                <button class="size-6" type="submit" [disabled]="loading">
-                    <img src="../../../assets/icons/send.svg" alt="">
-
-                    <span *ngIf="!loading">Enviar</span>
-                </button>
+                <button class="size-6" type="submit"><img src="../../../assets/icons/send.svg" alt=""></button>
             </div>
         </div>
     </form>

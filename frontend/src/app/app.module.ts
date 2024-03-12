@@ -31,7 +31,6 @@ import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
 import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-carrito/producto-carrito.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ImageDirectiveDirective } from './image-directive.directive';
-import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
 import { CommonModule } from '@angular/common';
 
 import { SuccesfullPurchaseComponent } from './componentes/succesfull-purchase/succesfull-purchase.component';
@@ -65,8 +64,6 @@ export function tokenGetter(){
     ProductoCarritoComponent,
     PerfilCompanyComponent,
     ImageDirectiveDirective,
-    EditarCompanyComponent,
- 
     SuccesfullPurchaseComponent,
     TrimHomeComponent
   ],
@@ -80,8 +77,6 @@ export function tokenGetter(){
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
-    CommonModule,
-    FormsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',

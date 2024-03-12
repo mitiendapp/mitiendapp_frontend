@@ -106,18 +106,6 @@ export class AuthService {
     this.loginRole();
     console.log(token)
   }
-  
-  public getUserEmail() {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decodedToken = this.helper.decodeToken(token);
-      return decodedToken.email;
-    }
-    return 'hola no retorna';
-  }
-
-  
-  
   registerUser(){
     this.client.next(true);
 

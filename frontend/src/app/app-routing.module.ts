@@ -14,7 +14,7 @@ import { CreateProductComponent } from './componentes/create-product/create-prod
 import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 import { authGuardExample } from './utils/guard_example';
 import { createProductsguard } from './utils/guard_CreateProduc';
-import {EditarCompanyComponent } from './componentes/editar-company/editar-company.component'
+
 const routes: Routes = [
   {
     path: '',
@@ -63,11 +63,8 @@ const routes: Routes = [
   //   path: 'perfilCompany',
   //   component: PerfilCompanyComponent
   }, {
-    path: 'perfilCompany/:companyId',
+    path: 'perfilCompany',
     component: PerfilCompanyComponent
-  },{
-    path: 'editarCompany/:companyId',
-    component: EditarCompanyComponent,
   },{
     path: '**',
     redirectTo: '',

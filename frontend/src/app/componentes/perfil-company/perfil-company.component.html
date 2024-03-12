@@ -1,92 +1,35 @@
-<section class="m-0 p-0">
-  <div class="imgTop pb-6 sds w-full h-50 md:h-70 bg-cover bg-center d-flex justify-center lg:h-90"
-      style="background-image: url(../../../../assets/img/8085383.jpg);">
+<section class="m-0 p-0" >
 
-      <img class="rounded-full mb-[-15%] mt-[8%] sm:mt-[5%] md:mb-[-8%] md:mt-[10%] lg:mt-[8%] size-40 cover"
-          src="../../../../assets/img/7941390.jpg" alt="">
+
+<div *ngFor="let email of emails" class="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center">
+  <!-- <div (click)="getCompanyEmail()" style="cursor: pointer;">
+    
+    <p>Correo Electrónico: {{ email }}</p>
+    <p> nombre: getCompanyName(email)</p>
+    
+  </div> -->
+    <div  class="card w-96 mx-auto bg-white  shadow-xl hover:shadow">
+       <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="https://avatars.githubusercontent.com/u/67946056?v=4" alt="">
+       <div class="text-center mt-2 text-3xl font-medium">a</div>
+       <div class="text-center mt-2 font-light text-sm">@devpenzil</div>
+       <div class="text-center font-normal text-lg">Kerala</div>
+       <div class="px-6 text-center mt-2 font-light text-sm">
+         <p>
+           Front end Developer, avid reader. Love to take a long walk, swim
+         </p>
+       </div>
+       <hr class="mt-8">
+       <div class="flex p-4">
+         <div class="w-1/2 text-center">
+           <span class="font-bold">1.8 k</span> Followers
+         </div>
+         <div class="w-0 border border-gray-300">
+
+         </div>
+         <div class="w-1/2 text-center">
+           <span class="font-bold">2.0 k</span> Following
+         </div>
+       </div>
+    </div>
+
   </div>
-
-
-  <!--about user -->
-  <div *ngFor="let compa of company" class="infoUser max-sm:mt-[10%] mt-[7%] d-flex justify-center flex-col items-center">
-      <h1 class="font-bold">{{compa.nameEmprendimiento}}</h1>
-      <!-- <h5>no se que poner acá</h5> -->
-      <div class="socialmedia d-flex w-full items-center justify-center">
-          <!-- Instagram -->
-          <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-instagram text-2xl"></i></a>
-          <!-- Twitter -->
-          <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-twitter text-2xl"></i></a>
-          <!-- WhatsApp -->
-          <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-whatsapp text-2xl"></i></a>
-      </div>
-
-      <!-- name and venture description -->
-   
-      <div class="description d-flex justify-center text-center flex-col items-center">
-          <p class="w-[80%]">{{compa.description}}</p>
-      </div>
-      <button class="update-info-btn btn btn-primary" (click)="interfaceEditarCompany()">Editar información</button>
-      <button class="update-info-btn btn btn-primary " (click)="interfaceAgregarProducto()">Agregar Producto</button>
-  </div>
-
-
-
-  <div class="mt-[8%]">
-
-  </div>
-
-
-
-      <!-- https://trueshop.co/cdn/shop/files/Buzo-The_Green_Edit_Verde_Pistacho_1_41f52f1d-0ff5-40c8-a9b2-a6a4595c7231_720x720.jpg?v=1694712682 -->
-
-
-  
-
-
-
-  <!-- products pics -->
-
-  <!-- plantilla -->
-
-
-
-  <div class="socialmedia d-flex w-full items-center justify-center overflow-x-auto">
-      <div class="flex-wrap d-flex wrapper antialiased text-gray-900 flex ">
-          <div *ngFor="let product of listProducts" class="product flex-grow flex-col items-center mb-4 px-4">
-              <div class="flex flex-col items-center">
-                  <img [src]="product.image" class="w-[332px] h-[332px] max-w-[332px] max-h-[332px] rounded-lg shadow-md mb-4">
-                  <div class="relative px-4 -mt-16">
-                      <div class="bg-white p-6 rounded-lg shadow-lg">
-                          <div class="flex items-baseline">
-                              <span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full uppercase font-semibold tracking-wide">
-                                  {{product.category}}
-                              </span>
-                              <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                 Cantidad: {{product.stock}}
-                              </div>
-                          </div>
-  
-                          <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">{{product.name}}</h4>
-  
-                          <div class="mt-1">
-                              {{product.price |currency}}
-                              
-                              <span class="text text-sm"> </span>
-                          </div>
-                          <div class="mt-4">
-                              <span class="text-teal-600 text-md font-semibold">{{product.description}} </span>
-                              
-                              
-                          </div>
-                          <button class="update-info-btn btn btn-primary ">Eliminar</button>
-                              <button class="update-info-btn btn btn-primary " (click)="interfaceAgregarProducto()">Actualizar</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
- 
-  
-  
-</section>

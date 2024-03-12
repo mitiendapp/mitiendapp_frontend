@@ -29,18 +29,11 @@ export class ProductService {
     return this.http.post<any>(`${this.endpoint}${this.apiUrl}${this.create1}`, productData)
   }
 
-  // deleteProdcuts(product:Product):Observable<void>{
-  //  return this.http.post<void>(`${this.endpoint}${'product/delete'}`,product)
-  // } 
-  deleteProdcuts(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.endpoint}/product/delete/${id}`);
-  }
-
+  deleteProdcuts(product:Product):Observable<void>{
+   return this.http.post<void>(`${this.endpoint}${'product/delete'}`,product)
+  } 
   saveProduct(product: Product): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}${this.endpoint}`,product)
-  }
-  getCompanybyProductsId(companyId: any): Observable<any> {
-    return this.http.get<any>(`${this.endpoint}${this.apiUrl}/${companyId}`)
   }
 
 }
