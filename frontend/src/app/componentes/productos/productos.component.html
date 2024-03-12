@@ -1,24 +1,46 @@
-<div id="container" class="productos w-full h-full  overflow-auto">
-  <div class="w-full mx-3 my-1 flex justify-around gap-4 h-fit
-  md:w-1/4" *ngFor="let product of listProducts">
 
-      <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer" (click)="mostrarDetalle(product.id)">
-        <div class="size-40">
-          <img [src]="product.image" class="object-contain size-40" alt="... ">
+<!-- hola -->
+<div class="p-4 flex items-center w-[30%] justify-center ">
+  <!-- Menú desplegable -->
+  <div class="relative">
+      <select class="mr-4 cursor-pointer block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" [(ngModel)]="selectedCategory" (change)="filtrarPorCategoria()" > 
+          <option value="">Categorias</option>
+          <option value="tecnologia" >Tecnología</option>
+          <option value="mueble">Mueble</option>
+          <option value="mascotas">Mascotas</option>
+          <option value="Salud y Belleza">Salud y Belleza</option>
+          <option value="comida">Comida</option>
+          <option value="arte">Arte</option>
+          <option value="deporte">Deporte</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 12l-6-6 1.5-1.5L10 9l4.5-4.5L16 6l-6 6z" clip-rule="evenodd"/></svg>
+      </div>
+  </div>
+</div>
+<div id="container" class="productos w-full h-full  overflow-auto">
+  <div class="w-full mx-3 my-1 flex justify-around gap-4 h-fit md:w-1/4" 
+    *ngFor="let product of filteredProducts">
+    <!-- Utiliza filteredProducts en lugar de listProducts -->
+
+    <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer">
+      <div class="size-40">
+        <img [src]="product.image" class="object-contain size-40" alt="... " (click)="mostrarDetalle(product.id)">
+      </div>
+      <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
+        <div class="card-body">
+          <h5 class="card-title top-0 text-xl">{{product.name}}</h5>
+          <p class="text-sm text-gray-400">{{product.category}}</p>
         </div>
-        <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
-          <div class="card-body">
-            <h5 class="card-title top-0 text-xl">{{product.name}}</h5>
-            <p class="text-sm text-gray-400">{{product.state}}</p>
-          </div>
-          <div class="text-sm"> $ {{product.price}}</div>
-          <div class="card-body flex justify-between items-end relative">
-            <!-- <button class="btn btn-primary btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button> -->
-            <button class="btn btn-sm rounded w-1/6 absolute right-0" href="#" (click)="agregarAlCarrito(product.id)">
-            <img src="../../../assets/icons/shopping-cart-add-svgrepo-com.svg" alt="">
-            </button>
-          </div>
+        <div class="text-sm">{{product.price | currency}}</div>
+        <div class="card-body flex justify-between items-end relative">
+          <button  class="btn btn-primary btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button>
+          <button class="btn btn-sm rounded w-1/6 absolute right-0 cursor-pointer" (click)="addToCart(product)">
+            <img [src]="cartIcon" alt="">
+          </button>
         </div>
       </div>
+    </div>
 
   </div>
+</div>

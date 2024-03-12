@@ -23,7 +23,10 @@ export class MessageService {
             this.toastr.error("¡Ups! Algo salió mal", tittle)
         }
     }
-    msgSuccess(e:any, tittle:string="¡Exito!"){
-        this.toastr.success(e.message, tittle)
+    msgSuccess(body:any, tittle:string="¡Exito!"){
+        this.toastr.success(body.message, tittle)
+    }
+    msgWarn(body:any, tittle:string="Alto ahi!"){
+        this.toastr.warning(body.message, tittle)
     }
 }

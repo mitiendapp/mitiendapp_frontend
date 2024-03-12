@@ -1,14 +1,63 @@
 <div class="relative w-full">
-    <div *ngIf="headerService.isShowing()| async" class="w-full h-12 flex justify-around items-center">
-        <div class="flex relative items-center">
-            <img [@showArrow] = "show? 'show' : 'hide' " class="size-6 absolute -ml-1" src="../../../assets/icons/left-arrow-svgrepo-com.svg" alt="">
-            <a href="/">    
-                <img [@canGoBack] = "itCan? 'can' : 'cant' " class="icon" src="../../../assets/icons/android-chrome-192x192.png" alt="">
-            </a>
-        </div>
-        <div class="inputWrapper relative w-3/4">
-            <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm" type="search" placeholder="Busca productos, tiendas y más...">
-            <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
-        </div> 
+  <div *ngIf="headerService.isShowing()| async" class="w-full h-12 flex justify-around items-center">
+    <div class="flex relative items-center">
+      <img (click)="headerService.goBack()" [@showArrow]="show? 'show' : 'hide' " class="size-6 absolute -ml-1"
+        src="../../../assets/icons/left-arrow-svgrepo-com.svg" alt="">
+      <a href="/">
+        <img [@canGoBack]="itCan? 'can' : 'cant' " class="icon" src="../../../assets/icons/android-chrome-192x192.png"
+          alt="">
+      </a>
     </div>
-</div> 
+    <div class="inputWrapper relative w-3/5 flex items-center ">
+
+      <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" id="inputHeader"
+        type="search" placeholder="Busca productos, tiendas y más..." (input)="actualizarFiltro($event)">
+
+      <!-- <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt=""> -->
+    </div>
+    <div *ngIf="!(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
+
+      <a class="mx-4" href="login">Inicio</a>
+      <a class="mx-4" href="signin">Registro</a>
+      
+    </div>
+    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isClient() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
+      <button (click)="navigateToUserProfile()">Perfil</button>
+    </div>
+    
+    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
+      <button (click)="navigateToCompanyProfile()">Perfil</button>
+    </div>
+    
+    <div *ngIf="(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
+      <button *ngIf="auth.isLoggedIn()|async"  (click)="auth.logout()">salir</button>
+
+    
+    </div>
+
+ 
+
+    <nav class="navbar">
+      <div class="navbar-cart static" (click)="onToggleCart()">
+        <div class="items bg[#0d6efd] text-xs absolute -top-1 -right-3" *ngIf="(myCart$ | async)?.length">
+          <p>{{ (myCart$ | async)?.length }}</p>
+        </div>
+        <div>
+          <div *ngIf="(cartService.itemAdded() | async)"
+            class="absolute -right-2 top-0 bg-[#128aaf] rounded-full size-3">.</div>
+          <i (click)="cartService.itemAdd.next(false)" class="fa-solid fa-cart-shopping fa-lg cursor-pointer"></i>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+<div class="cart w-full h-full" [ngClass]="{ show1: viewCart }">
+  <app-carrito-compra class="static h-full w-full"></app-carrito-compra>
+  <div>
+         
+    <h2 *ngIf="auth.isCompany()| async">Hi Company</h2>
+    <h2 *ngIf="auth.isClient()| async">Hi Client</h2>
+    <h2 *ngIf="auth.isAdmin()| async">Hi Jefe</h2>
+    <h2 *ngIf="!(auth.isLoggedIn()| async)">HOla humano </h2>
+    </div>
+</div>

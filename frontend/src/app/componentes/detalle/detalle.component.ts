@@ -6,7 +6,9 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/interfaces/product';
 import { PaymentService } from 'src/app/services/payment.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { kMaxLength } from 'buffer';
+import { enviroment } from 'src/app/enviroments/enviroment';
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -16,14 +18,14 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./detalle.component.css'],
 })
 export class DetalleComponent implements OnInit {
-  detail:any;
+  detail: any;
   idProduct: number = 0;
-  loaded = new BehaviorSubject<Boolean>(false);
+  loading = new BehaviorSubject<boolean>(false);
 
   constructor(private routeActivate: ActivatedRoute,
     private _productService: ProductService,
     private _paymentService: PaymentService,
-    private route: ActivatedRoute, private router: Router) {}
+    private route: ActivatedRoute, private router: Router) { }
 
   generatePDF(nombre: string, precio: number) {
     window.alert('Compra exitosa');
@@ -33,11 +35,11 @@ export class DetalleComponent implements OnInit {
         { text: 'mitiendapp', style: 'header' },
         { text: 'Gracias por su compra', style: 'subheader' },
 
-        { text: JSON.stringify(nombre)},
+        { text: JSON.stringify(nombre) },
         { text: JSON.stringify(precio) },
         // { text: JSON.stringify(categoria)},
       ],
-    
+
     };
 
     pdfMake.createPdf(documentDefinition).download('mi-archivo.pdf');
@@ -61,25 +63,29 @@ export class DetalleComponent implements OnInit {
     this.idProduct = this.routeActivate.snapshot.params["id"];
     this.getProduct(this.idProduct);
   }
-  getProduct(id:number) {
+  getProduct(id: number) {
     this._productService.getProductById(id).subscribe((data: any) => {
       this.detail = data.data;
-      // console.log("HERE");
-      
-      console.log(data.data);
-      
-      this.loaded.next(true);
     })
   }
 
-  createOrder(){
-    this._paymentService.createOrder().subscribe((data:any)=>{
+  // createOrder(){
+  //   this._paymentService.createOrder(this.detail).subscribe((data:any)=>{
+  //     console.log(data);
+  //     window.location.href = data.init_point
+  //   })
+  // }
+  createOrder() {
+    this.loading.next(true);
+    this._paymentService.prepareOrder(this.detail).then(async (data) => {
       console.log(data);
-      window.location.href = data.init_point
+      let order = await firstValueFrom(this._paymentService.createOrder(data));
+      this.loading.next(false);
+      window.location.href = `https://checkout.wompi.co/l/${order.payment}`
     })
-  }
 
-  isLoaded(){
-    return this.loaded.asObservable();
+  }
+  isLoading() {
+    return this.loading.asObservable();
   }
 }

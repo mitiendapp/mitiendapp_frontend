@@ -22,8 +22,6 @@ export class RegistroComponent implements OnInit{
   ngOnInit(): void {
     this.mainActive.next(true);
     this.userRegister.next(false);
-    
-    this.headerService.hide();
   }
 
   registerUser(){

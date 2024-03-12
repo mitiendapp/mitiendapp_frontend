@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -8,7 +9,9 @@ export class HeaderService{
 
   private isShow = new BehaviorSubject<Boolean>(false);
 
-  constructor() { this.isShow.next(true);}
+  constructor(
+    private location: Location
+  ) { this.isShow.next(true);}
 
   show(){
     this.isShow.next(true);
@@ -20,4 +23,9 @@ export class HeaderService{
   isShowing(){
     return this.isShow.asObservable();
   }
+
+  goBack(){
+    this.location.back();
+  }
+
 }

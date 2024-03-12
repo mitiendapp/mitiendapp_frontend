@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap'
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbCarouselModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap'
 import { BehaviorSubject } from 'rxjs';
+import { HeaderService } from 'src/app/services/header.service';
+import { ChatbotComponent } from '../chatbot/chatbot.component';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +10,26 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
+  @ViewChild('chatbot') private modal: ChatbotComponent;
   thereOffers = new BehaviorSubject<Boolean>(false);
 
   constructor(
-    private ngCarousel: NgbCarouselModule
-  ){
+    private ngCarousel: NgbCarouselModule,
+    private headerService: HeaderService,
+  ) {
 
   }
   ngOnInit(): void {
-      if(false){
-        this.thereOffers.next(true);
-      }
+
+    if (false) {
+      this.thereOffers.next(true);
+    }
   }
-  thereAreOffers(){
+  thereAreOffers() {
     return this.thereOffers.asObservable();
+  }
+
+  async openModal(){
+    return await this.modal.open();
   }
 }
