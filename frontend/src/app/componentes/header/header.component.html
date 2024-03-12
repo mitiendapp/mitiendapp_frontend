@@ -16,10 +16,11 @@
         type="search" placeholder="Busca productos, tiendas y mÃ¡s..." (input)="actualizarFiltro($event)">
 
       <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
+      
     </div>
     <div *ngIf="!(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
-      <a class="mx-4" href="login">Inicio de sesion</a>
-      <a class="mx-4" href="signin">Registro</a>
+      <a class="mx-4  text-black" href="login">Inicio de sesion</a>
+      <a class="mx-4  text-black" href="signin">Registro</a>
     </div>
     <div *ngIf="(auth.isLoggedIn() | async) && (auth.isClient() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       <button (click)="navigateToUserProfile()">Perfil</button>
