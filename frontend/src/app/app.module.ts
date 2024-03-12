@@ -33,9 +33,6 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ImageDirectiveDirective } from './image-directive.directive';
 import { CommonModule } from '@angular/common';
 
-import { SuccesfullPurchaseComponent } from './componentes/succesfull-purchase/succesfull-purchase.component';
-import { TrimHomeComponent } from './componentes/home/trim-home/trim-home.component';
-
 export function tokenGetter(){
   return localStorage.getItem('token')
 }
