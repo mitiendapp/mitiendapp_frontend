@@ -81,7 +81,7 @@ onRegister() {
     lastName:lastName,
     nameEmprendimiento:nameEmprendimiento,
     address:address,
-    phoneNumber:phoneNumber,
+    phoneNumber:"",
     description:description,
     password:password, 
     confirmPassword:confirmPassword
