@@ -61,8 +61,7 @@ export function tokenGetter(){
     ProductoCarritoComponent,
     PerfilCompanyComponent,
     ImageDirectiveDirective,
-    SuccesfullPurchaseComponent,
-    TrimHomeComponent
+
   ],
   imports: [
     NgxSpinnerModule,
