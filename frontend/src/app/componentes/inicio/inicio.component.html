@@ -1,39 +1,45 @@
 <div id="body" class="h-full flex flex-row justify-center">
 
     <div class="max-sm:hidden left w-[40%] flex justify-end items-center pl-5">
-        <img class="object-contain md:w-full lg:w-3/5"
-            src="../../../assets/img/3d-render-secure-login-password-illustration como objeto inteligente-1.png" alt="">
+        <app-loading-image class="object-contain md:w-full lg:w-3/5" url="imageUrl" alt=""
+            [src]="'../../../assets/img/3d-render-secure-login-password-illustration como objeto inteligente-1.png'"
+            [srcPreload]="'https://fakeimg.pl/251x251?text=+'"
+            [srcError]="'https://fakeimg.pl/502x502?text=Not+found'"></app-loading-image>
     </div>
 
 
     <div class="max-sm:w-full right w-4/6 flex justify-center items-center md:h-4/6 lg:h-full">
 
-        <form *ngIf="!(isValidAccount() | async)" [formGroup]="formAccount" (ngSubmit)="submitAccount()"
-            class="flex flex-col items-center w-full p-5 h-full gap-3
+        <form *ngIf="!(isValidAccount() | async)" [formGroup]="formAccount" (ngSubmit)="submitAccount()" class="flex flex-col items-center w-full p-5 h-full gap-3
                 md:w-[80%] md:shadow-lg md:h-auto
                     lg:w-[70%] lg:p-10">
 
 
-            <img class="w-5/6 lg:w-3/5" src="../../../assets/img/logoAzul.png" alt="">
+            <app-loading-image class="object-contain md:w-full lg:w-3/5" url="imageUrl" alt=""
+                [src]="'../../../assets/img/logoAzul.png'"
+                [srcPreload]="'https://fakeimg.pl/500x100?text=+'"
+                [srcError]="'https://fakeimg.pl/500x100?text=Not+found'"></app-loading-image>
             <h1 class="my-5 text-2xl">Iniciar Sesión</h1>
 
             <div class=" w-full lg:w-[70%]">
                 <p class="m-1">E-mail o celular</p>
-                <input class="w-full h-2/4 border border-sky-500 rounded mb-4 px-3 py-2 outline-none" type="email" formControlName="email">
+                <input class="w-full h-2/4 border border-sky-500 rounded mb-4 px-3 py-2 outline-none" type="email"
+                    formControlName="email">
             </div>
 
-            <button type="submit" class="bg-button-blue w-full lg:w-[70%] px-3 py-2 rounded text-white">Continuar</button>
+            <button type="submit"
+                class="bg-button-blue w-full lg:w-[70%] px-3 py-2 rounded text-white">Continuar</button>
             <div class="newUser mt-10 flex flex-col items-center ">
                 <p class="mt-16  text-xs">¿Nuevo en Mitiendapp?</p>
                 <a href="signin">
-                    <Button type="button" class="w-full rounded border px-3 py-2 border-sky-500 text-black" id="createAcountBtn">Crea tu cuenta de mitiendapp</Button>
+                    <Button type="button" class="w-full rounded border px-3 py-2 border-sky-500 text-black"
+                        id="createAcountBtn">Crea tu cuenta de mitiendapp</Button>
                 </a>
             </div>
         </form>
 
 
-        <form *ngIf="(isValidAccount() | async)" [formGroup]="formPassword" (ngSubmit)="submitPassword()"
-            class="flex flex-col items-center w-full p-5 h-full gap-3
+        <form *ngIf="(isValidAccount() | async)" [formGroup]="formPassword" (ngSubmit)="submitPassword()" class="flex flex-col items-center w-full p-5 h-full gap-3
                  md:w-[80%] md:shadow-lg md:h-auto
                     lg:w-[70%] lg:p-10">
 
@@ -42,7 +48,8 @@
 
             <div class="w-full lg:w-[70%]">
                 <p class="m-1 hover:border-none ">Contraseña</p>
-                <input class="w-full h-2/4 border border-sky-500 rounded mb-4 px-3 py-2 outline-none" type="password" formControlName="password">
+                <input class="w-full h-2/4 border border-sky-500 rounded mb-4 px-3 py-2 outline-none" type="password"
+                    formControlName="password">
             </div>
 
             <button type="submit" class="bg-button-blue w-[70%] p-1 rounded text-white">Continuar</button>
@@ -50,7 +57,8 @@
             <div class="newUser mt-10 flex flex-col items-center">
                 <p class="mt-16 text-xs">¿Nuevo en Mitiendapp?</p>
                 <a href="signin">
-                    <Button type="button" class="w-full p-1 rounded border px-3 py-2 border-sky-500 text-black" id="createAcountBtn">Crea tu cuenta de mitiendapp</Button>
+                    <Button type="button" class="w-full p-1 rounded border px-3 py-2 border-sky-500 text-black"
+                        id="createAcountBtn">Crea tu cuenta de mitiendapp</Button>
                 </a>
             </div>
         </form>

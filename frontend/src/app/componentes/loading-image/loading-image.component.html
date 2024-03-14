@@ -1,0 +1,7 @@
+
+<div class="relative flex justify-center items-center">
+    <img [src]="imgSrc" alt="">
+    <div *ngIf="(imgSrc==srcPreload)" class="absolute">
+        <div class="loader"></div>
+    </div>
+</div>

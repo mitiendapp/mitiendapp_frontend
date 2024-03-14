@@ -29,7 +29,8 @@ export class InicioComponent implements OnInit {
   userInfo:any;
   tokenEmail:any;
   validAccount = new BehaviorSubject<Boolean>(false);
-
+  imageUrl = "../../../assets/img/3d-render-secure-login-password-illustration como objeto inteligente-1.png";
+  
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,

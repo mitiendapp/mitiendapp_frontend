@@ -32,6 +32,7 @@ import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-
 import { JwtModule } from '@auth0/angular-jwt';
 import { ImageDirectiveDirective } from './image-directive.directive';
 import { CommonModule } from '@angular/common';
+import { LoadingImageComponent } from './componentes/loading-image/loading-image.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -61,6 +62,7 @@ export function tokenGetter(){
     ProductoCarritoComponent,
     PerfilCompanyComponent,
     ImageDirectiveDirective,
+    LoadingImageComponent,
 
   ],
   imports: [
