@@ -60,8 +60,9 @@ export class ChatbotComponent implements OnInit{
     return new Promise<boolean>(resolve => {
 
       this.modalRef = this.modalService.open(this.modalContent, {
-        centered: true,
-        size: "xl",
+        centered: false,
+        size: "s",
+         
         modalDialogClass: "modal-content"
       })
       this.modalRef.result.then(resolve, resolve)

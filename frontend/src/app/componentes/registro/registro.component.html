@@ -1,4 +1,4 @@
-<section class="flex h-5/6 items-center justify-center">
+<section class="flex h-5/6 my-10 items-center justify-center">
   <div *ngIf="isMainActive() | async" id="body" 
   class=" flex flex-col items-center justify-evenly w-full max-sm:h-full max-sm:w-full
       md:py-10 lg:flex-row lg:w-5/6 lg:p-3 lg:shadow-xl">
@@ -24,6 +24,6 @@
   </div>
 
 
-  <app-registro-usuario class="w-full h-auto" *ngIf="isUserRegister() | async"></app-registro-usuario>
-  <app-registro-negocio class="w-full h-auto" *ngIf="isNegocioRegister() | async"></app-registro-negocio>
+  <app-registro-usuario class="w-full"></app-registro-usuario>
+  <app-registro-negocio class="w-full"></app-registro-negocio>
 </section>

@@ -9,4 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavBarComponent {
 
+  constructor(
+    public auth:AuthService
+  ){}
+
+
 }

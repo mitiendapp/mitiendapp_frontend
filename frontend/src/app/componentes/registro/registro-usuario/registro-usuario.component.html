@@ -1,15 +1,15 @@
-<section class="sm:max-md:mx-5 md:flex lg:flex-row w-full h-5/6 justify-evenly lg:items-center py-2 ">
+<section class="sm:max-md:mx-5 md:flex lg:flex-row w-full h-auto justify-evenly lg:items-center my-10 ">
 
-    <form class="flex flex-col items-center p-4 lg:shadow-lg sm:max-md:w-full lg:w-2/5 lg:h-2/6 justify-center"
+    <form class="flex flex-col items-center p-4 lg:shadow-lg sm:max-md:w-full lg:w-2/5 lg:h-2/6 justify-around"
         [formGroup]="form" (ngSubmit)="onRegister()">
 
-        <img class="w-2/4" src="../../../../assets/img/logoAzul.png" alt="">
-        <div class="w-full text-center mt-3">
-            <h1 class="text-2xl">Crea tu cuenta personal</h1>
-            <p class="text-xs">¡Comienza a comprar ahora!</p>
+        <div class="w-full text-center mt-3 flex flex-col items-center">
+            <img class="size-2/4 justify-start object-contain" src="../../../../assets/img/logoAzul.png" alt="">
+            <img src="../../../../assets/img/createAccount.png" alt="" class="md:hidden size-3/6 object-contain">
         </div>
-
-        <div class="inputs w-4/6 rounded mb-4 p-2 flex flex-col gap-2">
+        
+        <div class="inputs w-full md:w-4/6 rounded mt-4 p-2 flex flex-col gap-2">
+            <h1 class="text-xl text-center">Crea tu cuenta personal</h1>
             <input class="border px-3 py-2 outline-none rounded" type="text" formControlName="firstName"
                 placeholder="Nombre">
             <input class="border px-3 py-2 outline-none rounded" type="text" formControlName="document"
@@ -20,8 +20,9 @@
                 placeholder="contraseña">
             <input class="border px-3 py-2 outline-none rounded" type="password" formControlName="confirmPassword"
                 placeholder="Confirmar contraseña">
-            <button type="submit" class="bg-button-blue w-full p-1 rounded mt-3 text-white">Continuar</button>
+            <button type="submit" class="bg-button-blue w-full p-1 rounded mt-2 text-white">Continuar</button>
 
+        <div class="newUser mt-5">
             <p class="text-xs text-center">¿Ya estás registrado?</p>
             <a class="mb-8" href="/login">
                 <Button type="button" class="w-full p-1 rounded border  text-black" id="createAcountBtn">¡Inicia sesión aqui!</Button>
@@ -32,6 +33,7 @@
                     <p style="font-size: 20px; color: white">Cargando...</p>
                 </ngx-spinner>
             </a>
+        </div>
         </div>
 
 

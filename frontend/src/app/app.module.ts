@@ -32,6 +32,8 @@ import { ProductoCarritoComponent } from './componentes/carrito-compra/producto-
 import { JwtModule } from '@auth0/angular-jwt';
 import { ImageDirectiveDirective } from './image-directive.directive';
 import { CommonModule } from '@angular/common';
+import { ChatGoodComponent } from './componentes/chat-good/chat-good.component';
+
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -61,7 +63,7 @@ export function tokenGetter(){
     ProductoCarritoComponent,
     PerfilCompanyComponent,
     ImageDirectiveDirective,
-
+    ChatGoodComponent
   ],
   imports: [
     NgxSpinnerModule,
