@@ -15,7 +15,7 @@
     </div>
       <!-- BOTONES DE LOGIN -->
     <div *ngIf="!(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
-      <a class="mx-4" href="login">Inicio</a>
+      <a class="mx-4" href="login">Inicio de sesion</a>
       <a class="mx-4" href="signin">Registro</a>
     </div>
 
@@ -24,10 +24,11 @@
       <button (click)="navigateToUserProfile()">Perfil</button>
     </div>
     
-    <!-- PROFILE COMPANY -->
-    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)"
-     class="hidden sm:block flex justify-around" id="signup_signin">
+    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)  && !isPerfilCompanyComponent()" class="hidden sm:block flex justify-around" id="signup_signin">
       <button (click)="navigateToCompanyProfile()">Perfil</button>
+    </div>
+    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)  && isPerfilCompanyComponent()" class="hidden sm:block flex justify-around" id="signup_signin">
+      <button (click)="navigateToCompanyHome()">Principal</button>
     </div>
     
     <!-- SING OUT BUTTON -->

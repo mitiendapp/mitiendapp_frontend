@@ -59,7 +59,6 @@ export class RegistroNegocioComponent implements OnInit {
       nameEmprendimiento: ['', Validators.required],
       email: ['', Validators.required,],
       address: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
       description: ['', Validators.required],
       password: ['', Validators.required,],
       confirmPassword: ['', Validators.required],
@@ -82,7 +81,7 @@ onRegister() {
     lastName:lastName,
     nameEmprendimiento:nameEmprendimiento,
     address:address,
-    phoneNumber:phoneNumber,
+    phoneNumber:"",
     description:description,
     password:password, 
     confirmPassword:confirmPassword

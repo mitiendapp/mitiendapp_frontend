@@ -34,6 +34,7 @@ import { ImageDirectiveDirective } from './image-directive.directive';
 import { CommonModule } from '@angular/common';
 import { ChatGoodComponent } from './componentes/chat-good/chat-good.component';
 
+import { LoadingImageComponent } from './componentes/loading-image/loading-image.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -63,7 +64,9 @@ export function tokenGetter(){
     ProductoCarritoComponent,
     PerfilCompanyComponent,
     ImageDirectiveDirective,
-    ChatGoodComponent
+    ChatGoodComponent,
+    LoadingImageComponent,
+
   ],
   imports: [
     NgxSpinnerModule,
