@@ -1,11 +1,13 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PerfilCompanyService } from '../../services/perfil-company.service'
 import { Company } from '../../interfaces/company'
-import {Product} from '../../interfaces/product'
-import { Route } from '@angular/router';
-import {ProductService} from '../../services/product.service'
+import { Product } from '../../interfaces/product'
+import { ProductService } from '../../services/product.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { decodeJWT } from 'src/app/utils/decodeJWT';
+// import { EditarCompanyComponent } from '../editar-company/editar-company.component';
+
+
 @Component({
   selector: 'app-perfil-company',
   templateUrl: './perfil-company.component.html',
@@ -18,9 +20,11 @@ export class PerfilCompanyComponent implements OnInit{
   product:Product[]=[]
   token:string;
   userInfo:any;
-  constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService,private routeActivate: ActivatedRoute) {
+
+  tokenEmail:any;
+  constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService,
+    private routeActivate: ActivatedRoute, private router :Router) {
   }
-  
 
   // getCompanys(email:string) {
   //   this.token = localStorage.getItem('token')
@@ -37,7 +41,19 @@ export class PerfilCompanyComponent implements OnInit{
 
   // }
 
-  
+  interfaceEditarCompany() {
+
+    this.userInfo = decodeJWT(localStorage.getItem('token'));
+    // console.log(this.userInfo.UserInfo.email,' este es');
+    this.tokenEmail = this.userInfo.UserInfo.email
+    console.log(this.tokenEmail, 'este es el token cuando se preciona el perfil' )
+   
+    this.router.navigate(['editarCompany',this.tokenEmail]);
+
+  }
+
+
+
   getProducts(){
     this.productservice.getProducts().subscribe((data:any)=>{
       this.product=data.data;
@@ -47,9 +63,17 @@ export class PerfilCompanyComponent implements OnInit{
   ngOnInit(): void {
     // this.idCompany = this.routeActivate.snapshot.params["email"];
     // this.getCompanys(this.idCompany);
-    this.userInfo = decodeJWT(localStorage.getItem('token'));
-    console.log(this.userInfo);
+    // this.userInfo = decodeJWT(localStorage.getItem('token'));
+    // console.log(this.userInfo.UserInfo.email,' este es');
     
+    // this.routeActivate.params.subscribe(params => {
+    //   const email = params['email'];
+   
+    let email = this.routeActivate.snapshot.params['email'];
+    
+    console.log(email, 'aqui estoy capturando el params osea el correo')
+      this.getCompanyEmail(email);
+    // });
   }
 
   // getCompanyEmail(email:Company){
@@ -58,13 +82,32 @@ export class PerfilCompanyComponent implements OnInit{
   //     console.log(data);
   //   })
   // }
- emails: string[] = ['josel.alvarezh@uqvirtual.edu.co'];
- companies: any[] = [];
-  getCompanyEmail() {
-    this.perfilCompanyServices.getCompany(this.userInfo.email).subscribe((data: any) => {
-      this.company = data.data;
-      console.log(data);
-    });
-  }
+//  emails: string[] = ['josel.alvarezh@uqvirtual.edu.co'];
+//  companies: any[] = [];
+
+getCompanyEmail(email: string) {
+  this.perfilCompanyServices.getCompany(email).subscribe((data: any) => {
+    const companyData = data.company; // Obtener los datos de la compañía
+    if (Array.isArray(companyData)) {
+      this.company = companyData; // Si es un arreglo, asignar directamente
+    } else {
+      this.company = [companyData]; // Si es un objeto, envolverlo en un arreglo
+    }
+    console.log(this.company);
+  });
+}
+
+
+
+
+
+// decodeJWT(token:string) {
+//   const base64Url = token.split('.')[1];
+//   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+//   const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+//     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+//   }).join(''));
+//   return JSON.parse(jsonPayload);
+// }
 
 }

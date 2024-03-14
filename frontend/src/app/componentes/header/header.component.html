@@ -8,25 +8,25 @@
           alt="">
       </a>
     </div>
-    <div class="inputWrapper relative w-3/5 flex items-center ">
-
+    <div class="inputWrapper relative w-3/5">
       <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" id="inputHeader"
         type="search" placeholder="Busca productos, tiendas y más..." (input)="actualizarFiltro($event)">
 
-      <!-- <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt=""> -->
+      <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
     </div>
     <div *ngIf="!(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
-
-      <a class="mx-4" href="login">Inicio</a>
+      <a class="mx-4" href="login">Inicio de sesion</a>
       <a class="mx-4" href="signin">Registro</a>
-      
     </div>
     <div *ngIf="(auth.isLoggedIn() | async) && (auth.isClient() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       <button (click)="navigateToUserProfile()">Perfil</button>
     </div>
     
-    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
+    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)  && !isPerfilCompanyComponent()" class="hidden sm:block flex justify-around" id="signup_signin">
       <button (click)="navigateToCompanyProfile()">Perfil</button>
+    </div>
+    <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)  && isPerfilCompanyComponent()" class="hidden sm:block flex justify-around" id="signup_signin">
+      <button (click)="navigateToCompanyHome()">Principal</button>
     </div>
     
     <div *ngIf="(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
