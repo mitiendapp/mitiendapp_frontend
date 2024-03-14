@@ -33,6 +33,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ImageDirectiveDirective } from './image-directive.directive';
 import { CommonModule } from '@angular/common';
 import { LoadingImageComponent } from './componentes/loading-image/loading-image.component';
+import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -63,6 +64,7 @@ export function tokenGetter(){
     PerfilCompanyComponent,
     ImageDirectiveDirective,
     LoadingImageComponent,
+    EditarCompanyComponent,
 
   ],
   imports: [
