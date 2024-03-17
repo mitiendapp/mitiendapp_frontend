@@ -33,7 +33,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ImageDirectiveDirective } from './image-directive.directive';
 import { CommonModule } from '@angular/common';
 import { ChatGoodComponent } from './componentes/chat-good/chat-good.component';
-
+import { SuccessfulPurchaseComponent } from './componentes/successful-purchase/successful-purchase.component';
 import { LoadingImageComponent } from './componentes/loading-image/loading-image.component';
 
 export function tokenGetter(){
@@ -66,7 +66,7 @@ export function tokenGetter(){
     ImageDirectiveDirective,
     ChatGoodComponent,
     LoadingImageComponent,
-
+    SuccessfulPurchaseComponent
   ],
   imports: [
     NgxSpinnerModule,
