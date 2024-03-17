@@ -52,8 +52,8 @@
                     formControlName="password">
             </div>
 
-            <button type="submit" class="bg-button-blue w-[70%] p-1 rounded text-white">Continuar</button>
-
+            <button *ngIf="!(isLoading()|async)" type="submit" class="bg-button-blue w-[70%] p-1 rounded text-white">Continuar</button>
+            <app-spinner-blade *ngIf="(isLoading()|async)"></app-spinner-blade>
             <div class="newUser mt-10 flex flex-col items-center">
                 <p class="mt-16 text-xs">¿Nuevo en Mitiendapp?</p>
                 <a href="signin">

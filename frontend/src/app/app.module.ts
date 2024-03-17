@@ -34,6 +34,7 @@ import { ImageDirectiveDirective } from './image-directive.directive';
 import { CommonModule } from '@angular/common';
 import { LoadingImageComponent } from './componentes/loading-image/loading-image.component';
 import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
+import { SpinnerBladeComponent } from './shared/spinner-blade/spinner-blade.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -65,6 +66,7 @@ export function tokenGetter(){
     ImageDirectiveDirective,
     LoadingImageComponent,
     EditarCompanyComponent,
+    SpinnerBladeComponent,
 
   ],
   imports: [

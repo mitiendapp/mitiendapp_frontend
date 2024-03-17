@@ -14,11 +14,16 @@ export class MessageService {
     }
 
     msgError(e: any, tittle:string="¡Error!"){
+        if(e.error.message){
+            this.toastr.error(e.error.message, tittle);
+            return;
+        }
         if (e.message) {
             this.toastr.error(e.message, tittle);
-    
+            return;
         } else {
-            this.toastr.error("¡Ups! Algo salió mal", tittle)
+            this.toastr.error("¡Ups! Algo salió mal", tittle);
+            return;
         }
     }
     msgSuccess(body:any, tittle:string="¡Exito!"){

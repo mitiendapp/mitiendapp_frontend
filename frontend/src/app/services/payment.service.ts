@@ -49,6 +49,7 @@ export class PaymentService {
   async prepareOrder(data: Product) {
     // console.log(this.perfilCompanyService.getCompany());
     const client = await decodeJWT(localStorage.getItem('token')).UserInfo;
+    console.log(client);
     
     const payer = await firstValueFrom(this.perfilService.getClient(client.email));
     const product = {
