@@ -78,8 +78,11 @@ export class InicioComponent implements OnInit {
     return;
   }
 
-  submitPassword() {
+  async submitPassword() {
     this.loading.next(true);
+    setTimeout(() => {
+      
+    }, 500);
     const { password } = this.formPassword.value;
     if (!this.formPassword.valid) {
       this.toastr.error("Debe ingresar la contraseña", "Error");
@@ -114,31 +117,18 @@ export class InicioComponent implements OnInit {
         localStorage.setItem('token', data.token);
         this._messageService.msgSuccess(data);
         this._userService.isLoggedIn = true;
-        this.loading.next(false);
-        return;
       },
       error: (e: any) => {
         console.log(e);
         this._messageService.msgError(e);
-        this.loading.next(false);
-        return;
-      }
+      },complete() {
+          console.log("complete");
+          
+          this.loading.next(false);
+      },
     })
-
-    //  this._userService.logIn(user).subscribe({
-    //   next: (data: any) => {
-
-    //     console.log(data,"se envio  los data")
-
-    //   },
-    //   error: (e: HttpErrorResponse) => {
-    //     this._messageService.msgError(e);
-    //     this.loading = false;
-    //   }
-    // })
     this.userService.isLoggingIn.next(true);
     this.userService.openSession(user);
-    this.loading.next(false);
   }
 
   isValidAccount(): Observable<Boolean> {
