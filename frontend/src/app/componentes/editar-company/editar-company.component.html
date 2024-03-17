@@ -9,25 +9,27 @@
         </div>
       
         <form action="get" class="flex items-center flex-col gap-3 px-3 md:p-4 md:shadow-lg lg:w-2/5
-                max-md:h-[50%]"  (ngSubmit)="OnUpdatePerfil()">
+                max-md:h-[50%]" [formGroup]="form" (ngSubmit)="OnUpdatePerfil()">
               
             <p class="text-center w-[80%]"><span class="text-xl"> Edita tus datos, emprendedor.</span><br>¡Mantente actualizado!</p> 
            
     
-                <input class="outline-none border-1 p-2 px-3 w-full" type="text" [(ngModel)]="compa.firstName"  formControlName="firstName" placeholder="Nombre de emprendimiento">
+                <input class="outline-none border-1 p-2 px-3 w-full" type="text" [(ngModel)]="compa.firstName"  formControlName="firstName" placeholder="Nombres ">
+                <input class="outline-none border-1 p-2 px-3 w-full" type="text" [(ngModel)]="compa.lastName"  formControlName="lastName" placeholder="Apellidos ">
                 <input class="outline-none border-1 p-2 px-3 w-full" type="text" [(ngModel)]="compa.description"  formControlName="description" placeholder="Descripción">
                 <input class="outline-none border-1 p-2 px-3 w-full" type="text"  [(ngModel)]="compa.address"  formControlName="address" placeholder="Dirección">
-                <input class="outline-none border-1 p-2 px-3 w-full" type="text" [(ngModel)]="compa.nameEmprendimiento"  formControlName="nameEmprendimiento" placeholder="Nombre emprendedor">
+                <input class="outline-none border-1 p-2 px-3 w-full" type="text" [(ngModel)]="compa.nameEmprendimiento"  formControlName="nameEmprendimiento" placeholder="Nombre del emprendimiento">
                 <input class="outline-none border-1 p-2 px-3 w-full" type="text" [(ngModel)]="compa.document"  formControlName="document" placeholder="Documento">
-                <input class="outline-none border-1 p-2 px-3 w-full" type="text" [(ngModel)]="compa.email"  formControlName="email" placeholder="E-mail">
+                <!-- <input class="outline-none border-1 p-2 px-3 w-full" type="text" [(ngModel)]="compa.email"  formControlName="email" placeholder="E-mail"> -->
           
             <!-- <div class="pass w-full flex gap-3">
                 <input class="outline-none border-1 p-2 px-3 w-full" type="password" name="" id="password" placeholder="Contraseña">
                 <input class="outline-none border-1 p-2 px-3 w-full" type="password" name="" id="confirmPass" placeholder="Confirmar Contraseña">
             </div> -->
             <div class="confirm w-full flex flex-col items-center">
-            
-                <button class="bg-button-blue px-4 py-2 rounded-lg text-white text-lg w-[40%]" (click)="isdevolverPerfil()">Actualizar</button>
+            <!-- hola -->
+                <!-- <button class="bg-button-blue px-4 py-2 rounded-lg text-white text-lg w-[40%]" (click)="isdevolverPerfil()">Actualizar</button> -->
+                <button class="bg-button-blue px-4 py-2 rounded-lg text-white text-lg w-[40%]">Actualizar</button>
             </div>
         </form>
     
