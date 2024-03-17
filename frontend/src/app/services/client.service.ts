@@ -10,15 +10,18 @@ import { Observable } from 'rxjs';
 export class ClientService {
   private endpoint: string;
   private apiUrl: string;
-  
+
   constructor(
     public router: Router,
-    private http: HttpClient) { 
-      this.endpoint = enviroment.endpoint;
-      this.apiUrl = 'client/create';}
+    private http: HttpClient) {
+    this.endpoint = enviroment.endpoint;
+    this.apiUrl = 'client';
+  }
 
   signIn(client: any): Observable<any> {
-    return this.http.post(`${this.endpoint}${this.apiUrl}`, client);
+    return this.http.post(`${this.endpoint}${this.apiUrl}/create`, client);
   }
-  
+  find(email: any): Observable<any> {
+    return this.http.get(`${this.endpoint}${this.apiUrl}/${email}`)
+  }
 }
