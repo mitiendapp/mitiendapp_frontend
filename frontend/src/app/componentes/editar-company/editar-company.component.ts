@@ -87,6 +87,7 @@ export class EditarCompanyComponent  implements OnInit{
         if (e) {
           this._messageService.msgError(e);
         } else {
+          //rr
           console.error("Error desconocido al intentar actualizar datos del emprendedo");
         }
       }
