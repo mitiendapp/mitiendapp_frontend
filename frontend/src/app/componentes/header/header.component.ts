@@ -98,7 +98,7 @@ throw new Error('Method not implemented.');
     // console.log(this.userInfo.UserInfo.id,"aqui esta solo sin variables");
     // let email = this.routeActivate.snapshot.params['companyId'];
     // console.log(email, 'aqui estoy capturando el params osea el correo en el header')
-    this.tokenEmail = this.userInfo.UserInfo.id
+    this.tokenEmail = this.userInfo.UserInfo.email
     console.log(this.userInfo.UserInfo.id,"aqui esta solo sin variables");
     
     console.log(this.tokenEmail,'este es el token cuando se preciona el perfil' )

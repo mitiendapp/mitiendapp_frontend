@@ -5,3 +5,9 @@
     align-items: center;
     padding: 2rem;
 } */
+#btnEmprendimiento:hover{
+    background-color: #6608a5;
+}
+#btnEmprendimiento:active{
+    background-color: #25023c;
+}

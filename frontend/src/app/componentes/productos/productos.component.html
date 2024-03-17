@@ -34,10 +34,11 @@
           <p class="text-sm text-gray-400">{{product.category}}</p>
         </div>
         <div class="text-sm">{{product.price | currency}}</div>
-        <div class="card-body flex justify-between items-end relative">
-          <button  class="btn btn-primary btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button>
-          <button class="btn btn-sm rounded w-1/6 absolute right-0 cursor-pointer" (click)="addToCart(product)">
-            <img [src]="cartIcon" alt="">
+        <div class="card-body flex justify-between items-center relative">
+          <button  class="bg-[#427ed7] py-1 text-white btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button>
+          <button class="btn rounded w-1/4 absolute right-0 cursor-pointer" (click)="addToCart(product)">
+            <!-- <img [src]="cartIcon" alt=""> -->
+            <span class="icon cartIcon"></span>
           </button>
         </div>
       </div>

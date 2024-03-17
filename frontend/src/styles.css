@@ -15,39 +15,90 @@
     padding: 0;
     box-sizing: border-box;
 } */
-html, body { height: 100dvh; }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+html,
+body {
+  height: 100dvh;
 }
 
-.content{
-    position: relative;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-a:link, a:visited, a:active{
-    text-decoration: none;
+.content {
+  position: relative;
 }
+
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(0, 0, 0,0.1);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(0, 0, 0,0.2);
-  }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0, 0.1);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0, 0.2);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button:hover {
+  background-color: #1d3961;
+}
+button:active{
+  background-color: #0d1b2d;
+}
+
+.blankButton:hover{
+  background-color: rgb(0, 0, 0, 0.2);
+}
+.blankButton:active{
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+input:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.icon {
+  background-size: contain;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.cartIcon {
+  background-image: url('./assets/icons/shopping-cart-add-svgrepo-com.svg');
+}
+
+.cartIcon:hover {
+  filter: brightness(50%);
+}
+.cartIcon:active{
+  filter: brightness(20%);
+}

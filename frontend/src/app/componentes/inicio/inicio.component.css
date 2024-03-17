@@ -6,3 +6,9 @@
     justify-content: center;
     padding: 2rem;
 }
+#createAcountBtn:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#createAcountBtn:active{
+    background-color: rgba(0, 0, 0, 0.5);
+}
