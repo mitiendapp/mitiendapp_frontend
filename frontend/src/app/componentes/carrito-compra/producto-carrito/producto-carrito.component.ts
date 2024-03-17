@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 import { CartService, ProductDTO } from 'src/app/services/cart.service';
 import { MessageService } from 'src/app/services/message.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-producto-carrito',
@@ -11,7 +12,6 @@ import { MessageService } from 'src/app/services/message.service';
 export class ProductoCarritoComponent {
 
   @Input('product') product;
-
   constructor(
     private _cartService: CartService,
     private messageService: MessageService
@@ -24,13 +24,29 @@ export class ProductoCarritoComponent {
     return total.toLocaleString('es');
   }
   deleteProduct(id: number) {
-    this._cartService.deleteProduct(id);
-    this.messageService.msgSuccess("El producto se eliminó");
+    const dialog = Swal.fire({
+      title:"¡Cuidado!",
+      text: "¿Seguro que deseas realizar esta acción?",
+      confirmButtonAriaLabel:"Continuar",
+      showCancelButton: true,
+      cancelButtonAriaLabel:"Eliminar",
+    })
+    dialog.then((value)=>{
+      if(value.isConfirmed){
+        this._cartService.deleteProduct(id);
+        this.messageService.msgSuccess({message: "El producto se eliminó correctamente"});
+      }else{
+        this.messageService.msgInfo({message:"La operación ha sido cancelada"});
+      }
+    }).catch((err)=>{
+      console.log("error: ", err);
+    })
+
   }
 
   add(product:ProductDTO){
     if(product.stock < 1){
-      this.messageService.msgError(null,"Stock insuficiente")
+      this.messageService.msgError({message:"Stock insuficiente"})
       return;
     }
     product.quantity++;
@@ -38,12 +54,11 @@ export class ProductoCarritoComponent {
   }
 
   minus(product:ProductDTO){
-    if(product.quantity < 1){
+    if(product.quantity == 1){
       this._cartService.deleteProduct(product.id);
     }
     product.quantity--;
     product.stock++;
-
   }
 
 }

@@ -111,8 +111,12 @@ filtrarPorCategoria(): void {
   }
 
   addToCart(product: Product) {
+    try {
       this._cartService.addProduct(this._cartService.productToProductDTO(product));
       this.messageService.msgSuccess({message: "El producto fue agregado al carrito correctamente"});
+    } catch (error) {
+      this.messageService.msgError({message: "El producto ya se encuentra en el carrito"});
+    }
   }
   removeCart(product: Product) {
     this._cartService.deleteProduct(this._cartService.productToProductDTO(product));

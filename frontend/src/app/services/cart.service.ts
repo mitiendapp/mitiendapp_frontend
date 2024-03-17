@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { enviroment } from '../enviroments/enviroment';
 import { Observable,BehaviorSubject, lastValueFrom} from 'rxjs';
 import { Product } from '../interfaces/product';
 import { map } from 'rxjs/operators';
+import { MessageService } from './message.service';
+import { error } from 'console';
 
 export interface ProductDTO extends Product{
   quantity: number
@@ -24,9 +26,11 @@ export class CartService{
   private myCart = new BehaviorSubject<Product[]>([]);
   myCart$ = this.myCart.asObservable();
   
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,
+    private messageService: MessageService) {
     this.endpoint= enviroment.endpoint;
     this.apiUrl= 'cart';
+
   }
   
   getProducts():Observable<Product[]>{
@@ -44,7 +48,14 @@ export class CartService{
 
   //añado producto al carrito
   addProduct(product: ProductDTO) {
-    
+    const exist = this.myList.find((e)=>{
+      return e.id === product.id
+    });
+    if(exist){
+      // this.messageService.msgError({error: "Este producto ya se encuentra en el carrito"})
+      throw new Error("Este producto ya se encuentra en el carrito");
+    }
+
     // debugger;
     if (this.myList.length === 0) {
       product.quantity = 1;
