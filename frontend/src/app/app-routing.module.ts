@@ -15,6 +15,7 @@ import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 import { authGuardExample } from './utils/guard_example';
 import { createProductsguard } from './utils/guard_CreateProduc';
 import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
+import {EditProductComponent } from './componentes/edit-product/edit-product.component'
 
 
 const routes: Routes = [
@@ -71,6 +72,9 @@ const routes: Routes = [
   {
     path: 'editarCompany/:email',
     component: EditarCompanyComponent,
+  },{
+    path:'editarProduct',
+    component: EditProductComponent
   },
   {
     path: '**',

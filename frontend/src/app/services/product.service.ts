@@ -32,8 +32,16 @@ export class ProductService {
   deleteProdcuts(product:Product):Observable<void>{
    return this.http.post<void>(`${this.endpoint}${'product/delete'}`,product)
   } 
+
+  deleteProducts2(id:any):Observable<void>{
+    return this.http.post<void>(`${this.endpoint}${'product/delete'}`,{id})
+  }
   saveProduct(product: Product): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}${this.endpoint}`,product)
+  }
+
+  getCompanybyProductsId(companyId:string): Observable<any>{
+    return this.http.get<any>(`${this.endpoint}${this.apiUrl}/companies/${companyId}`)
   }
 
 }

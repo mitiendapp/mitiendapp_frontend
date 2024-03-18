@@ -40,21 +40,60 @@ export class ChatbotComponent implements OnInit{
       pregunta: ['', Validators.required]
     })
   }
+  askCha2t() {
+    const message = this.form.controls['pregunta'].value;
+    // Aquí puedes enviar el mensaje a través de tu servicio o realizar otras acciones necesarias
+    this.form.controls['pregunta'].setValue(''); // Limpiar el campo de texto después de enviar el mensaje
+}
+askChat2() {
+  this.loading = true; // Mostrar el spinner
+  const { pregunta }: any = this.form.value;
+  this.askCha2t() 
+  const mensaje = {
+    text: pregunta,
+    from: this.userService.currentUser.email
+  }
+  this.chat.push(mensaje);
+  this.chatbotService.chat(pregunta).subscribe({
+    next: (data) => {
+      this.chat.push(data);
+      this.loading = false; // Ocultar el spinner después de recibir la respuesta
+    }
+  });
+}
 
   askChat() {
     const { pregunta }: any = this.form.value
+    this.askCha2t() 
     const mensaje = {
       text: pregunta,
       from: this.userService.currentUser.email
+      
     }
     this.chat.push(mensaje);
     this.chatbotService.chat(pregunta).subscribe({
       next: (data) => {
         this.chat.push(data);
+        
+        
       }
     });
 
   }
+  loading: boolean = false;
+
+  onSubmit() {
+    this.loading = true;
+    // Simulando una operación asíncrona
+    setTimeout(() => {
+      this.loading = false;
+    }, 2000); // Cambia esto por la lógica de tu aplicación
+  }
+
+
+
+
+  
 
   open(): Promise<boolean> {
     return new Promise<boolean>(resolve => {
