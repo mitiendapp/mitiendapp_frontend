@@ -70,7 +70,6 @@ export class PaymentService {
     return payload
   }
   createOrder(data):Observable<any>{
-    
     return this.http.post(`${this.endpoint}wompi/payment/create`, data);
   }
 }

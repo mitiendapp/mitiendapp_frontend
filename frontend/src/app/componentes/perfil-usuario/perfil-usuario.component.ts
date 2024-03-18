@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Client } from 'src/app/interfaces/client';
-import { decodeJWT } from 'src/app/utils/decodeJWT';
 import { ClientService } from 'src/app/services/client.service';
-
+import { decodeJWT } from 'src/app/utils/decodeJWT';
 @Component({ 
   selector: 'app-perfil-usuario',
   templateUrl: './perfil-usuario.component.html',
@@ -15,10 +14,14 @@ export class PerfilUsuarioComponent {
 
   constructor(
     private matTabsModule: MatTabsModule,
+    private clientService: ClientService
   ){}
 
   ngOnInit(){
     const {UserInfo} = decodeJWT(localStorage.getItem('token'));
-    this.user = UserInfo;
+    this.clientService.find(UserInfo.email).subscribe(client=>{
+      console.log(client);  
+      this.user = client.client;
+    })
   }
 }

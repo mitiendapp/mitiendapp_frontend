@@ -9,6 +9,7 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { kMaxLength } from 'buffer';
 import { enviroment } from 'src/app/enviroments/enviroment';
+import { ClientService } from 'src/app/services/client.service';
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -25,6 +26,7 @@ export class DetalleComponent implements OnInit {
   constructor(private routeActivate: ActivatedRoute,
     private _productService: ProductService,
     private _paymentService: PaymentService,
+    private _clientService: ClientService,
     private route: ActivatedRoute, private router: Router) { }
 
   generatePDF(nombre: string, precio: number) {
@@ -76,6 +78,8 @@ export class DetalleComponent implements OnInit {
   //   })
   // }
   createOrder() {
+    this._clientService.productPurchased(this.detail);
+    return;
     this.loading.next(true);
     this._paymentService.prepareOrder(this.detail).then(async (data) => {
       console.log(data);

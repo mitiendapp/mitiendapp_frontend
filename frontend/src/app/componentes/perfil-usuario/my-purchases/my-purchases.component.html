@@ -1,1 +1,28 @@
-<p>my-purchases works!</p>
+<div class="w-full h-80 flex justify-center items-center">
+    <p class="w-full text-center" *ngIf="!purchases">Tus compras se verán reflejadas acá una vez realices el pago</p>
+    <div class="w-full h-full" *ngIf="purchases">
+        <div class="my-2 rounded-md shadow-md p-2 " *ngFor="let purchase of purchases">
+            Compra realizada el: fecha
+            <div class="flex flex-row justify-between ">
+                <div class="flex">
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <div class="flex flex-col">
+                        Estado
+                        Dia en que llego | en camino
+                        Nombre producto, descripción
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    Nombre del emprendimiento
+                    <a href="">chatear con emprendimiento</a>
+                </div>
+                <div class="flex flex-col">
+                    <button class="bg-[#427ed7] rounded-md text-white p-2">Ver compra</button>
+                    <button class="bg-[#427ed7] rounded-md text-white p-2">volver a comprar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
