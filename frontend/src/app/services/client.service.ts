@@ -28,12 +28,6 @@ export class ClientService {
     this.endpoint = enviroment.endpoint;
     this.apiUrl = 'client';
     this.auxList = [];
-    this.productPurchased(this.product);
-    this.productPurchased(this.product);
-    this.productPurchased(this.product);
-    this.productPurchased(this.product);
-    this.productPurchased(this.product);
-    this.productPurchased(this.product);
   }
 
   find(email: any):Observable<any>{
@@ -46,8 +40,6 @@ export class ClientService {
   }
   
   productPurchased(product:ProductDTO){
-    console.log(product);
-    
     this.auxList.push(product)
     this._purchases.next(this.auxList);
   }

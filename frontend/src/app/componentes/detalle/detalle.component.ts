@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ProductService } from 'src/app/services/product.service';
@@ -78,15 +77,19 @@ export class DetalleComponent implements OnInit {
   //   })
   // }
   createOrder() {
-    this._clientService.productPurchased(this.detail);
-    return;
-    this.loading.next(true);
-    this._paymentService.prepareOrder(this.detail).then(async (data) => {
-      console.log(data);
-      let order = await firstValueFrom(this._paymentService.createOrder(data));
-      this.loading.next(false);
-      window.location.href = `https://checkout.wompi.co/l/${order.payment}`
-    })
+    try {
+      this._clientService.productPurchased(this.detail);
+      this.loading.next(true);
+      this._paymentService.prepareOrder(this.detail).then(async (data) => {
+        console.log(data);
+        let order = await firstValueFrom(this._paymentService.createOrder(data));
+        this.loading.next(false);
+        window.location.href = `https://checkout.wompi.co/l/${order.payment}`
+      })
+    } catch (error) {
+      console.log("Error: ", error);
+      
+    }
 
   }
   isLoading() {
