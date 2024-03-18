@@ -4,7 +4,7 @@ import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 import { IaImageServicesService } from 'src/app/services/ia-image.services.service';
 import { enviroment } from '../../enviroments/enviroment';
-
+import { decodeJWT } from 'src/app/utils/decodeJWT';
 import { HeaderService } from 'src/app/services/header.service';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -28,7 +28,8 @@ export class CreateProductComponent implements OnInit {
   imagePreview: any;
   isValidImage: boolean = true;
   private url_image_ia:string;
-
+ tokenId:any;
+ userInfo:any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -67,7 +68,7 @@ export class CreateProductComponent implements OnInit {
 
   onCreateProduct() {
     const { name, description, price, stock, category } = this.form.value;
-    // const imageFile = this.form.get('image').value;
+    const imageFile = this.form.get('image').value;
   
   
     // if (!this.form.valid || !imageFile) {
@@ -87,14 +88,18 @@ export class CreateProductComponent implements OnInit {
   
     const formData = new FormData();
      formData.append('image', this.imageFile);
-  
+    
+     this.userInfo = decodeJWT(localStorage.getItem('token'));
+     this.tokenId = this.userInfo.UserInfo.id;
+     formData.append('CompanyDocument',this.tokenId)
+  //omitir este comentario de la linea 95
     // Aquí puedes agregar otros campos del producto si es necesario
     formData.append('name', this.form.value.name);
     formData.append('description',this.form.value.description);
     formData.append('price', this.form.value.price);
     formData.append('stock', this.form.value.stock);
-    formData.append('category', this.form.value.state);
-    
+    formData.append('category', this.form.value.category);
+
   
     this._productService.create(formData).subscribe({
       next: (v) => {
@@ -104,18 +109,12 @@ export class CreateProductComponent implements OnInit {
         if (e) {
           this._messageService.msgError(e);
         } else {
-          console.error('Error desconocido al intentar cargar el producto');
+          console.error('Error desconocido al intentar cargar el producto',e);
         }
       },
     });
   }
   
-
-  // capturarImagen(image){
-   
-   
-    
-  // }
 
  analizarImagen(imageObject) {
     this._iaimage.postIaImage(imageObject).subscribe({
