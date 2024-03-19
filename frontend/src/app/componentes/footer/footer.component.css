@@ -88,6 +88,7 @@ body {
   height: 100px;
   background: url("https://i.ibb.co/wQZVxxk/wave.png");
   background-size: 1000px 100px;
+  
 }
 
 .wave#wave1 {
@@ -109,6 +110,7 @@ body {
   opacity: 0.2;
   bottom: 15px;
   animation: animateWaves 6s linear infinite;
+  
 }
 
 .wave#wave4 {

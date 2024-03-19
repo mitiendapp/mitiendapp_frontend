@@ -37,6 +37,7 @@ import { SuccessfulPurchaseComponent } from './componentes/successful-purchase/s
 import { LoadingImageComponent } from './componentes/loading-image/loading-image.component';
 import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
 import { SpinnerBladeComponent } from './shared/spinner-blade/spinner-blade.component';
+import { CarouselComponent } from './componentes/carousel/carousel.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -71,6 +72,7 @@ export function tokenGetter(){
     SuccessfulPurchaseComponent,
     EditarCompanyComponent,
     SpinnerBladeComponent,
+    CarouselComponent,
 
   ],
   imports: [

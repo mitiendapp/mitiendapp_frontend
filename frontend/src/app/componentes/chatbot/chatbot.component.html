@@ -1,5 +1,32 @@
-<section class="modal">
-<div class="chat border-3">
+<ng-template #chatbot class="">
 
-</div>
-</section>
+
+    <form class=" border-5 rounded-xl" #chatbot [formGroup]="form" (ngSubmit)="askChat()">
+
+        <div  class="h-[38rem] px-4 pt-4 relative w-full" action="" >
+            <div class="content h-full ">
+
+                <div id="scroll-down" class="h-full bg-white overflow-scroll scroll" *ngIf="chat">
+                    <div class="p-4 " *ngFor="let messages of chat">
+                        <div class="flex justify-end" *ngIf="(messages.from == userService.currentUser.email)">
+                            <app-message-box [message]="messages.text" [color]="'#005c4b'"></app-message-box>
+                        </div>
+                        <div class="flex justify-start " *ngIf="!(messages.from == userService.currentUser.email)">
+                            <app-message-box [message]="messages.text" [color]="'#202c33'"></app-message-box>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="b-0 flex flex-row justify-between items-center w-full p-4">
+            <div class="w-full flex flex-row justify-between">
+                
+                <input id="makeAsk" class="w-5/6 border-2 rounded px-3 py-2 outline-none text-xl hover:bg-transparent" type="text" value="" formControlName="pregunta" placeholder="¿En qué puedo ayudarte?">
+                <div class="btn">
+                    <button (click)="askChat()" class="size-10 flex justify-center items-center h-full border-2 rounded-full p-2 hover:bg-slate-200" type="button"><img src="../../../assets/icons/send.svg" alt=""></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-template>

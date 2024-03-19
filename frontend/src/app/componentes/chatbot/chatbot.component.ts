@@ -19,8 +19,9 @@ export class ChatbotComponent implements OnInit{
   @ViewChild('chatbot') private modalContent: TemplateRef<ChatbotComponent>
   private modalRef: NgbModalRef
   public form: FormGroup
-  public chat: Array<Mensaje> = new Array();
+  public chat: Array<Mensaje> = new Array(); 
   public scrollDiv;
+  public messageTest:any;
   constructor(
     public chatbotService: ChatbotService,
     private formBuilder: FormBuilder,
@@ -41,9 +42,10 @@ export class ChatbotComponent implements OnInit{
     })
   }
 
+
   askChat() {
     const { pregunta }: any = this.form.value
-    const mensaje = {
+    const mensaje:any = {
       text: pregunta,
       from: this.userService.currentUser.email
     }
@@ -54,6 +56,11 @@ export class ChatbotComponent implements OnInit{
       }
     });
 
+  }
+
+  clearAsk(){
+    this.messageTest=document.getElementById("makeAsk")
+    console.log(this.messageTest)
   }
 
   open(): Promise<boolean> {
