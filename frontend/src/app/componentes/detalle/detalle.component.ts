@@ -77,17 +77,18 @@ export class DetalleComponent implements OnInit {
   //   })
   // }
   createOrder() {
+    this._clientService.productPurchased(this.detail);
     try {
-      this._clientService.productPurchased(this.detail);
       this.loading.next(true);
       this._paymentService.prepareOrder(this.detail).then(async (data) => {
         console.log(data);
         let order = await firstValueFrom(this._paymentService.createOrder(data));
+        this._paymentService.webhook.next(order);
         this.loading.next(false);
-        window.location.href = `https://checkout.wompi.co/l/${order.payment}`
+        // window.location.href = `https://checkout.wompi.co/l/${order.payment}`
       })
     } catch (error) {
-      console.log("Error: ", error);
+      console.log("Error: ", error);  
       
     }
 

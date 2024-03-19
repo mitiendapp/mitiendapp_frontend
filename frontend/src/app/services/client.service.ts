@@ -11,10 +11,10 @@ import { ProductDTO } from './cart.service';
 export class ClientService {
   private endpoint: string;
   private apiUrl: string;
-  private _purchases = new BehaviorSubject<any[]>(null); 
+  private _purchases = new BehaviorSubject<ProductDTO[]>(null); 
   auxList:ProductDTO[];
   product:ProductDTO = {
-    category: "",
+    category: "", 
     description: "",
     image: "",
     name: "s",
@@ -35,12 +35,17 @@ export class ClientService {
   }
 
   
-  get purchases():Observable<any>{
+  purchases():Observable<ProductDTO[]>{
     return this._purchases.asObservable();
   }
   
-  productPurchased(product:ProductDTO){
+  productPurchased(product:any){
+    console.log(this.auxList);
+    
     this.auxList.push(product)
+    
+    console.log(this.auxList);
+    
     this._purchases.next(this.auxList);
   }
 }

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { UserService } from './services/user.service';
 import { HttpClient } from '@angular/common/http';
+import { SocketService } from './services/socket.service';
+import { ChatService } from './services/chat.service';
 
 
 @Component({
@@ -10,10 +12,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css'],
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   constructor(
     public http: HttpClient,
-    public userService:UserService
+    public userService:UserService,
+    private _socketService: ChatService
   ){   
     if(localStorage.getItem('token')){
       this.userService.isLoggingIn.next(true);
@@ -23,5 +26,19 @@ export class AppComponent {
   }
   title = 'loginRegistroProyecto';
   login = false;
+
+  ngOnInit(): void {
+      this._socketService.sendMessage("mensaje")
+      this._socketService.loadMessages(this._socketService.roomId);
+      this._socketService.getMessage().subscribe((data: any) => {
+        if (this._socketService.roomId) {
+          setTimeout(() => {
+            console.log();
+            
+          }, 4);
+        }
+      });
+  }
+
 }
 
