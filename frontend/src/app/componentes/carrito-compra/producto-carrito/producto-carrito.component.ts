@@ -25,8 +25,10 @@ export class ProductoCarritoComponent {
     const total = price * units;
     return total.toLocaleString('es');
   }
-  deleteProduct(id: number) {
-    const operation = this.verify.isDelete("producto de tu carrito");
+  async deleteProduct(id: number) {
+    const operation = await this.verify.isDelete("producto de tu carrito");
+    console.log(operation);
+    
     if (operation) {
       this._cartService.deleteProduct(id);
       this.messageService.msgSuccess({ message: "El producto se eliminó correctamente" });
