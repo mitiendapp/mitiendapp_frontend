@@ -18,6 +18,7 @@ export class PerfilCompanyComponent implements OnInit{
   
   
   showTable: boolean = false;
+  mostrarBotonesInternos: boolean = false;
   company: Company[] = []
   product:Product[]=[]
   listProducts: Product[] = [];
@@ -64,6 +65,14 @@ export class PerfilCompanyComponent implements OnInit{
    
     this.router.navigate(['editarCompany',this.tokenEmail]);
 
+  }
+
+  navigateCrearProducto(){
+    this.router.navigate(['crearproducto']);
+  }
+
+  toggleBotonesInternos() {
+    this.mostrarBotonesInternos = !this.mostrarBotonesInternos;
   }
 
   
