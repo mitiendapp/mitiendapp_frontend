@@ -5,6 +5,7 @@ import { Product } from '../../interfaces/product'
 import { ProductService } from '../../services/product.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { decodeJWT } from 'src/app/utils/decodeJWT';
+import {FiltroProductosService } from '../../services/FiltroProductos.service'
 // import { EditarCompanyComponent } from '../editar-company/editar-company.component';
 
 
@@ -15,15 +16,26 @@ import { decodeJWT } from 'src/app/utils/decodeJWT';
 })
 export class PerfilCompanyComponent implements OnInit{
   
-  // idCompany: string = '';
+  
+  showTable: boolean = false;
+  mostrarBotonesInternos: boolean = false;
   company: Company[] = []
   product:Product[]=[]
+  listProducts: Product[] = [];
+  filteredProducts: Product[] = [];
   token:string;
   userInfo:any;
-
   tokenEmail:any;
-  constructor(private perfilCompanyServices: PerfilCompanyService, private productservice:ProductService,
-    private routeActivate: ActivatedRoute, private router :Router) {
+  tokenId:any;
+
+  constructor(
+  private router: Router, 
+  private perfilCompanyServices: PerfilCompanyService, 
+  private _filtroProductosService: FiltroProductosService,
+  private productservice:ProductService,
+  private routeActivate: ActivatedRoute, 
+  private _productService: ProductService,
+  ) {
   }
 
   // getCompanys(email:string) {
@@ -40,6 +52,9 @@ export class PerfilCompanyComponent implements OnInit{
  
 
   // }
+  toggleTable() {
+    this.showTable = !this.showTable;
+}
 
   interfaceEditarCompany() {
 
@@ -51,6 +66,18 @@ export class PerfilCompanyComponent implements OnInit{
     this.router.navigate(['editarCompany',this.tokenEmail]);
 
   }
+
+  navigateCrearProducto(){
+    this.router.navigate(['crearproducto']);
+  }
+
+  toggleBotonesInternos() {
+    this.mostrarBotonesInternos = !this.mostrarBotonesInternos;
+  }
+
+  
+
+ 
 
 
 
@@ -73,6 +100,14 @@ export class PerfilCompanyComponent implements OnInit{
     
     console.log(email, 'aqui estoy capturando el params osea el correo')
       this.getCompanyEmail(email);
+      //ID 
+
+    
+      this.userInfo = decodeJWT(localStorage.getItem('token'));
+      this.tokenId = this.userInfo.UserInfo.id
+      this.getProductsIdCompany(this.tokenId)
+
+
     // });
   }
 
@@ -97,17 +132,54 @@ getCompanyEmail(email: string) {
   });
 }
 
+//arreglo de porductos leo 
+filtrarProductos(terminoBusqueda: string): void {
+  if (terminoBusqueda.trim() !== '') {
+    this.filteredProducts = this.listProducts.filter(producto =>
+      producto.name.toLowerCase().includes(terminoBusqueda.toLowerCase())
+    );
+  } else {
+    this.filteredProducts = [...this.listProducts]; // Restaurar la lista completa de productos si el filtro está vacío
+  }
+}
 
 
+getProductsIdCompany(companyId:string){
+  console.log("hola....")
+  this._productService.getCompanybyProductsId(companyId).subscribe((data:any)=>{
+    const dataProducts=data.data
+    if (Array.isArray(dataProducts)) {
+      this.listProducts = dataProducts; // Si es un arreglo, asignar directamente
+      console.log(this.listProducts, 'adentro')
+    } else {
+      this.listProducts = [dataProducts]; // Si es un objeto, envolverlo en un arreglo
+      console.log(this.listProducts, 'dentro else')
+    }
+    console.log(this.listProducts, 'afuera')
+  })
+
+}
+confirmDelete(id: any): void {
+  if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+      this.deleteProductsCompany(id);
+  }
+}
 
 
-// decodeJWT(token:string) {
-//   const base64Url = token.split('.')[1];
-//   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-//   const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
-//     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-//   }).join(''));
-//   return JSON.parse(jsonPayload);
-// }
+deleteProductsCompany(id:any){
+  this._productService.deleteProducts2(id).subscribe(
+    
+    response => {
+      console.log('Product deleted successfully', response);
+      this.router.navigate(['perfilCompany',this.tokenEmail]);
+
+    },
+    error => {
+      console.error('Error deleting product', error);
+  
+    }
+  )
+
+}
 
 }

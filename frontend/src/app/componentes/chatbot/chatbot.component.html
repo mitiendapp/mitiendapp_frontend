@@ -11,9 +11,21 @@
                         <div class="flex justify-end" *ngIf="(messages.from == userService.currentUser.email)">
                             <app-message-box [message]="messages.text" [color]="'#005c4b'"></app-message-box>
                         </div>
-                        <div class="flex justify-start " *ngIf="!(messages.from == userService.currentUser.email)">
-                            <app-message-box [message]="messages.text" [color]="'#202c33'"></app-message-box>
+                        <div class="flex justify-start" *ngIf="!(messages.from == userService.currentUser.email)">
+                            <app-message-box [message]="messages.text" [color]="'#202c33'">
+
+
+                            </app-message-box>
                         </div>
+                    </div>
+                    <div>
+                        <span *ngIf="loading" class="ml-2 loader">
+                            <div class="loader">
+                                <div class="loader-text"></div>
+                                <img class= "imagen"src="../../../assets/img/logo.png" >
+                                <div class="loader-bar"></div>
+                              </div>
+                        </span>
                     </div>
                 </div>
 

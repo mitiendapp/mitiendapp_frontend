@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MessageService } from 'src/app/services/message.service';
 import { Toast, ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -21,8 +22,18 @@ export class EditarCompanyComponent  implements OnInit{
   tokenEmail:any;
   tokenId:any;
 
-  constructor( private toastr: ToastrService,  private _messageService:MessageService, private formBuilder: FormBuilder, private router :Router, private routeActivate: ActivatedRoute,private perfilCompanyServices: PerfilCompanyService){}
+  constructor( private spinner: NgxSpinnerService, private toastr: ToastrService,  private _messageService:MessageService, private formBuilder: FormBuilder, private router :Router, private routeActivate: ActivatedRoute,private perfilCompanyServices: PerfilCompanyService){}
+
   
+
+  openSpinner() {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000)
+  }
+
+
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({
@@ -48,6 +59,13 @@ export class EditarCompanyComponent  implements OnInit{
     this.router.navigate(['/editarCompany']);
   }
 
+  isdevolverPerfil() {
+    this.userInfo = decodeJWT(localStorage.getItem('token'));
+    this.tokenEmail = this.userInfo.UserInfo.email;
+
+    // Navega al otro componente
+    this.router.navigate(['perfilCompany',this.tokenEmail]);
+  }
   getCompanyEmail(email: string) {
     this.perfilCompanyServices.getCompany(email).subscribe((data: any) => {
       const companyData = data.company; // Obtener los datos de la compañía
@@ -76,12 +94,17 @@ export class EditarCompanyComponent  implements OnInit{
     this.userInfo = decodeJWT(localStorage.getItem('token'));
     // console.log(this.userInfo.UserInfo.email,' este es');
     this.tokenEmail = this.userInfo.UserInfo.email
- 
+    // this.openSpinner();
     this.perfilCompanyServices.postCompanyEditar(this.tokenEmail,company).subscribe({
       next: (v) => {
+
         this.toastr.success( "Actualizado con exito");
-        // const main = document.getElementById('main');
-        // main.classList.remove("right-panel-active");
+      
+        setTimeout(() => {
+          this.isdevolverPerfil();
+        }, 2000); // 1000 milisegundos (1 segundo)
+      
+
       },
       error: (e: HttpErrorResponse) => {
         if (e) {

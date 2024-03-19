@@ -36,8 +36,12 @@ import { ChatGoodComponent } from './componentes/chat-good/chat-good.component';
 import { SuccessfulPurchaseComponent } from './componentes/successful-purchase/successful-purchase.component';
 import { LoadingImageComponent } from './componentes/loading-image/loading-image.component';
 import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
+import { EditProductComponent } from './componentes/edit-product/edit-product.component';
 import { SpinnerBladeComponent } from './shared/spinner-blade/spinner-blade.component';
 import { CarouselComponent } from './componentes/carousel/carousel.component';
+import { MyPurchasesComponent } from './componentes/perfil-usuario/my-purchases/my-purchases.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MyOrdersComponent } from './componentes/perfil-usuario/my-orders/my-orders.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -71,8 +75,11 @@ export function tokenGetter(){
     LoadingImageComponent,
     SuccessfulPurchaseComponent,
     EditarCompanyComponent,
+    EditProductComponent,
     SpinnerBladeComponent,
     CarouselComponent,
+    MyPurchasesComponent,
+    MyOrdersComponent,
 
   ],
   imports: [
@@ -95,7 +102,8 @@ export function tokenGetter(){
       config:{
         tokenGetter: tokenGetter,
       }
-    })
+    }),
+    MatTabsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

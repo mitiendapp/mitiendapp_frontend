@@ -25,7 +25,7 @@
             <input class="outline-none border-1 p-2 px-3 w-full" formControlName="confirmPassword" type="password" name="" id="confirmPass" placeholder="Confirmar Contraseña">
         </div>
         <div class="confirm w-full flex flex-col items-center">
-            <button *ngIf="!(isLoading()|async)"  class="bg-button-blue px-4 py-2 rounded-lg text-white text-lg w-[40%]">Crear</button>
+            <button *ngIf="!(isLoading()|async)" (click)="enviocorreo()" (click)="onRegister()" class="bg-button-blue px-4 py-2 rounded-lg text-white text-lg w-[40%]">Crear</button>
             <app-spinner-blade *ngIf="(isLoading()|async)" ></app-spinner-blade>
         </div>
         <a href="/login" class="text-center max-sm:mb-5">¿Ya tienes una cuenta? <br> Da click aquí</a>
