@@ -34,6 +34,7 @@ import { ImageDirectiveDirective } from './image-directive.directive';
 import { CommonModule } from '@angular/common';
 import { LoadingImageComponent } from './componentes/loading-image/loading-image.component';
 import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
+import { EditProductComponent } from './componentes/edit-product/edit-product.component';
 import { SpinnerBladeComponent } from './shared/spinner-blade/spinner-blade.component';
 import { MyPurchasesComponent } from './componentes/perfil-usuario/my-purchases/my-purchases.component';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -69,6 +70,7 @@ export function tokenGetter(){
     ImageDirectiveDirective,
     LoadingImageComponent,
     EditarCompanyComponent,
+    EditProductComponent,
     SpinnerBladeComponent,
     MyPurchasesComponent,
     MyOrdersComponent,
