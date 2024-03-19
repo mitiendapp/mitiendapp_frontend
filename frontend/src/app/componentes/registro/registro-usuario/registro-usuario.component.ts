@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Toast, ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 import { Client } from 'src/app/interfaces/client';
 import { User } from 'src/app/interfaces/user';
 import { HeaderService } from 'src/app/services/header.service';
@@ -18,6 +19,8 @@ import { UserService } from 'src/app/services/user.service';
 export class RegistroUsuarioComponent implements OnInit {
   form: FormGroup;
   title = 'envioCorreo';
+  loading = new BehaviorSubject<boolean>(false);
+
 
   constructor(
     private httpclien:HttpClient,
@@ -58,13 +61,16 @@ enviocorreo(){
   }
 
   onRegister() {
+    this.loading.next(true);
     const { firstName, document, email, password, confirmPassword } = this.form.value;
     if (!this.form.valid) {
       this.toastr.error("Todos los campos son obligatorios", "Error");
+      this.loading.next(false);
       return;
     }
     if (password != confirmPassword) {
       this.toastr.error("las contraseñas no coinciden", "Error");
+      this.loading.next(false);
       return;
     }
     const user: Client = {
@@ -87,7 +93,13 @@ enviocorreo(){
       },
       error: (e: HttpErrorResponse) => {
         this._messageService.msgError(e);
-      }
+      },
+      complete() {
+          this.loading.next(false);
+      },
     })
+  }
+  isLoading(){
+    return this.loading.asObservable();
   }
 }

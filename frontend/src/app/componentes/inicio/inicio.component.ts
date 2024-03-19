@@ -24,13 +24,13 @@ import { log } from 'console';
 export class InicioComponent implements OnInit {
   formAccount: FormGroup;
   formPassword: FormGroup;
-  loading: boolean = false;
+  loading = new BehaviorSubject<Boolean>(false);
   account: any;
-  userInfo:any;
-  tokenEmail:any;
+  userInfo: any;
+  tokenEmail: any;
   validAccount = new BehaviorSubject<Boolean>(false);
   imageUrl = "../../../assets/img/3d-render-secure-login-password-illustration como objeto inteligente-1.png";
-  
+
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
@@ -40,18 +40,18 @@ export class InicioComponent implements OnInit {
     private _messageService: MessageService,
     private headerService: HeaderService,
     private auth: AuthService,
-    private spinner : NgxSpinnerService,
+    private spinner: NgxSpinnerService,
     private routeActivate: ActivatedRoute
   ) {
   }
 
-  openSpinner(){
+  openSpinner() {
     this.spinner.show();
-    setTimeout(()=>{
+    setTimeout(() => {
       this.spinner.hide();
-    },3000)
+    }, 3000)
   }
-  
+
   ngOnInit(): void {
     this.formAccount = this.formBuilder.group({
       email: ['', Validators.required]
@@ -60,7 +60,7 @@ export class InicioComponent implements OnInit {
       password: ['', Validators.required]
     })
   }
-  
+
   // mostrarDetalle(email: string) {
   //   this.router.navigate(['/perfilCompany',email]);
   // }
@@ -78,10 +78,14 @@ export class InicioComponent implements OnInit {
     return;
   }
 
-  submitPassword() {
+  async submitPassword() {
+    this.loading.next(true);
+    setTimeout(() => {
+      
+    }, 500);
     const { password } = this.formPassword.value;
     if (!this.formPassword.valid) {
-      this.toastr.error("Debe ingresar la contraseña", "Error")
+      this.toastr.error("Debe ingresar la contraseña", "Error");
       return;
     }
 
@@ -92,45 +96,37 @@ export class InicioComponent implements OnInit {
 
     this._userService.logIn(user).subscribe({
       next: (data: any) => {
-      this.auth.login(data.token)
-          console.log(data)
-         console.log(this.auth.getRole() == "client");
-         
-        if(this.auth.getRole() == "client"){
-         
+        this.auth.login(data.token)
+        console.log(data)
+        console.log(this.auth.getRole() == "client");
+
+        if (this.auth.getRole() == "client") {
+
           this.router.navigate(['']);
-        }else{
+        } else {
 
           this.userInfo = decodeJWT(localStorage.getItem('token'));
-          console.log(this.userInfo.UserInfo.email,' este es');
+          console.log(this.userInfo.UserInfo.email, ' este es');
           this.tokenEmail = this.userInfo.UserInfo.email
-          console.log(this.tokenEmail,'ste es cuando se carga el loguedo')
-      
-          
-         
-          this.router.navigate(['perfilCompany',this.tokenEmail]);
+          console.log(this.tokenEmail, 'ste es cuando se carga el loguedo')
+
+
+
+          this.router.navigate(['perfilCompany', this.tokenEmail]);
         }
         localStorage.setItem('token', data.token);
         this._messageService.msgSuccess(data);
         this._userService.isLoggedIn = true;
       },
-      error: (e: HttpErrorResponse) => {
+      error: (e: any) => {
+        console.log(e);
         this._messageService.msgError(e);
-        this.loading = false;
-      }
+      },complete() {
+          console.log("complete");
+          
+          this.loading.next(false);
+      },
     })
-
-    //  this._userService.logIn(user).subscribe({
-    //   next: (data: any) => {
-      
-    //     console.log(data,"se envio  los data")
-      
-    //   },
-    //   error: (e: HttpErrorResponse) => {
-    //     this._messageService.msgError(e);
-    //     this.loading = false;
-    //   }
-    // })
     this.userService.isLoggingIn.next(true);
     this.userService.openSession(user);
   }
@@ -139,7 +135,7 @@ export class InicioComponent implements OnInit {
     return this.validAccount.asObservable();
   }
 
-  decodeJWT(token:string) {
+  decodeJWT(token: string) {
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
@@ -148,5 +144,8 @@ export class InicioComponent implements OnInit {
     return JSON.parse(jsonPayload);
   }
 
+  isLoading() {
+    return this.loading.asObservable();
+  }
 }
 

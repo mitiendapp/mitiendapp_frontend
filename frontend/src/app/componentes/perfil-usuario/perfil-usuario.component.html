@@ -1,102 +1,36 @@
-<section class="m-0 p-0">
-    <div class="imgTop pb-6 sds w-full h-50 md:h-70 bg-cover bg-center d-flex justify-center lg:h-90"
-        style="background-image: url(https://www.piamaria.cl/wp-content/uploads/2018/12/BANNER-TIENDA-ONLINE-pc-piamaria-cl.jpg);">
-
-        <img class="rounded-full mb-[-15%] mt-[8%] sm:mt-[5%] md:mb-[-8%] md:mt-[10%] lg:mt-[8%] size-40 cover"
+<section *ngIf="user" class="body m-0 p-0 flex justify-evenly items-end relative w-full h-full relative">´
+    <div class="w-1/6"></div>
+    <div class="flex flex-col bg-white items-center w-1/6 rounded-lg shadow-lg p-2 absolute left-10 top-40">
+        <!--about user -->
+        <img class=" rounded-full mt-[8%] sm:mt-[5%] md:mb-[-8%] md:mt-[10%] lg:mt-[8%] size-40 cover mb-2"
             src="../../../assets/img/img5.jpg" alt="">
-    </div>
-
-
-    <!--about user -->
-    <div class="infoUser max-sm:mt-[10%] mt-[7%] d-flex justify-center flex-col items-center">
-        <h1 class="font-bold">Mailo Traqueto</h1>
-        <h5>Clothing salesman</h5>
-        <div class="socialmedia d-flex w-full items-center justify-center">
-            <!-- Instagram -->
-            <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-instagram text-2xl"></i></a>
-            <!-- Twitter -->
-            <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-twitter text-2xl"></i></a>
-            <!-- WhatsApp -->
-            <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-whatsapp text-2xl"></i></a>
-        </div>
-
-        <!-- name and venture description -->
-     
-        <div class="description d-flex justify-center text-center flex-col items-center">
-            <h3 class="my-10 max-md:my-10 font-bold">MegastoreAXM</h3>
-            <p class="w-[80%]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi totam corporis tempore!
-                Atque, consequuntur cumque pariatur ab exercitationem officiis quaerat sit perspiciatis officia autem
-                rem suscipit dolores aut error ex?</p>
-        </div>
-    </div>
-    <!-- products pics -->
-    <div
-        class="pics px-[5%] d-flex justify-center items-center flex-col md:max-lg:flex-row md:max-lg:flex-wrap m-0 py-5 gap-3 lg:max-2xl:flex-row 2xl:flex-row">
-        <!-- product 1 -->
-        <div class="product shadow-lg hover:shadow-2xl max-sm:p-3 max-sm:justify-center max-sm:w-[95%] max-sm:h-[30%] d-flex flex-row items-center
-                 md:max-lg:w-[45%] md:max-lg:h-[25%] md:max-lg::flex-row
-                    md:max-xl:flex-row] ">
-            <!-- image -->
-            <img class="w-[50%] h-[90%] md:max-lg:w-[50%] md:max-lg:h-[40%]"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvHwIrPIyn-lg2WK1BqTViFWSWdV-Frf4dmCHMHZoodj-JvwnkojMWsGlsNrMiZ0uNElY&usqp=CAU"
-                alt="">
-            <div class="productDesc p-3">
-                <!-- name product -->
-                <p class="font-bold">Buso Boxyfit negro</p>
-                <!-- price -->
-                <p>150.000</p>
-                <div class="buttons d-flex justify-evenly">
-                    <button
-                        class="border text-center bg-[#255BAD] font-[white] rounded py-1 px-3 text-white border-none hover:shadow-xl">comprar</button>
-                    <a href=""><i class="bi bi-cart text-2xl hover:shadow-xl"></i></a>
-                </div>
+        <div class="infoUser max-sm:mt-[10%] mt-[7%] d-flex justify-center flex-col items-center ">
+            <h1 class="font-bold">{{user.firstName}} {{user.lastName}}</h1>
+            <h5>{{user.email}}</h5>
+            <h4>Cliente</h4>
+            <div class="socialmedia d-flex w-full items-center justify-center">
+                <!-- Instagram -->
+                <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-instagram text-lg"></i></a>
+                <!-- Twitter -->
+                <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-twitter text-lg"></i></a>
+                <!-- WhatsApp -->
+                <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-whatsapp text-lg"></i></a>
             </div>
         </div>
-
-        <div class="product shadow-lg hover:shadow-2xl max-sm:p-3 max-sm:justify-center max-sm:w-[95%] max-sm:h-[30%] d-flex flex-row items-center
-                 md:max-lg:w-[45%] md:max-lg:h-[25%] md:max-lg:flex-row
-                    md:max-lg:flex-row] ">
-            <!-- image -->
-            <img class="w-[50%] h-[90%] md:max-lg:w-[50%] md:max-lg:h-[40%]"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvHwIrPIyn-lg2WK1BqTViFWSWdV-Frf4dmCHMHZoodj-JvwnkojMWsGlsNrMiZ0uNElY&usqp=CAU"
-                alt="">
-            <div class="productDesc p-3">
-                <!-- name product -->
-                <p class="font-bold">Buso Boxyfit negro</p>
-                <!-- price -->
-                <p>150.000</p>
-                <div class="buttons d-flex justify-evenly">
-                    <button
-                        class="border text-center bg-[#255BAD] font-[white] rounded py-1 px-3 text-white border-none hover:shadow-xl">comprar</button>
-                    <a href=""><i class="bi bi-cart text-2xl hover:shadow-xl"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="product shadow-lg hover:shadow-2xl max-sm:p-3 max-sm:justify-center max-sm:w-[95%] max-sm:h-[30%] d-flex flex-row items-center
-                 md:max-lg:w-[45%] md:max-lg:h-[25%] md:max-lg:flex-row
-                    md:max-lg:flex-row] ">
-            <!-- image -->
-            <img class="w-[50%] h-[90%] md:max-lg:w-[50%] md:max-lg:h-[40%]"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvHwIrPIyn-lg2WK1BqTViFWSWdV-Frf4dmCHMHZoodj-JvwnkojMWsGlsNrMiZ0uNElY&usqp=CAU"
-                alt="">
-            <div class="productDesc p-3">
-                <!-- name product -->
-                <p class="font-bold">Buso Boxyfit negro</p>
-                <!-- price -->
-                <p>150.000</p>
-                <div class="buttons d-flex justify-evenly">
-                    <button
-                        class="border text-center bg-[#255BAD] font-[white] rounded py-1 px-3 text-white border-none hover:shadow-xl">comprar</button>
-                    <a href=""><i class="bi bi-cart text-2xl hover:shadow-xl"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- https://trueshop.co/cdn/shop/files/Buzo-The_Green_Edit_Verde_Pistacho_1_41f52f1d-0ff5-40c8-a9b2-a6a4595c7231_720x720.jpg?v=1694712682 -->
-
-
     </div>
+    <div class="flex flex-col h-4/5 items-center bg-white rounded-md w-3/4 shadow-lg">
 
+        <div class="w-5/6 h-full z-0">
+            <mat-tab-group class="z-10 h-full w-full">
+                <mat-tab class="h-full w-full flex justify-end" label="Mis Compras">
+                    <app-my-purchases class="h-full w-full"></app-my-purchases>
+                </mat-tab>
+                <mat-tab class="h-full w-full flex" label="Mis Pedidos"><app-my-orders></app-my-orders></mat-tab>
+                <mat-tab class="h-full w-full flex" label="Mi Carrito"><app-carrito-compra></app-carrito-compra></mat-tab>
+            </mat-tab-group>
+        </div>
+
+        <!-- products pics -->
+    </div>
 
 </section>

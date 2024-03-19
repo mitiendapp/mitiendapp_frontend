@@ -20,11 +20,15 @@
                 placeholder="contraseña">
             <input class="border px-3 py-2 outline-none rounded" type="password" formControlName="confirmPassword"
                 placeholder="Confirmar contraseña">
-            <button type="submit" class="bg-button-blue w-full p-1 rounded mt-3 text-white">Continuar</button>
-
+            <div class="flex flex-col items-center w-full">
+                <button *ngIf="(isLoading()|async)" type="submit"
+                    class="bg-button-blue w-full p-1 rounded mt-3 text-white">Continuar</button>
+                <app-spinner-blade *ngIf="!(isLoading()|async)"></app-spinner-blade>
+            </div>
             <p class="text-xs text-center">¿Ya estás registrado?</p>
             <a class="mb-8" href="/login">
-                <Button type="button" class="w-full p-1 rounded border  text-black" id="createAcountBtn">¡Inicia sesión aqui!</Button>
+                <Button type="button" class="blankButton w-full p-1 rounded border  text-black" id="createAcountBtn">¡Inicia sesión
+                    aqui!</Button>
 
                 <!-- ---- Config Spinner ---- -->
                 <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="default" color="#fff" type="square-jelly-box">

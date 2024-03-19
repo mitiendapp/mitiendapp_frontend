@@ -18,7 +18,7 @@ export class PaymentService {
   private endpoint: string;
   private apiUrl: string;
   private product = {
-    product:{
+    product: {
       id: 1,
       name: "pollo",
       description: "pollito",
@@ -29,13 +29,14 @@ export class PaymentService {
       createdAt: "2024-03-08T06:04:38.000Z",
       updatedAt: "2024-03-08T06:04:38.000Z",
       companyId: 1,
-      quantity:1
-  },
-  payer: {}
-}
-  private  headers = new HttpHeaders({
-  'Content-Type': 'application/json',
-  'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJpZCI6ImYxM2Y5MWQ1LTZjOWItNDU0Ny05Y2M4LTFjM2U0ZTIxODFhYSIsImVtYWlsIjoic2FudGlhZ29vc29yaW8zMTBAZ21haWwuY29tIiwicm9sZXMiOlsieyIsIlwiIiwiQyIsIm8iLCJtIiwicCIsImEiLCJuIiwieSIsIlwiIiwiOiIsIjQiLCIwIiwiNiIsIjgiLCJ9Il19LCJpYXQiOjE3MDk1MTA3ODAsImV4cCI6MTcxMjEwMjc4MH0.xiIBlTuIlEkmnpsCY7-xEvsz2FzfItefBNXkn3W9BU4"});
+      quantity: 1
+    },
+    payer: {}
+  }
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJpZCI6ImYxM2Y5MWQ1LTZjOWItNDU0Ny05Y2M4LTFjM2U0ZTIxODFhYSIsImVtYWlsIjoic2FudGlhZ29vc29yaW8zMTBAZ21haWwuY29tIiwicm9sZXMiOlsieyIsIlwiIiwiQyIsIm8iLCJtIiwicCIsImEiLCJuIiwieSIsIlwiIiwiOiIsIjQiLCIwIiwiNiIsIjgiLCJ9Il19LCJpYXQiOjE3MDk1MTA3ODAsImV4cCI6MTcxMjEwMjc4MH0.xiIBlTuIlEkmnpsCY7-xEvsz2FzfItefBNXkn3W9BU4"
+  });
 
   constructor(
     private http: HttpClient,
@@ -49,27 +50,31 @@ export class PaymentService {
   async prepareOrder(data: Product) {
     // console.log(this.perfilCompanyService.getCompany());
     const client = await decodeJWT(localStorage.getItem('token')).UserInfo;
-    
+    console.log(client);
     const payer = await firstValueFrom(this.perfilService.getClient(client.email));
     const product = {
-      category:data.category,
-      description:data.description,
-      image:data.image,
-      name:data.name,
-      price:data.price * 100,
-      stock:data.stock,
-      id:data.id,
-      companyId:data.companyId,
-      quantity:1
-    } 
+      category: data.category,
+      description: data.description,
+      image: this.formatImage(data.image),
+      name: data.name,
+      price: data.price * 100,
+      stock: data.stock,
+      id: data.id,
+      companyId: data.companyId,
+      quantity: 1
+    }
     const payload = {
       product,
       payer
     }
     return payload
   }
-  createOrder(data):Observable<any>{
-    
+  createOrder(data): Observable<any> {
     return this.http.post(`${this.endpoint}wompi/payment/create`, data);
   }
+
+  private formatImage(url: string) {
+    return url.replace('upload', 'upload/w_450,c_scale');
+  }
 }
+0

@@ -66,6 +66,10 @@ export class PerfilCompanyComponent implements OnInit{
 
   }
 
+  
+
+ 
+
 
 
   getProducts(){

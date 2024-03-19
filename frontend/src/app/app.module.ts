@@ -35,6 +35,10 @@ import { CommonModule } from '@angular/common';
 import { LoadingImageComponent } from './componentes/loading-image/loading-image.component';
 import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
 import { EditProductComponent } from './componentes/edit-product/edit-product.component';
+import { SpinnerBladeComponent } from './shared/spinner-blade/spinner-blade.component';
+import { MyPurchasesComponent } from './componentes/perfil-usuario/my-purchases/my-purchases.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MyOrdersComponent } from './componentes/perfil-usuario/my-orders/my-orders.component';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -67,6 +71,9 @@ export function tokenGetter(){
     LoadingImageComponent,
     EditarCompanyComponent,
     EditProductComponent,
+    SpinnerBladeComponent,
+    MyPurchasesComponent,
+    MyOrdersComponent,
 
   ],
   imports: [
@@ -89,7 +96,8 @@ export function tokenGetter(){
       config:{
         tokenGetter: tokenGetter,
       }
-    })
+    }),
+    MatTabsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
