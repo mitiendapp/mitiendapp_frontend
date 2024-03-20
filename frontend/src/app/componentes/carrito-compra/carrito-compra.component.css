@@ -1,11 +1,13 @@
-
+*{
+    padding: 0;
+    margin: 0;
+}
 .productCart-wrapper{
+    width: 100%;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    justify-content: center;
-    padding: 2rem;
-    margin-top: 0px;
+ 
     .productCart {
         padding: 1rem;
         display: flex;
