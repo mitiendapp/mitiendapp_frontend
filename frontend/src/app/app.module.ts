@@ -39,6 +39,9 @@ import { SpinnerBladeComponent } from './shared/spinner-blade/spinner-blade.comp
 import { MyPurchasesComponent } from './componentes/perfil-usuario/my-purchases/my-purchases.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MyOrdersComponent } from './componentes/perfil-usuario/my-orders/my-orders.component';
+import { FotoDePerfilComponent } from './componentes/foto-de-perfil/foto-de-perfil.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 export function tokenGetter(){
   return localStorage.getItem('token')
@@ -74,6 +77,7 @@ export function tokenGetter(){
     SpinnerBladeComponent,
     MyPurchasesComponent,
     MyOrdersComponent,
+    FotoDePerfilComponent,
 
   ],
   imports: [
@@ -97,7 +101,9 @@ export function tokenGetter(){
         tokenGetter: tokenGetter,
       }
     }),
-    MatTabsModule
+    MatTabsModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

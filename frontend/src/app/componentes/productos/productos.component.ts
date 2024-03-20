@@ -20,6 +20,7 @@ export class ProductosComponent implements OnInit {
   listProducts: Product[] = [];
   filteredProducts: Product[] = []; // Arreglo para almacenar los productos filtrados
   product: any;
+index: any;
 
   constructor(
     private _productService: ProductService,

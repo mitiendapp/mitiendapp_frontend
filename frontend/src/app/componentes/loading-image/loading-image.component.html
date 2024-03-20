@@ -1,6 +1,6 @@
 
-<div class="relative flex justify-center items-center">
-    <img [src]="imgSrc" alt="">
+<div class="relative flex justify-center items-center size-40">
+    <img [class]="rounded" [src]="imgSrc" alt="">
     <div *ngIf="(imgSrc==srcPreload)" class="absolute">
         <div class="loader"></div>
     </div>

@@ -1,0 +1,54 @@
+.imageWrapper {
+    position: relative;
+  }
+  
+  .updateImage {
+    position: absolute;
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .imageWrapper:hover .updateImage {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  .custom-file-upload {
+    width: 250px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .custom-file-upload:hover{
+    filter: brightness(.5);
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  #btnDelete{
+    width: 0px;
+    height: 0px;
+    padding: 0;
+    margin: 0;
+  }
+  

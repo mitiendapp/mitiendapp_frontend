@@ -21,9 +21,9 @@
             <input class="border px-3 py-2 outline-none rounded" type="password" formControlName="confirmPassword"
                 placeholder="Confirmar contraseña">
             <div class="flex flex-col items-center w-full">
-                <button *ngIf="(isLoading()|async)" type="submit"
+                <button *ngIf="!(isLoading()|async)" type="submit"
                     class="bg-button-blue w-full p-1 rounded mt-3 text-white">Continuar</button>
-                <app-spinner-blade *ngIf="!(isLoading()|async)"></app-spinner-blade>
+                <app-spinner-blade *ngIf="(isLoading()|async)"></app-spinner-blade>
             </div>
             <p class="text-xs text-center">¿Ya estás registrado?</p>
             <a class="mb-8" href="/login">
