@@ -31,8 +31,10 @@ export class AppComponent implements OnInit{
   login = false;
 
   async ngOnInit(){
-    const { UserInfo } = decodeJWT(localStorage.getItem('token'));
-    this.userService.user.next(await firstValueFrom( this.userService.find(UserInfo.email)))
+    const UserInfo  = decodeJWT(localStorage.getItem('token'));
+    if(UserInfo){
+      this.userService.user.next(await firstValueFrom( this.userService.find(UserInfo.UserInfo.email)))
+    }
   }
 
 }
