@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavBarComponent } from './nav-bar.component';
+import { ChatGoodComponent } from './chat-good.component';
 
-describe('NavBarComponent', () => {
-  let component: NavBarComponent;
-  let fixture: ComponentFixture<NavBarComponent>;
+describe('ChatGoodComponent', () => {
+  let component: ChatGoodComponent;
+  let fixture: ComponentFixture<ChatGoodComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavBarComponent ]
+      declarations: [ ChatGoodComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NavBarComponent);
+    fixture = TestBed.createComponent(ChatGoodComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

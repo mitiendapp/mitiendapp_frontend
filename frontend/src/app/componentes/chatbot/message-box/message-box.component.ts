@@ -13,6 +13,7 @@ left!:boolean;
 rounded!:string
 text!:string;
 back!:string;
+shadow!:string;
 
 ngOnChanges(changes: SimpleChanges): void {  
   if(this.color === '#005c4b'){
@@ -20,11 +21,12 @@ ngOnChanges(changes: SimpleChanges): void {
     this.rounded= 'rounded-l-lg rounded-bl-lg'
     this.text = 'text-[#00000]';
     this.back = 'bg-[#37c2f3]';
+    this.shadow= 'shadow-lg';
   }else{
     this.left = false;
     this.rounded= 'rounded-r-lg rounded-br-lg'
     this.text = 'text-[#000000]';
-    this.back = 'bg-[#ffffff]';
+    this.back = 'bg-[#9C9C9C]';
   }
 }
 }

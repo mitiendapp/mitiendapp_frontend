@@ -1,14 +1,23 @@
-<div class="flex flex-row h-full z-40">
-    <div class=" productCart-wrapper flex flex-col overflow-scroll w-4/5 m-5 p-2 bg-[#e5e5e5] rounded">
-        <article class="productCart shadow w-full bg-white my-1 p-2 rounded"
+<div class="flex flex-col md:flex-row h-full w-full justify-evenly p-0 m-0 items-start">
+
+
+    <div class="productCart-wrapper flex flex-col overflow-scroll max-md:h-full max-sm:w-5/6 md:w-[50%] md:h-5/6 p-2 bg-[#e5e5e5] mt-5">
+        <article class="productCart shadow w-full bg-white rounded "
             *ngFor="let product of myCart$ | async">
             <app-producto-carrito [product]="product"></app-producto-carrito>
         </article>
     </div>
-    <div class="cartTotal w-1/4 m-2 h-full flex flex-col items-center justify-center">
-        <p class="cartTotal-total">Total: </p>
-        <p>$ {{totalCart()}}</p>
-        <button  class="btn btn-primary" (click)="createOrder()">Pagar</button>
+
+    <div class="cartTotal w-full md:w-3/6 lg:w-2/6 m-2 h-3/5 flex flex-col items-center md:justify-between rounded-md md:shadow-lg py-5 px-2 mt-5">
+        <h1 class="text-xl">Mi carrito de compra</h1>
+        <div class="code w-5/6 border-y-2 py-4 flex flex-row justify-between">
+            <input class="py-2 px-3 w-3/5 outline-none border" type="text" placeholder="Código de promoción">
+            <button class="py-2 px-3 bg-[#427DD7] text-white rounded-md w-2/6">Aplicar</button>
+        </div>
+        <div class="price py-5">
+            <p class="cartTotal-total">Total:  {{totalCart()}}</p>
+            <button  class="btn btn-primary" (click)="createOrder()">Pagar</button>
+        </div>
     </div>
 
 </div>

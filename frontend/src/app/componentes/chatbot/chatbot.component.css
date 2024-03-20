@@ -1,4 +1,10 @@
 .modal-dialog{
+   background-color: rgb(0, 225, 255);
+}
+
+.modal-content{
+    height: 50%;
+    display: flex;
     background-color: red;
  }
  

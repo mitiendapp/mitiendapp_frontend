@@ -8,16 +8,18 @@
           alt="">
       </a>
     </div>
-    <div class="inputWrapper relative w-3/5">
+      <!-- SEARCH -->
+    <div class="inputWrapper relative w-3/5 flex items-center ">
       <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" id="inputHeader"
         type="search" placeholder="Busca productos, tiendas y más..." (input)="actualizarFiltro($event)">
-
-      <img class="len absolute top-2 right-2 w-4" src="../../../assets/icons/lens-svgrepo-com.svg" alt="">
     </div>
+      <!-- BOTONES DE LOGIN -->
     <div *ngIf="!(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       <a class="mx-4" href="login">Inicio de sesion</a>
       <a class="mx-4" href="signin">Registro</a>
     </div>
+
+    <!-- USER PROFILE -->
     <div *ngIf="(auth.isLoggedIn() | async) && (auth.isClient() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       <button class="blankButton" (click)="navigateToUserProfile()">Perfil</button>
     </div>
@@ -29,6 +31,7 @@
       <button class="blankButton" (click)="navigateToCompanyHome()">Principal</button>
     </div>
     
+    <!-- SING OUT BUTTON -->
     <div *ngIf="(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
       <button class="blankButton" *ngIf="auth.isLoggedIn()|async"  (click)="auth.logout()">salir</button>
 
@@ -37,7 +40,7 @@
 
  
 
-    <nav class="navbar">
+    <nav class="navbar" *ngIf="(auth.isLoggedIn() | async)">
       <div class="navbar-cart static" (click)="onToggleCart()">
         <div class="items bg[#0d6efd] text-xs absolute -top-1 -right-3" *ngIf="(myCart$ | async)?.length">
           <p>{{ (myCart$ | async)?.length }}</p>
@@ -51,13 +54,14 @@
     </nav>
   </div>
 </div>
-<div class="cart w-full h-full" [ngClass]="{ show1: viewCart }">
+
+<div class="hidden cart w-full h-full" [ngClass]="{ show1: viewCart }">
   <app-carrito-compra class="static h-full w-full"></app-carrito-compra>
   <div>
          
     <h2 *ngIf="auth.isCompany()| async">Hi Company</h2>
     <h2 *ngIf="auth.isClient()| async">Hi Client</h2>
     <h2 *ngIf="auth.isAdmin()| async">Hi Jefe</h2>
-    <h2 *ngIf="!(auth.isLoggedIn()| async)">HOla humano </h2>
+    <h2 *ngIf="!(auth.isLoggedIn()| async)">¡Hola!</h2>
     </div>
 </div>
