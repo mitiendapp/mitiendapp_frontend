@@ -120,7 +120,7 @@ export class InicioComponent implements OnInit {
       },
       error: (e: any) => {
         console.log(e);
-        this._messageService.msgError(e);
+        this._messageService.msgError(e.error);
       },complete() {
           console.log("complete");
           

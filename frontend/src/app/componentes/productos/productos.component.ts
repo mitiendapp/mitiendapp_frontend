@@ -25,6 +25,7 @@ export class ProductosComponent implements OnInit {
   @Output() filterApplied = new EventEmitter<string>();
   minPrice: number;
   maxPrice: number;
+  index: any;
 
   constructor(
     private _productService: ProductService,

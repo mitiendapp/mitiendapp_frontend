@@ -137,3 +137,13 @@ body {
     background-positon-x: 0px;
   }
 }
+
+.footer-wrapper{
+  /* margin-top: 20rem; */
+}
+
+@media only screen and (max-width: 768px) {
+  .footer-wrapper{
+    margin-bottom: 48px;
+  }
+}
