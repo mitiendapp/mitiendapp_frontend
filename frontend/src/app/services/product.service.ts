@@ -44,4 +44,8 @@ export class ProductService {
     return this.http.get<any>(`${this.endpoint}${this.apiUrl}/companies/${companyId}`)
   }
 
+  getProductId(id:any):Observable<any>{
+    return this.http.get<any>(`${this.endpoint}/api/product/id?id=${id}`)
+  }
+
 }

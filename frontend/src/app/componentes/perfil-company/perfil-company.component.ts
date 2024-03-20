@@ -75,6 +75,11 @@ export class PerfilCompanyComponent implements OnInit{
     this.mostrarBotonesInternos = !this.mostrarBotonesInternos;
   }
 
+  navigateEditarProducto(){
+    
+    this.router.navigate(['editarProduct'])
+  }
+
   
 
  
@@ -165,8 +170,12 @@ confirmDelete(id: any): void {
   }
 }
 
+actualizarProduct(id: any){
+console.log(id);
+}
 
 deleteProductsCompany(id:any){
+  console.log(id);
   this._productService.deleteProducts2(id).subscribe(
     
     response => {

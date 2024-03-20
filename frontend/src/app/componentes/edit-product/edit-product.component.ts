@@ -1,11 +1,9 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 import { IaImageServicesService } from 'src/app/services/ia-image.services.service';
 import { enviroment } from '../../enviroments/enviroment';
-
 import { HeaderService } from 'src/app/services/header.service';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,6 +14,7 @@ import { resolve } from 'path';
 import { rejects } from 'assert';
 import { image } from 'pdfkit';
 import { NgxSpinnerService } from 'ngx-spinner';
+import {FiltroProductosService } from '../../services/FiltroProductos.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -25,7 +24,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 export class EditProductComponent implements OnInit {
   form: FormGroup;
-    public  previsualizacion :string;
+  public  previsualizacion :string;
+  listProducts: Product[] = [];
+  filteredProducts: Product[] = [];
   public archivos: any = [];
   imageFile: any;
   imagePreview: any;
@@ -35,6 +36,7 @@ export class EditProductComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private _filtroProductosService: FiltroProductosService,
     private headerService: HeaderService,
     private toastr: ToastrService,
     private _messageService: MessageService,
@@ -66,7 +68,34 @@ export class EditProductComponent implements OnInit {
     });
   }
 
+  //pasos para editar el producto ------------------------------------------------------------
 
+  filtrarProductos(terminoBusqueda: string): void {
+    if (terminoBusqueda.trim() !== '') {
+      this.filteredProducts = this.listProducts.filter(producto =>
+        producto.name.toLowerCase().includes(terminoBusqueda.toLowerCase())
+      );
+    } else {
+      this.filteredProducts = [...this.listProducts]; // Restaurar la lista completa de productos si el filtro está vacío
+    }
+  }
+
+  getProductsIdCompany(companyId:string){
+    console.log("hola desde editar")
+    this._productService.getProductId(companyId).subscribe((data:any)=>{
+      const dataProducts=data.data
+      if (Array.isArray(dataProducts)) {
+        this.listProducts = dataProducts; // Si es un arreglo, asignar directamente
+        console.log(this.listProducts, 'adentro')
+      } else {
+        this.listProducts = [dataProducts]; // Si es un objeto, envolverlo en un arreglo
+        console.log(this.listProducts, 'dentro else')
+      }
+      console.log(this.listProducts, 'afuera')
+    })
+  
+  }
+//Aqui agrego lo de traer informacion de un solo producto
 
   onCreateProduct() {
     const { name, description, price, stock, category } = this.form.value;
