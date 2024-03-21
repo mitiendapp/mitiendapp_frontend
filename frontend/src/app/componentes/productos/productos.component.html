@@ -136,18 +136,29 @@
   <div class="flex flex-wrap p-4 w-[45%] h-[24%] my-2 grid gap-2  " >
     
 
-      <div class="block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded">
-        <p class=" my-2 text-center">Filtrar por precio</p>
+      <div mat-button [matMenuTriggerFor]="ordenar" class="block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded">
+        <p class=" my-2 text-center">Ordenar por </p>
       </div>
 
       <div class="grid grid-cols-2" >
         <div class="grid gap-2" >
-          <button
-          class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
-          (click)="applyPriceFilter('lowToHigh')">Menor a Mayor</button>
-        <button
-          class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
-          (click)="applyPriceFilter('highToLow')">Mayor a Menor</button>
+
+          <mat-menu #ordenar="matMenu" >
+            <div>
+              <button
+              class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
+              (click)="applyPriceFilter('lowToHigh')">Menor a Mayor</button>
+            </div>
+            <div>
+
+              <button
+                class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
+                (click)="applyPriceFilter('highToLow')">Mayor a Menor</button>
+
+            </div>
+          </mat-menu>
+
+         
         </div>
         <div>
           <input type="number" placeholder="Min Price" [(ngModel)]="minPrice">
