@@ -68,7 +68,7 @@ export class CreateProductComponent implements OnInit {
 
   onCreateProduct() {
     const { name, description, price, stock, category } = this.form.value;
-    const imageFile = this.form.get('image').value;
+    // const imageFile = this.form.get('image').value;
   
   
     // if (!this.form.valid || !imageFile) {

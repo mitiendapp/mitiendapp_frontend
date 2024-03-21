@@ -32,26 +32,12 @@ export class PerfilCompanyComponent implements OnInit{
   private router: Router, 
   private perfilCompanyServices: PerfilCompanyService, 
   private _filtroProductosService: FiltroProductosService,
-  private productservice:ProductService,
   private routeActivate: ActivatedRoute, 
   private _productService: ProductService,
   ) {
   }
 
-  // getCompanys(email:string) {
-  //   this.token = localStorage.getItem('token')
-  //   const {UserInfo} = this.decodeJWT(this.token);
-  //    this.email = UserInfo.email;
-  //   console.log(this.email);
-   
-
-  //   this.perfilCompanyServices.getCompany(this.email).subscribe((data: any) => {
-  //     this.company.push(data.company)
-  //     console.log(this.company)
-  //   })
  
-
-  // }
   toggleTable() {
     this.showTable = !this.showTable;
 }
@@ -59,7 +45,7 @@ export class PerfilCompanyComponent implements OnInit{
   interfaceEditarCompany() {
 
     this.userInfo = decodeJWT(localStorage.getItem('token'));
-    // console.log(this.userInfo.UserInfo.email,' este es');
+ 
     this.tokenEmail = this.userInfo.UserInfo.email
     console.log(this.tokenEmail, 'este es el token cuando se preciona el perfil' )
    
@@ -75,9 +61,9 @@ export class PerfilCompanyComponent implements OnInit{
     this.mostrarBotonesInternos = !this.mostrarBotonesInternos;
   }
 
-  navigateEditarProducto(){
-    
-    this.router.navigate(['editarProduct'])
+  navigateEditarProducto(product:any){
+    this._productService.currentProduct.next(product);
+    this.router.navigate(['editarProduct/',product.id])
   }
 
   
@@ -87,19 +73,13 @@ export class PerfilCompanyComponent implements OnInit{
 
 
   getProducts(){
-    this.productservice.getProducts().subscribe((data:any)=>{
+    this._productService.getProducts().subscribe((data:any)=>{
       this.product=data.data;
 
     })
   }
   ngOnInit(): void {
-    // this.idCompany = this.routeActivate.snapshot.params["email"];
-    // this.getCompanys(this.idCompany);
-    // this.userInfo = decodeJWT(localStorage.getItem('token'));
-    // console.log(this.userInfo.UserInfo.email,' este es');
-    
-    // this.routeActivate.params.subscribe(params => {
-    //   const email = params['email'];
+   
    
     let email = this.routeActivate.snapshot.params['email'];
     
@@ -150,17 +130,34 @@ filtrarProductos(terminoBusqueda: string): void {
 
 
 getProductsIdCompany(companyId:string){
-  console.log("hola....")
+  
   this._productService.getCompanybyProductsId(companyId).subscribe((data:any)=>{
     const dataProducts=data.data
     if (Array.isArray(dataProducts)) {
       this.listProducts = dataProducts; // Si es un arreglo, asignar directamente
-      console.log(this.listProducts, 'adentro')
+      
     } else {
       this.listProducts = [dataProducts]; // Si es un objeto, envolverlo en un arreglo
-      console.log(this.listProducts, 'dentro else')
+     
     }
-    console.log(this.listProducts, 'afuera')
+    
+  })
+
+}
+
+
+getProductsIdCompany2(id:any){
+  
+  this._productService.getProductId(id).subscribe((data:any)=>{
+    const dataProducts=data.data
+    if (Array.isArray(dataProducts)) {
+      this.listProducts = dataProducts; // Si es un arreglo, asignar directamente
+     
+    } else {
+      this.listProducts = [dataProducts]; // Si es un objeto, envolverlo en un arreglo
+      
+    }
+    
   })
 
 }
@@ -171,11 +168,11 @@ confirmDelete(id: any): void {
 }
 
 actualizarProduct(id: any){
-console.log(id);
+
 }
 
 deleteProductsCompany(id:any){
-  console.log(id);
+
   this._productService.deleteProducts2(id).subscribe(
     
     response => {
