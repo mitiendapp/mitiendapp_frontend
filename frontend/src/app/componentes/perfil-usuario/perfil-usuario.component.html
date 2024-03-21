@@ -1,36 +1,34 @@
-<section *ngIf="user" class="body m-0 p-0 flex justify-evenly items-end relative w-full h-full ">´
-    <div class="w-1/6"></div>
-    <div class="flex flex-col bg-white items-center w-1/6 rounded-lg shadow-lg p-2 absolute left-10 top-40">
-        <!--about user -->
-        <img class=" rounded-full mt-[8%] sm:mt-[5%] md:mb-[-8%] md:mt-[10%] lg:mt-[8%] size-40 cover mb-2"
-            src="../../../assets/img/img5.jpg" alt="">
-        <div class="infoUser max-sm:mt-[10%] mt-[7%] d-flex justify-center flex-col items-center ">
-            <h1 class="font-bold">{{user.firstName}} {{user.lastName}}</h1>
-            <h5>{{user.email}}</h5>
-            <h4>Cliente</h4>
-            <div class="socialmedia d-flex w-full items-center justify-center">
-                <!-- Instagram -->
-                <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-instagram text-lg"></i></a>
-                <!-- Twitter -->
-                <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-twitter text-lg"></i></a>
-                <!-- WhatsApp -->
-                <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-whatsapp text-lg"></i></a>
+<div class="w-full h-full flex justify-center items-center">
+    <app-spinner-blade *ngIf="!user"></app-spinner-blade>
+    <section *ngIf="user" class="body m-0 p-0 flex justify-evenly items-center relative w-full h-full ">´
+        <div class="flex flex-col bg-white items-center w-1/6 rounded-lg border p-2 justify-start">
+            <!--about user -->
+            <app-foto-de-perfil></app-foto-de-perfil>
+            <div class="infoUser max-sm:mt-[10%] mt-[7%] d-flex justify-center flex-col items-center ">
+                <h1 class="font-bold">{{user.firstName}} {{user.lastName}}</h1>
+                <h5>{{user.email}}</h5>
+                <h4>Cliente</h4>
+                <div class="socialmedia d-flex w-full items-center justify-center">
+                    <!-- Instagram -->
+                    <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-instagram text-lg"></i></a>
+                    <!-- Twitter -->
+                    <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-twitter text-lg"></i></a>
+                    <!-- WhatsApp -->
+                    <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-whatsapp text-lg"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="flex flex-col h-4/5 items-center bg-white rounded-md w-3/4 shadow-lg">
-
-        <div class="w-5/6 h-full z-0">
-            <mat-tab-group class="z-10 h-full w-full">
-                <mat-tab class="h-full w-full flex justify-end" label="Mis Compras">
-                    <app-my-purchases class="h-full w-full"></app-my-purchases>
-                </mat-tab>
-                <mat-tab class="h-full w-full flex" label="Mis Pedidos"><app-my-orders></app-my-orders></mat-tab>
-                <mat-tab class="h-full w-full flex" label="Mi Carrito"><app-carrito-compra></app-carrito-compra></mat-tab>
-            </mat-tab-group>
+        <div class="flex flex-col h-4/5 items-center bg-white rounded-md w-3/4 border">
+            <div class="w-5/6 h-full z-0">
+                <mat-tab-group class="z-10 h-full w-full">
+                    <mat-tab class="h-full w-full flex justify-end" label="Mis Compras">
+                        <app-my-purchases class="h-full w-full"></app-my-purchases>
+                    </mat-tab>
+                    <mat-tab class="h-full w-full flex" label="Mis Favoritos"><app-my-orders></app-my-orders></mat-tab>
+                    <mat-tab class="h-full w-full flex"
+                        label="Mi Carrito"><app-carrito-compra></app-carrito-compra></mat-tab>
+                </mat-tab-group>
+            </div>
         </div>
-
-        <!-- products pics -->
-    </div>
-
-</section>
+    </section>
+</div>

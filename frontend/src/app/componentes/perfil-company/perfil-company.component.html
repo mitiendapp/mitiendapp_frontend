@@ -1,16 +1,15 @@
 <section class="m-0 p-0">
     <div class="imgTop pb-6 sds w-full h-50 md:h-70 bg-cover bg-center d-flex justify-center lg:h-90"
         style="background-image: url(../../../assets/img/8085383.jpg);">
-  
-        <img class="rounded-full mb-[-15%] mt-[8%] sm:mt-[5%] md:mb-[-8%] md:mt-[10%] lg:mt-[8%] size-40 cover"
-            src="../../../assets/img/imagen-perfil.png" alt="">
     </div>
-
-
+    
+    
     <!--about user -->
     <div *ngFor="let compa of company"
-        class="infoUser max-sm:mt-[10%] mt-[7%] d-flex justify-center flex-col items-center">
-        <h1 class="font-bold">{{compa.nameEmprendimiento}}</h1>
+    class="infoUser max-sm:mt-[10%] mt-[7%] pb-2 flex-col items-center">
+    <h1 class="font-bold">{{compa.nameEmprendimiento}}</h1>
+    
+        <app-foto-de-perfil></app-foto-de-perfil>
 
         <div class="socialmedia d-flex w-full items-center justify-center">
             <!-- Instagram -->
@@ -59,7 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of listProducts" class="bg-white">
+                    <tr *ngFor="let product of listProducts; index as i" class="bg-white">
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 w-10 h-10">
@@ -83,7 +82,7 @@
                             {{product.price | currency}}</td>
                             <td class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
                                 <div class="mt-4">
-                                    <a class="mr-4 text-indigo-600 hover:text-indigo-900 cursor-pointer">Editar</a>
+                                    <a (click)="getProductsIdCompany2(product.id!)" (click)="actualizarProduct(product.id!)" (click)="navigateEditarProducto(product)" class="mr-4 text-indigo-600 hover:text-indigo-900 cursor-pointer">Editar</a>
                                     <!-- <a (click)="deleteProductsCompany(product.id!)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Eliminar</a> -->
                                     <a (click)="confirmDelete(product.id!)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Eliminar</a>
                                 </div>

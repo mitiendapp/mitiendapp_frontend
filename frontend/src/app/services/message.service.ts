@@ -14,6 +14,10 @@ export class MessageService {
     }
 
     msgError(e: any, tittle:string="¡Error!"){
+        if(e){
+            this.toastr.error(e, tittle);
+            return;1    
+        }
         if(e.error.message){
             this.toastr.error(e.error.message, tittle);
             return;

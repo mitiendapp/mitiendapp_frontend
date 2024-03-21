@@ -1,0 +1,15 @@
+<div class="w-full" *ngFor="let company of filteredCompanies">
+    <div class="companyPanel flex flex-col w-[300px]">
+        <div class="relative">
+            <app-loading-image [src]="company.profile_image" [srcPreload]="'https://fakeimg.pl/251x251?text=+'"
+                [srcError]="'../../../assets/img/user_image_holder.jpeg'">
+            </app-loading-image>
+            <div class="absolute top-0 right-0">
+                {{company.description}}
+            </div>
+        </div>
+        <div>
+            {{company.nameEmprendimiento}}
+        </div>
+    </div>
+</div>

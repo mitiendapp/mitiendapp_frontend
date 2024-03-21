@@ -10,12 +10,15 @@ import { decodeJWT } from '../utils/decodeJWT';
 import { BehaviorSubject, Observable, firstValueFrom, lastValueFrom } from 'rxjs';
 import { Client } from '../interfaces/client';
 import { Product } from '../interfaces/product';
+import { NextFunction } from 'express';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentService {
+  public webhook = new BehaviorSubject(null);
   private endpoint: string;
+  private frontEndpoint: string;
   private apiUrl: string;
   private product = {
     product: {
@@ -44,6 +47,7 @@ export class PaymentService {
     private userService: UserService
   ) {
     this.endpoint = enviroment.endpoint;
+    this.frontEndpoint = enviroment.front_endpoint;
     this.apiUrl = 'order';
   }
 
@@ -76,5 +80,63 @@ export class PaymentService {
   private formatImage(url: string) {
     return url.replace('upload', 'upload/w_450,c_scale');
   }
+
+  onWebhook():Observable<any>{
+    return this.webhook.asObservable();
+  }
+  
+  private secret = "test_events_Du22wRnRmlltx7Tm3iY7ltWT8GLWXsTf";
+  
+   receiveWebhook = async (req: Request, res: Response, next: NextFunction) => {
+    const {data, environment, event, sent_at, signature, timestamp}: any = req.body;
+    try {
+      const properties = signature.properties.map((e: string) => e.split('.'));
+      let newP = properties.map((property) => {
+        return (data[property[0]][property[1]]);
+        
+      }).reduce((prev, curr) => prev + curr);
+      newP += timestamp;
+      newP += this.secret;
+      const mySha = await this.sha256(newP);
+      if (signature.checksum === mySha) {
+        if (event == 'transaction.updated') {
+          
+        } else if (event == 'nequi_token.updated') {
+          // on nequi token updated
+        }
+        console.log(data);
+        
+      } else {
+        throw new Error('Signature insecure');
+      };
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  orderSuccess = async (req: Request, res: Response, next: NextFunction) => {
+    window.location.href = `${this.frontEndpoint}/success`;
+  }
+   orderFailure = async (req: Request, res: Response, next: NextFunction) => {
+    window.location.href = `${this.endpoint}/failure`;
+  }
+ rderPending = async (req: Request, res: Response, next: NextFunction) => {
+    window.location.href = `${this.endpoint}/pending`;
+  }
+  
+   sha256 = async (message)=> {
+    // encode as UTF-8
+    const msgBuffer = new TextEncoder().encode(message);
+    
+    // hash the message
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    
+    // convert ArrayBuffer to Array
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    
+    // convert bytes to hex string                  
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+  }
+
+  
 }
-0

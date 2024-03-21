@@ -22,14 +22,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class CreateProductComponent implements OnInit {
   form: FormGroup;
-    public  previsualizacion :string;
+  public previsualizacion: string;
   public archivos: any = [];
   imageFile: any;
   imagePreview: any;
   isValidImage: boolean = true;
-  private url_image_ia:string;
- tokenId:any;
- userInfo:any;
+  private url_image_ia: string;
+  tokenId: any;
+  userInfo: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,18 +38,18 @@ export class CreateProductComponent implements OnInit {
     private _messageService: MessageService,
     private _productService: ProductService,
     private sanitizer: DomSanitizer,
-    private _iaimage:IaImageServicesService,
-    private spinner : NgxSpinnerService
+    private _iaimage: IaImageServicesService,
+    private spinner: NgxSpinnerService
   ) {
 
-    this.url_image_ia= enviroment.url_image_ia;
+    this.url_image_ia = enviroment.url_image_ia;
   }
 
-  openSpinner(){
+  openSpinner() {
     this.spinner.show();
-    setTimeout(()=>{
+    setTimeout(() => {
       this.spinner.hide();
-    },3000)
+    }, 3000)
   }
 
   ngOnInit(): void {
@@ -69,14 +69,14 @@ export class CreateProductComponent implements OnInit {
   onCreateProduct() {
     const { name, description, price, stock, category } = this.form.value;
     const imageFile = this.form.get('image').value;
-  
-  
+
+
     // if (!this.form.valid || !imageFile) {
     //   this.toastr.error('Todos los campos son obligatorios', 'Error');
     //   return;
     // }
 
-  
+
     const product: Product = {
       name: name,
       description: description,
@@ -85,22 +85,22 @@ export class CreateProductComponent implements OnInit {
       stock: stock,
       category: category
     };
-  
+
     const formData = new FormData();
-     formData.append('image', this.imageFile);
+    formData.append('image', this.imageFile);
     
-     this.userInfo = decodeJWT(localStorage.getItem('token'));
-     this.tokenId = this.userInfo.UserInfo.id;
-     formData.append('CompanyDocument',this.tokenId)
-  //omitir este comentario de la linea 95
+    this.userInfo = decodeJWT(localStorage.getItem('token'));
+    this.tokenId = this.userInfo.UserInfo.id;
+    formData.append('CompanyDocument', this.tokenId)
+    //omitir este comentario de la linea 95
     // Aquí puedes agregar otros campos del producto si es necesario
     formData.append('name', this.form.value.name);
-    formData.append('description',this.form.value.description);
+    formData.append('description', this.form.value.description);
     formData.append('price', this.form.value.price);
     formData.append('stock', this.form.value.stock);
     formData.append('category', this.form.value.category);
+    
 
-  
     this._productService.create(formData).subscribe({
       next: (v) => {
         this.toastr.success('Producto cargado exitosamente');
@@ -109,35 +109,35 @@ export class CreateProductComponent implements OnInit {
         if (e) {
           this._messageService.msgError(e);
         } else {
-          console.error('Error desconocido al intentar cargar el producto',e);
+          console.error('Error desconocido al intentar cargar el producto', e);
         }
       },
     });
   }
-  
 
- analizarImagen(imageObject) {
+
+  analizarImagen(imageObject) {
     this._iaimage.postIaImage(imageObject).subscribe({
       next: (v) => {
         if (v.result === " No") { // Verifica si la respuesta indica que la imagen no es oxena
           this.toastr.success('Imagen permitida');
           console.log(v.result);
-          
-        } else  {
+
+        } else {
           this.toastr.error('Imagen no permitida'); // Muestra un mensaje de error si la imagen es oxena
           console.log(v.result);
         }
       },
       error: (e: HttpErrorResponse) => {
-        if (e && e.error) { 
-          this._messageService.msgError(e.error); 
+        if (e && e.error) {
+          this._messageService.msgError(e.error);
         } else {
           console.error('Error desconocido al intentar procesar la imagen');
         }
       },
     });
   }
-  
+
 
   // capturarFile(event) {
   //   const archivoCapturado = event.target.files[0];
@@ -145,11 +145,11 @@ export class CreateProductComponent implements OnInit {
   //     this.previsualizacion = imagen.base;
   //     const url_pura = imagen.base.split(',')[1];
   //     console.log(imagen.base.split(',')[1]);
-  
+
   //     const imageObject = {
   //       imagePath: url_pura // Aquí asignamos el contenido base64 como imagePath
   //     };
-  
+
   //     this._iaimage.postIaImage(imageObject).subscribe({
   //       next: (v) => {
   //         this.toastr.success('Imagen Permitida no es oxena');
@@ -177,22 +177,22 @@ export class CreateProductComponent implements OnInit {
     } else {
       this.isValidImage = false;
     }
-//  console.log()
-this.extraerBase64( this.imageFile).then((imagen: any) => {
-  this.previsualizacion = imagen.base;
-  const url_pura = imagen.base.split(',')[1];
-  console.log(imagen.base.split(',')[1]);
+    //  console.log()
+    this.extraerBase64(this.imageFile).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      const url_pura = imagen.base.split(',')[1];
+      console.log(imagen.base.split(',')[1]);
 
-  const imageObject = {
-    imagePath:url_pura // Aquí asignamos el contenido base64 como imagePath
-  };
-  this.analizarImagen(imageObject)
+      const imageObject = {
+        imagePath: url_pura // Aquí asignamos el contenido base64 como imagePath
+      };
+      this.analizarImagen(imageObject)
 
 
 
-}).catch((error) => {
-  console.error('Error al extraer la base64 de la imagen:', error);
-});
+    }).catch((error) => {
+      console.error('Error al extraer la base64 de la imagen:', error);
+    });
   }
   // capturarFile(event) {
   //   const archivoCapturado = event.target.files[0];
@@ -200,20 +200,20 @@ this.extraerBase64( this.imageFile).then((imagen: any) => {
   //     this.previsualizacion = imagen.base;
   //     const url_pura = imagen.base.split(',')[1];
   //     console.log(imagen.base.split(',')[1]);
-  
+
   //     const imageObject = {
   //       imagePath:url_pura // Aquí asignamos el contenido base64 como imagePath
   //     };
   //     this.analizarImagen(imageObject)
 
 
- 
+
   //   }).catch((error) => {
   //     console.error('Error al extraer la base64 de la imagen:', error);
   //   });
   // }
-  
-  
+
+
   // capturarFile(event) {
   //   const archivoCapturado = event.target.files[0];
   //  const estraer= this.extraerBase64(archivoCapturado).then((imagen:any) =>{
@@ -237,7 +237,7 @@ this.extraerBase64( this.imageFile).then((imagen: any) => {
   //   });
   //   })
 
-   
+
   //   // console.log(event.target.files);
   //   // this.archivos.push(archivoCapturado);
   // }
@@ -289,26 +289,26 @@ this.extraerBase64( this.imageFile).then((imagen: any) => {
   //   });
 
   extraerBase64 = async ($event: any) =>
-  new Promise((resolve, reject) => {
-    try {
-      const reader = new FileReader();
-      reader.readAsDataURL($event);
-      reader.onload = () => {
-        resolve({
-          base: reader.result,
-        });
-      };
-      reader.onerror = (error) => {
-        resolve({
-          base: null,
-        });
-      };
-    } catch (error) {
-      reject(error);
-    }
-  });
+    new Promise((resolve, reject) => {
+      try {
+        const reader = new FileReader();
+        reader.readAsDataURL($event);
+        reader.onload = () => {
+          resolve({
+            base: reader.result,
+          });
+        };
+        reader.onerror = (error) => {
+          resolve({
+            base: null,
+          });
+        };
+      } catch (error) {
+        reject(error);
+      }
+    });
 
 
-  };
+};
 
 

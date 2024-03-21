@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { enviroment } from '../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/user';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { Client } from '../interfaces/client';
 
@@ -16,26 +16,28 @@ export class UserService {
   public isLoggedIn = false;
   public isLoggingIn = new BehaviorSubject<Boolean>(false);
   public user = new BehaviorSubject<User>(null);
-  public currentUser?:User = null;
+  public currentUser?: User = null;
 
   constructor(
     public router: Router,
-    private http: HttpClient 
-    ) {
+    private http: HttpClient
+  ) {
     this.endpoint = enviroment.endpoint;
     this.apiUrl = 'user';
   }
-
-  openSession(user: any){
+  getUser(): Observable<any> {
+    return this.user.asObservable();
+  }
+  openSession(user: any) {
     this.user.next(user);
   }
-  closeSession(){
+  closeSession() {
     localStorage.removeItem('token');
     this.isLoggingIn.next(false);
     this.user.next(null);
     this.router.navigate([''])
-  } 
-  isUserActive(): Observable<Boolean>{
+  }
+  isUserActive(): Observable<Boolean> {
     return this.isLoggingIn.asObservable();
   }
 
@@ -47,6 +49,18 @@ export class UserService {
   }
 
   signInClient(user: Client): Observable<any> {
-      return this.http.post(`${this.endpoint}client/create`, user);
-    }
+    return this.http.post(`${this.endpoint}client/create`, user);
+  }
+
+  updateUser(user:any, email:string): Observable<any> {
+    return this.http.post(`${this.endpoint}user/update/${email}`, user);
+  }
+  updateUserImage(userImage:any, email:string): Observable<any> {
+    return this.http.post(`${this.endpoint}user/updateImage/${email}`, userImage);
+  }
+
+  find(email: any):Observable<any>{
+    return this.http.get(`${this.endpoint}${this.apiUrl}/${email}`);
+  }
+  
 }

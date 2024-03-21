@@ -42,8 +42,12 @@ import { CarouselComponent } from './componentes/carousel/carousel.component';
 import { MyPurchasesComponent } from './componentes/perfil-usuario/my-purchases/my-purchases.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MyOrdersComponent } from './componentes/perfil-usuario/my-orders/my-orders.component';
-
-export function tokenGetter(){
+import { FotoDePerfilComponent } from './componentes/foto-de-perfil/foto-de-perfil.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CompaniesComponent } from './componentes/companies/companies.component';
+export function tokenGetter() {
   return localStorage.getItem('token')
 }
 
@@ -80,6 +84,8 @@ export function tokenGetter(){
     CarouselComponent,
     MyPurchasesComponent,
     MyOrdersComponent,
+    FotoDePerfilComponent,
+    CompaniesComponent,
 
   ],
   imports: [
@@ -99,11 +105,14 @@ export function tokenGetter(){
     }),
     NgbModule,
     JwtModule.forRoot({
-      config:{
+      config: {
         tokenGetter: tokenGetter,
       }
     }),
-    MatTabsModule
+    MatTabsModule,
+    MatButtonModule,
+    MatMenuModule,
+    NgxPaginationModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

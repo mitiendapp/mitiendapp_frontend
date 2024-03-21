@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { ProductDTO } from 'src/app/services/cart.service';
 import { ClientService } from 'src/app/services/client.service';
 
 @Component({
@@ -6,16 +8,15 @@ import { ClientService } from 'src/app/services/client.service';
   templateUrl: './my-purchases.component.html',
   styleUrls: ['./my-purchases.component.css']
 })
-export class MyPurchasesComponent {
-  purchases:any[];
+export class MyPurchasesComponent implements OnInit{
+  purchases:ProductDTO[];
 
   constructor(
     private _clientService:ClientService,
   ){}
 
-  ngOnInit(){
-    this._clientService.purchases.subscribe( purchases => {
-      this.purchases = purchases;
-    })
+  async ngOnInit(){
+    let purchases = await firstValueFrom(this._clientService.purchases());
+    this.purchases= purchases;
   }
 }

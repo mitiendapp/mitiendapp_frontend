@@ -9,6 +9,7 @@ export class LoadingImageComponent implements OnInit {
   @Input() src: string;
   @Input() srcPreload: string;
   @Input() srcError: string;
+  @Input() rounded?: string | undefined;
   public imgSrc: string;
   private tmpImage: HTMLImageElement;
 
