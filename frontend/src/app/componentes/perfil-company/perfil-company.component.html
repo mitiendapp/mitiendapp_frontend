@@ -2,13 +2,13 @@
     <div class="imgTop pb-6 sds w-full h-50 md:h-70 bg-cover bg-center d-flex justify-center lg:h-90"
         style="background-image: url(../../../assets/img/8085383.jpg);">
     </div>
-    
-    
+
+
     <!--about user -->
     <div *ngFor="let compa of company"
-    class="infoUser max-sm:mt-[10%] mt-[7%] pb-2 flex-col items-center">
-    <h1 class="font-bold">{{compa.nameEmprendimiento}}</h1>
-    
+        class="object-center h-50 w-1/6 shadow-md flex items-center justify-center infoUser max-sm:mt-[10%] mt-[7%] pb-2 flex-col">
+        <h1 class="justify-item-center font-bold">{{compa.nameEmprendimiento}}</h1>
+
         <app-foto-de-perfil></app-foto-de-perfil>
 
         <div class="socialmedia d-flex w-full items-center justify-center">
@@ -26,13 +26,19 @@
             <h3 class="my-10 max-md:my-10 font-bold"></h3>
             <p class="w-[80%]">{{compa.description}}</p>
         </div>
-        <button class="btn btn-primary w-40 h-10 mx-1 mt-1 " (click)="toggleBotonesInternos()">Configuración</button>
-<div *ngIf="mostrarBotonesInternos" class="pt-3">
-  <button class="toggle-table-btn btn btn-primary w-40 h-10 mx-1" (click)="interfaceEditarCompany()">Editar información</button>
-  <button class="toggle-table-btn btn btn-primary w-40 h-10 mx-1" (click)="toggleTable()">Mis productos</button>
-  <button class="toggle-table-btn btn btn-primary w-40 h-10 mx-1" (click)="navigateCrearProducto()">Crear Producto</button>
-</div>
+        
     </div>
+
+    <button class="btn btn-primary w-40 h-10 mx-1 mt-1 " (click)="toggleBotonesInternos()">Configuración</button>
+        <div *ngIf="mostrarBotonesInternos" class="pt-3">
+            <button class="toggle-table-btn btn btn-primary w-40 h-10 mx-1" (click)="interfaceEditarCompany()">Editar
+                información</button>
+            <button class="toggle-table-btn btn btn-primary w-40 h-10 mx-1" (click)="toggleTable()">Mis
+                productos</button>
+            <button class="toggle-table-btn btn btn-primary w-40 h-10 mx-1" (click)="navigateCrearProducto()">Crear
+                Producto</button>
+        </div>
+
     <div class="mt-[8%]">
 
     </div>
@@ -80,14 +86,18 @@
                         <td
                             class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                             {{product.price | currency}}</td>
-                            <td class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
-                                <div class="mt-4">
-                                    <a (click)="getProductsIdCompany2(product.id!)" (click)="actualizarProduct(product.id!)" (click)="navigateEditarProducto(product)" class="mr-4 text-indigo-600 hover:text-indigo-900 cursor-pointer">Editar</a>
-                                    <!-- <a (click)="deleteProductsCompany(product.id!)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Eliminar</a> -->
-                                    <a (click)="confirmDelete(product.id!)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Eliminar</a>
-                                </div>
-                            </td>
-                            
+                        <td
+                            class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
+                            <div class="mt-4">
+                                <a (click)="getProductsIdCompany2(product.id!)" (click)="actualizarProduct(product.id!)"
+                                    (click)="navigateEditarProducto(product)"
+                                    class="mr-4 text-indigo-600 hover:text-indigo-900 cursor-pointer">Editar</a>
+                                <!-- <a (click)="deleteProductsCompany(product.id!)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Eliminar</a> -->
+                                <a (click)="confirmDelete(product.id!)"
+                                    class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Eliminar</a>
+                            </div>
+                        </td>
+
                     </tr>
                 </tbody>
             </table>
@@ -99,11 +109,11 @@
         <div class="flex flex-wrap justify-center">
             <div *ngFor="let product of listProducts"
                 class="font-sans w-1/4 relative border border-gray-200 rounded-lg mx-4 my-4">
-    
+
                 <div class="w-full flex items-center justify-center">
                     <img [src]="product.image" class="w-48 h-48 object-cover rounded-lg" />
                 </div>
-    
+
                 <div class="w-full p-6 text-center">
                     <h1 class="font-medium text-lg text-gray-900">{{product.name}}</h1>
                     <div class="text-xl font-bold text-violet-600 mt-2">{{product.price | currency}}</div>
@@ -113,28 +123,29 @@
                             class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">{{product.category}}</span>
                     </div>
                     <div class="mt-4">
-                        <button class="h-10 px-6 font-semibold rounded-full bg-blue-300 text-white" type="submit">Ver producto</button>
+                        <button class="h-10 px-6 font-semibold rounded-full bg-blue-300 text-white" type="submit">Ver
+                            producto</button>
                     </div>
                 </div>
-    
+
                 <div class="text-sm text-gray-500 px-6 pb-6 flex justify-center">
                     {{product.description}}
                 </div>
-                
-    
+
+
             </div>
         </div>
-        
-        
+
+
         <!-- Botón para mostrar/ocultar la tabla de productos -->
 
 
 
 
         <!-- Tabla de productos -->
-        
+
     </div>
 
     <!-- Tarjeta de productos -->
-    
+
 </section>
