@@ -126,8 +126,7 @@ export class InicioComponent implements OnInit {
           
           this.loading.next(false);
       },
-    })
-    this.userService.isLoggingIn.next(true);
+    });
     this.userService.openSession(user);
   }
 

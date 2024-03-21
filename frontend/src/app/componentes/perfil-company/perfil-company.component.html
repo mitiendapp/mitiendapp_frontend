@@ -1,16 +1,15 @@
 <section class="m-0 p-0">
     <div class="imgTop pb-6 sds w-full h-50 md:h-70 bg-cover bg-center d-flex justify-center lg:h-90"
         style="background-image: url(../../../assets/img/8085383.jpg);">
-  
-        <img class="rounded-full mb-[-15%] mt-[8%] sm:mt-[5%] md:mb-[-8%] md:mt-[10%] lg:mt-[8%] size-40 cover"
-            src="../../../assets/img/imagen-perfil.png" alt="">
     </div>
-
-
+    
+    
     <!--about user -->
     <div *ngFor="let compa of company"
-        class="infoUser max-sm:mt-[10%] mt-[7%] pb-2 flex-col items-center">
-        <h1 class="font-bold">{{compa.nameEmprendimiento}}</h1>
+    class="infoUser max-sm:mt-[10%] mt-[7%] pb-2 flex-col items-center">
+    <h1 class="font-bold">{{compa.nameEmprendimiento}}</h1>
+    
+        <app-foto-de-perfil></app-foto-de-perfil>
 
         <div class="socialmedia d-flex w-full items-center justify-center">
             <!-- Instagram -->
