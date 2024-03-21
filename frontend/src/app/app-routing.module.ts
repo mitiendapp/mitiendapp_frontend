@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductosComponent, canActivate: [AuthGuard]
+    component: ProductosComponent, 
   },
   {
     path: 'carritoCompra',
