@@ -110,7 +110,10 @@ filtrarPorCategoria(): void {
     });
   }
 
+
+
   addToCart(product: Product) {
+  
     try {
       this._cartService.addProduct(this._cartService.productToProductDTO(product));
       this.messageService.msgSuccess({message: "El producto fue agregado al carrito correctamente"});

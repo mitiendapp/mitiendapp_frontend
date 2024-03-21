@@ -1,20 +1,21 @@
 <!--Main container that centers the content and sets a maximum width -->
 <div *ngIf="detail"
-    class="container mx-auto p-5 px-5 lg:w-2/3 lg:my-36 md:my-28 min-[320px]:my-24 md:shadow-xl md:rounded-2xl lg:shadow-xl lg:rounded-2xl lg:h-3/6">
+    class="container w-full mx-auto p-5 px-5 lg:w-2/6  md:shadow-xl md:rounded-2xl lg:rounded-xl lg:h-5/6 lg:flex lg:justify-center">
 
     <!-- Flexible container that changes the arrangement of elements on large screens -->
-    <div class="flex flex-col lg:flex-row lg:gap-10 md:gap-20 sm:gap-12 ">
+    
+    <div class="flex w-full h-full lg:flex-row lg:gap-10 md:gap-10 sm:gap-12 items-center lg:justify-between lg:items-center">
+        <div class="w-full flex flex-col lg:flex-row h-full justify-around">
 
-        <!-- First block with the product image -->
-        <div class="w-full lg:w-1/2">
-            <div class="product-image w-48 h-48 mx-auto mt-10 mb-10 object-cover rounded-md lg:mt-0 md:mb-10">
+            
+            <!-- First block with the product image -->
+            <div class=" h-4/6 md:w-full lg:h-full md:h-full lg:w-3/6 lg:size-full object-contain overflow-hidden flex items-center justify-center ">
                 <!-- Product image with size and margin adjustments on large screens -->
-                <img class="object-contain overflow-hidden size-72" [src]="detail.image" style="transform: scale(1.5); ">
+                <img class=" lg max-md:size-48 overflow-hidden max-sm:size-48 md:size-3/6" [src]="detail.image" style="transform: scale(1.5); ">
             </div>
-        </div>
-
-        <!-- Second block with product information -->
-        <div class="w-full lg:w-1/2 mt-10 lg:mt-0">
+            
+            <!-- Second block with product information -->
+            <div class="w-full lg:w-2/6 mt-10 lg:mt-0 shadow-sm lg:h-full justify-center p-5 flex flex-col items-start">
             <h2 class="text-2xl font-semibold">{{detail.name}}</h2> <!-- Product name -->
             <h3 class="text-lg text-gray-600 mb-2">{{detail.category}}</h3> <!-- Product category -->
             <form>
@@ -44,6 +45,29 @@
                     <button class="add-favorite bi bi-heart bg-[#427ed7] text-white py-2 px-3 rounded-md"></button>
                 </div>
             </form>
+        </div>
+    </div>
+    </div>
+
+        
+</div>
+<div class="sect flex justify-center items-center mt-10 flex-col shadow-md ">
+    <input class="w-5/6 px-3 py-2 text-xl md:w-4/6 border-2 rounded" type="text" placeholder="Sugerencias">
+
+        <!-- section Comment -->
+    <div class="sectComment flex flex-col justify-center items-center md:w-3/6 rounded bg-gray-100 md:border mt-10 py-3 px-0 gap-3 md:shadow-md">
+            <!--user comment -->
+        <div class="comment border  md:w-5/6 bg-gray-200 rounded p-4 ">
+            <div class="userInfo flex flex-col">
+                <div class="user flex flex-row border justify-start">
+                    <img class="rounded-full size-9 border object-contain" src="../../../assets/img/7941390.jpg" alt="">
+                    <h3 class="ml-3 ">Pepito</h3>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam id adipisci repellendus repellat consectetur at ex, dolorum nemo labore soluta provident consequuntur minus maiores sunt cupiditate dolores facere iste non?</p>
+            </div>
+        </div>
+        <div class="comment border md:w-5/6 bg-gray-200 rounded p-4 ">
+            <h3>Pepito:</h3> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam id adipisci repellendus repellat consectetur at ex, dolorum nemo labore soluta provident consequuntur minus maiores sunt cupiditate dolores facere iste non?</p>
         </div>
     </div>
 </div>
