@@ -22,11 +22,15 @@ export class CompanyService {
       this.apiUrl = 'company';}
 
   signIn(company: Company): Observable<any> {
-    return this.http.post(`${this.endpoint}${this.apiUrl}/create`, company);
+      return this.http.post(`${this.endpoint}${this.apiUrl}/create`, company);
   }
 
   find(email: any):Observable<any>{
     return this.http.get(`${this.endpoint}${this.apiUrl}/${email}`)
+  }
+
+  getCompanies():Observable<any>{
+    return this.http.get(`${this.endpoint}/companies`);
   }
 
 }

@@ -40,7 +40,7 @@ export class ProductService {
     return this.http.post<void>(`${this.apiUrl}${this.endpoint}`,product)
   }
 
-  getCompanybyProductsId(companyId:string): Observable<any>{
+  getProductsByCompanyId(companyId:string): Observable<any>{
     return this.http.get<any>(`${this.endpoint}${this.apiUrl}/companies/${companyId}`)
   }
 

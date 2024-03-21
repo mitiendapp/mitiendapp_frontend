@@ -146,7 +146,7 @@ filtrarProductos(terminoBusqueda: string): void {
 
 getProductsIdCompany(companyId:string){
   console.log("hola....")
-  this._productService.getCompanybyProductsId(companyId).subscribe((data:any)=>{
+  this._productService.getProductsByCompanyId(companyId).subscribe((data:any)=>{
     const dataProducts=data.data
     if (Array.isArray(dataProducts)) {
       this.listProducts = dataProducts; // Si es un arreglo, asignar directamente
