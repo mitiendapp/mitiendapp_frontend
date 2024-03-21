@@ -67,10 +67,15 @@
     <!--First item-->
     <div
       class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-twe-carousel-active data-twe-carousel-item style="backface-visibility: hidden">
-      <img src="../../../assets/img/carrusel1.png" class="block w-full" alt="..." />
-      <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-        <h5 class="text-xl">First slide label</h5>
+      data-twe-carousel-active
+      data-twe-carousel-item
+      style="backface-visibility: hidden">
+      <img
+        src="../../../assets/img/carrusel1.png"
+        class="block w-full"
+        alt="..." />
+      <div
+        class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
         <!-- <p>
           Some representative placeholder content for the first slide.
         </p> -->
@@ -130,6 +135,14 @@
   </button>
 </div>
 
+  <div class="w-full px-2 my-2 flex gap-4 md:w-2/4 lg:w-1/4" 
+    *ngFor="let product of filteredProducts">
+
+    <!-- Utiliza filteredProducts en lugar de listProducts -->
+
+    <div class="card overflow-hidden  p-3 items-center rounded flex flex-row w-full cursor-pointer border-white shadow-md hover:scale-105 ease-in duration-150">
+      <div class="size-44 object-contain">
+        <img [src]="product.image" class="object-cover object-center size-44 w-52 img  overflow-hidden" alt="... " (click)="mostrarDetalle(product.id)">
 <div class="main-filter flex flex-wrap gap-2 ">
   >
 
@@ -198,7 +211,7 @@
       </div>
       <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
         <div class="card-body">
-          <h4 class="card-title top-0 h-3/5">{{product.name}}</h4>
+          <h3 class="card-title top-0 h-2/6">{{product.name}}</h3>
           <p class="text-sm text-gray-400">{{product.category}}</p>
         </div>
         <div class="text-sm">{{product.price | currency}}</div>
