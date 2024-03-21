@@ -5,6 +5,7 @@ export interface Company {
     nameEmprendimiento?: string;
     email?: string;
     address?: string;
+    img?:string;
     phoneNumber?: string;
     description?: string;
     password?:string;

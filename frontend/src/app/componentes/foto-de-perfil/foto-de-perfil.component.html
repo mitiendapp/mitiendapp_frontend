@@ -1,9 +1,9 @@
-<div class="" onclick="document.getElementById('file-upload').click" *ngIf="user">
+<div class="w-[160px] h-[160px]" onclick="document.getElementById('file-upload').click" *ngIf="user">
     <div mat-button [matMenuTriggerFor]="menu"
         class="imageWrapper hover:cursor-pointer hover:brightness-75 active:brightness-50 relative rounded-full w-full h-full">
-        <app-loading-image class="l rounded-full mt-[8%] sm:mt-[5%] md:mb-[-8%] md:mt-[10%] lg:mt-[8%] size-40  mb-2"
+        <app-loading-image class="w-full h-full "
             [src]="user.profile_image" [srcPreload]="'https://fakeimg.pl/251x251?text=+'"
-            [srcError]="'../../../assets/img/user_image_holder.jpeg'" [rounded]="'rounded-full bg-contain'">
+            [srcError]="'../../../assets/img/user_image_holder.jpeg'" [rounded]="'rounded-full object-cover w-full h-full'">
         </app-loading-image>
         <div class="absolute right-2 bottom-2">
             <button class="bg-[#427ed7] px-2 py-1 rounded text-white hover:bg-[#427ed7]">Editar</button>

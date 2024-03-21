@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { enviroment } from '../enviroments/enviroment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../interfaces/product';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class ProductService {
   private endpoint:string;
   private apiUrl:string;
   private create1:string;
-  //private create1:string;
+  public currentProduct = new BehaviorSubject(null);
 
   constructor(private http:HttpClient) {
     this.endpoint= enviroment.endpoint;
@@ -40,8 +40,23 @@ export class ProductService {
     return this.http.post<void>(`${this.apiUrl}${this.endpoint}`,product)
   }
 
-  getCompanybyProductsId(companyId:string): Observable<any>{
+  getProductsByCompanyId(companyId:string): Observable<any>{
     return this.http.get<any>(`${this.endpoint}${this.apiUrl}/companies/${companyId}`)
   }
+
+  getProductId(id:any):Observable<any>{
+    return this.http.get<any>(`${this.endpoint}product/id?id=${id}`)
+  }
+
+  myProduct():Observable<any>{
+    return this.currentProduct.asObservable();
+  }
+
+  updateProduct(formData: FormData): Observable<any> {
+    const url = `${this.endpoint}${this.apiUrl}/update`;
+    return this.http.post<any>(url, formData); // Pasar 'product' como segundo argumento
+  }
+  
+  
 
 }

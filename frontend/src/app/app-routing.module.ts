@@ -73,7 +73,7 @@ const routes: Routes = [
     path: 'editarCompany/:email',
     component: EditarCompanyComponent,
   },{
-    path:'editarProduct',
+    path:'editarProduct/:id',
     component: EditProductComponent
   },
   {

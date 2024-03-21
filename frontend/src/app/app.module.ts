@@ -45,8 +45,9 @@ import { MyOrdersComponent } from './componentes/perfil-usuario/my-orders/my-ord
 import { FotoDePerfilComponent } from './componentes/foto-de-perfil/foto-de-perfil.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-
-export function tokenGetter(){
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CompaniesComponent } from './componentes/companies/companies.component';
+export function tokenGetter() {
   return localStorage.getItem('token')
 }
 
@@ -84,6 +85,7 @@ export function tokenGetter(){
     MyPurchasesComponent,
     MyOrdersComponent,
     FotoDePerfilComponent,
+    CompaniesComponent,
 
   ],
   imports: [
@@ -103,13 +105,14 @@ export function tokenGetter(){
     }),
     NgbModule,
     JwtModule.forRoot({
-      config:{
+      config: {
         tokenGetter: tokenGetter,
       }
     }),
     MatTabsModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    NgxPaginationModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
