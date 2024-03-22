@@ -5,6 +5,7 @@ import { Product } from 'src/app/interfaces/product';
 import { User } from 'src/app/interfaces/user';
 import { CompanyService } from 'src/app/services/company.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
 
 type UserType = Company & User;
 @Component({
@@ -14,38 +15,29 @@ type UserType = Company & User;
 })
 export class CompaniesComponent implements OnInit {
   selectedCategory: string = '';
-  filteredCompanies: any[] = [{
-    "document": "1007385654",
-    "firstName": "jose leonardo",
-    "lastName": "alvarez hoyos",
-    "nameEmprendimiento": "Postres don leo",
-    "email": "josel.alvarezh@uqvirtual.edu.co",
-    "address": "calle 14b nu 3-20 e",
-    "phoneNumber": "",
-    "description": "Los mejores postres de armenia",
-    "img": null,
-    "password": "1234",
-    "confirmPassword": "1234"
-}];
+  filteredCompanies: any[] = [];
   listCompanies: Company[] = [];
   leo = "josel.alvarezh@uqvirtual.edu.co";
   emprendedor = "emprendedor@gmail.com"
   constructor(
     private _companyService: CompanyService,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _userService: UserService
   ) { }
 
   ngOnInit() {
-    // this.getCompanies();
+    this.getCompanies();
   }
 
   getCompanies() {
-    this._companyService.getCompanies().subscribe((data: any) => {
+    this._companyService.getCompanyUsers().subscribe((data:any)=>{
       console.log(data.companies);
-      
-      this.listCompanies = data.companies;
-      this.filteredCompanies = [...this.listCompanies]; // Inicializar los productos filtrados con todos los productos
-    });
+        this.listCompanies = data.companies;
+        this.filteredCompanies = [...this.listCompanies]; // Inicializar los productos filtrados con todos los productos
+    })
+    
+    // this._companyService.getCompanies().subscribe((data: any) => {
+    // });
   }
 
   async cargarCategorias(company: any) {
