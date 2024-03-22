@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
@@ -20,7 +20,12 @@ export class ProductosComponent implements OnInit {
   listProducts: Product[] = [];
   filteredProducts: Product[] = []; // Arreglo para almacenar los productos filtrados
   product: any;
-index: any;
+  selectedCategory: string = ''; // Propiedad para almacenar la categoría seleccionada
+
+  @Output() filterApplied = new EventEmitter<string>();
+  minPrice: number;
+  maxPrice: number;
+  index: any;
 
   constructor(
     private _productService: ProductService,
@@ -81,18 +86,38 @@ index: any;
     }
   }
 
-  selectedCategory: string = ''; // Propiedad para almacenar la categoría seleccionada
 
-filtrarPorCategoria(): void {
-    if (this.selectedCategory.trim() !== '') {
-        this.filteredProducts = this.listProducts.filter(producto =>
-            producto.category === this.selectedCategory
-        );
+  filtrarPorCategoria(categoria: string): void {
+    if (categoria === 'Todas las categorías') {
+      // Si se selecciona 'Todas las categorías', mostrar todos los productos
+      this.filteredProducts = [...this.listProducts];
     } else {
-        this.filteredProducts = [...this.listProducts]; // Restaurar la lista completa de productos si no se ha seleccionado ninguna categoría
+      // Filtrar productos por categoría seleccionada
+      this.filteredProducts = this.listProducts.filter(producto =>
+        producto.category.toLowerCase() === categoria.toLowerCase()
+      );
     }
-}
-
+  }
+  
+  applyPriceFilter(option: string) {
+    switch (option) {
+      case 'lowToHigh':
+        this.filteredProducts.sort((a, b) => a.price - b.price);
+        break;
+      case 'highToLow':
+        this.filteredProducts.sort((a, b) => b.price - a.price);
+        break;
+      case 'range':
+        // Supongamos que tienes dos propiedades minPrice y maxPrice en el componente
+        // Utiliza estas propiedades para filtrar los productos por rango de precio
+        this.filteredProducts = this.listProducts.filter(product =>
+          product.price >= this.minPrice && product.price <= this.maxPrice
+        );
+        break;
+      default:
+        break;
+    }
+  }
 
   mostrarDetalle(id: number) {
     this.router.navigate(['/detalle', id]);
@@ -111,7 +136,10 @@ filtrarPorCategoria(): void {
     });
   }
 
+
+
   addToCart(product: Product) {
+  
     try {
       this._cartService.addProduct(this._cartService.productToProductDTO(product));
       this.messageService.msgSuccess({message: "El producto fue agregado al carrito correctamente"});

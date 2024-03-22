@@ -1,51 +1,75 @@
+<!-- filtro de categorias -->
+<div class="h-auto mt-4  py-2 flex items-center justify-center">
+  <!-- Lista de categorías -->
+  <ul class="grid grid-cols-2  md:grid-cols-4 lg:w-3/5 justify-evenly text-center gap-2 gap-x-4 ">
+    <li class=" max-sm:w-1/2 cursor-pointer">
+      <a (click)="filtrarPorCategoria('Tecnología')"
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Tecnología</a>
+    </li>
+    <li class=" max-sm:w-1/2 cursor-pointer">
+      <a (click)="filtrarPorCategoria('Mueble')"
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Muebles</a>
+    </li>
 
-<div
-  id="carouselExampleCaptions"
-  class="relative"
-  data-twe-carousel-init
-  data-twe-ride="carousel">
+
+    <li class=" max-sm:w-1/2 cursor-pointer">
+      <a (click)="filtrarPorCategoria('Mascotas')"
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Mascotas</a>
+    </li>
+
+
+    <li class=" max-sm:w-1/2 cursor-pointer">
+      <a (click)="filtrarPorCategoria('Salud y Belleza')"
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Salud
+        y belleza</a>
+    </li>
+    <li class=" max-sm:w-1/2 cursor-pointer">
+      <a (click)="filtrarPorCategoria('Comida')"
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Comida</a>
+    </li>
+
+
+
+    <li class=" max-sm:w-1/2 cursor-pointer">
+      <a (click)="filtrarPorCategoria('Arte')"
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Arte</a>
+    </li>
+    <li class=" max-sm:w-1/2 cursor-pointer">
+      <a (click)="filtrarPorCategoria('Deporte')"
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Deporte</a>
+    </li>
+    <li class=" max-sm:w-1/2 cursor-pointer">
+      <a (click)="filtrarPorCategoria('Todas las categorías')"
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Todas
+        las categorías</a>
+    </li>
+
+  </ul>
+</div>
+<!-- filtro de categorias -->
+<div id="carouselExampleCaptions" class="relative" data-twe-carousel-init data-twe-ride="carousel">
   <!--Carousel indicators-->
-  <div
-    class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+  <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
     data-twe-carousel-indicators>
-    <button
-      type="button"
-      data-twe-target="#carouselExampleCaptions"
-      data-twe-slide-to="0"
-      data-twe-carousel-active
+    <button type="button" data-twe-target="#carouselExampleCaptions" data-twe-slide-to="0" data-twe-carousel-active
       class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-      aria-current="true"
-      aria-label="Slide 1"></button>
-    <button
-      type="button"
-      data-twe-target="#carouselExampleCaptions"
-      data-twe-slide-to="1"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-twe-target="#carouselExampleCaptions" data-twe-slide-to="1"
       class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
       aria-label="Slide 2"></button>
-    <button
-      type="button"
-      data-twe-target="#carouselExampleCaptions"
-      data-twe-slide-to="2"
+    <button type="button" data-twe-target="#carouselExampleCaptions" data-twe-slide-to="2"
       class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
       aria-label="Slide 3"></button>
   </div>
 
   <!--Carousel items-->
-  <div
-    class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+  <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
     <!--First item-->
     <div
       class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-twe-carousel-active
-      data-twe-carousel-item
-      style="backface-visibility: hidden">
-      <img
-        src="../../../assets/img/carrusel1.png"
-        class="block w-full"
-        alt="..." />
-      <div
-        class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-        <h5 class="text-xl">First slide label</h5>
+      data-twe-carousel-active data-twe-carousel-item style="backface-visibility: hidden">
+      <img src="../../../assets/img/carrusel1.png" class="block w-full" alt="..." />
+      <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
         <!-- <p>
           Some representative placeholder content for the first slide.
         </p> -->
@@ -54,14 +78,9 @@
     <!--Second item-->
     <div
       class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-twe-carousel-item
-      style="backface-visibility: hidden">
-      <img
-        src="../../../assets/img/logoAzul.png"
-        class="block w-full"
-        alt="..." />
-      <div
-        class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+      data-twe-carousel-item style="backface-visibility: hidden">
+      <img src="../../../assets/img/logoAzul.png" class="block w-full" alt="..." />
+      <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
         <h5 class="text-xl">Second slide label</h5>
         <p>
           Some representative placeholder content for the second slide.
@@ -71,14 +90,9 @@
     <!--Third item-->
     <div
       class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-twe-carousel-item
-      style="backface-visibility: hidden">
-      <img
-        src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg"
-        class="block w-full"
-        alt="..." />
-      <div
-        class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+      data-twe-carousel-item style="backface-visibility: hidden">
+      <img src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg" class="block w-full" alt="..." />
+      <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
         <h5 class="text-xl">Third slide label</h5>
         <p>
           Some representative placeholder content for the third slide.
@@ -90,91 +104,95 @@
   <!--Carousel controls - prev item-->
   <button
     class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-    type="button"
-    data-twe-target="#carouselExampleCaptions"
-    data-twe-slide="prev">
+    type="button" data-twe-target="#carouselExampleCaptions" data-twe-slide="prev">
     <span class="inline-block h-8 w-8">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="h-6 w-6">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M15.75 19.5L8.25 12l7.5-7.5" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
       </svg>
     </span>
     <span
-      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-      >Previous</span
-    >
+      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
   </button>
   <!--Carousel controls - next item-->
   <button
     class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-    type="button"
-    data-twe-target="#carouselExampleCaptions"
-    data-twe-slide="next">
+    type="button" data-twe-target="#carouselExampleCaptions" data-twe-slide="next">
     <span class="inline-block h-8 w-8">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="h-6 w-6">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
       </svg>
     </span>
     <span
-      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-      >Next</span
-    >
+      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
   </button>
 </div>
-<!-- hola -->
-<div class="p-4 flex items-center w-[30%] justify-center ">
-  <!-- Menú desplegable -->
-  <div class="relative">
-      <select class="mr-4 cursor-pointer block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" [(ngModel)]="selectedCategory" (change)="filtrarPorCategoria()" > 
-          <option value="">Categorias</option>
-          <option value="tecnologia" >Tecnología</option>
-          <option value="mueble">Mueble</option>
-          <option value="mascotas">Mascotas</option>
-          <option value="Salud y Belleza">Salud y Belleza</option>
-          <option value="comida">Comida</option>
-          <option value="arte">Arte</option>
-          <option value="deporte">Deporte</option>
-      </select>
-      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 12l-6-6 1.5-1.5L10 9l4.5-4.5L16 6l-6 6z" clip-rule="evenodd"/></svg>
-      </div>
-  </div>
-</div>
-<div id="container" class="productos w-full h-auto overflow-x-visible lg:flex flex-wrap justify-center items-start md:flex ">
 
-  <div class="w-full px-2 my-2 flex gap-4 md:w-2/4 lg:w-1/4" 
-    *ngFor="let product of filteredProducts">
+<!-- ordenar por -->
+<div class="flex flex-wrap p-4 w-[45%] h-[24%] my-2 grid gap-2 float-end">
+
+  <div mat-button [matMenuTriggerFor]="ordenar" class="block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded">
+    <p class=" my-2 text-center">Ordenar por </p>
+  </div>
+
+  <div class="grid grid-cols-2">
+    <div class="grid gap-2">
+
+      <mat-menu #ordenar="matMenu">
+
+        <div>
+          <button
+            class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
+            (click)="applyPriceFilter('lowToHigh')">Menor a Mayor</button>
+        </div>
+        <div>
+
+          <button
+            class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
+            (click)="applyPriceFilter('highToLow')">Mayor a Menor</button>
+
+        </div>
+      </mat-menu>
+
+
+    </div>
+    <div>
+      <input type="number" placeholder="Min Price" [(ngModel)]="minPrice">
+      <input type="number" placeholder="Max Price" [(ngModel)]="maxPrice">
+      <button class="block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded"
+        (click)="applyPriceFilter('range')">Aplicar rango</button>
+    </div>
+  </div>
+
+</div>
+<!-- ordenar por -->
+
+<!-- contenedor de productos -->
+<div class="productos w-full h-auto my-12 overflow-x-visible lg:flex flex-wrap">
+
+  <div class="w-full px-2 my-2 flex flex-wrap gap-4 md:w-2/4 lg:w-1/4" *ngFor="let product of filteredProducts">
     <!-- Utiliza filteredProducts en lugar de listProducts -->
 
-    <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer">
+    <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer hover:scale-105 ease-in-out duration-150">
       <div class="size-40">
-        <img [src]="product.image" class="object-contain overflow-hidden size-40" alt="... " (click)="mostrarDetalle(product.id)">
+        <!-- <img [src]="product.image" class="object-fill overflow-hidden size-full lg:w-full" alt="... "
+          (click)="mostrarDetalle(product.id)"> -->
+          <app-loading-image
+          [src]="product.image"
+          [srcPreload]
+          [rounded]="'object-cover'"
+          ></app-loading-image>
       </div>
-      <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
+      <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between lg:w-3/6">
         <div class="card-body">
-          <h4 class="card-title top-0 h-3/5">{{product.name}}</h4>
+          <h3 class="card-title top-0 h-2/6">{{product.name}}</h3>
           <p class="text-sm text-gray-400">{{product.category}}</p>
         </div>
         <div class="text-sm">{{product.price | currency}}</div>
         <div class="card-body flex justify-between items-center relative">
-          <button  class="bg-[#427ed7] py-1 text-white btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar ahora</button>
+          <button class="bg-[#427ed7] py-1 text-white btn-sm rounded w-3/4" (click)="mostrarDetalle(product.id)">Comprar
+            ahora</button>
           <button class="btn rounded w-1/4 absolute right-0 cursor-pointer" (click)="addToCart(product)">
             <!-- <img [src]="cartIcon" alt=""> -->
             <span class="icon cartIcon"></span>
@@ -185,3 +203,4 @@
 
   </div>
 </div>
+<!-- contenedor de productos -->
