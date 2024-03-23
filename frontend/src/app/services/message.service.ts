@@ -7,36 +7,35 @@ import { ToastrService } from 'ngx-toastr';
     providedIn: 'root'
 })
 export class MessageService {
-    
+
     constructor(
-        private toastr:ToastrService
-    ){
+        private toastr: ToastrService
+    ) {
     }
 
-    msgError(e: any, tittle:string="¡Error!"){
-        if(e){
-            this.toastr.error(e, tittle);
-            return;1    
-        }
-        if(e.error.message){
-            this.toastr.error(e.error.message, tittle);
-            return;
-        }
-        if (e.message) {
-            this.toastr.error(e.message, tittle);
-            return;
-        } else {
+    msgError(e: any, tittle: string = "¡Error!") {
+        if(e === undefined){
             this.toastr.error("¡Ups! Algo salió mal", tittle);
             return;
+        }else{
+            if (e instanceof HttpErrorResponse) {
+                this.toastr.error(e.error.message, tittle);
+                return;
+            }
+            if (e instanceof Error) {
+                this.toastr.error(e.message, tittle);
+                return;
+            } 
         }
+
     }
-    msgSuccess(body:any, tittle:string="¡Exito!"){
+    msgSuccess(body: any, tittle: string = "¡Exito!") {
         this.toastr.success(body.message, tittle)
     }
-    msgWarn(body:any, tittle:string="Alto ahi!"){
+    msgWarn(body: any, tittle: string = "Alto ahi!") {
         this.toastr.warning(body.message, tittle)
     }
-    msgInfo(body:any, tittle:string="¡Hey!"){
+    msgInfo(body: any, tittle: string = "¡Hey!") {
         this.toastr.info(body.message, tittle)
     }
 }

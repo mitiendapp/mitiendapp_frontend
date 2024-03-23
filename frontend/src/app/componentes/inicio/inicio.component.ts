@@ -119,8 +119,8 @@ export class InicioComponent implements OnInit {
         this._userService.isLoggedIn = true;
       },
       error: (e: any) => {
-        console.log(e);
-        this._messageService.msgError(e.error);
+        this.loading.next(false);
+        this._messageService.msgError(e);
       },complete() {
           console.log("complete");
           
