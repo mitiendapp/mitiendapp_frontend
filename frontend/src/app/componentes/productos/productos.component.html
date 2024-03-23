@@ -1,52 +1,52 @@
- <!-- filtro de categorias -->
-<div class="flex flex-wrap h-12 mt-4 ">
+<!-- filtro de categorias -->
+<div class="h-auto mt-4  py-2 flex items-center justify-center">
   <!-- Lista de categorías -->
-  <ul class="flex flex-wrap flex-col justify-evenly text-center grid gap-2 gap-x-4 grid-cols-8 ">
-    <li class="mr-4 cursor-pointer">
+  <ul class="grid grid-cols-2  md:grid-cols-4 lg:w-3/5 justify-evenly text-center gap-2 gap-x-4 ">
+    <li class=" max-sm:w-1/2 cursor-pointer">
       <a (click)="filtrarPorCategoria('Tecnología')"
-        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline">Tecnología</a>
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Tecnología</a>
     </li>
-    <li class="mr-4 cursor-pointer">
+    <li class=" max-sm:w-1/2 cursor-pointer">
       <a (click)="filtrarPorCategoria('Mueble')"
-        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline">Mueble</a>
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Muebles</a>
     </li>
 
 
-    <li class="mr-4 cursor-pointer">
+    <li class=" max-sm:w-1/2 cursor-pointer">
       <a (click)="filtrarPorCategoria('Mascotas')"
-        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline">Mascotas</a>
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Mascotas</a>
     </li>
 
 
-    <li class="mr-4 cursor-pointer">
+    <li class=" max-sm:w-1/2 cursor-pointer">
       <a (click)="filtrarPorCategoria('Salud y Belleza')"
-        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline">Salud
-        y Belleza</a>
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Salud
+        y belleza</a>
     </li>
-    <li class="mr-4 cursor-pointer">
+    <li class=" max-sm:w-1/2 cursor-pointer">
       <a (click)="filtrarPorCategoria('Comida')"
-        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline">Comida</a>
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Comida</a>
     </li>
 
 
 
-    <li class="mr-4 cursor-pointer">
+    <li class=" max-sm:w-1/2 cursor-pointer">
       <a (click)="filtrarPorCategoria('Arte')"
-        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline">Arte</a>
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Arte</a>
     </li>
-    <li class="mr-4 cursor-pointer">
+    <li class=" max-sm:w-1/2 cursor-pointer">
       <a (click)="filtrarPorCategoria('Deporte')"
-        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline">Deporte</a>
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Deporte</a>
     </li>
-    <li class="mr-4 cursor-pointer">
+    <li class=" max-sm:w-1/2 cursor-pointer">
       <a (click)="filtrarPorCategoria('Todas las categorías')"
-        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline">Todas
+        class="block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded hover:scale-105 ease-in duration-150 leading-tight focus:outline-none focus:shadow-outline">Todas
         las categorías</a>
     </li>
 
   </ul>
 </div>
- <!-- filtro de categorias -->
+<!-- filtro de categorias -->
 <div id="carouselExampleCaptions" class="relative" data-twe-carousel-init data-twe-ride="carousel">
   <!--Carousel indicators-->
   <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
@@ -67,15 +67,9 @@
     <!--First item-->
     <div
       class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-twe-carousel-active
-      data-twe-carousel-item
-      style="backface-visibility: hidden">
-      <img
-        src="../../../assets/img/carrusel1.png"
-        class="block w-full"
-        alt="..." />
-      <div
-        class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+      data-twe-carousel-active data-twe-carousel-item style="backface-visibility: hidden">
+      <img src="../../../assets/img/carrusel1.png" class="block w-full" alt="..." />
+      <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
         <!-- <p>
           Some representative placeholder content for the first slide.
         </p> -->
@@ -135,81 +129,62 @@
   </button>
 </div>
 
-  <div class="w-full px-2 my-2 flex gap-4 md:w-2/4 lg:w-1/4" 
-    *ngFor="let product of filteredProducts">
+<!-- ordenar por -->
+<div class="flex flex-wrap p-4 w-[45%] h-[24%] my-2 grid gap-2 float-end">
 
-    <!-- Utiliza filteredProducts en lugar de listProducts -->
-
-    <div class="card overflow-hidden  p-3 items-center rounded flex flex-row w-full cursor-pointer border-white shadow-md hover:scale-105 ease-in duration-150">
-      <div class="size-44 object-contain">
-        <img [src]="product.image" class="object-cover object-center size-44 w-52 img  overflow-hidden" alt="... " (click)="mostrarDetalle(product.id)">
-<div class="main-filter flex flex-wrap gap-2 ">
-  >
-
- 
-
-  <!-- filtro de precios -->
-  <div class="flex flex-wrap p-4 w-[45%] h-[24%] my-2 grid gap-2  ">
-
-
-    <div mat-button [matMenuTriggerFor]="ordenar"
-      class="block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded">
-      <p class=" my-2 text-center">Ordenar por </p>
-    </div>
-
-    <div class="grid grid-cols-2">
-      <div class="grid gap-2">
-
-        <mat-menu #ordenar="matMenu">
-
-          <div>
-            <button
-              class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
-              (click)="applyPriceFilter('lowToHigh')">Menor a Mayor</button>
-          </div>
-          <div>
-
-            <button
-              class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
-              (click)="applyPriceFilter('highToLow')">Mayor a Menor</button>
-
-          </div>
-        </mat-menu>
-
-
-      </div>
-      <div>
-        <input type="number" placeholder="Min Price" [(ngModel)]="minPrice">
-        <input type="number" placeholder="Max Price" [(ngModel)]="maxPrice">
-        <button class="block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded"
-          (click)="applyPriceFilter('range')">Aplicar rango</button>
-      </div>
-
-
-
-    </div>
-
-
-
+  <div mat-button [matMenuTriggerFor]="ordenar" class=" hover:cursor-pointer block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded">
+    <p class=" my-2 text-center">Ordenar por </p>
   </div>
 
+  <div class="grid grid-cols-2">
+    <div class="grid gap-2">
+
+      <mat-menu #ordenar="matMenu">
+
+        <div>
+          <button
+            class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
+            (click)="applyPriceFilter('lowToHigh')">Menor a Mayor</button>
+        </div>
+        <div>
+
+          <button
+            class=" h-fit w-[190px] block bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow-sm leading-tight focus:outline-none focus:shadow-outline"
+            (click)="applyPriceFilter('highToLow')">Mayor a Menor</button>
+
+        </div>
+      </mat-menu>
+
+
+    </div>
+    <div>
+      <input type="number" placeholder="Min Price" [(ngModel)]="minPrice">
+      <input type="number" placeholder="Max Price" [(ngModel)]="maxPrice">
+      <button class="block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded"
+        (click)="applyPriceFilter('range')">Aplicar rango</button>
+    </div>
+  </div>
 
 </div>
+<!-- ordenar por -->
 
+<!-- contenedor de productos -->
+<div class="productos w-full h-auto my-12 overflow-x-visible lg:flex flex-wrap">
 
-
-<div id="container"
-  class="productos w-full h-auto overflow-x-visible lg:flex flex-wrap justify-center items-start md:flex ">
-
-  <div class="w-full px-2 my-2 flex gap-4 md:w-2/4 lg:w-1/4" *ngFor="let product of filteredProducts">
+  <div class="w-full px-2 my-2 flex flex-wrap gap-4 md:w-2/4 lg:w-1/4" *ngFor="let product of filteredProducts">
     <!-- Utiliza filteredProducts en lugar de listProducts -->
 
-    <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer">
+    <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer hover:scale-105 ease-in-out duration-150">
       <div class="size-40">
-        <img [src]="product.image" class="object-contain overflow-hidden size-40" alt="... "
-          (click)="mostrarDetalle(product.id)">
+        <!-- <img [src]="product.image" class="object-fill overflow-hidden size-full lg:w-full" alt="... "
+          (click)="mostrarDetalle(product.id)"> -->
+          <app-loading-image
+          [src]="product.image"
+          [srcPreload]
+          [rounded]="'object-cover'"
+          ></app-loading-image>
       </div>
-      <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between">
+      <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between lg:w-3/6">
         <div class="card-body">
           <h3 class="card-title top-0 h-2/6">{{product.name}}</h3>
           <p class="text-sm text-gray-400">{{product.category}}</p>
@@ -228,3 +203,4 @@
 
   </div>
 </div>
+<!-- contenedor de productos -->
