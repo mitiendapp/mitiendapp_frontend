@@ -1,42 +1,50 @@
 <section class="m-0 p-0">
-    <div class="imgTop pb-6 sds w-full h-50 md:h-70 bg-cover bg-center d-flex justify-center lg:h-90"
-        style="background-image: url(../../../assets/img/8085383.jpg);">
-    </div>
-    
-    
-    <!--about user -->
-    <div *ngFor="let compa of company"
-    class="infoUser max-sm:mt-[10%] mt-[7%] pb-2 flex-col items-center">
-    <h1 class="font-bold">{{compa.nameEmprendimiento}}</h1>
-    
-        <app-foto-de-perfil></app-foto-de-perfil>
 
-        <div class="socialmedia d-flex w-full items-center justify-center">
-            <!-- Instagram -->
-            <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-instagram text-2xl"></i></a>
-            <!-- Twitter -->
-            <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-twitter text-2xl"></i></a>
-            <!-- WhatsApp -->
-            <a class="btn btn-floating m-1" href="#!" role="button"><i class="bi bi-whatsapp text-2xl"></i></a>
+    <div class="relative">
+
+        <div class="imgTop sds w-full h-30 md:h-80 bg-cover bg-center flex flex-col md:flex-row justify-between items-start lg:h-3/6"
+            style="background-image: url(../../../assets/img/8085383.jpg);">
+            <!-- Contenido del contenedor principal -->
+            <div *ngFor="let compa of company"
+                class="h-full object-center  flex items-center justify-around infoUser  flex-col md:text-center">
+                <div class="justify-center p-4 flex items-center flex-col  bg-white">
+                    <app-foto-de-perfil></app-foto-de-perfil>
+                    <h1 class="justify-item-center  text-black">{{compa.nameEmprendimiento}}</h1>
+                    <div class="flex justify-center">
+                        <!-- Redes sociales -->
+                        <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
+                                class="bi bi-instagram text-black text-2xl"></i></a>
+                        <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
+                                class="bi bi-twitter text-black text-2xl"></i></a>
+                        <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
+                                class="bi bi-whatsapp text-black text-2xl"></i></a>
+                    </div>
+                    <!-- Descripción del emprendimiento -->
+                    <div class="description d-flex justify-center text-center flex-col items-center text-black">
+                        <h3 class="my-10 max-md:my-10 font-bold"></h3>
+                        <p class="w-[80%]">{{compa.description}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="mostrarBotonesInternos" class="flex text-white object-position: bg-center">
+                <div>
+                    <button class="toggle-table-btn w-20 h-10 mx-1" (click)="interfaceEditarCompany()">Editar
+                        información</button>
+                    <span class="text-gray-400"> / </span>
+                </div>
+                <div>
+                    <button class="toggle-table-btn w-40 h-10 mx-1" (click)="toggleTable()">Mis productos</button>
+                    <span class="text-gray-400"> / </span>
+                </div>
+                <div>
+                    <button class="toggle-table-btn w-40 h-10 mx-1" (click)="navigateCrearProducto()">Crear
+                        Producto</button>
+                </div>
+            </div>
         </div>
-
-        <!-- name and venture description -->
-
-        <div class="description d-flex justify-center text-center flex-col items-center">
-            <h3 class="my-10 max-md:my-10 font-bold"></h3>
-            <p class="w-[80%]">{{compa.description}}</p>
-        </div>
-        <button class="btn btn-primary w-40 h-10 mx-1 mt-1 " (click)="toggleBotonesInternos()">Configuración</button>
-<div *ngIf="mostrarBotonesInternos" class="pt-3">
-  <button class="toggle-table-btn btn btn-primary w-40 h-10 mx-1" (click)="interfaceEditarCompany()">Editar información</button>
-  <button class="toggle-table-btn btn btn-primary w-40 h-10 mx-1" (click)="toggleTable()">Mis productos</button>
-  <button class="toggle-table-btn btn btn-primary w-40 h-10 mx-1" (click)="navigateCrearProducto()">Crear Producto</button>
-</div>
     </div>
-    <div class="mt-[8%]">
-
-    </div>
-    <!-- tabla de productos -->
+    <!-- Tabla de productos -->
     <div class="mt-8 overflow-x-auto" [hidden]="!showTable">
         <div class="shadow sm:rounded-lg">
             <table class="min-w-full">
@@ -80,14 +88,16 @@
                         <td
                             class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                             {{product.price | currency}}</td>
-                            <td class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
-                                <div class="mt-4">
-                                    <a (click)="getProductsIdCompany2(product.id!)" (click)="actualizarProduct(product.id!)" (click)="navigateEditarProducto(product)" class="mr-4 text-indigo-600 hover:text-indigo-900 cursor-pointer">Editar</a>
-                                    <!-- <a (click)="deleteProductsCompany(product.id!)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Eliminar</a> -->
-                                    <a (click)="confirmDelete(product.id!)" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Eliminar</a>
-                                </div>
-                            </td>
-                            
+                        <td
+                            class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
+                            <div class="mt-4">
+                                <a (click)="getProductsIdCompany2(product.id!)" (click)="actualizarProduct(product.id!)"
+                                    (click)="navigateEditarProducto(product)"
+                                    class="mr-4 text-indigo-600 hover:text-indigo-900 cursor-pointer">Editar</a>
+                                <a (click)="confirmDelete(product.id!)"
+                                    class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Eliminar</a>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -96,45 +106,35 @@
 
     <div class="flex flex-col">
         <!-- Tarjetas de productos -->
-        <div class="flex flex-wrap justify-center">
-            <div *ngFor="let product of listProducts"
-                class="font-sans w-1/4 relative border border-gray-200 rounded-lg mx-4 my-4">
-    
-                <div class="w-full flex items-center justify-center">
-                    <img [src]="product.image" class="w-48 h-48 object-cover rounded-lg" />
-                </div>
-    
-                <div class="w-full p-6 text-center">
-                    <h1 class="font-medium text-lg text-gray-900">{{product.name}}</h1>
-                    <div class="text-xl font-bold text-violet-600 mt-2">{{product.price | currency}}</div>
-                    <div class="text-sm text-gray-400 mt-1">Cantidad: {{product.stock}}</div>
-                    <div class="mt-4">
-                        <span
-                            class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">{{product.category}}</span>
+        <div class="productos w-full h-auto my-12 overflow-x-visible lg:flex flex-wrap">
+            <div class="w-full px-2 my-2 flex flex-wrap gap-4 md:w-2/4 lg:w-1/4" *ngFor="let product of listProducts">
+                <div
+                    class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer hover:scale-105 ease-in-out duration-150 relative">
+                    <div class="size-40">
+                        <!-- <img [src]="product.image" class="object-fill overflow-hidden size-full lg:w-full" alt="... "
+                        (click)="mostrarDetalle(product.id)"> -->
+                        <app-loading-image [src]="product.image" [srcPreload]
+                            [rounded]="'object-cover'"></app-loading-image>
                     </div>
-                    <div class="mt-4">
-                        <button class="h-10 px-6 font-semibold rounded-full bg-blue-300 text-white" type="submit">Ver producto</button>
+                    <div class="size-30 w-3/4 mx-2 px-2 flex flex-col justify-between lg:w-3/6">
+                        <div class="card-body">
+                            <h3 class="card-title top-0 ">{{product.name}}</h3>
+                            <p class="text-sm text-gray-400">{{product.category}}</p>
+                            <p class="text-sm text-gray-400"> {{product.description}}</p>
+                        </div>
+                        <div class="text-center">{{product.price | currency}}</div>
+                        <div class="card-body flex justify-center items-center relative h-full">
+                            <button class="bg-[#427ed7] py-1 text-white btn-sm rounded w-3/4"
+                                (click)="mostrarDetalle(product.id)">Comprar</button>
+                            <button class="btn rounded w-1/4 cursor-pointer" (click)="addToCart(product)">
+                                <!-- <img [src]="cartIcon" alt=""> -->
+                                <span class="icon cartIcon"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-    
-                <div class="text-sm text-gray-500 px-6 pb-6 flex justify-center">
-                    {{product.description}}
-                </div>
-                
-    
             </div>
         </div>
-        
-        
-        <!-- Botón para mostrar/ocultar la tabla de productos -->
-
-
-
-
-        <!-- Tabla de productos -->
-        
     </div>
 
-    <!-- Tarjeta de productos -->
-    
 </section>

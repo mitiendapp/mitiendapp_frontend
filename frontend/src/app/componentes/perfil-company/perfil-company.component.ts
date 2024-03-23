@@ -6,6 +6,12 @@ import { ProductService } from '../../services/product.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { decodeJWT } from 'src/app/utils/decodeJWT';
 import {FiltroProductosService } from '../../services/FiltroProductos.service'
+import { User } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
+import { MessageService } from 'src/app/services/message.service';
+
+import { CartService } from 'src/app/services/cart.service';
+
 // import { EditarCompanyComponent } from '../editar-company/editar-company.component';
 
 
@@ -18,7 +24,7 @@ export class PerfilCompanyComponent implements OnInit{
   
   
   showTable: boolean = false;
-  mostrarBotonesInternos: boolean = false;
+  mostrarBotonesInternos: boolean = true;
   company: Company[] = []
   product:Product[]=[]
   listProducts: Product[] = [];
@@ -29,11 +35,13 @@ export class PerfilCompanyComponent implements OnInit{
   tokenId:any;
 
   constructor(
+    public _cartService: CartService,
   private router: Router, 
   private perfilCompanyServices: PerfilCompanyService, 
   private _filtroProductosService: FiltroProductosService,
   private routeActivate: ActivatedRoute, 
   private _productService: ProductService,
+  private messageService: MessageService,
   ) {
   }
 
@@ -186,6 +194,22 @@ deleteProductsCompany(id:any){
     }
   )
 
+}
+addToCart(product: Product) {
+  
+  try {
+    this._cartService.addProduct(this._cartService.productToProductDTO(product));
+    this.messageService.msgSuccess({message: "El producto fue agregado al carrito correctamente"});
+  } catch (error) {
+    this.messageService.msgError({message: "El producto ya se encuentra en el carrito"});
+  }
+}
+removeCart(product: Product) {
+  this._cartService.deleteProduct(this._cartService.productToProductDTO(product));
+  this.messageService.msgSuccess({message: "El producto fue eliminado al carrito correctamente"})
+}
+mostrarDetalle(id: number) {
+  this.router.navigate(['/detalle', id]);
 }
 
 }
