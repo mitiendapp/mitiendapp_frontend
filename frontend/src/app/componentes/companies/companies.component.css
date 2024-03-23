@@ -7,7 +7,7 @@
 }
 .img-wrapper:hover .imageContainer, .img-wrapper:hover .nameWrapper{
     transition: all .1s ease-in-out;
-    transform: scale(1.5);
+    transform: scale(1.2);
     border-radius: 8px;
 }
 .img-wrapper:hover .nameWrapper{
@@ -25,4 +25,7 @@
 }
 .img-wrapper:hover .imageContainer .imgg{
     filter: brightness(.5);
+}
+.img-wrapper:hover:hover > *{
+    z-index: 50;
 }

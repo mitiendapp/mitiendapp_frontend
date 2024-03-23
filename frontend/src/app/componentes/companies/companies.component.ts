@@ -60,4 +60,9 @@ export class CompaniesComponent implements OnInit {
       this.filteredCompanies = [...this.listCompanies]; // Restaurar la lista completa de productos si no se ha seleccionado ninguna categoría
     }
   }
+
+  onClickCompany(company:any){
+    console.log(company);
+  }
+
 }

@@ -92,7 +92,7 @@ enviocorreo(){
         this.router.navigate(['login']);
       },
       error: (e: HttpErrorResponse) => {
-        this._messageService.msgError(e);
+        this._messageService.msgError("El correo o la contraseña son incorrectos");
         this.loading.next(false);
       },
       complete() {
