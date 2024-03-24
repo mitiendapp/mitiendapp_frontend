@@ -9,7 +9,9 @@ import {FiltroProductosService } from '../../services/FiltroProductos.service'
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { MessageService } from 'src/app/services/message.service';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Toast, ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 import { CartService } from 'src/app/services/cart.service';
 
 // import { EditarCompanyComponent } from '../editar-company/editar-company.component';
@@ -22,7 +24,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class PerfilCompanyComponent implements OnInit{
   
-  
+  form: FormGroup;
   showTable: boolean = false;
   mostrarBotonesInternos: boolean = true;
   company: Company[] = []
@@ -33,15 +35,21 @@ export class PerfilCompanyComponent implements OnInit{
   userInfo:any;
   tokenEmail:any;
   tokenId:any;
+  imageFile: any;
+  imagePreview: any;
+  isValidImage: boolean = true;
+  public  previsualizacion :string;
 
   constructor(
-    public _cartService: CartService,
+  private formBuilder: FormBuilder,
+  private toastr: ToastrService,
+  public _cartService: CartService,
   private router: Router, 
   private perfilCompanyServices: PerfilCompanyService, 
   private _filtroProductosService: FiltroProductosService,
   private routeActivate: ActivatedRoute, 
   private _productService: ProductService,
-  private messageService: MessageService,
+  private _messageService: MessageService,
   ) {
   }
 
@@ -137,6 +145,55 @@ filtrarProductos(terminoBusqueda: string): void {
 }
 
 
+onFileSelected(event: any) {
+  this.imageFile = event.target.files[0];
+  if (this.imageFile.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.readAsDataURL(this.imageFile);
+    this.isValidImage = true;
+  } else {
+    this.isValidImage = false;
+  }
+  //  console.log()
+
+  if (this.imageFile) {
+    this.onUpdatedPortada();
+  }
+}
+
+onUpdatedPortada(){
+
+  // const imageFile = this.form.get('image').value;
+
+  const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+  if (fileInput.files && fileInput.files.length > 0) {
+    this.imageFile = fileInput.files[0];
+  }
+     console.log(this.imageFile)
+  // 
+  const formData = new FormData();
+  this.userInfo = decodeJWT(localStorage.getItem('token'));
+  this.tokenEmail = this.userInfo.UserInfo.email;
+  formData.append('img', this.imageFile);
+
+  this.perfilCompanyServices.postCompanyPortada(this.tokenEmail,formData).subscribe({
+    next: (v) => {
+      this.toastr.success('Portada cargada exitosamente');
+    },
+    error: (e: HttpErrorResponse) => {
+      if (e) {
+        this._messageService.msgError(e);
+      } else {
+        console.error('Error desconocido al intertar cargar la imagen',e);
+      }
+    },
+    complete: () => {
+      window.location.reload();
+    }
+  });
+
+}
+
 getProductsIdCompany(companyId:string){
   console.log("hola....")
   this._productService.getProductsByCompanyId(companyId).subscribe((data:any)=>{
@@ -199,14 +256,14 @@ addToCart(product: Product) {
   
   try {
     this._cartService.addProduct(this._cartService.productToProductDTO(product));
-    this.messageService.msgSuccess({message: "El producto fue agregado al carrito correctamente"});
+    this._messageService.msgSuccess({message: "El producto fue agregado al carrito correctamente"});
   } catch (error) {
-    this.messageService.msgError({message: "El producto ya se encuentra en el carrito"});
+    this._messageService.msgError({message: "El producto ya se encuentra en el carrito"});
   }
 }
 removeCart(product: Product) {
   this._cartService.deleteProduct(this._cartService.productToProductDTO(product));
-  this.messageService.msgSuccess({message: "El producto fue eliminado al carrito correctamente"})
+  this._messageService.msgSuccess({message: "El producto fue eliminado al carrito correctamente"})
 }
 mostrarDetalle(id: number) {
   this.router.navigate(['/detalle', id]);
