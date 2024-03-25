@@ -24,6 +24,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class PerfilCompanyComponent implements OnInit{
   
+  user:any;
   form: FormGroup;
   showTable: boolean = false;
   mostrarBotonesInternos: boolean = true;
@@ -50,6 +51,7 @@ export class PerfilCompanyComponent implements OnInit{
   private routeActivate: ActivatedRoute, 
   private _productService: ProductService,
   private _messageService: MessageService,
+  private _userService: UserService
   ) {
   }
 
@@ -82,11 +84,11 @@ export class PerfilCompanyComponent implements OnInit{
     this.router.navigate(['editarProduct/',product.id])
   }
 
-  
-
- 
-
-
+  async getUser(email:any){
+    await this._userService.find(email).subscribe((data:any)=>{
+      this.user = data.user;
+    })
+  }
 
   getProducts(){
     this._productService.getProducts().subscribe((data:any)=>{
@@ -107,7 +109,7 @@ export class PerfilCompanyComponent implements OnInit{
       this.userInfo = decodeJWT(localStorage.getItem('token'));
       this.tokenId = this.userInfo.UserInfo.id
       this.getProductsIdCompany(this.tokenId)
-
+      this.getUser(email);
 
     // });
   }

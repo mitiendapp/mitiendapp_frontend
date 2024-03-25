@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { Company } from 'src/app/interfaces/company';
 import { Product } from 'src/app/interfaces/product';
 import { User } from 'src/app/interfaces/user';
 import { CompanyService } from 'src/app/services/company.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
 
 type UserType = Company & User;
 @Component({
@@ -14,38 +16,26 @@ type UserType = Company & User;
 })
 export class CompaniesComponent implements OnInit {
   selectedCategory: string = '';
-  filteredCompanies: any[] = [{
-    "document": "1007385654",
-    "firstName": "jose leonardo",
-    "lastName": "alvarez hoyos",
-    "nameEmprendimiento": "Postres don leo",
-    "email": "josel.alvarezh@uqvirtual.edu.co",
-    "address": "calle 14b nu 3-20 e",
-    "phoneNumber": "",
-    "description": "Los mejores postres de armenia",
-    "img": null,
-    "password": "1234",
-    "confirmPassword": "1234"
-}];
+  filteredCompanies: any[] = [];
   listCompanies: Company[] = [];
   leo = "josel.alvarezh@uqvirtual.edu.co";
   emprendedor = "emprendedor@gmail.com"
   constructor(
     private _companyService: CompanyService,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    // this.getCompanies();
+    this.getCompanies();
   }
 
   getCompanies() {
-    this._companyService.getCompanies().subscribe((data: any) => {
-      console.log(data.companies);
-      
+    this._companyService.getCompanyUsers().subscribe((data: any) => { 
       this.listCompanies = data.companies;
-      this.filteredCompanies = [...this.listCompanies]; // Inicializar los productos filtrados con todos los productos
-    });
+      this.filteredCompanies = [...this.listCompanies];
+    })
   }
 
   async cargarCategorias(company: any) {
@@ -54,7 +44,6 @@ export class CompaniesComponent implements OnInit {
       const res = [... new Set(myProducts.map((p) => {
         return p.category;
       }))]
-      console.log(res);
     })
 
   }
@@ -68,4 +57,9 @@ export class CompaniesComponent implements OnInit {
       this.filteredCompanies = [...this.listCompanies]; // Restaurar la lista completa de productos si no se ha seleccionado ninguna categoría
     }
   }
+
+  onClickCompany(email: any) {
+    this.router.navigate(['/company', email]);
+  }
+
 }

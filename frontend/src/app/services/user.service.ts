@@ -63,4 +63,7 @@ export class UserService {
     return this.http.get(`${this.endpoint}${this.apiUrl}/${email}`);
   }
   
+  getUsers():Observable<any>{
+    return this.http.get(`${this.endpoint}users`);
+  }
 }

@@ -15,8 +15,8 @@
             <!-- Contenido del contenedor principal -->
             <div 
                 class="h-full object-center  flex items-center justify-around infoUser  flex-col md:text-center">
-                <div class="justify-center p-4 flex items-center flex-col  bg-white">
-                    <app-foto-de-perfil></app-foto-de-perfil>
+                <div *ngIf="user" class="justify-center p-4 flex items-center flex-col  bg-white">
+                    <app-foto-de-perfil [user]="user" ></app-foto-de-perfil>
                     <h1 class="justify-item-center  text-black">{{compa.nameEmprendimiento}}</h1>
                     <div class="flex justify-center">
                         <!-- Redes sociales -->
@@ -33,7 +33,6 @@
                         <p class="w-[80%]">{{compa.description}}</p>
                     </div>
                 </div>
-
             </div>
             <div *ngIf="mostrarBotonesInternos" class="flex text-white object-position: bg-center">
                 <div>

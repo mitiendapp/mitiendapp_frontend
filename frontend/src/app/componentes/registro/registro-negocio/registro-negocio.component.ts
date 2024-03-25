@@ -101,8 +101,9 @@ export class RegistroNegocioComponent implements OnInit {
         if (e) {
           this._messageService.msgError(e);
         } else {
-          console.error("Error desconocido al intentar registrar el emprendimiento");
+          this._messageService.msgError("El correo o la contraseña son incorrectos");
         }
+        this.loading.next(false);
       },
       complete() {
         this.loading.next(false);

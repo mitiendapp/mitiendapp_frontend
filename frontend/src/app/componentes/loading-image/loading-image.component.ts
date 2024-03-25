@@ -6,19 +6,18 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./loading-image.component.css']
 })
 export class LoadingImageComponent implements OnInit {
-  @Input() src: string;
-  @Input() srcPreload: string;
-  @Input() srcError: string;
+  @Input() src?: string;
+  @Input() srcPreload?: string;
+  @Input() srcError?: string;
   @Input() rounded?: string | undefined;
-  public imgSrc: string;
-  private tmpImage: HTMLImageElement;
+  public imgSrc?: string;
+  private tmpImage?: HTMLImageElement;
 
 
   constructor() { }
 
 
   ngOnInit() {
-    console.log(this.src);
     this.imgSrc = this.srcPreload;
     if (this.tmpImage) {
       this.tmpImage.onload = null;
@@ -29,7 +28,6 @@ export class LoadingImageComponent implements OnInit {
     };
 
     let imgError = () => {
-      console.error('Error al cargar la imagen', this.imgSrc);
       this.imgSrc = this.srcError;
     };
 

@@ -1,0 +1,58 @@
+<div class="h-full w-full">
+    <div *ngIf="company && user" class="infoUser w-full h-72 my-4 bg-[#d2d2d2] flex items-start flex-row md:text-center">
+        <div class="justify-center w-2/5 h-full p-2 flex items-center flex-row  bg-white">
+            <div class="flex flex-col w-3/5 h-full items-center justify-evenly">
+                <app-foto-de-perfil [user]="user"></app-foto-de-perfil>
+                <div class="flex justify-center">
+                    <!-- Redes sociales -->
+                    <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
+                            class="bi bi-instagram text-black text-2xl"></i></a>
+                    <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
+                            class="bi bi-twitter text-black text-2xl"></i></a>
+                    <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
+                            class="bi bi-whatsapp text-black text-2xl"></i></a>
+                </div>
+            </div>
+            <div class="flex flex-col w-full px-4 h-full justify-evenly">
+                <h1 class="text-center flex items-center justify-center m-0 text-black">{{company.nameEmprendimiento}}</h1>
+                <div class="description d-flex justify-center text-center flex-col items-center text-black">
+                    <h3 class="font-bold"></h3>
+                    <p class="w-full">{{company.description}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="w-3/5 h-full">
+            <app-loading-image class="" [src]="company.img" [srcPreload]="'https://fakeimg.pl/251x251?text=+'"
+                [srcError]="'../../../assets/img/logoBlanco.png'" [rounded]="'object-contain brightness-50'">
+            </app-loading-image>
+        </div>
+    </div>
+
+    <div class="productos w-full h-auto overflow-x-visible lg:flex flex-wrap justify-evenly">
+
+        <div class="w-full px-2 my-2 flex flex-wrap gap-4 md:w-2/4 lg:w-1/4" *ngFor="let product of listProducts">
+            <div
+                class="card shadow p-3 items-center rounded flex flex-row w-full justify-evenly cursor-pointer hover:scale-105 ease-in-out duration-150">
+                <div (click)="mostrarDetalle(product.id)" class="size-40">
+                    <app-loading-image [src]="product.image" [srcPreload]
+                        [rounded]="'object-cover'"></app-loading-image>
+                </div>
+                <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between lg:w-3/6 xl:w-full">
+                    <div (click)="mostrarDetalle(product.id)" class="card-body p-0 overflow-hidden whitespace-normal">
+                        <h3 class="card-title top-0 h-2/6">{{product.name}}</h3>
+                        <p class="text-sm text-gray-400">{{product.category}}</p>
+                    </div>
+                    <div class="text-sm">{{product.price | currency}}</div>
+                    <div class="card-body flex justify-between items-center relative p-0">
+                        <button class="bg-[#427ed7] text-white btn-sm p-1 rounded w-3/4"
+                            (click)="mostrarDetalle(product.id)">Comprar
+                            ahora</button>
+                        <button class="btn rounded size-8 cursor-pointer p-0 m-0" (click)="addToCart(product)">
+                            <span class="icon cartIcon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

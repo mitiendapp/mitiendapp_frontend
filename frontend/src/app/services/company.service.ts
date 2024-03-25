@@ -33,5 +33,9 @@ export class CompanyService {
     return this.http.get(`${this.endpoint}/companies`);
   }
 
+  getCompanyUsers():Observable<any>{
+    return this.http.get(`${this.endpoint}/company/users`);
+  }
+
 }
 
