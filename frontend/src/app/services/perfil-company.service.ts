@@ -31,6 +31,12 @@ export class PerfilCompanyService {
     const url = `${this.endpoint}${this.apiUrl}/update/${email}`;
     return this.http.post<Company[]>(url, company);
   }
+
+
+  postCompanyPortada(email: string, companyPortada: FormData): Observable<any> {
+    const url = `${this.endpoint}${this.apiUrl}/updateImage/${email}`;
+    return this.http.post<any>(url, companyPortada);
+  }
   
   // postCompanyEditar(email: string, company: Company): Observable<Company[]> {
   //   const url = `${this.endpoint}${this.apiUrl}/${this.actualizarCompany}/${email}`;

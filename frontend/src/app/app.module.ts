@@ -48,6 +48,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CompaniesComponent } from './componentes/companies/companies.component';
 import { DetalleCompanyComponent } from './componentes/detalle-company/detalle-company.component';
+import { PerfilAdminComponent } from './componentes/perfil-admin/perfil-admin.component';
 export function tokenGetter() {
   return localStorage.getItem('token')
 }
@@ -88,6 +89,7 @@ export function tokenGetter() {
     FotoDePerfilComponent,
     CompaniesComponent,
     DetalleCompanyComponent,
+    PerfilAdminComponent,
 
   ],
   imports: [

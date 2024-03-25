@@ -17,7 +17,7 @@ import { createProductsguard } from './utils/guard_CreateProduc';
 import { EditarCompanyComponent } from './componentes/editar-company/editar-company.component';
 import {EditProductComponent } from './componentes/edit-product/edit-product.component'
 import { DetalleCompanyComponent } from './componentes/detalle-company/detalle-company.component';
-
+import {PerfilAdminComponent} from './componentes/perfil-admin/perfil-admin.component'
 
 const routes: Routes = [
   {
@@ -50,6 +50,11 @@ const routes: Routes = [
   {
     path: 'perfilusuario',
     component: PerfilUsuarioComponent,canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'perfiladmin',
+    component: PerfilAdminComponent
   },
 
   {

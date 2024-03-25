@@ -103,15 +103,18 @@ export class InicioComponent implements OnInit {
         if (this.auth.getRole() == "client") {
 
           this.router.navigate(['']);
-        } else {
 
+        } else if(this.auth.getRole()== "admin") {
+          this.router.navigate(['perfiladmin']);
+          
+        
+        }else{
+    
           this.userInfo = decodeJWT(localStorage.getItem('token'));
           console.log(this.userInfo.UserInfo.email, ' este es');
           this.tokenEmail = this.userInfo.UserInfo.email
           console.log(this.tokenEmail, 'ste es cuando se carga el loguedo')
-
-
-
+          
           this.router.navigate(['perfilCompany', this.tokenEmail]);
         }
         localStorage.setItem('token', data.token);

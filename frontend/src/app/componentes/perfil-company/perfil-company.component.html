@@ -1,11 +1,19 @@
 <section class="m-0 p-0">
-
-    <div class="relative">
-
+   
+    <form action="" [formGroup]="form" (ngSubmit)="onUpdatedPortada()" enctype="multipart/form-data">
+    <div  *ngFor="let compa of company" class="relative">
+       
         <div class="imgTop sds w-full h-30 md:h-80 bg-cover bg-center flex flex-col md:flex-row justify-between items-start lg:h-3/6"
-            style="background-image: url(../../../assets/img/8085383.jpg);">
+            [style.background-image]="'url(' + compa.img + ')'">
+
+            <input id="fileInput" formControlName="img" (change)="onFileSelected($event)" type="file"
+            class="absolute bottom-4 right-0 opacity-0 cursor-pointer w-full h-full">
+        <label for="fileInput"
+            class="absolute bottom-3 right-[3%] flex items-center justify-center bg-gray-300 text-black rounded-full w-10 h-10 cursor-pointer hover:bg-gray-400 transition duration-300 ease-in-out file-upload-label">
+            <i class="fas fa-upload file-upload-icon"></i>
+        </label>
             <!-- Contenido del contenedor principal -->
-            <div *ngFor="let compa of company"
+            <div 
                 class="h-full object-center  flex items-center justify-around infoUser  flex-col md:text-center">
                 <div *ngIf="user" class="justify-center p-4 flex items-center flex-col  bg-white">
                     <app-foto-de-perfil [user]="user" ></app-foto-de-perfil>
@@ -43,6 +51,7 @@
             </div>
         </div>
     </div>
+</form>
     <!-- Tabla de productos -->
     <div class="mt-8 overflow-x-auto" [hidden]="!showTable">
         <div class="shadow sm:rounded-lg">
