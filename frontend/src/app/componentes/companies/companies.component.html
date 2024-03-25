@@ -1,11 +1,11 @@
 <div class="w-full h-full flex flex-wrap gap-4 justify-evenly">
     <div class="companies size-48 z-0  py-4 flex flex-wrap flex-col" *ngFor="let company of filteredCompanies">
-        <div (click)="onClickCompany(company)" class="img-wrapper z-0  size-48 relative cursor-pointer z-5 companyPanel  rounded-lg   bg-gray-100 flex flex-col ">
+        <div (click)="onClickCompany(company.email)" class="img-wrapper z-0  size-48 relative cursor-pointer z-5 companyPanel  rounded-lg   bg-gray-100 flex flex-col ">
             <div
                 class="imageContainer z-0 rounded-t-lg bottom-10 overflow-hidden z-2 flex items-center justify-center size-48">
                 <div class="imgg size-48     z-0">
                     <app-loading-image class="image h-full" [src]="company.User.profile_image"
-                        [srcPreload]="'https://fakeimg.pl/251x251?text=+'"
+                        [srcPreload]="'../../../assets/img/251x251.png'"
                         [srcError]="'../../../assets/img/user_image_holder.jpeg'"
                         [rounded]="'object-cover rounded-t-lg'">
                     </app-loading-image>

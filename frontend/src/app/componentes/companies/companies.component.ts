@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { Company } from 'src/app/interfaces/company';
 import { Product } from 'src/app/interfaces/product';
@@ -22,7 +23,8 @@ export class CompaniesComponent implements OnInit {
   constructor(
     private _companyService: CompanyService,
     private _productService: ProductService,
-    private _userService: UserService
+    private _userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -30,14 +32,10 @@ export class CompaniesComponent implements OnInit {
   }
 
   getCompanies() {
-    this._companyService.getCompanyUsers().subscribe((data:any)=>{
-      console.log(data.companies);
-        this.listCompanies = data.companies;
-        this.filteredCompanies = [...this.listCompanies]; // Inicializar los productos filtrados con todos los productos
+    this._companyService.getCompanyUsers().subscribe((data: any) => { 
+      this.listCompanies = data.companies;
+      this.filteredCompanies = [...this.listCompanies];
     })
-    
-    // this._companyService.getCompanies().subscribe((data: any) => {
-    // });
   }
 
   async cargarCategorias(company: any) {
@@ -46,7 +44,6 @@ export class CompaniesComponent implements OnInit {
       const res = [... new Set(myProducts.map((p) => {
         return p.category;
       }))]
-      console.log(res);
     })
 
   }
@@ -61,8 +58,8 @@ export class CompaniesComponent implements OnInit {
     }
   }
 
-  onClickCompany(company:any){
-    console.log(company);
+  onClickCompany(email: any) {
+    this.router.navigate(['/company', email]);
   }
 
 }

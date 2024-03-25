@@ -130,9 +130,10 @@
 </div>
 
 <!-- ordenar por -->
-<div class="flex flex-wrap p-4 w-[45%] h-[24%] my-2 grid gap-2 float-end">
+<div class="flex flex-wrap p-4 w-[45%] h-[24%] my-2 gap-2 float-end">
 
-  <div mat-button [matMenuTriggerFor]="ordenar" class=" hover:cursor-pointer block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded">
+  <div mat-button [matMenuTriggerFor]="ordenar"
+    class=" hover:cursor-pointer block bg-[#427ed7] h-fit w-[190px] text-white px-4 py-1 rounded">
     <p class=" my-2 text-center">Ordenar por </p>
   </div>
 
@@ -174,18 +175,15 @@
   <div class="w-full px-2 my-2 flex flex-wrap gap-4 md:w-2/4 lg:w-1/4" *ngFor="let product of filteredProducts">
     <!-- Utiliza filteredProducts en lugar de listProducts -->
 
-    <div class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer hover:scale-105 ease-in-out duration-150">
-      <div class="size-40">
+    <div
+      class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer hover:scale-105 ease-in-out duration-150">
+      <div (click)="mostrarDetalle(product.id)" class="size-40">
         <!-- <img [src]="product.image" class="object-fill overflow-hidden size-full lg:w-full" alt="... "
           (click)="mostrarDetalle(product.id)"> -->
-          <app-loading-image
-          [src]="product.image"
-          [srcPreload]
-          [rounded]="'object-cover'"
-          ></app-loading-image>
+        <app-loading-image [src]="product.image" [srcPreload] [rounded]="'object-cover'"></app-loading-image>
       </div>
       <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between lg:w-3/6">
-        <div class="card-body">
+        <div (click)="mostrarDetalle(product.id)" class="card-body">
           <h3 class="card-title top-0 h-2/6">{{product.name}}</h3>
           <p class="text-sm text-gray-400">{{product.category}}</p>
         </div>

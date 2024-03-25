@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Client } from 'src/app/interfaces/client';
 import { Company } from 'src/app/interfaces/company';
@@ -18,7 +18,7 @@ type usertype = User & Client | User & Company;
   styleUrls: ['./foto-de-perfil.component.css']
 })
 export class FotoDePerfilComponent implements OnInit {
-  user?: usertype;
+  @Input() user?: usertype;
   imageFile: any;
   isValidImage: any;
   previsualizacion: any;
@@ -28,19 +28,6 @@ export class FotoDePerfilComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this._userService.getUser().subscribe({
-      next: (data) => {
-        this.user = data.user
-      },
-      error: (err) => {
-
-      },
-      complete: () => {
-
-      }
-    });
-    // const { user } = await firstValueFrom(this._userService.getUser());
-    // this.user = user;
   }
   deleteImageProfile() {
     const user = {
