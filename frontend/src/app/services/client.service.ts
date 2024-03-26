@@ -11,6 +11,7 @@ import { ProductDTO } from './cart.service';
 export class ClientService {
   private endpoint: string;
   private apiUrl: string;
+  private apiUrlclientes: string;
   private _purchases = new BehaviorSubject<ProductDTO[]>(null); 
   auxList:ProductDTO[];
   product:ProductDTO = {
@@ -25,8 +26,10 @@ export class ClientService {
     id:1
   };
   constructor(private http: HttpClient){
+    this.apiUrlclientes = 'clients';
     this.endpoint = enviroment.endpoint;
     this.apiUrl = 'client';
+
     this.auxList = [];
   }
 
@@ -34,6 +37,9 @@ export class ClientService {
     return this.http.get(`${this.endpoint}${this.apiUrl}/${email}`);
   }
 
+  getClients():Observable<any>{
+    return this.http.get(`${this.endpoint}${this.apiUrlclientes}`);
+  }
   
   purchases():Observable<ProductDTO[]>{
     return this._purchases.asObservable();

@@ -1,12 +1,12 @@
 <div class="w-full h-full flex justify-center items-center">
     <app-spinner-blade *ngIf="!user"></app-spinner-blade>
-    <section *ngIf="user" class="body m-0 p-0 flex justify-evenly items-center relative w-full h-full ">´
+    <section *ngIf="user" class="body m-0 p-0 flex justify-evenly items-center relative w-full h-full ">
         <div class="flex flex-col bg-white items-center w-1/6 rounded-lg border p-2 justify-start">
             <!--about user -->
             <app-foto-de-perfil></app-foto-de-perfil>
             <div class="infoUser max-sm:mt-[10%] mt-[7%] d-flex justify-center flex-col items-center ">
                 <h1 class="font-bold">{{user.firstName}} {{user.lastName}}</h1>
-                <h5>{{user.email}}</h5>
+                <!-- <h5>{{user.email}}</h5> -->
                 <h4>Cliente</h4>
                 <div class="socialmedia d-flex w-full items-center justify-center">
                     <!-- Instagram -->

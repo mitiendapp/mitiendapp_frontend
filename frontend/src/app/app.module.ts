@@ -49,6 +49,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CompaniesComponent } from './componentes/companies/companies.component';
 import { DetalleCompanyComponent } from './componentes/detalle-company/detalle-company.component';
 import { PerfilAdminComponent } from './componentes/perfil-admin/perfil-admin.component';
+import { ClientsComponent } from './componentes/perfil-admin/clients/clients.component';
 export function tokenGetter() {
   return localStorage.getItem('token')
 }
@@ -90,6 +91,7 @@ export function tokenGetter() {
     CompaniesComponent,
     DetalleCompanyComponent,
     PerfilAdminComponent,
+    ClientsComponent,
 
   ],
   imports: [
