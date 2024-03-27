@@ -1,33 +1,45 @@
-<div class="h-full w-full">
-    <div *ngIf="company && user" class="infoUser w-full h-72 my-4 bg-[#d2d2d2] flex items-start flex-row md:text-center">
-        <div class="justify-center w-2/5 h-full p-2 flex items-center flex-row  bg-white">
-            <div class="flex flex-col w-3/5 h-full items-center justify-evenly">
-                <app-foto-de-perfil [user]="user"></app-foto-de-perfil>
-                <div class="flex justify-center">
-                    <!-- Redes sociales -->
-                    <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
-                            class="bi bi-instagram text-black text-2xl"></i></a>
-                    <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
-                            class="bi bi-twitter text-black text-2xl"></i></a>
-                    <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
-                            class="bi bi-whatsapp text-black text-2xl"></i></a>
+<div class="h-full w-full overflow-hidden">
+    <div *ngIf="company && user"
+        class="infoUser w-auto h-auto my-4 bg-[#d2d2d2] flex items-start flex-col md:text-center">
+
+        <div class="father flex flex-col lg:flex-row h-96">
+
+            <div
+                class=" w-full lg:w-2/5 h-full p-2 flex items-center justify-around flex-col lg:flex-row bg-white shadow-sm">
+                <!-- top -->
+                <div class="flex flex-col w-full lg:w-2/6 h-full items-center justify-evenly">
+
+                    <app-foto-de-perfil [user]="user"></app-foto-de-perfil>
+                    <!-- nameVenture -->
+                    <h1 class="text-center justify-center my-3 text-black">{{company.nameEmprendimiento}}</h1>
+                    <!-- socialMedia -->
+                    <div class="flex justify-center">
+                        <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
+                                class="bi bi-instagram text-black text-2xl"></i></a>
+                        <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
+                                class="bi bi-twitter text-black text-2xl"></i></a>
+                        <a class="btn btn-floating m-1 text-black" href="#!" role="button"><i
+                                class="bi bi-whatsapp text-black text-2xl"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-col w-full px-4 h-full justify-evenly">
-                <h1 class="text-center flex items-center justify-center m-0 text-black">{{company.nameEmprendimiento}}</h1>
-                <div class="description d-flex justify-center text-center flex-col items-center text-black">
-                    <h3 class="font-bold"></h3>
-                    <p class="w-full">{{company.description}}</p>
+
+                <!-- description -->
+                <div class="description w-4/6 text-center lg:w-3/6 flex-col items-center text-black my-2">
+                    <p class="w-full text-lg">{{company.description}}</p>
                 </div>
+
             </div>
-        </div>
-        <div class="w-3/5 h-full">
-            <app-loading-image class="" [src]="company.img" [srcPreload]="'https://fakeimg.pl/251x251?text=+'"
-                [srcError]="'../../../assets/img/logoBlanco.png'" [rounded]="'object-contain brightness-50'">
-            </app-loading-image>
+            <!-- banner -->
+            <div class="w-full h-full lg:w-4/6 flex items-center justify-center border-dotted">
+                <app-loading-image class="" [src]="company.img" [srcPreload]="'https://fakeimg.pl/251x251?text=+'"
+                    [srcError]="'../../../assets/img/logoBlanco.png'"
+                    [rounded]="'object-center object-cover  brightness-50'">
+                </app-loading-image>
+            </div>
         </div>
     </div>
 
+    <!-- productsSection -->
     <div class="productos w-full h-auto overflow-x-visible lg:flex flex-wrap justify-evenly">
 
         <div class="w-full px-2 my-2 flex flex-wrap gap-4 md:w-2/4 lg:w-1/4" *ngFor="let product of listProducts">

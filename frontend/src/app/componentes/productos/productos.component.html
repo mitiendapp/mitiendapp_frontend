@@ -1,5 +1,6 @@
+<app-carousel></app-carousel>
 <!-- filtro de categorias -->
-<div class="h-auto mt-4  py-2 flex items-center justify-center">
+<div class=" flex items-start justify-center">
   <!-- Lista de categorías -->
   <ul class="grid grid-cols-2  md:grid-cols-4 lg:w-3/5 justify-evenly text-center gap-2 gap-x-4 ">
     <li class=" max-sm:w-1/2 cursor-pointer">
@@ -47,10 +48,7 @@
   </ul>
 </div>
 <!-- filtro de categorias -->
-<div id="carouselExampleCaptions" class="relative" data-twe-carousel-init data-twe-ride="carousel">
-  
-  
-
+<!-- <div id="carouselExampleCaptions" class="relative" data-twe-carousel-init data-twe-ride="carousel"> -->
 
 <!-- ordenar por -->
 <div class="flex flex-wrap p-4 w-[45%] h-[24%] my-2 gap-2 float-end">
@@ -99,10 +97,8 @@
     <!-- Utiliza filteredProducts en lugar de listProducts -->
 
     <div
-      class="card shadow p-3 items-center rounded flex flex-row w-full cursor-pointer hover:scale-105 ease-in-out duration-150">
+      class="card shadow p-3 border-none items-center rounded flex flex-row w-full cursor-pointer hover:scale-105 ease-in-out duration-150">
       <div (click)="mostrarDetalle(product.id)" class="size-40">
-        <!-- <img [src]="product.image" class="object-fill overflow-hidden size-full lg:w-full" alt="... "
-          (click)="mostrarDetalle(product.id)"> -->
         <app-loading-image [src]="product.image" [srcPreload] [rounded]="'object-cover'"></app-loading-image>
       </div>
       <div class="size-40 w-2/3 mx-2 px-2 flex flex-col justify-between lg:w-3/6">

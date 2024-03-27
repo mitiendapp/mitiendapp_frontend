@@ -1,41 +1,50 @@
-<div class="relative w-full">
-  <div *ngIf="headerService.isShowing()| async" class="w-full h-12 flex justify-around items-center">
+<div class="relative w-full px-4">
+  <div *ngIf="headerService.isShowing()| async" class="w-full h-12 flex justify-evenly items-center">
     <div class="flex relative items-center">
       <img (click)="headerService.goBack()" [@showArrow]="show? 'show' : 'hide' " class="size-6 absolute -ml-1"
         src="../../../assets/icons/left-arrow-svgrepo-com.svg" alt="">
       <a href="/">
-        <img [@canGoBack]="itCan? 'can' : 'cant' " class="icon" src="../../../assets/icons/android-chrome-192x192.png"
+        <img [@canGoBack]="itCan? 'can' : 'cant' " class="icon object-contain size-10" src="../../../assets/icons/android-chrome-192x192.png"
           alt="">
       </a>
     </div>
-      <!-- SEARCH -->
-    <div class="inputWrapper relative w-3/5 flex items-center ">
-      <input class="bg-slate-200 h-2/3 w-full border rounded-2xl p-2 text-sm overflow-auto" id="inputHeader"
-        type="search" placeholder="Busca productos, tiendas y más..." (input)="actualizarFiltro($event)">
+    
+    <!-- SEARCH -->
+    <div class="inputWrapper relative w-3/6 2xl:w-4/6 flex items-center ">
+      <input class="bg-slate-200 w-full border-2 rounded-2xl py-2 px-4 ml-2 text-sm overflow-auto outline-none border-blue-500" id="inputHeader"
+      type="search" placeholder="Buscar" (input)="actualizarFiltro($event)">
     </div>
-          <!-- product link -->
-      <a class="mx-4" href="products">Productos</a>
-    <!-- BOTONES DE LOGIN -->
-    <div *ngIf="!(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
-      <a class="mx-4" href="login">Inicio de sesion</a>
-      <a class="mx-4" href="signin">Registro</a>
+    
+    <div class="anclas py-3 flex flex-row items-center justify-end md:justify-around w-full max-md:w-3/6 lg:w-2/6">
+      
+      <!-- product link -->
+      <div class="sections flex flex-row items-center justify-around w-5/6 md:w-2/4 md:ml-2">
+        <a class="hover:scale-110 ease-in-out duration-150" href="products">Productos</a>
+        <p class="text-xl pt-2 text-blue-500 max-sm:mx-3">|</p>
+        <a class="hover:scale-110 ease-in-out duration-150" href="companies">Emprendedores</a>
+      </div>
+      <!-- BOTONES DE LOGIN -->
+      <div *ngIf="!(auth.isLoggedIn() | async)" class="max-sm:hidden sm:block flex  max-md:w4/6 items-center " id="signup_signin">
+        <a class="mx-2 lg:mx-10 border py-2 px-1 rounded-md bg-blue-500 hover:bg-blue-950 text-white hover:scale-105 ease-in-out duration-150" href="login">Inicia sesion</a>
+        <a class="hover:scale-105 ease-in-out duration-150" href="signin">Registro</a>
+      </div>
     </div>
-
+      
     <!-- USER PROFILE -->
     <div *ngIf="(auth.isLoggedIn() | async) && (auth.isClient() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
-      <button class="blankButton" (click)="navigateToUserProfile()">Perfil</button>
+      <button class="blankButton hover:scale-105 ease-in-out duration-150" (click)="navigateToUserProfile()">Perfil</button>
     </div>
     
     <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)  && !isPerfilCompanyComponent()" class="hidden sm:block flex justify-around" id="signup_signin">
-      <button class="blankButton" (click)="navigateToCompanyProfile()">Perfil</button>
+      <button class="blankButton hover:scale-105 ease-in-out duration-150" (click)="navigateToCompanyProfile()">Perfil</button>
     </div>
     <div *ngIf="(auth.isLoggedIn() | async) && (auth.isCompany() | async)  && isPerfilCompanyComponent()" class="hidden sm:block flex justify-around" id="signup_signin">
-      <button class="blankButton" (click)="navigateToCompanyHome()">Principal</button>
+      <button class="blankButton hover:scale-105 ease-in-out duration-150" (click)="navigateToCompanyHome()">Principal</button>
     </div>
     
     <!-- SING OUT BUTTON -->
     <div *ngIf="(auth.isLoggedIn() | async)" class="hidden sm:block flex justify-around" id="signup_signin">
-      <button class="blankButton" *ngIf="auth.isLoggedIn()|async"  (click)="auth.logout()">salir</button>
+      <button class="blankButton hover:scale-105 ease-in-out duration-150" *ngIf="auth.isLoggedIn()|async"  (click)="auth.logout()">salir</button>
 
     
     </div>
