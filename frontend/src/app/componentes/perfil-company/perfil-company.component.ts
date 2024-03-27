@@ -114,14 +114,6 @@ export class PerfilCompanyComponent implements OnInit{
     // });
   }
 
-  // getCompanyEmail(email:Company){
-  //   this.perfilCompanyServices.getCompany(this.email).subscribe((data:any)=>{
-  //     this.company=data.data;
-  //     console.log(data);
-  //   })
-  // }
-//  emails: string[] = ['josel.alvarezh@uqvirtual.edu.co'];
-//  companies: any[] = [];
 
 getCompanyEmail(email: string) {
   this.perfilCompanyServices.getCompany(email).subscribe((data: any) => {

@@ -11,6 +11,7 @@ import { Company } from '../interfaces/company';
 export class PerfilCompanyService {
   private endpoint:string;
   private apiUrl:string;
+  private apiUrl2:string;
   private actualizarCompany:string
   
 
@@ -18,6 +19,7 @@ export class PerfilCompanyService {
 
     this.endpoint=enviroment.endpoint
     this.apiUrl= 'company';
+    this.apiUrl2= 'companies';
     this.actualizarCompany= 'update';
 
 
@@ -26,6 +28,12 @@ export class PerfilCompanyService {
     return this.http.get<Company[]>(`${this.endpoint}${this.apiUrl}/${email}`);
 
   }
+
+  getCompanies():Observable<any>{
+    return this.http.get<any>(`${this.endpoint}${this.apiUrl2}`);
+
+  }
+
 
   postCompanyEditar(email: string, company: Company): Observable<Company[]> {
     const url = `${this.endpoint}${this.apiUrl}/update/${email}`;
